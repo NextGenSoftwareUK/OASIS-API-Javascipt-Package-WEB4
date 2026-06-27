@@ -4,8 +4,10 @@
   "description": "Isomorphic (Node + browser) JavaScript/TypeScript-friendly client for the WEB4 OASIS API - full coverage of the OASIS2 ONODE WebAPI (Avatar, Data, Karma, NFT, Wallet, Map, Search, HyperDrive, and more).",
   "main": "index.js",
   "module": "index.mjs",
+  "types": "index.d.ts",
   "exports": {
     ".": {
+      "types": "./index.d.ts",
       "import": "./index.mjs",
       "require": "./index.js"
     }
@@ -16,12 +18,14 @@
   "files": [
     "index.js",
     "index.mjs",
+    "index.d.ts",
     "src",
     "docs"
   ],
   "scripts": {
     "generate": "node scripts/generate-modules.js",
     "docs": "node scripts/generate-docs.js",
+    "types": "node scripts/generate-types.js",
     "test": "node --test test"
   },
   "repository": {
