@@ -16,10 +16,12 @@
   "files": [
     "index.js",
     "index.mjs",
-    "src"
+    "src",
+    "docs"
   ],
   "scripts": {
     "generate": "node scripts/generate-modules.js",
+    "docs": "node scripts/generate-docs.js",
     "test": "node --test test"
   },
   "repository": {

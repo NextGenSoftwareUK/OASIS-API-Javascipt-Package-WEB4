@@ -416,7 +416,8 @@ The Our World Tribe
 
 This is **v2.0.0** - a full rewrite. It is isomorphic (works the same in Node.js 18+
 and in the browser), has zero dependencies (uses the global `fetch`), and covers
-every controller on the OASIS2 ONODE WebAPI - not just Avatar/Karma/Data/NFT.
+every controller on the OASIS2 ONODE WebAPI - not just Avatar/Karma/Data/NFT
+(32 modules, 485 operations).
 
 ### Install
 
@@ -424,13 +425,10 @@ every controller on the OASIS2 ONODE WebAPI - not just Avatar/Karma/Data/NFT.
 npm install web4-oasis-api
 ```
 
-### Getting started
+### Quickstart
 
 ```js
-// CommonJS
-const { OASISClient } = require('web4-oasis-api');
-// or ESM
-import { OASISClient } from 'web4-oasis-api';
+const { OASISClient } = require('web4-oasis-api'); // or: import { OASISClient } from 'web4-oasis-api'
 
 const oasis = new OASISClient({ baseUrl: 'https://api.oasisweb4.one' });
 
@@ -438,81 +436,22 @@ const { isError, message, session } = await oasis.auth.login({
   username: 'me@example.com', // username or email both work
   password: 'correct-horse-battery-staple'
 });
-
 if (isError) throw new Error(message);
-console.log('Signed in as', session.username, session.avatarId);
+
+// Every controller is exposed as oasis.<lowerCamelName> - e.g.:
+const karma = await oasis.karma.getKarmaForAvatar({ avatarId: session.avatarId });
 ```
 
-In Node, pass `persistSession: false` (the default there) - you own where the
-token lives between requests. In the browser it defaults to persisting the
-session to `localStorage` so it survives a page reload. Either way you can
-always read/restore it yourself:
+### Full documentation
 
-```js
-const session = oasis.auth.getSession();
-// ... later, e.g. on a fresh request in a serverless function:
-oasis.setToken(session.jwtToken, session);
-```
+- **[docs/getting-started.md](./docs/getting-started.md)** - install, client options, the calling convention, response shape.
+- **[docs/auth.md](./docs/auth.md)** - login/register/logout, session handling in the browser vs. serverless/Node.
+- **[docs/README.md](./docs/README.md)** - full module reference: every one of the 32 modules / 485 operations, with HTTP verb, route, route params, and an example call for each.
 
-### Calling any endpoint
+Docs are generated from the actual code (`scripts/generate-docs.js` parses
+`src/modules/*.js`), so they can't drift from what's actually implemented.
+After running `node scripts/generate-modules.js` against an updated
+`endpoints.json`, re-run `node scripts/generate-docs.js` to refresh `docs/`.
 
-Every controller is exposed as a lowerCamel-named property on the client -
-`oasis.avatar`, `oasis.data`, `oasis.karma`, `oasis.nft`, `oasis.wallet`,
-`oasis.map`, `oasis.search`, `oasis.hyperDrive`, `oasis.provider`,
-`oasis.holochain`, `oasis.solana`, `oasis.eosio`, `oasis.telos` (Bridge module),
-`oasis.keys`, `oasis.files`, `oasis.messaging`, `oasis.chat`, `oasis.social`,
-`oasis.clan`, `oasis.gifts`, `oasis.eggs`, `oasis.video`, `oasis.competition`,
-`oasis.subscription`, `oasis.settings`, `oasis.share`, `oasis.seeds`,
-`oasis.stats`, `oasis.health`, `oasis.oLand`, `oasis.oNET`, `oasis.oNODE` - one
-property per active OASIS2 WebAPI controller, generated directly from its
-source code so coverage stays exhaustive (485 operations as of this release).
-
-Every generated method takes **one args object**. Any key that matches a
-`{token}` in that endpoint's route is substituted into the URL for you;
-everything else you pass becomes the query string (`GET`/`DELETE`) or the
-JSON body (`POST`/`PUT`) - exactly what the underlying ASP.NET controller
-expects, so the field names must match the C# request model's property names
-(PascalCase) for `POST`/`PUT` bodies. A few examples:
-
-```js
-// GET api/karma/get-karma-for-avatar/{avatarId} -> avatarId is a route token
-const karma = await oasis.karma.getKarmaForAvatar({ avatarId });
-
-// POST api/karma/add-karma-to-avatar/{avatarId} -> avatarId is a route token,
-// everything else becomes the JSON body (AddRemoveKarmaToAvatarRequest)
-await oasis.karma.addKarmaToAvatar({
-  avatarId,
-  KarmaType: 'ContributingToTheOASISWithCode',
-  karmaSourceType: 'Website',
-  KaramSourceTitle: 'Shipped a feature',
-  KarmaSourceDesc: 'Added full WEB4 OASIS API coverage'
-});
-
-// POST api/data/save-holon -> no route tokens at all, the whole object is the body
-await oasis.data.saveHolon({
-  Holon: { Name: 'My Trust', HolonType: 'Trust', ParentHolonId: avatarId, MetaData: { foo: 'bar' } },
-  SaveChildren: true
-});
-
-// GET api/data/load-holons-for-parent/{id}/{holonType}
-const trusts = await oasis.data.loadHolonsForParent({ id: avatarId, holonType: 'Trust' });
-```
-
-Every response has the shape `{ isError, message, result, raw, statusCode }`
-where `result` is the unwrapped payload and `raw` is the full OASIS response
-envelope if you need it.
-
-### Regenerating module coverage
-
-The generated modules under `src/modules/` are produced from `endpoints.json`
-(an extraction of every `[Http*]` route in the OASIS2 ONODE WebAPI source) by
-`scripts/generate-modules.js`. If new endpoints are added upstream, re-run:
-
-```bash
-node scripts/generate-modules.js
-```
-
-`src/modules/Auth.js` is hand-written (not generated) and wraps the generated
-Avatar module's `authenticate`/`register`/`revokeToken` calls with automatic
-session/token management - it's the one place most apps need ergonomics
-beyond the generic object-args call.
+`src/modules/Auth.js` is the one hand-written module (everything else is
+generated) - see [docs/auth.md](./docs/auth.md) for details.
