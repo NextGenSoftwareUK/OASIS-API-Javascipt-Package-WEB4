@@ -1,8 +1,27 @@
 {
   "name": "web4-oasis-api",
-  "version": "1.0.8",
-  "description": "A JavaScript proxy for the WEB4 OASIS API. To be used only in the browser.",
+  "version": "2.0.0",
+  "description": "Isomorphic (Node + browser) JavaScript/TypeScript-friendly client for the WEB4 OASIS API - full coverage of the OASIS2 ONODE WebAPI (Avatar, Data, Karma, NFT, Wallet, Map, Search, HyperDrive, and more).",
   "main": "index.js",
+  "module": "index.mjs",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.js"
+    }
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "index.js",
+    "index.mjs",
+    "src"
+  ],
+  "scripts": {
+    "generate": "node scripts/generate-modules.js",
+    "test": "node --test test"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/NextGenSoftwareUK/OASIS-API-Javascipt-Package.git"
@@ -90,8 +109,5 @@
     "PLAN",
     "Scuttlebutt",
     "More Coming..."
-  ],
-  "dependencies": {
-    "axios": "^0.26.1"
-  }
+  ]
 }

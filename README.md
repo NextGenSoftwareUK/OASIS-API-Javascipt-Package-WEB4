@@ -414,548 +414,105 @@ The Our World Tribe
 
 ## How To Use
 
-Each function call you make returns a promise of an object which is in this form:
-`{error: boolean, data: object}`.
+This is **v2.0.0** - a full rewrite. It is isomorphic (works the same in Node.js 18+
+and in the browser), has zero dependencies (uses the global `fetch`), and covers
+every controller on the OASIS2 ONODE WebAPI - not just Avatar/Karma/Data/NFT.
 
-*object values*
-*error:* true when response from api fails
-*data:* response gotten from server.
+### Install
 
-## Getting started
-
-To get started with this package run
-
-`npm install web4-oasis-api`
-
-This installs the package to your project.
-To use it in the Application, it can be imported by
-
-`import oasis from "web4-oasis-api"`
-
-## Auth
-
-The Auth class handles the authentication of the web4-oasis-api. It can be imported by:
-
-`import { Auth } from "web4-oasis-api"`
-
-### Login
-
-To login use this code:
-
-```javascript
-import { Auth } from "web4-oasis-api";
-
-const oasisAuth = new Auth();
-
-oasisAuth.login({
-  username: "email@test.com",
-  password: "testpass",
-}).then((res)=>{
-  if(res.error){
-    // Error
-  }
-  else // No error
-}).catch((err)=>{
-  console.log(err)
-})
+```bash
+npm install web4-oasis-api
 ```
 
-### Signup
+### Getting started
 
-For signup, use this code snippet:
+```js
+// CommonJS
+const { OASISClient } = require('web4-oasis-api');
+// or ESM
+import { OASISClient } from 'web4-oasis-api';
 
-```javascript
-import { Auth } from "web4-oasis-api";
+const oasis = new OASISClient({ baseUrl: 'https://api.oasisweb4.one' });
 
-const oasisAuth = new Auth();
-
-const data = await OasisAuth.signup({
-  firstName: "test",
-  lastName: "test",
-  email: "test@email.com",
-  password: "test",
-  confirmPassword: "test",
-  acceptTerms: true,
-  avatarType: "User",
-  title: "Mr",
+const { isError, message, session } = await oasis.auth.login({
+  username: 'me@example.com', // username or email both work
+  password: 'correct-horse-battery-staple'
 });
+
+if (isError) throw new Error(message);
+console.log('Signed in as', session.username, session.avatarId);
 ```
 
-### Logout
-
-This logs a user out and revokes his token
-
-```javascript
-import { Auth } from "web4-oasis-api";
-
-const oasisAuth = new Auth();
-
-const data = await OasisAuth.logout();
-```
-
-### Forgot password
-
-```javascript
-import { Auth } from "web4-oasis-api";
-
-const oasisAuth = new Auth();
-
-const data = await OasisAuth.forgotPassword({ email: "test@test.com" });
-```
-
-### Get user
-
-This function is used when trying to get a currently logged in user.
-Code snippet:
-
-```javascript
-import { Auth } from "web4-oasis-api";
-
-const oasisAuth = new Auth();
-
-const data = await OasisAuth.getUser();
-```
-
-## Avatar
-
-This class manages a user's avatar from adding Karma, deleting and updating avatar, etc,
+In Node, pass `persistSession: false` (the default there) - you own where the
+token lives between requests. In the browser it defaults to persisting the
+session to `localStorage` so it survives a page reload. Either way you can
+always read/restore it yourself:
 
 ```js
-import { Avatar } from "web4-oasis-api"
+const session = oasis.auth.getSession();
+// ... later, e.g. on a fresh request in a serverless function:
+oasis.setToken(session.jwtToken, session);
 ```
 
-### get
+### Calling any endpoint
 
-This function gets an avatar when its ID is provided
+Every controller is exposed as a lowerCamel-named property on the client -
+`oasis.avatar`, `oasis.data`, `oasis.karma`, `oasis.nft`, `oasis.wallet`,
+`oasis.map`, `oasis.search`, `oasis.hyperDrive`, `oasis.provider`,
+`oasis.holochain`, `oasis.solana`, `oasis.eosio`, `oasis.telos` (Bridge module),
+`oasis.keys`, `oasis.files`, `oasis.messaging`, `oasis.chat`, `oasis.social`,
+`oasis.clan`, `oasis.gifts`, `oasis.eggs`, `oasis.video`, `oasis.competition`,
+`oasis.subscription`, `oasis.settings`, `oasis.share`, `oasis.seeds`,
+`oasis.stats`, `oasis.health`, `oasis.oLand`, `oasis.oNET`, `oasis.oNODE` - one
+property per active OASIS2 WebAPI controller, generated directly from its
+source code so coverage stays exhaustive (485 operations as of this release).
+
+Every generated method takes **one args object**. Any key that matches a
+`{token}` in that endpoint's route is substituted into the URL for you;
+everything else you pass becomes the query string (`GET`/`DELETE`) or the
+JSON body (`POST`/`PUT`) - exactly what the underlying ASP.NET controller
+expects, so the field names must match the C# request model's property names
+(PascalCase) for `POST`/`PUT` bodies. A few examples:
 
 ```js
-import { Avatar } from "web4-oasis-api";
-const avatar = new Avatar();
+// GET api/karma/get-karma-for-avatar/{avatarId} -> avatarId is a route token
+const karma = await oasis.karma.getKarmaForAvatar({ avatarId });
 
-const res = await avatar.get();
+// POST api/karma/add-karma-to-avatar/{avatarId} -> avatarId is a route token,
+// everything else becomes the JSON body (AddRemoveKarmaToAvatarRequest)
+await oasis.karma.addKarmaToAvatar({
+  avatarId,
+  KarmaType: 'ContributingToTheOASISWithCode',
+  karmaSourceType: 'Website',
+  KaramSourceTitle: 'Shipped a feature',
+  KarmaSourceDesc: 'Added full WEB4 OASIS API coverage'
+});
+
+// POST api/data/save-holon -> no route tokens at all, the whole object is the body
+await oasis.data.saveHolon({
+  Holon: { Name: 'My Trust', HolonType: 'Trust', ParentHolonId: avatarId, MetaData: { foo: 'bar' } },
+  SaveChildren: true
+});
+
+// GET api/data/load-holons-for-parent/{id}/{holonType}
+const trusts = await oasis.data.loadHolonsForParent({ id: avatarId, holonType: 'Trust' });
 ```
 
-### Get All
+Every response has the shape `{ isError, message, result, raw, statusCode }`
+where `result` is the unwrapped payload and `raw` is the full OASIS response
+envelope if you need it.
 
-This function returns all registered avatars
+### Regenerating module coverage
 
-```js
-import { Avatar } from "web4-oasis-api";
-const avatar = new Avatar();
+The generated modules under `src/modules/` are produced from `endpoints.json`
+(an extraction of every `[Http*]` route in the OASIS2 ONODE WebAPI source) by
+`scripts/generate-modules.js`. If new endpoints are added upstream, re-run:
 
-const res = await avatar.getAll();
+```bash
+node scripts/generate-modules.js
 ```
 
-### update
-
-This updates the avatar with the given ID. User must be logged in & authenticated for this method to work.
-
-```js
-avatar.update(data, id).then(()=>{
-  //pass
-}).catch((err)=>{
-  // pass
-})
-```
-
-the parameter **data** should be of this shape
-
-```js{
-  "title": "string",
-  "firstName": "string",
-  "lastName": "string",
-  "avatarType": "string",
-  "email": "user@example.com",
-  "password": "string",
-  "confirmPassword": "string"
-}
-```
-
-### delete
-
-This updates the avatar with the given ID. User must be logged in & authenticated for this method to work.
-
-```js
-avatar.delete(id).then(()=>{
-  //pass
-}).catch((err)=>{
-  // pass
-})
-```
-
-### addKarma
-
-Adds karma to avatar. User must be logged in & authenticated for this method to work.
-
-```js
-avatar.addKarma(id, data).then(()=>{
-  //pass
-}).catch((err)=>{
-  // pass
-})
-```
-
-**params**
-*id*: Avatar id
-*data schema*
-
-```js{
-  "karmaType": "string",
-  "karmaSourceType": "string",
-  "karamSourceTitle": "string",
-  "karmaSourceDesc": "string"
-}
-```
-
-### removeKarma
-
-Removes karma to avatar. User must be logged in & authenticated for this method to work.
-
-```js
-avatar.removeKarma(id, data).then(()=>{
-  //pass
-}).catch((err)=>{
-  // pass
-})
-```
-
-**params**
-*id*: Avatar id
-*data schema*
-
-```js{
-  "karmaType": "string",
-  "karmaSourceType": "string",
-  "karamSourceTitle": "string",
-  "karmaSourceDesc": "string"
-}
-```
-
-## Data
-
-### loadHolon
-
-Load's a holon data object for the given id. Set the loadChildren flag to true to load all the holon's child holon's. This defaults to true. If loadChildren is set to true, you can set the Recursive flag to true to load all the child's holon's recursively, or false to only load the first level of child holon's. This defaults to true. If loadChildren is set to true, you can set the maxChildDepth value to a custom int of how many levels down you wish to load, it defaults to 0, which means it will load to infinite depth. Set the continueOnError flag to true if you wish it to continue loading child holon's even if an error has occured, this defaults to true. Set the Version int to the version of the holon you wish to load (defaults to 0) which means the latest version. Pass in the provider you wish to use. Set the autoFailOverMode to 'ON' if you wish this call to work through the the providers in the auto-failover list until it succeeds. Set it to OFF if you do not or to 'DEFAULT' to default to the global OASISDNA setting. Set the autoReplicationMode to 'ON' if you wish this call to auto-replicate to the providers in the auto-replication list. Set it to OFF if you do not or to UseGlobalDefaultInOASISDNA to 'DEFAULT' to the global OASISDNA setting. Set the autoLoadBalanceMode to 'ON' if you wish this call to use the fastest provider in your area from the auto-loadbalance list. Set it to OFF if you do not or to UseGlobalDefaultInOASISDNA to 'DEFAULT' to the global OASISDNA setting. Set the waitForAutoReplicationResult flag to true if you wish for the API to wait for the auto-replication to complete before returning the results. Set the setglobally flag to false to use these settings only for this request or true for it to be used for all future requests. Set the showDetailedSettings flag to true to view detailed settings such as the list of providers in the auto-failover, auto-replication & auto-load balance lists.
-
-__the parameter for these function can either be a string that represents the holon's ID or an object__
-
-```js
-const data = new oasis.Data();
-const data = {
-      id: "188e0e27-3af2-478f-af86-030c56a42edb",
-      LoadChildren: false,
-      Recursive: false,
-      MaxChildDepth: 1,
-      ContinueOnError: false,
-      Version: 1,
-      ProviderType: "HoloOASIS",
-      SetGlobally: false,
-      ShowDetailedSettings: true,
-      AutoFailOverEnabled: "true",
-      AutoReplicationEnabled: "false",
-      AutoLoadBalanceEnabled: "false",
-      AutoFailOverProviders: "MongoDBOASIS, HoloOASIS",
-      AutoReplicationProviders: "MongoDBOASIS, HoloOASIS",
-      AutoLoadBalanceProviders: "MongoDBOASIS, HoloOASIS",
-      WaitForAutoReplicationResult: false,
-  } || "188e0e27-3af2-478f-af86-030c56a42edb"
-data.loadHolon(data).then(()=>{
-  //pass
-}).catch((err)=>{
-  // pass
-})
-```
-
-**params**
-*data*: object || string
-
-### loadAllHolons
-
-Load's all holons for the given HolonType. Use 'All' to load all holons. Set the loadChildren flag to true to load all the holon's child holon's. This defaults to true. If loadChildren is set to true, you can set the Recursive flag to true to load all the child's holon's recursively, or false to only load the first level of child holon's. This defaults to true. If loadChildren is set to true, you can set the maxChildDepth value to a custom int of how many levels down you wish to load, it defaults to 0, which means it will load to infinite depth. Set the continueOnError flag to true if you wish it to continue loading child holon's even if an error has occured, this defaults to true. Set the Version int to the version of the holon you wish to load (defaults to 0) which means the latest version. Pass in the provider you wish to use. Set the autoFailOverMode to 'ON' if you wish this call to work through the the providers in the auto-failover list until it succeeds. Set it to OFF if you do not or to 'DEFAULT' to default to the global OASISDNA setting. Set the autoReplicationMode to 'ON' if you wish this call to auto-replicate to the providers in the auto-replication list. Set it to OFF if you do not or to UseGlobalDefaultInOASISDNA to 'DEFAULT' to the global OASISDNA setting. Set the autoLoadBalanceMode to 'ON' if you wish this call to use the fastest provider in your area from the auto-loadbalance list. Set it to OFF if you do not or to UseGlobalDefaultInOASISDNA to 'DEFAULT' to the global OASISDNA setting. Set the waitForAutoReplicationResult flag to true if you wish for the API to wait for the auto-replication to complete before returning the results. Set the setglobally flag to false to use these settings only for this request or true for it to be used for all future requests. Set the showDetailedSettings flag to true to view detailed settings such as the list of providers in the auto-failover, auto-replication & auto-load balance lists.
-
-__the parameter for these function can either be either left undefined, a string or an object__
-```js
-const data = new oasis.Data()
-data.loadAllHolons().then(()=>{
-  //pass
-}).catch((err)=>{
-  // pass
-})
-```
-
-*OR*
-
-```js
-const data = new oasis.Data()
-data.loadAllHolons({
-      HolonType: "Moon",
-      LoadChildren: true,
-      Recursive: true,
-      MaxChildDepth: 0,
-      ContinueOnError: false,
-      Version: 0,
-      ProviderType: "HoloOASIS",
-      SetGlobally: false,
-      ShowDetailedSettings: true,
-      AutoFailOverEnabled: "true",
-      AutoReplicationEnabled: "true",
-      AutoLoadBalanceEnabled: "true",
-      AutoFailOverProviders: "MongoDBOASIS, HoloOASOS",
-      AutoReplicationProviders: "MongoDBOASIS, HoloOASOS",
-      AutoLoadBalanceProviders: "MongoDBOASIS, HoloOASOS",
-      WaitForAutoReplicationResult: false,
-    }).then(()=>{
-  //pass
-}).catch((err)=>{
-  // pass
-})
-```
- *OR*
- ```js 
- data.loadAllHolons(holonType)
- ```
-
-### loadHolonsForParent
-
-Load's all holons for the given parent and the given HolonType. Use 'All' to load all holons. Set the loadChildren flag to true to load all the holon's child holon's. This defaults to true. If loadChildren is set to true, you can set the Recursive flag to true to load all the child's holon's recursively, or false to only load the first level of child holon's. This defaults to true. If loadChildren is set to true, you can set the maxChildDepth value to a custom int of how many levels down you wish to load, it defaults to 0, which means it will load to infinite depth. Set the continueOnError flag to true if you wish it to continue loading child holon's even if an error has occured, this defaults to true. Set the Version int to the version of the holon you wish to load (defaults to 0) which means the latest version. Pass in the provider you wish to use. Set the autoFailOverMode to 'ON' if you wish this call to work through the the providers in the auto-failover list until it succeeds. Set it to OFF if you do not or to 'DEFAULT' to default to the global OASISDNA setting. Set the autoReplicationMode to 'ON' if you wish this call to auto-replicate to the providers in the auto-replication list. Set it to OFF if you do not or to UseGlobalDefaultInOASISDNA to 'DEFAULT' to the global OASISDNA setting. Set the autoLoadBalanceMode to 'ON' if you wish this call to use the fastest provider in your area from the auto-loadbalance list. Set it to OFF if you do not or to UseGlobalDefaultInOASISDNA to 'DEFAULT' to the global OASISDNA setting. Set the waitForAutoReplicationResult flag to true if you wish for the API to wait for the auto-replication to complete before returning the results. Set the setglobally flag to false to use these settings only for this request or true for it to be used for all future requests. Set the showDetailedSettings flag to true to view detailed settings such as the list of providers in the auto-failover, auto-replication & auto-load balance lists.
-
-__the parameter for these function can either be a string that represents the holon's ID or an object__
-
-```js
-const data = new oasis.Data()
-data.loadHolonForParent(
-  {
-      providerType: "Default",
-      setGlobally: true,
-      autoFailOverMode: "DEFAULT",
-      autoReplicationMode: "DEFAULT",
-      autoLoadBalanceMode: "DEFAULT",
-      autoFailOverProviders: "DEFAULT",
-      autoReplicationProviders: "DEFAULT",
-      autoLoadBalanceProviders: "DEFAULT",
-      waitForAutoReplicationResult: false,
-      showDetailedSettings: true,
-      recursive: true,
-      maxChildDepth: 0,
-      continueOnError: true,
-      version: 0,
-      loadChildren: true,
-      id: null,
-    } || "3fa85f64-5717-4562-b3fc-2c963f66afa6"
-).then(()=>{
-  //pass
-}).catch((err)=>{
-  // pass
-})
-```
-
-### saveHolon
-
-Save's a holon data object. Set the saveChildren flag to true to save all the holon's child holon's. This defaults to true. If saveChildren is set to true, you can set the Recursive flag to true to save all the child's holon's recursively, or false to only save the first level of child holon's. This defaults to true. If saveChildren is set to true, you can set the maxChildDepth value to a custom int of how many levels down you wish to save, it defaults to 0, which means it will save to infinite depth. Set the continueOnError flag to true if you wish it to continue saving child holon's even if an error has occured, this defaults to true. Pass in the provider you wish to use. Set the autoFailOverMode to 'ON' if you wish this call to work through the the providers in the auto-failover list until it succeeds. Set it to OFF if you do not or to 'DEFAULT' to default to the global OASISDNA setting. Set the autoReplicationMode to 'ON' if you wish this call to auto-replicate to the providers in the auto-replication list. Set it to OFF if you do not or to UseGlobalDefaultInOASISDNA to 'DEFAULT' to the global OASISDNA setting. Set the autoLoadBalanceMode to 'ON' if you wish this call to use the fastest provider in your area from the auto-loadbalance list. Set it to OFF if you do not or to UseGlobalDefaultInOASISDNA to 'DEFAULT' to the global OASISDNA setting. Set the waitForAutoReplicationResult flag to true if you wish for the API to wait for the auto-replication to complete before returning the results. Set the setglobally flag to false to use these settings only for this request or true for it to be used for all future requests. Set the showDetailedSettings flag to true to view detailed settings such as the list of providers in the auto-failover, auto-replication & auto-load balance lists.
-
-```js
-const data = new oasis.Data()
-data.saveHolon(data).then(()=>{
-  //pass
-}).catch((err)=>{
-  // pass
-})
-```
-
-### saveHolonOffChain
-
-Save's a holon data object (meta data) to the given off-chain provider and then links its hash to the on-chain provider. Set the showDetailedSettings flag to true to view detailed settings such as the list of providers in the auto-failover, auto-replication & auto-load balance lists.
-
-```js
-const data = new oasis.Data()
-data.saveHolonOffChain(data).then(()=>{
-  //pass
-}).catch((err)=>{
-  // pass
-})
-```
-
-### deleteHolon
-
-deletes a holon data object for the given id.
-
-```js
-const data = new oasis.Data()
-data.deleteHolon({
-    id: "",
-    softDelete: true
-  }).then(()=>{
-  //pass
-}).catch((err)=>{
-  // pass
-})
-```
-
-**params**
-*id*: Holon id
-
-## Karma
-
-### getKarmaForAvatar
-
-gets karma value of an avatar
-
-```js
-const karma = new oasis.Karma()
-karma.getKarmaForAvatar(id).then(()=>{
-  //pass
-}).catch((err)=>{
-  // pass
-})
-```
-
-**params**
-*id*: Avatar id
-
-### removeKarmaForAvatar
-
-removes karma value of an avatar
-
-```js
-const karma = new oasis.Karma()
-karma.getKarmaForAvatar(id, data).then(()=>{
-  //pass
-}).catch((err)=>{
-  // pass
-})
-```
-
-**params**
-*id*: Avatar id
-*data schema*:
-
-```js
-const data={
-      karmaType: string,
-      karmaSourceType: string,
-      karamSourceTitle: string,
-      karmaSourceDesc: string,
-}
-```
-
-### getKarmaAkashicRecordsForAvatar
-
-`oasis.Karma.getKarmaAkashicRecordsForAvatar(id)`
-**params**
-*id*: Avatar id
-
-## Holochain
-
-### getHolochainAgentIdForAvatar
-
-`oasis.Holochain.getHolochainAgentIdForAvatar(id)`
-**params**
-*id*: holochain id
-
-### getHolochainAgentPrivateKeyForAvatar
-
-`oasis.Holochain.getHolochainAgentPrivateKeyForAvatar(id)`
-**params**
-*id*: avatar id
-
-### getAvatarIdForHolochainAgentId
-
-`oasis.Holochain.getAvatarIdForHolochainAgentId(id)`
-**params**
-*id*: agent id
-
-### getHoloFuelBalanceForAgentId
-
-`oasis.Holochain.getHoloFuelBalanceForAgentId(id)`
-**params**
-*id*: agent id
-
-### getHoloFuelBalanceForAvatar
-
-`oasis.Holochain.getHoloFuelBalanceForAvatar(id)`
-**params**
-*id*: avatar id
-
-### getHoloFuelBalanceForAvatar
-
-`oasis.Holochain.getHoloFuelBalanceForAvatar(data)`
-**params**
-*data schema*: `{agentId: string, avatarId: string}`
-
-## NFT
-
-### createPurchase
-
- `oasis.NFT.createPurchase(data)`
- **params**
- *data schema*
-
- ```
- nftProvider: number,
-      solanaExchange: {
-        fromAccount: {
-          publicKey: string,
-        },
-        toAccount: {
-          publicKey: string,
-        },
-        memoText: string,
-        amount: number,
-        mintAccount: {
-          publicKey: string,
-        },
-      },
-      cargoExchange: {
-        saleId: string,
-      },
-    }
-```
-
-### getOlandPrice
-
-`oasis.NFT.createPurchase(count, couponCode)`
-
-### purchaseOLAND
-
-`oasis.NFT.purchaseOLAND(data)`
-**params**
- *data schema*
-
- ```
- {
-      olandId: "",
-      avatarId: "",
-      avatarUsername: "",
-      tiles: "",
-      walletAddress: "",
-      cargoSaleId: "",
-}
-```
-
-## Solona
-
-### mint
-
-`oasis.Solana.mint(data)`
-
-### exchange
-
-`oasis.Solana.exchange(data)`
-**params**
-*data schema*
-
-```
-{
-      fromAccount: {
-        publicKey: "",
-      },
-      toAccount: {
-        publicKey: "",
-      },
-      memoText: "",
-      amount: 0,
-      mintAccount: {
-        publicKey: "",
-      },
-    }
-```
+`src/modules/Auth.js` is hand-written (not generated) and wraps the generated
+Avatar module's `authenticate`/`register`/`revokeToken` calls with automatic
+session/token management - it's the one place most apps need ergonomics
+beyond the generic object-args call.
