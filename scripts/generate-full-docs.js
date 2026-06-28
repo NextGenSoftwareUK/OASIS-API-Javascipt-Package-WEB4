@@ -11,9 +11,16 @@
 
 const fs = require('fs');
 const path = require('path');
-const { resolveType, exampleValueFor, isPrimitive, exampleForPrimitive } = require('./resolve-type');
+const { resolveType, exampleValueFor, isPrimitive, isNoise, exampleForPrimitive } = require('./resolve-type');
 
-const endpoints = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'endpoints.json'), 'utf8'));
+// Usage: node generate-full-docs.js [endpointsJsonPath] [clientVar] [githubControllerBasePath] [title]
+const endpointsPath = process.argv[2] || path.join(__dirname, '..', 'endpoints.json');
+const clientVar = process.argv[3] || 'oasis';
+const githubControllerBasePath =
+  process.argv[4] || 'ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers';
+const title = process.argv[5] || 'WEB4 OASIS API';
+
+const endpoints = JSON.parse(fs.readFileSync(endpointsPath, 'utf8'));
 const docsDir = path.join(__dirname, '..', 'docs');
 const docsModulesDir = path.join(docsDir, 'modules');
 fs.mkdirSync(docsModulesDir, { recursive: true });
@@ -34,13 +41,37 @@ function fieldRows(props) {
   );
 }
 
+// Describes a resolved type for a doc section (request body or response
+// result), handling every resolveType() kind uniformly.
+function describeType(typeName, unresolvedTypes) {
+  const resolved = resolveType(typeName);
+  if (resolved.kind === 'object') {
+    return `type: \`${resolved.typeName}\`${resolved.isCollection ? ' (array)' : ''}\n\n${fieldRows(resolved.properties)}`;
+  }
+  if (resolved.kind === 'dictionary') {
+    return `type: \`Dictionary<${resolved.keyType}, ${resolved.valueType}>\` - a key/value map keyed by \`${resolved.keyType}\`, each value a \`${resolved.valueType}\`.`;
+  }
+  if (resolved.kind === 'unresolved') {
+    unresolvedTypes.add(resolved.typeName);
+    return `type: \`${resolved.typeName}\`${resolved.isCollection ? ' (array)' : ''} _(type definition not found in the OASIS2 source - field list unavailable)_`;
+  }
+  if (resolved.kind === 'noise') {
+    return `type: \`${resolved.typeName}\` (not part of the request/response payload).`;
+  }
+  return `type: \`${resolved.typeName}\`${resolved.isCollection ? ' (array)' : ''}`;
+}
+
 function exampleCallArgs(op) {
   const obj = {};
-  for (const rp of op.routeParams) obj[rp.name] = `'<${rp.name}>'`;
+  for (const rp of op.routeParams) {
+    if (isNoise(rp.type)) continue;
+    obj[rp.name] = `'<${rp.name}>'`;
+  }
   for (const qp of op.queryParams) {
+    if (isNoise(qp.type)) continue;
     obj[qp.name] = isPrimitive(qp.type) ? exampleForPrimitive(qp.type).replace(/"/g, "'") : `'<${qp.name}>'`;
   }
-  if (op.requestType) {
+  if (op.requestType && !isNoise(op.requestType)) {
     const resolved = resolveType(op.requestType);
     if (resolved && resolved.kind === 'object') {
       for (const p of resolved.properties) {
@@ -74,22 +105,16 @@ for (const [filename, info] of Object.entries(endpoints)) {
     const jsName = toCamel(opName);
     const fullRoute = op.route ? `${info.route_prefix}/${op.route}` : info.route_prefix;
 
+    const queryParams = op.queryParams.filter((p) => !isNoise(p.type));
+
     let requestSection;
-    if (op.requestType) {
-      const resolved = resolveType(op.requestType);
-      if (resolved.kind === 'object') {
-        requestSection = `Body type: \`${op.requestType}\`\n\n${fieldRows(resolved.properties)}`;
-      } else if (resolved.kind === 'unresolved') {
-        unresolvedTypes.add(op.requestType);
-        requestSection = `Body type: \`${op.requestType}\` _(type definition not found - field list unavailable)_`;
-      } else {
-        requestSection = `Body: \`${op.requestType}\``;
-      }
-    } else if (op.queryParams.length) {
+    if (op.requestType && !isNoise(op.requestType)) {
+      requestSection = `Body ${describeType(op.requestType, unresolvedTypes)}`;
+    } else if (queryParams.length) {
       requestSection =
         (op.verb === 'GET' || op.verb === 'DELETE' ? 'Query parameters' : 'Body fields') +
         ':\n\n' +
-        fieldRows(op.queryParams.map((p) => ({ name: p.name, type: p.type + (p.optional ? ' (optional)' : '') })));
+        fieldRows(queryParams.map((p) => ({ name: p.name, type: p.type + (p.optional ? ' (optional)' : '') })));
     } else {
       requestSection = 'No request body.';
     }
@@ -101,16 +126,7 @@ for (const [filename, info] of Object.entries(endpoints)) {
     let respInner = op.responseType.inner;
     const innerWrapMatch = respInner.match(/^(OASISResult|OASISHttpResponseMessage)<([\s\S]+)>$/);
     if (innerWrapMatch) respInner = innerWrapMatch[2];
-    const respResolved = resolveType(respInner);
-    let responseSection;
-    if (respResolved.kind === 'object') {
-      responseSection = `\`result\` type: \`${respInner}\`${respResolved.isCollection ? ' (array)' : ''}\n\n${fieldRows(respResolved.properties)}`;
-    } else if (respResolved.kind === 'unresolved') {
-      unresolvedTypes.add(respInner);
-      responseSection = `\`result\` type: \`${respInner}\` _(type definition not found - field list unavailable)_`;
-    } else {
-      responseSection = `\`result\` type: \`${respInner}\``;
-    }
+    const responseSection = `\`result\` ${describeType(respInner, unresolvedTypes)}`;
 
     const exampleResult = exampleValueFor(respInner);
 
@@ -131,7 +147,7 @@ ${responseSection}
 **Example**
 
 \`\`\`js
-const { isError, message, result } = await oasis.${clientProp}.${jsName}(${exampleCallArgs(op)});
+const { isError, message, result } = await ${clientVar}.${clientProp}.${jsName}(${exampleCallArgs(op)});
 if (isError) throw new Error(message);
 console.log(result);
 \`\`\`
@@ -148,9 +164,9 @@ Example response:
 `;
   });
 
-  const content = `# ${moduleName} — \`oasis.${clientProp}\`
+  const content = `# ${moduleName} — \`${clientVar}.${clientProp}\`
 
-Source controller: [\`${filename}\`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/${filename})
+Source controller: [\`${filename}\`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/${githubControllerBasePath}/${filename})
 Route prefix: \`${info.route_prefix}\`
 ${opNames.length} operation(s).
 
@@ -175,12 +191,12 @@ ${sections.join('\n---\n\n')}
 }
 
 const indexRows = moduleSummaries
-  .map((m) => `| [\`oasis.${m.clientProp}\`](modules/${m.moduleName}.md) | \`${m.routePrefix}\` | ${m.opCount} |`)
+  .map((m) => `| [\`${clientVar}.${m.clientProp}\`](modules/${m.moduleName}.md) | \`${m.routePrefix}\` | ${m.opCount} |`)
   .join('\n');
 
-const indexContent = `# WEB4 OASIS API — JavaScript SDK Reference
+const indexContent = `# ${title} — JavaScript SDK Reference
 
-Generated from \`endpoints.json\` (extracted from the ONODE WebAPI controllers) by
+Generated from \`endpoints.json\` (extracted from the WebAPI controllers) by
 \`scripts/generate-full-docs.js\`. Regenerate the full pipeline after the API
 changes:
 
@@ -190,9 +206,7 @@ node scripts/generate-modules.js
 node scripts/generate-full-docs.js
 \`\`\`
 
-- [Getting Started](./getting-started.md)
-- [Auth & Sessions](./auth.md)
-- [Module Reference](#module-reference) (${moduleSummaries.length} modules, ${totalOps} operations)
+${fs.existsSync(path.join(docsDir, 'getting-started.md')) ? '- [Getting Started](./getting-started.md)\n' : ''}${fs.existsSync(path.join(docsDir, 'auth.md')) ? '- [Auth & Sessions](./auth.md)\n' : ''}- [Module Reference](#module-reference) (${moduleSummaries.length} modules, ${totalOps} operations)
 
 ## Module Reference
 

@@ -93,7 +93,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": /* <Dictionary<string, object>> */ }
+  "result": { "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": { "<string>": {} } }
 }
 ```
 
@@ -176,7 +176,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": /* <Dictionary<string, object>> */ }
+  "result": { "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": { "<string>": {} } }
 }
 ```
 
@@ -227,7 +227,7 @@ const { isError, message, result } = await oasis.nft.createWeb4NFTCollectionAsyn
     description: "example string",
     image: "<base64-bytes>",
     imageUrl: "example string",
-    metaData: /* <Dictionary<string, string>> */,
+    metaData: { "<string>": "example string" },
     web4NFTIds: ["example string"],
     web4NFTs: [{ "ParentWeb5NFTIds": ["3fa85f64-5717-4562-b3fc-2c963f66afa6"], "Web3NFTs": [{ "ParentWeb4NFTId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "MintTransactionHash": "example string", "VerifyCollectionTransactionHash": "example string", "SendNFTTransactionHash": "example string", "NFTMintedUsingWalletAddress": "example string", "NFTTokenAddress": "example string", "OASISMintWalletAddress": "example string", "UpdateAuthority": "example string" }], "NewlyMintedWeb3NFTs": [], "Web3NFTIds": ["example string"] }],
     thumbnail: "<base64-bytes>",
@@ -476,13 +476,13 @@ const { isError, message, result } = await oasis.nft.importWeb3NFTAsync({
     nFTMintedUsingWalletAddress: "example string",
     currentOwnerWalletAddress: "example string",
     nFTTokenAddress: "example string",
-    onChainProvider: /* <EnumValue<ProviderType>> */,
-    offChainProvider: /* <EnumValue<ProviderType>> */,
+    onChainProvider: { "Score": 1.0 },
+    offChainProvider: { "Score": 1.0 },
     storeNFTMetaDataOnChain: true,
-    nFTOffChainMetaType: /* <EnumValue<NFTOffChainMetaType>> */,
-    nFTStandardType: /* <EnumValue<NFTStandardType>> */,
+    nFTOffChainMetaType: { "Score": 1.0 },
+    nFTStandardType: { "Score": 1.0 },
     mintTransactionHash: "example string",
-    metaData: /* <Dictionary<string, string>> */,
+    metaData: { "<string>": "example string" },
     tags: ["example string"],
     jSONMetaDataURL: "example string",
     jSONMetaData: "example string",
@@ -650,7 +650,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IWeb4GeoSpatialNFT>` (array)
+`result` type: `IWeb4GeoSpatialNFT` (array)
 
 | Field | Type |
 | --- | --- |
@@ -692,7 +692,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [{ "PlacedByAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "OriginalWeb4OASISNFTId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GeoNFTMetaDataProvider": /* <EnumValue<ProviderType>> */, "OriginalOASISNFTProviderType": /* <EnumValue<ProviderType>> */, "PlacedOn": "2026-01-01T00:00:00Z", "Lat": 1.0, "Long": 1.0, "AllowOtherPlayersToAlsoCollect": true, "PermSpawn": true, "GlobalSpawnQuantity": 1, "PlayerSpawnQuantity": 1, "RespawnDurationInSeconds": 1, "Nft3DObject": "<base64-bytes>", "Nft3DObjectURI": "example string", "Nft2DSprite": "<base64-bytes>", "Nft2DSpriteURI": "example string", "SuccessMessageWhenCollected": "example string", "SpawnInSafeZone": true, "SpawnNearPlayer": true, "SpawnWithinXMetersFromPlayer": 1, "SpawnXMetersAwayFromPlayer": 1, "IsVisibleOnMap": true, "IsVisibleInInventory": true }]
+  "result": [{ "PlacedByAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "OriginalWeb4OASISNFTId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GeoNFTMetaDataProvider": { "Score": 1.0 }, "OriginalOASISNFTProviderType": {}, "PlacedOn": "2026-01-01T00:00:00Z", "Lat": 1.0, "Long": 1.0, "AllowOtherPlayersToAlsoCollect": true, "PermSpawn": true, "GlobalSpawnQuantity": 1, "PlayerSpawnQuantity": 1, "RespawnDurationInSeconds": 1, "Nft3DObject": "<base64-bytes>", "Nft3DObjectURI": "example string", "Nft2DSprite": "<base64-bytes>", "Nft2DSpriteURI": "example string", "SuccessMessageWhenCollected": "example string", "SpawnInSafeZone": true, "SpawnNearPlayer": true, "SpawnWithinXMetersFromPlayer": 1, "SpawnXMetersAwayFromPlayer": 1, "IsVisibleOnMap": true, "IsVisibleInInventory": true }]
 }
 ```
 
@@ -716,7 +716,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IWeb4GeoSpatialNFT>` (array)
+`result` type: `IWeb4GeoSpatialNFT` (array)
 
 | Field | Type |
 | --- | --- |
@@ -760,7 +760,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [{ "PlacedByAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "OriginalWeb4OASISNFTId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GeoNFTMetaDataProvider": /* <EnumValue<ProviderType>> */, "OriginalOASISNFTProviderType": /* <EnumValue<ProviderType>> */, "PlacedOn": "2026-01-01T00:00:00Z", "Lat": 1.0, "Long": 1.0, "AllowOtherPlayersToAlsoCollect": true, "PermSpawn": true, "GlobalSpawnQuantity": 1, "PlayerSpawnQuantity": 1, "RespawnDurationInSeconds": 1, "Nft3DObject": "<base64-bytes>", "Nft3DObjectURI": "example string", "Nft2DSprite": "<base64-bytes>", "Nft2DSpriteURI": "example string", "SuccessMessageWhenCollected": "example string", "SpawnInSafeZone": true, "SpawnNearPlayer": true, "SpawnWithinXMetersFromPlayer": 1, "SpawnXMetersAwayFromPlayer": 1, "IsVisibleOnMap": true, "IsVisibleInInventory": true }]
+  "result": [{ "PlacedByAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "OriginalWeb4OASISNFTId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GeoNFTMetaDataProvider": { "Score": 1.0 }, "OriginalOASISNFTProviderType": {}, "PlacedOn": "2026-01-01T00:00:00Z", "Lat": 1.0, "Long": 1.0, "AllowOtherPlayersToAlsoCollect": true, "PermSpawn": true, "GlobalSpawnQuantity": 1, "PlayerSpawnQuantity": 1, "RespawnDurationInSeconds": 1, "Nft3DObject": "<base64-bytes>", "Nft3DObjectURI": "example string", "Nft2DSprite": "<base64-bytes>", "Nft2DSpriteURI": "example string", "SuccessMessageWhenCollected": "example string", "SpawnInSafeZone": true, "SpawnNearPlayer": true, "SpawnWithinXMetersFromPlayer": 1, "SpawnXMetersAwayFromPlayer": 1, "IsVisibleOnMap": true, "IsVisibleInInventory": true }]
 }
 ```
 
@@ -785,7 +785,7 @@ Query parameters:
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IWeb3NFT>` (array)
+`result` type: `IWeb3NFT` (array)
 
 | Field | Type |
 | --- | --- |
@@ -846,7 +846,7 @@ Query parameters:
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IWeb3NFT>` (array)
+`result` type: `IWeb3NFT` (array)
 
 | Field | Type |
 | --- | --- |
@@ -908,7 +908,7 @@ Query parameters:
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IWeb3NFT>` (array)
+`result` type: `IWeb3NFT` (array)
 
 | Field | Type |
 | --- | --- |
@@ -964,7 +964,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IWeb4GeoSpatialNFT>` (array)
+`result` type: `IWeb4GeoSpatialNFT` (array)
 
 | Field | Type |
 | --- | --- |
@@ -1009,7 +1009,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [{ "PlacedByAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "OriginalWeb4OASISNFTId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GeoNFTMetaDataProvider": /* <EnumValue<ProviderType>> */, "OriginalOASISNFTProviderType": /* <EnumValue<ProviderType>> */, "PlacedOn": "2026-01-01T00:00:00Z", "Lat": 1.0, "Long": 1.0, "AllowOtherPlayersToAlsoCollect": true, "PermSpawn": true, "GlobalSpawnQuantity": 1, "PlayerSpawnQuantity": 1, "RespawnDurationInSeconds": 1, "Nft3DObject": "<base64-bytes>", "Nft3DObjectURI": "example string", "Nft2DSprite": "<base64-bytes>", "Nft2DSpriteURI": "example string", "SuccessMessageWhenCollected": "example string", "SpawnInSafeZone": true, "SpawnNearPlayer": true, "SpawnWithinXMetersFromPlayer": 1, "SpawnXMetersAwayFromPlayer": 1, "IsVisibleOnMap": true, "IsVisibleInInventory": true }]
+  "result": [{ "PlacedByAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "OriginalWeb4OASISNFTId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GeoNFTMetaDataProvider": { "Score": 1.0 }, "OriginalOASISNFTProviderType": {}, "PlacedOn": "2026-01-01T00:00:00Z", "Lat": 1.0, "Long": 1.0, "AllowOtherPlayersToAlsoCollect": true, "PermSpawn": true, "GlobalSpawnQuantity": 1, "PlayerSpawnQuantity": 1, "RespawnDurationInSeconds": 1, "Nft3DObject": "<base64-bytes>", "Nft3DObjectURI": "example string", "Nft2DSprite": "<base64-bytes>", "Nft2DSpriteURI": "example string", "SuccessMessageWhenCollected": "example string", "SpawnInSafeZone": true, "SpawnNearPlayer": true, "SpawnWithinXMetersFromPlayer": 1, "SpawnXMetersAwayFromPlayer": 1, "IsVisibleOnMap": true, "IsVisibleInInventory": true }]
 }
 ```
 
@@ -1033,7 +1033,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IWeb4GeoSpatialNFT>` (array)
+`result` type: `IWeb4GeoSpatialNFT` (array)
 
 | Field | Type |
 | --- | --- |
@@ -1077,7 +1077,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [{ "PlacedByAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "OriginalWeb4OASISNFTId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GeoNFTMetaDataProvider": /* <EnumValue<ProviderType>> */, "OriginalOASISNFTProviderType": /* <EnumValue<ProviderType>> */, "PlacedOn": "2026-01-01T00:00:00Z", "Lat": 1.0, "Long": 1.0, "AllowOtherPlayersToAlsoCollect": true, "PermSpawn": true, "GlobalSpawnQuantity": 1, "PlayerSpawnQuantity": 1, "RespawnDurationInSeconds": 1, "Nft3DObject": "<base64-bytes>", "Nft3DObjectURI": "example string", "Nft2DSprite": "<base64-bytes>", "Nft2DSpriteURI": "example string", "SuccessMessageWhenCollected": "example string", "SpawnInSafeZone": true, "SpawnNearPlayer": true, "SpawnWithinXMetersFromPlayer": 1, "SpawnXMetersAwayFromPlayer": 1, "IsVisibleOnMap": true, "IsVisibleInInventory": true }]
+  "result": [{ "PlacedByAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "OriginalWeb4OASISNFTId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GeoNFTMetaDataProvider": { "Score": 1.0 }, "OriginalOASISNFTProviderType": {}, "PlacedOn": "2026-01-01T00:00:00Z", "Lat": 1.0, "Long": 1.0, "AllowOtherPlayersToAlsoCollect": true, "PermSpawn": true, "GlobalSpawnQuantity": 1, "PlayerSpawnQuantity": 1, "RespawnDurationInSeconds": 1, "Nft3DObject": "<base64-bytes>", "Nft3DObjectURI": "example string", "Nft2DSprite": "<base64-bytes>", "Nft2DSpriteURI": "example string", "SuccessMessageWhenCollected": "example string", "SpawnInSafeZone": true, "SpawnNearPlayer": true, "SpawnWithinXMetersFromPlayer": 1, "SpawnXMetersAwayFromPlayer": 1, "IsVisibleOnMap": true, "IsVisibleInInventory": true }]
 }
 ```
 
@@ -1095,7 +1095,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IWeb4NFT>` (array)
+`result` type: `IWeb4NFT` (array)
 
 | Field | Type |
 | --- | --- |
@@ -1142,7 +1142,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IWeb4NFT>` (array)
+`result` type: `IWeb4NFT` (array)
 
 | Field | Type |
 | --- | --- |
@@ -1191,7 +1191,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IWeb4NFT>` (array)
+`result` type: `IWeb4NFT` (array)
 
 | Field | Type |
 | --- | --- |
@@ -1452,18 +1452,46 @@ Body type: `MintAndPlaceGeoSpatialNFTRequest`
 
 | Field | Type |
 | --- | --- |
-| `Lat` | `long` |
-| `Long` | `long` |
-| `AllowOtherPlayersToAlsoCollect` | `bool` |
-| `PermSpawn` | `bool` |
-| `GlobalSpawnQuantity` | `int` |
-| `PlayerSpawnQuantity` | `int` |
-| `RespawnDurationInSeconds` | `int` |
-| `Nft3DObject` | `byte[]` |
-| `Nft3DObjectURI` | `string` |
-| `Nft2DSprite` | `byte[]` |
-| `Nft2DSpriteURI` | `string` |
-| `GeoNFTMetaDataProvider` | `string` |
+| `MintWalletAddress` | `string` |
+| `CollectionPublicKey` | `string?` |
+| `Web3NFTs` | `IList<IMintWeb3NFTRequest>` |
+| `MintedByAvatarId` | `Guid` |
+| `Title` | `string` |
+| `Description` | `string` |
+| `Image` | `byte[]` |
+| `ImageUrl` | `string` |
+| `Thumbnail` | `byte[]` |
+| `ThumbnailUrl` | `string` |
+| `Amount` | `decimal` |
+| `Price` | `decimal` |
+| `Discount` | `decimal` |
+| `RoyaltyPercentage` | `int?` |
+| `IsForSale` | `bool?` |
+| `SaleStartDate` | `DateTime?` |
+| `SaleEndDate` | `DateTime?` |
+| `MemoText` | `string` |
+| `Token` | `string` |
+| `NumberToMint` | `int` |
+| `StoreNFTMetaDataOnChain` | `bool` |
+| `MetaData` | `Dictionary<string, string>` |
+| `OffChainProvider` | `EnumValue<ProviderType>` |
+| `OnChainProvider` | `EnumValue<ProviderType>` |
+| `NFTStandardType` | `EnumValue<NFTStandardType>` |
+| `NFTOffChainMetaType` | `EnumValue<NFTOffChainMetaType>` |
+| `Symbol` | `string` |
+| `JSONMetaDataURL` | `string` |
+| `JSONMetaData` | `string` |
+| `WaitTillNFTMinted` | `bool` |
+| `WaitForNFTToMintInSeconds` | `int` |
+| `AttemptToMintEveryXSeconds` | `int` |
+| `SendToAddressAfterMinting` | `string` |
+| `SendToAvatarAfterMintingId` | `Guid` |
+| `SendToAvatarAfterMintingUsername` | `string` |
+| `SendToAvatarAfterMintingEmail` | `string` |
+| `WaitTillNFTSent` | `bool` |
+| `WaitForNFTToSendInSeconds` | `int` |
+| `AttemptToSendEveryXSeconds` | `int` |
+| `Tags` | `List<string>` |
 
 **Response**
 
@@ -1501,18 +1529,46 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.nft.mintAndPlaceGeoNFTAsync({
-    lat: 1,
-    long: 1,
-    allowOtherPlayersToAlsoCollect: true,
-    permSpawn: true,
-    globalSpawnQuantity: 1,
-    playerSpawnQuantity: 1,
-    respawnDurationInSeconds: 1,
-    nft3DObject: "<base64-bytes>",
-    nft3DObjectURI: "example string",
-    nft2DSprite: "<base64-bytes>",
-    nft2DSpriteURI: "example string",
-    geoNFTMetaDataProvider: "example string"
+    mintWalletAddress: "example string",
+    collectionPublicKey: "example string",
+    web3NFTs: [{ "CollectionPublicKey": "example string", "NFTMetaDataMergeStrategy": {  }, "NFTTagsMergeStrategy": {  }, "NumberToMint": 1, "StoreNFTMetaDataOnChain": true, "OffChainProvider": {  }, "OnChainProvider": {}, "NFTStandardType": {  }, "NFTOffChainMetaType": {  }, "Price": 1.0, "Discount": 1.0, "RoyaltyPercentage": 1, "WaitTillNFTMinted": true, "WaitForNFTToMintInSeconds": 1, "WaitTillNFTVerified": true, "WaitForNFTToVerifyInSeconds": 1, "AttemptToVerifyEveryXSeconds": 1, "WaitTillNFTSent": true, "WaitForNFTToSendInSeconds": 1, "AttemptToSendEveryXSeconds": 1 }],
+    mintedByAvatarId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    title: "example string",
+    description: "example string",
+    image: "<base64-bytes>",
+    imageUrl: "example string",
+    thumbnail: "<base64-bytes>",
+    thumbnailUrl: "example string",
+    amount: 1.0,
+    price: 1.0,
+    discount: 1.0,
+    royaltyPercentage: 1,
+    isForSale: true,
+    saleStartDate: "2026-01-01T00:00:00Z",
+    saleEndDate: "2026-01-01T00:00:00Z",
+    memoText: "example string",
+    token: "example string",
+    numberToMint: 1,
+    storeNFTMetaDataOnChain: true,
+    metaData: { "<string>": "example string" },
+    offChainProvider: { "Score": 1.0 },
+    onChainProvider: { "Score": 1.0 },
+    nFTStandardType: { "Score": 1.0 },
+    nFTOffChainMetaType: { "Score": 1.0 },
+    symbol: "example string",
+    jSONMetaDataURL: "example string",
+    jSONMetaData: "example string",
+    waitTillNFTMinted: true,
+    waitForNFTToMintInSeconds: 1,
+    attemptToMintEveryXSeconds: 1,
+    sendToAddressAfterMinting: "example string",
+    sendToAvatarAfterMintingId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    sendToAvatarAfterMintingUsername: "example string",
+    sendToAvatarAfterMintingEmail: "example string",
+    waitTillNFTSent: true,
+    waitForNFTToSendInSeconds: 1,
+    attemptToSendEveryXSeconds: 1,
+    tags: ["example string"]
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -1524,7 +1580,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "PlacedByAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "OriginalWeb4OASISNFTId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GeoNFTMetaDataProvider": /* <EnumValue<ProviderType>> */, "OriginalOASISNFTProviderType": /* <EnumValue<ProviderType>> */, "PlacedOn": "2026-01-01T00:00:00Z", "Lat": 1.0, "Long": 1.0, "AllowOtherPlayersToAlsoCollect": true, "PermSpawn": true, "GlobalSpawnQuantity": 1, "PlayerSpawnQuantity": 1, "RespawnDurationInSeconds": 1, "Nft3DObject": "<base64-bytes>", "Nft3DObjectURI": "example string", "Nft2DSprite": "<base64-bytes>", "Nft2DSpriteURI": "example string", "SuccessMessageWhenCollected": "example string", "SpawnInSafeZone": true, "SpawnNearPlayer": true, "SpawnWithinXMetersFromPlayer": 1, "SpawnXMetersAwayFromPlayer": 1, "IsVisibleOnMap": true, "IsVisibleInInventory": true }
+  "result": { "PlacedByAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "OriginalWeb4OASISNFTId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GeoNFTMetaDataProvider": { "Score": 1.0 }, "OriginalOASISNFTProviderType": {}, "PlacedOn": "2026-01-01T00:00:00Z", "Lat": 1.0, "Long": 1.0, "AllowOtherPlayersToAlsoCollect": true, "PermSpawn": true, "GlobalSpawnQuantity": 1, "PlayerSpawnQuantity": 1, "RespawnDurationInSeconds": 1, "Nft3DObject": "<base64-bytes>", "Nft3DObjectURI": "example string", "Nft2DSprite": "<base64-bytes>", "Nft2DSpriteURI": "example string", "SuccessMessageWhenCollected": "example string", "SpawnInSafeZone": true, "SpawnNearPlayer": true, "SpawnWithinXMetersFromPlayer": 1, "SpawnXMetersAwayFromPlayer": 1, "IsVisibleOnMap": true, "IsVisibleInInventory": true }
 }
 ```
 
@@ -1605,7 +1661,7 @@ const { isError, message, result } = await oasis.nft.mintNftAsync({
     token: "example string",
     numberToMint: 1,
     storeNFTMetaDataOnChain: true,
-    metaData: /* <Dictionary<string, object>> */,
+    metaData: { "<string>": {} },
     offChainProvider: "example string",
     onChainProvider: "example string",
     nFTOffChainMetaType: "example string",
@@ -1733,7 +1789,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "PlacedByAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "OriginalWeb4OASISNFTId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GeoNFTMetaDataProvider": /* <EnumValue<ProviderType>> */, "OriginalOASISNFTProviderType": /* <EnumValue<ProviderType>> */, "PlacedOn": "2026-01-01T00:00:00Z", "Lat": 1.0, "Long": 1.0, "AllowOtherPlayersToAlsoCollect": true, "PermSpawn": true, "GlobalSpawnQuantity": 1, "PlayerSpawnQuantity": 1, "RespawnDurationInSeconds": 1, "Nft3DObject": "<base64-bytes>", "Nft3DObjectURI": "example string", "Nft2DSprite": "<base64-bytes>", "Nft2DSpriteURI": "example string", "SuccessMessageWhenCollected": "example string", "SpawnInSafeZone": true, "SpawnNearPlayer": true, "SpawnWithinXMetersFromPlayer": 1, "SpawnXMetersAwayFromPlayer": 1, "IsVisibleOnMap": true, "IsVisibleInInventory": true }
+  "result": { "PlacedByAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "OriginalWeb4OASISNFTId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GeoNFTMetaDataProvider": { "Score": 1.0 }, "OriginalOASISNFTProviderType": {}, "PlacedOn": "2026-01-01T00:00:00Z", "Lat": 1.0, "Long": 1.0, "AllowOtherPlayersToAlsoCollect": true, "PermSpawn": true, "GlobalSpawnQuantity": 1, "PlayerSpawnQuantity": 1, "RespawnDurationInSeconds": 1, "Nft3DObject": "<base64-bytes>", "Nft3DObjectURI": "example string", "Nft2DSprite": "<base64-bytes>", "Nft2DSpriteURI": "example string", "SuccessMessageWhenCollected": "example string", "SpawnInSafeZone": true, "SpawnNearPlayer": true, "SpawnWithinXMetersFromPlayer": 1, "SpawnXMetersAwayFromPlayer": 1, "IsVisibleOnMap": true, "IsVisibleInInventory": true }
 }
 ```
 
@@ -1772,7 +1828,7 @@ Standard `OASISResult` envelope (see top of this page) with:
 ```js
 const { isError, message, result } = await oasis.nft.remintNftAsync({
     web4NFT: { "ParentWeb5NFTIds": ["3fa85f64-5717-4562-b3fc-2c963f66afa6"], "Web3NFTs": [{ "ParentWeb4NFTId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "MintTransactionHash": "example string", "VerifyCollectionTransactionHash": "example string", "SendNFTTransactionHash": "example string", "NFTMintedUsingWalletAddress": "example string", "NFTTokenAddress": "example string", "OASISMintWalletAddress": "example string", "UpdateAuthority": "example string" }], "NewlyMintedWeb3NFTs": [], "Web3NFTIds": ["example string"] },
-    web3NFTs: [{ "CollectionPublicKey": "example string", "NFTMetaDataMergeStrategy": {  }, "NFTTagsMergeStrategy": {  }, "NumberToMint": 1, "StoreNFTMetaDataOnChain": true, "OffChainProvider": {  }, "OnChainProvider": {}, "NFTStandardType": {  }, "NFTOffChainMetaType": /* <NFTOffChainMetaType> */, "Price": 1.0, "Discount": 1.0, "RoyaltyPercentage": 1, "WaitTillNFTMinted": true, "WaitForNFTToMintInSeconds": 1, "WaitTillNFTVerified": true, "WaitForNFTToVerifyInSeconds": 1, "AttemptToVerifyEveryXSeconds": 1, "WaitTillNFTSent": true, "WaitForNFTToSendInSeconds": 1, "AttemptToSendEveryXSeconds": 1 }]
+    web3NFTs: [{ "CollectionPublicKey": "example string", "NFTMetaDataMergeStrategy": {  }, "NFTTagsMergeStrategy": {  }, "NumberToMint": 1, "StoreNFTMetaDataOnChain": true, "OffChainProvider": {  }, "OnChainProvider": {}, "NFTStandardType": {  }, "NFTOffChainMetaType": {  }, "Price": 1.0, "Discount": 1.0, "RoyaltyPercentage": 1, "WaitTillNFTMinted": true, "WaitForNFTToMintInSeconds": 1, "WaitTillNFTVerified": true, "WaitForNFTToVerifyInSeconds": 1, "AttemptToVerifyEveryXSeconds": 1, "WaitTillNFTSent": true, "WaitForNFTToSendInSeconds": 1, "AttemptToSendEveryXSeconds": 1 }]
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -1805,13 +1861,13 @@ Route parameters:
 
 **Request**
 
-Body type: `Dictionary<string, string>` _(type definition not found - field list unavailable)_
+Body type: `Dictionary<string, string>` - a key/value map keyed by `string`, each value a `string`.
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IWeb4GeoSpatialNFT>` (array)
+`result` type: `IWeb4GeoSpatialNFT` (array)
 
 | Field | Type |
 | --- | --- |
@@ -1860,7 +1916,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [{ "PlacedByAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "OriginalWeb4OASISNFTId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GeoNFTMetaDataProvider": /* <EnumValue<ProviderType>> */, "OriginalOASISNFTProviderType": /* <EnumValue<ProviderType>> */, "PlacedOn": "2026-01-01T00:00:00Z", "Lat": 1.0, "Long": 1.0, "AllowOtherPlayersToAlsoCollect": true, "PermSpawn": true, "GlobalSpawnQuantity": 1, "PlayerSpawnQuantity": 1, "RespawnDurationInSeconds": 1, "Nft3DObject": "<base64-bytes>", "Nft3DObjectURI": "example string", "Nft2DSprite": "<base64-bytes>", "Nft2DSpriteURI": "example string", "SuccessMessageWhenCollected": "example string", "SpawnInSafeZone": true, "SpawnNearPlayer": true, "SpawnWithinXMetersFromPlayer": 1, "SpawnXMetersAwayFromPlayer": 1, "IsVisibleOnMap": true, "IsVisibleInInventory": true }]
+  "result": [{ "PlacedByAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "OriginalWeb4OASISNFTId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GeoNFTMetaDataProvider": { "Score": 1.0 }, "OriginalOASISNFTProviderType": {}, "PlacedOn": "2026-01-01T00:00:00Z", "Lat": 1.0, "Long": 1.0, "AllowOtherPlayersToAlsoCollect": true, "PermSpawn": true, "GlobalSpawnQuantity": 1, "PlayerSpawnQuantity": 1, "RespawnDurationInSeconds": 1, "Nft3DObject": "<base64-bytes>", "Nft3DObjectURI": "example string", "Nft2DSprite": "<base64-bytes>", "Nft2DSpriteURI": "example string", "SuccessMessageWhenCollected": "example string", "SpawnInSafeZone": true, "SpawnNearPlayer": true, "SpawnWithinXMetersFromPlayer": 1, "SpawnXMetersAwayFromPlayer": 1, "IsVisibleOnMap": true, "IsVisibleInInventory": true }]
 }
 ```
 
@@ -1881,13 +1937,13 @@ Route parameters:
 
 **Request**
 
-Body type: `Dictionary<string, string>` _(type definition not found - field list unavailable)_
+Body type: `Dictionary<string, string>` - a key/value map keyed by `string`, each value a `string`.
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IWeb4NFTCollection>` (array)
+`result` type: `IWeb4NFTCollection` (array)
 
 | Field | Type |
 | --- | --- |
@@ -1937,13 +1993,13 @@ Route parameters:
 
 **Request**
 
-Body type: `Dictionary<string, string>` _(type definition not found - field list unavailable)_
+Body type: `Dictionary<string, string>` - a key/value map keyed by `string`, each value a `string`.
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IWeb4NFT>` (array)
+`result` type: `IWeb4NFT` (array)
 
 | Field | Type |
 | --- | --- |
@@ -2110,14 +2166,14 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.nft.updateWeb4NftAsync({
-    providerType: /* <EnumValue<ProviderType>> */,
+    providerType: { "Score": 1.0 },
     id: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     mintedByAvatarId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     description: "example string",
     discount: 1.0,
     image: "<base64-bytes>",
     imageUrl: "example string",
-    metaData: /* <Dictionary<string, string>> */,
+    metaData: { "<string>": "example string" },
     price: 1.0,
     tags: ["example string"],
     thumbnail: "<base64-bytes>",

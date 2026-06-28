@@ -36,7 +36,7 @@ Query parameters:
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<Tournament>` (array)
+`result` type: `Tournament` (array)
 
 | Field | Type |
 | --- | --- |
@@ -62,28 +62,6 @@ Standard `OASISResult` envelope (see top of this page) with:
 | `Metadata` | `Dictionary<string, object>` |
 | `CreatedBy` | `Guid` |
 | `CreatedAt` | `DateTime` |
-| `AvatarId` | `Guid` |
-| `AvatarName` | `string` |
-| `AvatarUsername` | `string` |
-| `Score` | `long` |
-| `Rank` | `int` |
-| `IsEliminated` | `bool` |
-| `JoinedAt` | `DateTime` |
-| `Stats` | `Dictionary<string, object>` |
-| `Participant1Id` | `Guid` |
-| `Participant2Id` | `Guid` |
-| `Round` | `int` |
-| `Participant1Score` | `long` |
-| `Participant2Score` | `long` |
-| `WinnerId` | `Guid?` |
-| `StartTime` | `DateTime?` |
-| `EndTime` | `DateTime?` |
-| `MatchData` | `Dictionary<string, object>` |
-| `Type` | `string` |
-| `Value` | `int` |
-| `Position` | `int` |
-| `ItemId` | `string` |
-| `Properties` | `Dictionary<string, object>` |
 
 **Example**
 
@@ -101,7 +79,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Description": "example string", "TournamentType": {  }, "CompetitionType": {  }, "Status": /* <TournamentStatus> */, "StartDate": "2026-01-01T00:00:00Z", "EndDate": "2026-01-01T00:00:00Z", "RegistrationStart": "2026-01-01T00:00:00Z", "RegistrationEnd": "2026-01-01T00:00:00Z", "MaxParticipants": 1, "CurrentParticipants": 1, "MinLevel": 1, "MaxLevel": 1, "Prerequisites": ["example string"], "Rewards": [ /* <TournamentReward> */ ], "Participants": [ /* <TournamentParticipant> */ ], "Matches": [ /* <TournamentMatch> */ ], "Rules": /* <Dictionary<string, object>> */, "Metadata": /* <Dictionary<string, object>> */, "CreatedBy": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "CreatedAt": "2026-01-01T00:00:00Z", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarName": "example string", "AvatarUsername": "example string", "Score": 1, "Rank": 1, "IsEliminated": true, "JoinedAt": "2026-01-01T00:00:00Z", "Stats": /* <Dictionary<string, object>> */, "Participant1Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Participant2Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Round": 1, "Participant1Score": 1, "Participant2Score": 1, "WinnerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "StartTime": "2026-01-01T00:00:00Z", "EndTime": "2026-01-01T00:00:00Z", "MatchData": /* <Dictionary<string, object>> */, "Type": "example string", "Value": 1, "Position": 1, "ItemId": "example string", "Properties": /* <Dictionary<string, object>> */ }]
+  "result": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Description": "example string", "TournamentType": {  }, "CompetitionType": {  }, "Status": {  }, "StartDate": "2026-01-01T00:00:00Z", "EndDate": "2026-01-01T00:00:00Z", "RegistrationStart": "2026-01-01T00:00:00Z", "RegistrationEnd": "2026-01-01T00:00:00Z", "MaxParticipants": 1, "CurrentParticipants": 1, "MinLevel": 1, "MaxLevel": 1, "Prerequisites": ["example string"], "Rewards": [{ "Type": "example string", "Name": "example string", "Description": "example string", "Value": 1, "Position": 1, "ItemId": "example string", "Properties": { "<string>": {} } }], "Participants": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarName": "example string", "AvatarUsername": "example string", "Score": 1, "Rank": 1, "IsEliminated": true, "JoinedAt": "2026-01-01T00:00:00Z", "Stats": { "<string>": {} } }], "Matches": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Participant1Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Participant2Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Round": 1, "Status": {  }, "Participant1Score": 1, "Participant2Score": 1, "WinnerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "StartTime": "2026-01-01T00:00:00Z", "EndTime": "2026-01-01T00:00:00Z", "MatchData": { "<string>": {} } }], "Rules": { "<string>": {} }, "Metadata": { "<string>": {} }, "CreatedBy": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "CreatedAt": "2026-01-01T00:00:00Z" }]
 }
 ```
 
@@ -128,7 +106,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<League>` (array)
+`result` type: `League` (array)
 
 | Field | Type |
 | --- | --- |
@@ -149,10 +127,6 @@ Standard `OASISResult` envelope (see top of this page) with:
 | `Rewards` | `List<LeagueReward>` |
 | `Requirements` | `Dictionary<string, object>` |
 | `Metadata` | `Dictionary<string, object>` |
-| `Type` | `string` |
-| `Value` | `int` |
-| `ItemId` | `string` |
-| `Properties` | `Dictionary<string, object>` |
 
 **Example**
 
@@ -171,7 +145,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Description": "example string", "LeagueType": {  }, "CompetitionType": {  }, "MinScore": 1, "MaxScore": 1, "MaxPlayers": 1, "CurrentPlayers": 1, "IsActive": true, "CreatedAt": "2026-01-01T00:00:00Z", "SeasonStart": "2026-01-01T00:00:00Z", "SeasonEnd": "2026-01-01T00:00:00Z", "SeasonType": {  }, "Rewards": [ /* <LeagueReward> */ ], "Requirements": /* <Dictionary<string, object>> */, "Metadata": /* <Dictionary<string, object>> */, "Type": "example string", "Value": 1, "ItemId": "example string", "Properties": /* <Dictionary<string, object>> */ }]
+  "result": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Description": "example string", "LeagueType": {  }, "CompetitionType": {  }, "MinScore": 1, "MaxScore": 1, "MaxPlayers": 1, "CurrentPlayers": 1, "IsActive": true, "CreatedAt": "2026-01-01T00:00:00Z", "SeasonStart": "2026-01-01T00:00:00Z", "SeasonEnd": "2026-01-01T00:00:00Z", "SeasonType": {  }, "Rewards": [{ "Type": "example string", "Name": "example string", "Description": "example string", "Value": 1, "ItemId": "example string", "Properties": { "<string>": {} } }], "Requirements": { "<string>": {} }, "Metadata": { "<string>": {} } }]
 }
 ```
 
@@ -220,10 +194,6 @@ Standard `OASISResult` envelope (see top of this page) with:
 | `Rewards` | `List<LeagueReward>` |
 | `Requirements` | `Dictionary<string, object>` |
 | `Metadata` | `Dictionary<string, object>` |
-| `Type` | `string` |
-| `Value` | `int` |
-| `ItemId` | `string` |
-| `Properties` | `Dictionary<string, object>` |
 
 **Example**
 
@@ -243,7 +213,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Description": "example string", "LeagueType": {  }, "CompetitionType": {  }, "MinScore": 1, "MaxScore": 1, "MaxPlayers": 1, "CurrentPlayers": 1, "IsActive": true, "CreatedAt": "2026-01-01T00:00:00Z", "SeasonStart": "2026-01-01T00:00:00Z", "SeasonEnd": "2026-01-01T00:00:00Z", "SeasonType": {  }, "Rewards": [ /* <LeagueReward> */ ], "Requirements": /* <Dictionary<string, object>> */, "Metadata": /* <Dictionary<string, object>> */, "Type": "example string", "Value": 1, "ItemId": "example string", "Properties": /* <Dictionary<string, object>> */ }
+  "result": { "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Description": "example string", "LeagueType": {  }, "CompetitionType": {  }, "MinScore": 1, "MaxScore": 1, "MaxPlayers": 1, "CurrentPlayers": 1, "IsActive": true, "CreatedAt": "2026-01-01T00:00:00Z", "SeasonStart": "2026-01-01T00:00:00Z", "SeasonEnd": "2026-01-01T00:00:00Z", "SeasonType": {  }, "Rewards": [{ "Type": "example string", "Name": "example string", "Description": "example string", "Value": 1, "ItemId": "example string", "Properties": { "<string>": {} } }], "Requirements": { "<string>": {} }, "Metadata": { "<string>": {} } }
 }
 ```
 
@@ -315,7 +285,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarName": "example string", "AvatarUsername": "example string", "CompetitionType": {  }, "Score": 1, "Rank": 1, "PreviousRank": 1, "RankChange": 1, "LastUpdated": "2026-01-01T00:00:00Z", "SeasonStart": "2026-01-01T00:00:00Z", "SeasonEnd": "2026-01-01T00:00:00Z", "SeasonType": {  }, "CurrentLeague": {  }, "PreviousLeague": {}, "LeaguePromoted": true, "LeagueDemoted": true, "Stats": /* <Dictionary<string, object>> */, "Achievements": /* <Dictionary<string, object>> */, "Badges": ["example string"], "Metadata": /* <Dictionary<string, object>> */ }
+  "result": { "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarName": "example string", "AvatarUsername": "example string", "CompetitionType": {  }, "Score": 1, "Rank": 1, "PreviousRank": 1, "RankChange": 1, "LastUpdated": "2026-01-01T00:00:00Z", "SeasonStart": "2026-01-01T00:00:00Z", "SeasonEnd": "2026-01-01T00:00:00Z", "SeasonType": {  }, "CurrentLeague": {  }, "PreviousLeague": {}, "LeaguePromoted": true, "LeagueDemoted": true, "Stats": { "<string>": {} }, "Achievements": { "<string>": {} }, "Badges": ["example string"], "Metadata": { "<string>": {} } }
 }
 ```
 
@@ -347,7 +317,7 @@ Query parameters:
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<LeaderboardEntry>` (array)
+`result` type: `LeaderboardEntry` (array)
 
 | Field | Type |
 | --- | --- |
@@ -392,7 +362,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarName": "example string", "AvatarUsername": "example string", "CompetitionType": {  }, "Score": 1, "Rank": 1, "PreviousRank": 1, "RankChange": 1, "LastUpdated": "2026-01-01T00:00:00Z", "SeasonStart": "2026-01-01T00:00:00Z", "SeasonEnd": "2026-01-01T00:00:00Z", "SeasonType": {  }, "CurrentLeague": {  }, "PreviousLeague": {}, "LeaguePromoted": true, "LeagueDemoted": true, "Stats": /* <Dictionary<string, object>> */, "Achievements": /* <Dictionary<string, object>> */, "Badges": ["example string"], "Metadata": /* <Dictionary<string, object>> */ }]
+  "result": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarName": "example string", "AvatarUsername": "example string", "CompetitionType": {  }, "Score": 1, "Rank": 1, "PreviousRank": 1, "RankChange": 1, "LastUpdated": "2026-01-01T00:00:00Z", "SeasonStart": "2026-01-01T00:00:00Z", "SeasonEnd": "2026-01-01T00:00:00Z", "SeasonType": {  }, "CurrentLeague": {  }, "PreviousLeague": {}, "LeaguePromoted": true, "LeagueDemoted": true, "Stats": { "<string>": {} }, "Achievements": { "<string>": {} }, "Badges": ["example string"], "Metadata": { "<string>": {} } }]
 }
 ```
 
@@ -440,10 +410,6 @@ Standard `OASISResult` envelope (see top of this page) with:
 | `Rewards` | `List<LeagueReward>` |
 | `Requirements` | `Dictionary<string, object>` |
 | `Metadata` | `Dictionary<string, object>` |
-| `Type` | `string` |
-| `Value` | `int` |
-| `ItemId` | `string` |
-| `Properties` | `Dictionary<string, object>` |
 
 **Example**
 
@@ -462,7 +428,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Description": "example string", "LeagueType": {  }, "CompetitionType": {  }, "MinScore": 1, "MaxScore": 1, "MaxPlayers": 1, "CurrentPlayers": 1, "IsActive": true, "CreatedAt": "2026-01-01T00:00:00Z", "SeasonStart": "2026-01-01T00:00:00Z", "SeasonEnd": "2026-01-01T00:00:00Z", "SeasonType": {  }, "Rewards": [ /* <LeagueReward> */ ], "Requirements": /* <Dictionary<string, object>> */, "Metadata": /* <Dictionary<string, object>> */, "Type": "example string", "Value": 1, "ItemId": "example string", "Properties": /* <Dictionary<string, object>> */ }
+  "result": { "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Description": "example string", "LeagueType": {  }, "CompetitionType": {  }, "MinScore": 1, "MaxScore": 1, "MaxPlayers": 1, "CurrentPlayers": 1, "IsActive": true, "CreatedAt": "2026-01-01T00:00:00Z", "SeasonStart": "2026-01-01T00:00:00Z", "SeasonEnd": "2026-01-01T00:00:00Z", "SeasonType": {  }, "Rewards": [{ "Type": "example string", "Name": "example string", "Description": "example string", "Value": 1, "ItemId": "example string", "Properties": { "<string>": {} } }], "Requirements": { "<string>": {} }, "Metadata": { "<string>": {} } }
 }
 ```
 
@@ -532,7 +498,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarName": "example string", "AvatarUsername": "example string", "CompetitionType": {  }, "Score": 1, "Rank": 1, "PreviousRank": 1, "RankChange": 1, "LastUpdated": "2026-01-01T00:00:00Z", "SeasonStart": "2026-01-01T00:00:00Z", "SeasonEnd": "2026-01-01T00:00:00Z", "SeasonType": {  }, "CurrentLeague": {  }, "PreviousLeague": {}, "LeaguePromoted": true, "LeagueDemoted": true, "Stats": /* <Dictionary<string, object>> */, "Achievements": /* <Dictionary<string, object>> */, "Badges": ["example string"], "Metadata": /* <Dictionary<string, object>> */ }
+  "result": { "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarName": "example string", "AvatarUsername": "example string", "CompetitionType": {  }, "Score": 1, "Rank": 1, "PreviousRank": 1, "RankChange": 1, "LastUpdated": "2026-01-01T00:00:00Z", "SeasonStart": "2026-01-01T00:00:00Z", "SeasonEnd": "2026-01-01T00:00:00Z", "SeasonType": {  }, "CurrentLeague": {  }, "PreviousLeague": {}, "LeaguePromoted": true, "LeagueDemoted": true, "Stats": { "<string>": {} }, "Achievements": { "<string>": {} }, "Badges": ["example string"], "Metadata": { "<string>": {} } }
 }
 ```
 
@@ -559,7 +525,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Example**
 
@@ -578,7 +544,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<string, object>> */
+  "result": { "<string>": {} }
 }
 ```
 

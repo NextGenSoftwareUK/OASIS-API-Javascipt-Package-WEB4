@@ -6,7 +6,7 @@
 const { makeOperation } = require('../core/routeHelper');
 
 /**
- * Generated wrapper for api/hyperdrive (source: ONODE WebAPI HyperDriveController.cs).
+ * Generated wrapper for api/hyperDrive (source: ONODE WebAPI HyperDriveController.cs).
  * Every method takes a single args object: path-template tokens (e.g. {id})
  * are consumed from it automatically; any remaining keys are sent as the
  * query string (GET/DELETE) or JSON body (POST/PUT).
@@ -15,160 +15,160 @@ class HyperDriveModule {
   constructor(http) {
     this._http = http;
 
-    // GET api/hyperdrive/quota/status
-    this.checkQuotaStatus = makeOperation(http, "api/hyperdrive", "GET", "quota/status");
-    // POST api/hyperdrive/failover/triggers
-    this.createFailoverTrigger = makeOperation(http, "api/hyperdrive", "POST", "failover/triggers");
-    // POST api/hyperdrive/subscription/quota-notifications
-    this.createQuotaNotification = makeOperation(http, "api/hyperdrive", "POST", "subscription/quota-notifications");
-    // POST api/hyperdrive/replication/triggers
-    this.createReplicationTrigger = makeOperation(http, "api/hyperdrive", "POST", "replication/triggers");
-    // POST api/hyperdrive/subscription/usage-alerts
-    this.createUsageAlert = makeOperation(http, "api/hyperdrive", "POST", "subscription/usage-alerts");
-    // DELETE api/hyperdrive/failover/triggers/{id}
-    this.deleteFailoverTrigger = makeOperation(http, "api/hyperdrive", "DELETE", "failover/triggers/{id}");
-    // DELETE api/hyperdrive/subscription/quota-notifications/{id}
-    this.deleteQuotaNotification = makeOperation(http, "api/hyperdrive", "DELETE", "subscription/quota-notifications/{id}");
-    // DELETE api/hyperdrive/replication/triggers/{id}
-    this.deleteReplicationTrigger = makeOperation(http, "api/hyperdrive", "DELETE", "replication/triggers/{id}");
-    // DELETE api/hyperdrive/subscription/usage-alerts/{id}
-    this.deleteUsageAlert = makeOperation(http, "api/hyperdrive", "DELETE", "subscription/usage-alerts/{id}");
-    // POST api/hyperdrive/intelligent-mode/disable
-    this.disableIntelligentMode = makeOperation(http, "api/hyperdrive", "POST", "intelligent-mode/disable");
-    // POST api/hyperdrive/intelligent-mode/enable
-    this.enableIntelligentMode = makeOperation(http, "api/hyperdrive", "POST", "intelligent-mode/enable");
-    // GET api/hyperdrive/ai/recommendations
-    this.getAIRecommendations = makeOperation(http, "api/hyperdrive", "GET", "ai/recommendations");
-    // GET api/hyperdrive/analytics/report
-    this.getAnalyticsReport = makeOperation(http, "api/hyperdrive", "GET", "analytics/report");
-    // GET api/hyperdrive/best-provider
-    this.getBestProvider = makeOperation(http, "api/hyperdrive", "GET", "best-provider");
-    // GET api/hyperdrive/config
-    this.getConfiguration = makeOperation(http, "api/hyperdrive", "GET", "config");
-    // GET api/hyperdrive/connections
-    this.getConnectionCounts = makeOperation(http, "api/hyperdrive", "GET", "connections");
-    // GET api/hyperdrive/costs/history
-    this.getCostHistory = makeOperation(http, "api/hyperdrive", "GET", "costs/history");
-    // GET api/hyperdrive/analytics/cost-optimization
-    this.getCostOptimizationRecommendations = makeOperation(http, "api/hyperdrive", "GET", "analytics/cost-optimization");
-    // GET api/hyperdrive/replication/cost-optimization
-    this.getCostOptimizationRule = makeOperation(http, "api/hyperdrive", "GET", "replication/cost-optimization");
-    // GET api/hyperdrive/costs/projections
-    this.getCostProjections = makeOperation(http, "api/hyperdrive", "GET", "costs/projections");
-    // GET api/hyperdrive/costs/current
-    this.getCurrentCosts = makeOperation(http, "api/hyperdrive", "GET", "costs/current");
-    // GET api/hyperdrive/quota/usage
-    this.getCurrentUsage = makeOperation(http, "api/hyperdrive", "GET", "quota/usage");
-    // GET api/hyperdrive/dashboard
-    this.getDashboardData = makeOperation(http, "api/hyperdrive", "GET", "dashboard");
-    // GET api/hyperdrive/data-permissions
-    this.getDataPermissions = makeOperation(http, "api/hyperdrive", "GET", "data-permissions");
-    // GET api/hyperdrive/replication/data-type-rules
-    this.getDataTypeReplicationRules = makeOperation(http, "api/hyperdrive", "GET", "replication/data-type-rules");
-    // GET api/hyperdrive/failover/escalation-rules
-    this.getEscalationRules = makeOperation(http, "api/hyperdrive", "GET", "failover/escalation-rules");
-    // GET api/hyperdrive/failover/rules
-    this.getFailoverRules = makeOperation(http, "api/hyperdrive", "GET", "failover/rules");
-    // GET api/hyperdrive/failover/predictions
-    this.getFailurePredictions = makeOperation(http, "api/hyperdrive", "GET", "failover/predictions");
-    // GET api/hyperdrive/providers/free
-    this.getFreeProviders = makeOperation(http, "api/hyperdrive", "GET", "providers/free");
-    // GET api/hyperdrive/mode
-    this.getHyperDriveMode = makeOperation(http, "api/hyperdrive", "GET", "mode");
-    // GET api/hyperdrive/intelligent-mode
-    this.getIntelligentMode = makeOperation(http, "api/hyperdrive", "GET", "intelligent-mode");
-    // GET api/hyperdrive/providers/low-cost
-    this.getLowCostProviders = makeOperation(http, "api/hyperdrive", "GET", "providers/low-cost");
-    // GET api/hyperdrive/metrics
-    this.getMetrics = makeOperation(http, "api/hyperdrive", "GET", "metrics");
-    // GET api/hyperdrive/analytics/performance-optimization
-    this.getPerformanceOptimizationRecommendations = makeOperation(http, "api/hyperdrive", "GET", "analytics/performance-optimization");
-    // GET api/hyperdrive/analytics/predictive/{providerType}
-    this.getPredictiveAnalytics = makeOperation(http, "api/hyperdrive", "GET", "analytics/predictive/{providerType}");
-    // GET api/hyperdrive/failover/provider-rules
-    this.getProviderFailoverRules = makeOperation(http, "api/hyperdrive", "GET", "failover/provider-rules");
-    // GET api/hyperdrive/metrics/{providerType}
-    this.getProviderMetrics = makeOperation(http, "api/hyperdrive", "GET", "metrics/{providerType}");
-    // GET api/hyperdrive/replication/provider-rules
-    this.getProviderReplicationRules = makeOperation(http, "api/hyperdrive", "GET", "replication/provider-rules");
-    // GET api/hyperdrive/quota/limits
-    this.getQuotaLimits = makeOperation(http, "api/hyperdrive", "GET", "quota/limits");
-    // GET api/hyperdrive/subscription/quota-notifications
-    this.getQuotaNotifications = makeOperation(http, "api/hyperdrive", "GET", "subscription/quota-notifications");
-    // GET api/hyperdrive/replication/rules
-    this.getReplicationRules = makeOperation(http, "api/hyperdrive", "GET", "replication/rules");
-    // GET api/hyperdrive/replication/schedule-rules
-    this.getScheduleRules = makeOperation(http, "api/hyperdrive", "GET", "replication/schedule-rules");
-    // GET api/hyperdrive/recommendations/security
-    this.getSecurityRecommendations = makeOperation(http, "api/hyperdrive", "GET", "recommendations/security");
-    // GET api/hyperdrive/recommendations/smart
-    this.getSmartRecommendations = makeOperation(http, "api/hyperdrive", "GET", "recommendations/smart");
-    // GET api/hyperdrive/status
-    this.getStatus = makeOperation(http, "api/hyperdrive", "GET", "status");
-    // GET api/hyperdrive/subscription/config
-    this.getSubscriptionConfig = makeOperation(http, "api/hyperdrive", "GET", "subscription/config");
-    // GET api/hyperdrive/subscription/usage-alerts
-    this.getUsageAlerts = makeOperation(http, "api/hyperdrive", "GET", "subscription/usage-alerts");
-    // POST api/hyperdrive/failover/preventive
-    this.initiatePreventiveFailover = makeOperation(http, "api/hyperdrive", "POST", "failover/preventive");
-    // POST api/hyperdrive/analytics/record
-    this.recordAnalyticsData = makeOperation(http, "api/hyperdrive", "POST", "analytics/record");
-    // POST api/hyperdrive/record-connection
-    this.recordConnection = makeOperation(http, "api/hyperdrive", "POST", "record-connection");
-    // POST api/hyperdrive/failover/record-failure
-    this.recordFailureEvent = makeOperation(http, "api/hyperdrive", "POST", "failover/record-failure");
-    // POST api/hyperdrive/ai/record-performance
-    this.recordPerformanceData = makeOperation(http, "api/hyperdrive", "POST", "ai/record-performance");
-    // POST api/hyperdrive/record-request
-    this.recordRequest = makeOperation(http, "api/hyperdrive", "POST", "record-request");
-    // POST api/hyperdrive/metrics/reset-all
-    this.resetAllMetrics = makeOperation(http, "api/hyperdrive", "POST", "metrics/reset-all");
-    // POST api/hyperdrive/config/reset
-    this.resetConfiguration = makeOperation(http, "api/hyperdrive", "POST", "config/reset");
-    // POST api/hyperdrive/metrics/{providerType}/reset
-    this.resetProviderMetrics = makeOperation(http, "api/hyperdrive", "POST", "metrics/{providerType}/reset");
-    // PUT api/hyperdrive/costs/limits
-    this.setCostLimits = makeOperation(http, "api/hyperdrive", "PUT", "costs/limits");
-    // PUT api/hyperdrive/mode
-    this.setHyperDriveMode = makeOperation(http, "api/hyperdrive", "PUT", "mode");
-    // PUT api/hyperdrive/config
-    this.updateConfiguration = makeOperation(http, "api/hyperdrive", "PUT", "config");
-    // PUT api/hyperdrive/cost/{providerType}
-    this.updateCostAnalysis = makeOperation(http, "api/hyperdrive", "PUT", "cost/{providerType}");
-    // PUT api/hyperdrive/replication/cost-optimization
-    this.updateCostOptimizationRule = makeOperation(http, "api/hyperdrive", "PUT", "replication/cost-optimization");
-    // PUT api/hyperdrive/data-permissions
-    this.updateDataPermissions = makeOperation(http, "api/hyperdrive", "PUT", "data-permissions");
-    // PUT api/hyperdrive/replication/data-type-rules
-    this.updateDataTypeReplicationRule = makeOperation(http, "api/hyperdrive", "PUT", "replication/data-type-rules");
-    // PUT api/hyperdrive/failover/escalation-rules
-    this.updateEscalationRule = makeOperation(http, "api/hyperdrive", "PUT", "failover/escalation-rules");
-    // PUT api/hyperdrive/failover/rules
-    this.updateFailoverRules = makeOperation(http, "api/hyperdrive", "PUT", "failover/rules");
-    // PUT api/hyperdrive/failover/triggers/{id}
-    this.updateFailoverTrigger = makeOperation(http, "api/hyperdrive", "PUT", "failover/triggers/{id}");
-    // PUT api/hyperdrive/geographic/{providerType}
-    this.updateGeographicInfo = makeOperation(http, "api/hyperdrive", "PUT", "geographic/{providerType}");
-    // PUT api/hyperdrive/intelligent-mode
-    this.updateIntelligentMode = makeOperation(http, "api/hyperdrive", "PUT", "intelligent-mode");
-    // PUT api/hyperdrive/failover/provider-rules
-    this.updateProviderFailoverRule = makeOperation(http, "api/hyperdrive", "PUT", "failover/provider-rules");
-    // PUT api/hyperdrive/replication/provider-rules
-    this.updateProviderReplicationRule = makeOperation(http, "api/hyperdrive", "PUT", "replication/provider-rules");
-    // PUT api/hyperdrive/subscription/quota-notifications/{id}
-    this.updateQuotaNotification = makeOperation(http, "api/hyperdrive", "PUT", "subscription/quota-notifications/{id}");
-    // PUT api/hyperdrive/replication/rules
-    this.updateReplicationRules = makeOperation(http, "api/hyperdrive", "PUT", "replication/rules");
-    // PUT api/hyperdrive/replication/triggers/{id}
-    this.updateReplicationTrigger = makeOperation(http, "api/hyperdrive", "PUT", "replication/triggers/{id}");
-    // PUT api/hyperdrive/replication/schedule-rules
-    this.updateScheduleRule = makeOperation(http, "api/hyperdrive", "PUT", "replication/schedule-rules");
-    // PUT api/hyperdrive/subscription/config
-    this.updateSubscriptionConfig = makeOperation(http, "api/hyperdrive", "PUT", "subscription/config");
-    // PUT api/hyperdrive/subscription/usage-alerts/{id}
-    this.updateUsageAlert = makeOperation(http, "api/hyperdrive", "PUT", "subscription/usage-alerts/{id}");
-    // POST api/hyperdrive/config/validate
-    this.validateConfiguration = makeOperation(http, "api/hyperdrive", "POST", "config/validate");
+    // GET api/hyperDrive/quota/status
+    this.checkQuotaStatus = makeOperation(http, "api/hyperDrive", "GET", "quota/status");
+    // POST api/hyperDrive/failover/triggers
+    this.createFailoverTrigger = makeOperation(http, "api/hyperDrive", "POST", "failover/triggers");
+    // POST api/hyperDrive/subscription/quota-notifications
+    this.createQuotaNotification = makeOperation(http, "api/hyperDrive", "POST", "subscription/quota-notifications");
+    // POST api/hyperDrive/replication/triggers
+    this.createReplicationTrigger = makeOperation(http, "api/hyperDrive", "POST", "replication/triggers");
+    // POST api/hyperDrive/subscription/usage-alerts
+    this.createUsageAlert = makeOperation(http, "api/hyperDrive", "POST", "subscription/usage-alerts");
+    // DELETE api/hyperDrive/failover/triggers/{id}
+    this.deleteFailoverTrigger = makeOperation(http, "api/hyperDrive", "DELETE", "failover/triggers/{id}");
+    // DELETE api/hyperDrive/subscription/quota-notifications/{id}
+    this.deleteQuotaNotification = makeOperation(http, "api/hyperDrive", "DELETE", "subscription/quota-notifications/{id}");
+    // DELETE api/hyperDrive/replication/triggers/{id}
+    this.deleteReplicationTrigger = makeOperation(http, "api/hyperDrive", "DELETE", "replication/triggers/{id}");
+    // DELETE api/hyperDrive/subscription/usage-alerts/{id}
+    this.deleteUsageAlert = makeOperation(http, "api/hyperDrive", "DELETE", "subscription/usage-alerts/{id}");
+    // POST api/hyperDrive/intelligent-mode/disable
+    this.disableIntelligentMode = makeOperation(http, "api/hyperDrive", "POST", "intelligent-mode/disable");
+    // POST api/hyperDrive/intelligent-mode/enable
+    this.enableIntelligentMode = makeOperation(http, "api/hyperDrive", "POST", "intelligent-mode/enable");
+    // GET api/hyperDrive/ai/recommendations
+    this.getAIRecommendations = makeOperation(http, "api/hyperDrive", "GET", "ai/recommendations");
+    // GET api/hyperDrive/analytics/report
+    this.getAnalyticsReport = makeOperation(http, "api/hyperDrive", "GET", "analytics/report");
+    // GET api/hyperDrive/best-provider
+    this.getBestProvider = makeOperation(http, "api/hyperDrive", "GET", "best-provider");
+    // GET api/hyperDrive/config
+    this.getConfiguration = makeOperation(http, "api/hyperDrive", "GET", "config");
+    // GET api/hyperDrive/connections
+    this.getConnectionCounts = makeOperation(http, "api/hyperDrive", "GET", "connections");
+    // GET api/hyperDrive/costs/history
+    this.getCostHistory = makeOperation(http, "api/hyperDrive", "GET", "costs/history");
+    // GET api/hyperDrive/analytics/cost-optimization
+    this.getCostOptimizationRecommendations = makeOperation(http, "api/hyperDrive", "GET", "analytics/cost-optimization");
+    // GET api/hyperDrive/replication/cost-optimization
+    this.getCostOptimizationRule = makeOperation(http, "api/hyperDrive", "GET", "replication/cost-optimization");
+    // GET api/hyperDrive/costs/projections
+    this.getCostProjections = makeOperation(http, "api/hyperDrive", "GET", "costs/projections");
+    // GET api/hyperDrive/costs/current
+    this.getCurrentCosts = makeOperation(http, "api/hyperDrive", "GET", "costs/current");
+    // GET api/hyperDrive/quota/usage
+    this.getCurrentUsage = makeOperation(http, "api/hyperDrive", "GET", "quota/usage");
+    // GET api/hyperDrive/dashboard
+    this.getDashboardData = makeOperation(http, "api/hyperDrive", "GET", "dashboard");
+    // GET api/hyperDrive/data-permissions
+    this.getDataPermissions = makeOperation(http, "api/hyperDrive", "GET", "data-permissions");
+    // GET api/hyperDrive/replication/data-type-rules
+    this.getDataTypeReplicationRules = makeOperation(http, "api/hyperDrive", "GET", "replication/data-type-rules");
+    // GET api/hyperDrive/failover/escalation-rules
+    this.getEscalationRules = makeOperation(http, "api/hyperDrive", "GET", "failover/escalation-rules");
+    // GET api/hyperDrive/failover/rules
+    this.getFailoverRules = makeOperation(http, "api/hyperDrive", "GET", "failover/rules");
+    // GET api/hyperDrive/failover/predictions
+    this.getFailurePredictions = makeOperation(http, "api/hyperDrive", "GET", "failover/predictions");
+    // GET api/hyperDrive/providers/free
+    this.getFreeProviders = makeOperation(http, "api/hyperDrive", "GET", "providers/free");
+    // GET api/hyperDrive/mode
+    this.getHyperDriveMode = makeOperation(http, "api/hyperDrive", "GET", "mode");
+    // GET api/hyperDrive/intelligent-mode
+    this.getIntelligentMode = makeOperation(http, "api/hyperDrive", "GET", "intelligent-mode");
+    // GET api/hyperDrive/providers/low-cost
+    this.getLowCostProviders = makeOperation(http, "api/hyperDrive", "GET", "providers/low-cost");
+    // GET api/hyperDrive/metrics
+    this.getMetrics = makeOperation(http, "api/hyperDrive", "GET", "metrics");
+    // GET api/hyperDrive/analytics/performance-optimization
+    this.getPerformanceOptimizationRecommendations = makeOperation(http, "api/hyperDrive", "GET", "analytics/performance-optimization");
+    // GET api/hyperDrive/analytics/predictive/{providerType}
+    this.getPredictiveAnalytics = makeOperation(http, "api/hyperDrive", "GET", "analytics/predictive/{providerType}");
+    // GET api/hyperDrive/failover/provider-rules
+    this.getProviderFailoverRules = makeOperation(http, "api/hyperDrive", "GET", "failover/provider-rules");
+    // GET api/hyperDrive/metrics/{providerType}
+    this.getProviderMetrics = makeOperation(http, "api/hyperDrive", "GET", "metrics/{providerType}");
+    // GET api/hyperDrive/replication/provider-rules
+    this.getProviderReplicationRules = makeOperation(http, "api/hyperDrive", "GET", "replication/provider-rules");
+    // GET api/hyperDrive/quota/limits
+    this.getQuotaLimits = makeOperation(http, "api/hyperDrive", "GET", "quota/limits");
+    // GET api/hyperDrive/subscription/quota-notifications
+    this.getQuotaNotifications = makeOperation(http, "api/hyperDrive", "GET", "subscription/quota-notifications");
+    // GET api/hyperDrive/replication/rules
+    this.getReplicationRules = makeOperation(http, "api/hyperDrive", "GET", "replication/rules");
+    // GET api/hyperDrive/replication/schedule-rules
+    this.getScheduleRules = makeOperation(http, "api/hyperDrive", "GET", "replication/schedule-rules");
+    // GET api/hyperDrive/recommendations/security
+    this.getSecurityRecommendations = makeOperation(http, "api/hyperDrive", "GET", "recommendations/security");
+    // GET api/hyperDrive/recommendations/smart
+    this.getSmartRecommendations = makeOperation(http, "api/hyperDrive", "GET", "recommendations/smart");
+    // GET api/hyperDrive/status
+    this.getStatus = makeOperation(http, "api/hyperDrive", "GET", "status");
+    // GET api/hyperDrive/subscription/config
+    this.getSubscriptionConfig = makeOperation(http, "api/hyperDrive", "GET", "subscription/config");
+    // GET api/hyperDrive/subscription/usage-alerts
+    this.getUsageAlerts = makeOperation(http, "api/hyperDrive", "GET", "subscription/usage-alerts");
+    // POST api/hyperDrive/failover/preventive
+    this.initiatePreventiveFailover = makeOperation(http, "api/hyperDrive", "POST", "failover/preventive");
+    // POST api/hyperDrive/analytics/record
+    this.recordAnalyticsData = makeOperation(http, "api/hyperDrive", "POST", "analytics/record");
+    // POST api/hyperDrive/record-connection
+    this.recordConnection = makeOperation(http, "api/hyperDrive", "POST", "record-connection");
+    // POST api/hyperDrive/failover/record-failure
+    this.recordFailureEvent = makeOperation(http, "api/hyperDrive", "POST", "failover/record-failure");
+    // POST api/hyperDrive/ai/record-performance
+    this.recordPerformanceData = makeOperation(http, "api/hyperDrive", "POST", "ai/record-performance");
+    // POST api/hyperDrive/record-request
+    this.recordRequest = makeOperation(http, "api/hyperDrive", "POST", "record-request");
+    // POST api/hyperDrive/metrics/reset-all
+    this.resetAllMetrics = makeOperation(http, "api/hyperDrive", "POST", "metrics/reset-all");
+    // POST api/hyperDrive/config/reset
+    this.resetConfiguration = makeOperation(http, "api/hyperDrive", "POST", "config/reset");
+    // POST api/hyperDrive/metrics/{providerType}/reset
+    this.resetProviderMetrics = makeOperation(http, "api/hyperDrive", "POST", "metrics/{providerType}/reset");
+    // PUT api/hyperDrive/costs/limits
+    this.setCostLimits = makeOperation(http, "api/hyperDrive", "PUT", "costs/limits");
+    // PUT api/hyperDrive/mode
+    this.setHyperDriveMode = makeOperation(http, "api/hyperDrive", "PUT", "mode");
+    // PUT api/hyperDrive/config
+    this.updateConfiguration = makeOperation(http, "api/hyperDrive", "PUT", "config");
+    // PUT api/hyperDrive/cost/{providerType}
+    this.updateCostAnalysis = makeOperation(http, "api/hyperDrive", "PUT", "cost/{providerType}");
+    // PUT api/hyperDrive/replication/cost-optimization
+    this.updateCostOptimizationRule = makeOperation(http, "api/hyperDrive", "PUT", "replication/cost-optimization");
+    // PUT api/hyperDrive/data-permissions
+    this.updateDataPermissions = makeOperation(http, "api/hyperDrive", "PUT", "data-permissions");
+    // PUT api/hyperDrive/replication/data-type-rules
+    this.updateDataTypeReplicationRule = makeOperation(http, "api/hyperDrive", "PUT", "replication/data-type-rules");
+    // PUT api/hyperDrive/failover/escalation-rules
+    this.updateEscalationRule = makeOperation(http, "api/hyperDrive", "PUT", "failover/escalation-rules");
+    // PUT api/hyperDrive/failover/rules
+    this.updateFailoverRules = makeOperation(http, "api/hyperDrive", "PUT", "failover/rules");
+    // PUT api/hyperDrive/failover/triggers/{id}
+    this.updateFailoverTrigger = makeOperation(http, "api/hyperDrive", "PUT", "failover/triggers/{id}");
+    // PUT api/hyperDrive/geographic/{providerType}
+    this.updateGeographicInfo = makeOperation(http, "api/hyperDrive", "PUT", "geographic/{providerType}");
+    // PUT api/hyperDrive/intelligent-mode
+    this.updateIntelligentMode = makeOperation(http, "api/hyperDrive", "PUT", "intelligent-mode");
+    // PUT api/hyperDrive/failover/provider-rules
+    this.updateProviderFailoverRule = makeOperation(http, "api/hyperDrive", "PUT", "failover/provider-rules");
+    // PUT api/hyperDrive/replication/provider-rules
+    this.updateProviderReplicationRule = makeOperation(http, "api/hyperDrive", "PUT", "replication/provider-rules");
+    // PUT api/hyperDrive/subscription/quota-notifications/{id}
+    this.updateQuotaNotification = makeOperation(http, "api/hyperDrive", "PUT", "subscription/quota-notifications/{id}");
+    // PUT api/hyperDrive/replication/rules
+    this.updateReplicationRules = makeOperation(http, "api/hyperDrive", "PUT", "replication/rules");
+    // PUT api/hyperDrive/replication/triggers/{id}
+    this.updateReplicationTrigger = makeOperation(http, "api/hyperDrive", "PUT", "replication/triggers/{id}");
+    // PUT api/hyperDrive/replication/schedule-rules
+    this.updateScheduleRule = makeOperation(http, "api/hyperDrive", "PUT", "replication/schedule-rules");
+    // PUT api/hyperDrive/subscription/config
+    this.updateSubscriptionConfig = makeOperation(http, "api/hyperDrive", "PUT", "subscription/config");
+    // PUT api/hyperDrive/subscription/usage-alerts/{id}
+    this.updateUsageAlert = makeOperation(http, "api/hyperDrive", "PUT", "subscription/usage-alerts/{id}");
+    // POST api/hyperDrive/config/validate
+    this.validateConfiguration = makeOperation(http, "api/hyperDrive", "POST", "config/validate");
   }
 }
 

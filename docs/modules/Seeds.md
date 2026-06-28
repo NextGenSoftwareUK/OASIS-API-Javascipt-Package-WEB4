@@ -32,7 +32,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<SeedTransaction>` (array)
+`result` type: `SeedTransaction` (array)
 
 | Field | Type |
 | --- | --- |
@@ -81,7 +81,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<SeedTransaction>` (array)
+`result` type: `SeedTransaction` (array)
 
 | Field | Type |
 | --- | --- |
@@ -120,7 +120,14 @@ Saves a seed transaction for an avatar.
 
 **Request**
 
-Body type: `SaveSeedTransactionRequest` _(type definition not found - field list unavailable)_
+Body type: `SaveSeedTransactionRequest`
+
+| Field | Type |
+| --- | --- |
+| `AvatarId` | `Guid` |
+| `AvatarUserName` | `string` |
+| `Amount` | `int` |
+| `Memo` | `string` |
 
 **Response**
 
@@ -139,7 +146,10 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.seeds.saveSeedTransaction({
-    /* ...request body fields */
+    avatarId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    avatarUserName: "example string",
+    amount: 1,
+    memo: "example string"
   });
 if (isError) throw new Error(message);
 console.log(result);

@@ -43,7 +43,19 @@ Query parameters:
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<Message>` _(type definition not found - field list unavailable)_
+`result` type: `Message` (array)
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `FromAvatarId` | `Guid` |
+| `ToAvatarId` | `Guid` |
+| `Content` | `string` |
+| `MessageType` | `MessagingType` |
+| `Timestamp` | `DateTime` |
+| `IsRead` | `bool` |
+| `ReadAt` | `DateTime?` |
+| `Metadata` | `Dictionary<string, object>` |
 
 **Example**
 
@@ -63,7 +75,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <Message> */ ]
+  "result": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "FromAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ToAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Content": "example string", "MessageType": {  }, "Timestamp": "2026-01-01T00:00:00Z", "IsRead": true, "ReadAt": "2026-01-01T00:00:00Z", "Metadata": { "<string>": {} } }]
 }
 ```
 
@@ -88,7 +100,19 @@ Query parameters:
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<Message>` _(type definition not found - field list unavailable)_
+`result` type: `Message` (array)
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `FromAvatarId` | `Guid` |
+| `ToAvatarId` | `Guid` |
+| `Content` | `string` |
+| `MessageType` | `MessagingType` |
+| `Timestamp` | `DateTime` |
+| `IsRead` | `bool` |
+| `ReadAt` | `DateTime?` |
+| `Metadata` | `Dictionary<string, object>` |
 
 **Example**
 
@@ -107,7 +131,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <Message> */ ]
+  "result": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "FromAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ToAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Content": "example string", "MessageType": {  }, "Timestamp": "2026-01-01T00:00:00Z", "IsRead": true, "ReadAt": "2026-01-01T00:00:00Z", "Metadata": { "<string>": {} } }]
 }
 ```
 
@@ -132,7 +156,19 @@ Query parameters:
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<Notification>` _(type definition not found - field list unavailable)_
+`result` type: `Notification` (array)
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `AvatarId` | `Guid` |
+| `Title` | `string` |
+| `Content` | `string` |
+| `Type` | `NotificationType` |
+| `CreatedAt` | `DateTime` |
+| `IsRead` | `bool` |
+| `ReadAt` | `DateTime?` |
+| `Metadata` | `Dictionary<string, object>` |
 
 **Example**
 
@@ -151,7 +187,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <Notification> */ ]
+  "result": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Title": "example string", "Content": "example string", "Type": {  }, "CreatedAt": "2026-01-01T00:00:00Z", "IsRead": true, "ReadAt": "2026-01-01T00:00:00Z", "Metadata": { "<string>": {} } }]
 }
 ```
 
@@ -165,7 +201,7 @@ Mark messages as read
 
 **Request**
 
-Body: `List<Guid>`
+Body type: `Guid` (array)
 
 **Response**
 
@@ -203,7 +239,7 @@ Mark notifications as read
 
 **Request**
 
-Body: `List<Guid>`
+Body type: `Guid` (array)
 
 **Response**
 

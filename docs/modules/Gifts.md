@@ -37,7 +37,16 @@ Query parameters:
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<GiftTransaction>` _(type definition not found - field list unavailable)_
+`result` type: `GiftTransaction` (array)
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `GiftId` | `Guid` |
+| `FromAvatarId` | `Guid` |
+| `ToAvatarId` | `Guid` |
+| `TransactionType` | `GiftTransactionType` |
+| `Timestamp` | `DateTime` |
 
 **Example**
 
@@ -56,7 +65,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <GiftTransaction> */ ]
+  "result": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GiftId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "FromAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ToAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "TransactionType": {  }, "Timestamp": "2026-01-01T00:00:00Z" }]
 }
 ```
 
@@ -76,7 +85,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Example**
 
@@ -92,7 +101,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<string, object>> */
+  "result": { "<string>": {} }
 }
 ```
 
@@ -112,7 +121,21 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<Gift>` _(type definition not found - field list unavailable)_
+`result` type: `Gift` (array)
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `FromAvatarId` | `Guid` |
+| `ToAvatarId` | `Guid` |
+| `GiftType` | `GiftType` |
+| `Message` | `string` |
+| `SentAt` | `DateTime` |
+| `ReceivedAt` | `DateTime?` |
+| `OpenedAt` | `DateTime?` |
+| `IsReceived` | `bool` |
+| `IsOpened` | `bool` |
+| `Metadata` | `Dictionary<string, object>` |
 
 **Example**
 
@@ -128,7 +151,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <Gift> */ ]
+  "result": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "FromAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ToAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GiftType": {  }, "Message": "example string", "SentAt": "2026-01-01T00:00:00Z", "ReceivedAt": "2026-01-01T00:00:00Z", "OpenedAt": "2026-01-01T00:00:00Z", "IsReceived": true, "IsOpened": true, "Metadata": { "<string>": {} } }]
 }
 ```
 
@@ -236,13 +259,27 @@ Route parameters:
 
 **Request**
 
-Body type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+Body type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Gift` _(type definition not found - field list unavailable)_
+`result` type: `Gift`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `FromAvatarId` | `Guid` |
+| `ToAvatarId` | `Guid` |
+| `GiftType` | `GiftType` |
+| `Message` | `string` |
+| `SentAt` | `DateTime` |
+| `ReceivedAt` | `DateTime?` |
+| `OpenedAt` | `DateTime?` |
+| `IsReceived` | `bool` |
+| `IsOpened` | `bool` |
+| `Metadata` | `Dictionary<string, object>` |
 
 **Example**
 
@@ -263,7 +300,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Gift> */
+  "result": { "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "FromAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ToAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GiftType": {  }, "Message": "example string", "SentAt": "2026-01-01T00:00:00Z", "ReceivedAt": "2026-01-01T00:00:00Z", "OpenedAt": "2026-01-01T00:00:00Z", "IsReceived": true, "IsOpened": true, "Metadata": { "<string>": {} } }
 }
 ```
 

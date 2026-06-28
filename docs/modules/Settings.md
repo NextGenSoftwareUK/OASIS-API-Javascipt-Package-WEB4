@@ -32,7 +32,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Example**
 
@@ -48,7 +48,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<string, object>> */
+  "result": { "<string>": {} }
 }
 ```
 
@@ -68,7 +68,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Example**
 
@@ -84,7 +84,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<string, object>> */
+  "result": { "<string>": {} }
 }
 ```
 
@@ -104,7 +104,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Example**
 
@@ -120,7 +120,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<string, object>> */
+  "result": { "<string>": {} }
 }
 ```
 
@@ -140,7 +140,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Example**
 
@@ -156,7 +156,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<string, object>> */
+  "result": { "<string>": {} }
 }
 ```
 
@@ -176,7 +176,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Example**
 
@@ -192,7 +192,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<string, object>> */
+  "result": { "<string>": {} }
 }
 ```
 
@@ -212,7 +212,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Example**
 
@@ -228,7 +228,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<string, object>> */
+  "result": { "<string>": {} }
 }
 ```
 
@@ -248,7 +248,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Example**
 
@@ -264,7 +264,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<string, object>> */
+  "result": { "<string>": {} }
 }
 ```
 
@@ -278,7 +278,7 @@ Update HyperDrive settings
 
 **Request**
 
-Body type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+Body type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Response**
 
@@ -316,7 +316,7 @@ Update notification preferences
 
 **Request**
 
-Body type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+Body type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Response**
 
@@ -354,7 +354,7 @@ Update privacy settings
 
 **Request**
 
-Body type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+Body type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Response**
 
@@ -392,7 +392,7 @@ Update avatar settings
 
 **Request**
 
-Body type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+Body type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Response**
 
@@ -451,7 +451,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "ProviderWallets": /* <Dictionary<ProviderType, List<IProviderWallet>>> */, "ProviderPrivateKey": /* <Dictionary<ProviderType, string>> */, "ProviderPublicKey": /* <Dictionary<ProviderType, List<string>>> */, "ProviderUsername": /* <Dictionary<ProviderType, string>> */, "ProviderWalletAddress": /* <Dictionary<ProviderType, List<string>>> */, "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Title": "example string", "FirstName": "example string", "LastName": "example string", "FullName": "example string", "FullNameWithTitle": "example string", "Username": "example string", "Email": "example string", "Password": "example string", "AvatarType": /* <EnumValue<AvatarType>> */, "AcceptTerms": true, "IsVerified": true, "JwtToken": "example string", "PasswordReset": "2026-01-01T00:00:00Z", "RefreshToken": "example string", "RefreshTokens": [{ "Id": 1, "Avatar": {}, "Token": "example string", "Expires": "2026-01-01T00:00:00Z", "Created": "2026-01-01T00:00:00Z", "CreatedByIp": "example string", "Revoked": "2026-01-01T00:00:00Z", "RevokedByIp": "example string", "ReplacedByToken": "example string" }], "ResetToken": "example string", "ResetTokenExpires": "2026-01-01T00:00:00Z", "VerificationToken": "example string", "Verified": "2026-01-01T00:00:00Z", "LastBeamedIn": "2026-01-01T00:00:00Z", "LastBeamedOut": "2026-01-01T00:00:00Z", "IsBeamedIn": true, "Image2D": "example string", "Karma": 1, "Level": 1, "XP": 1 }
+  "result": { "ProviderWallets": { "<ProviderType>": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "WalletId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Description": /* <new string> */, "PrivateKey": "example string", "PublicKey": "example string", "WalletAddress": "example string", "WalletAddressSegwitP2SH": "example string", "SecretRecoveryPhrase": "example string", "Transactions": [{ "TransactionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "FromWalletAddress": "example string", "ToWalletAddress": "example string", "Amount": 1.0, "Description": "example string", "CreatedDate": "2026-01-01T00:00:00Z", "TransactionType": {  }, "TransactionCategory": {  } }], "ProviderType": {  }, "Balance": 1.0, "IsDefaultWallet": true }] }, "ProviderPrivateKey": { "<ProviderType>": "example string" }, "ProviderPublicKey": { "<ProviderType>": ["example string"] }, "ProviderUsername": { "<ProviderType>": "example string" }, "ProviderWalletAddress": { "<ProviderType>": ["example string"] }, "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Title": "example string", "FirstName": "example string", "LastName": "example string", "FullName": "example string", "FullNameWithTitle": "example string", "Username": "example string", "Email": "example string", "Password": "example string", "AvatarType": { "Score": 1.0 }, "AcceptTerms": true, "IsVerified": true, "JwtToken": "example string", "PasswordReset": "2026-01-01T00:00:00Z", "RefreshToken": "example string", "RefreshTokens": [{ "Id": 1, "Avatar": {}, "Token": "example string", "Expires": "2026-01-01T00:00:00Z", "Created": "2026-01-01T00:00:00Z", "CreatedByIp": "example string", "Revoked": "2026-01-01T00:00:00Z", "RevokedByIp": "example string", "ReplacedByToken": "example string" }], "ResetToken": "example string", "ResetTokenExpires": "2026-01-01T00:00:00Z", "VerificationToken": "example string", "Verified": "2026-01-01T00:00:00Z", "LastBeamedIn": "2026-01-01T00:00:00Z", "LastBeamedOut": "2026-01-01T00:00:00Z", "IsBeamedIn": true, "Image2D": "example string", "Karma": 1, "Level": 1, "XP": 1 }
 }
 ```
 
@@ -465,7 +465,7 @@ Update subscription settings
 
 **Request**
 
-Body type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+Body type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Response**
 
@@ -503,7 +503,7 @@ Update system settings
 
 **Request**
 
-Body type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+Body type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Response**
 

@@ -106,19 +106,30 @@ Creates a new key for the authenticated avatar
 
 **Request**
 
-Body type: `CreateKeyRequest` _(type definition not found - field list unavailable)_
+Body type: `CreateKeyRequest`
+
+| Field | Type |
+| --- | --- |
+| `Name` | `string` |
+| `Type` | `string` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `KeyInfo` _(type definition not found - field list unavailable)_
+`result` type: `KeyInfo`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `MultiHash` |
+| `Name` | `string` |
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.keys.createKey({
-    /* ...request body fields */
+    name: "example string",
+    type: "example string"
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -130,7 +141,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <KeyInfo> */
+  "result": { "Id": /* <MultiHash> */, "Name": "example string" }
 }
 ```
 
@@ -498,7 +509,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IKeyPairAndWallet` _(type definition not found - field list unavailable)_
+`result` type: `IKeyPairAndWallet` _(type definition not found in the OASIS2 source - field list unavailable)_
 
 **Example**
 
@@ -752,7 +763,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IKeyPairAndWallet` _(type definition not found - field list unavailable)_
+`result` type: `IKeyPairAndWallet` _(type definition not found in the OASIS2 source - field list unavailable)_
 
 **Example**
 
@@ -790,7 +801,12 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<KeyInfo>` _(type definition not found - field list unavailable)_
+`result` type: `KeyInfo` (array)
+
+| Field | Type |
+| --- | --- |
+| `Id` | `MultiHash` |
+| `Name` | `string` |
 
 **Example**
 
@@ -806,7 +822,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <KeyInfo> */ ]
+  "result": [{ "Id": /* <MultiHash> */, "Name": "example string" }]
 }
 ```
 
@@ -832,7 +848,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<ProviderType, List<string>>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<ProviderType, List<string>>` - a key/value map keyed by `ProviderType`, each value a `List<string>`.
 
 **Example**
 
@@ -850,7 +866,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<ProviderType, List<string>>> */
+  "result": { "<ProviderType>": ["example string"] }
 }
 ```
 
@@ -876,7 +892,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<ProviderType, List<string>>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<ProviderType, List<string>>` - a key/value map keyed by `ProviderType`, each value a `List<string>`.
 
 **Example**
 
@@ -894,7 +910,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<ProviderType, List<string>>> */
+  "result": { "<ProviderType>": ["example string"] }
 }
 ```
 
@@ -920,7 +936,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<ProviderType, List<string>>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<ProviderType, List<string>>` - a key/value map keyed by `ProviderType`, each value a `List<string>`.
 
 **Example**
 
@@ -938,7 +954,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<ProviderType, List<string>>> */
+  "result": { "<ProviderType>": ["example string"] }
 }
 ```
 
@@ -964,7 +980,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<ProviderType, List<string>>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<ProviderType, List<string>>` - a key/value map keyed by `ProviderType`, each value a `List<string>`.
 
 **Example**
 
@@ -982,7 +998,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<ProviderType, List<string>>> */
+  "result": { "<ProviderType>": ["example string"] }
 }
 ```
 
@@ -1008,7 +1024,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<ProviderType, List<string>>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<ProviderType, List<string>>` - a key/value map keyed by `ProviderType`, each value a `List<string>`.
 
 **Example**
 
@@ -1026,7 +1042,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<ProviderType, List<string>>> */
+  "result": { "<ProviderType>": ["example string"] }
 }
 ```
 
@@ -1052,7 +1068,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<ProviderType, string>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<ProviderType, string>` - a key/value map keyed by `ProviderType`, each value a `string`.
 
 **Example**
 
@@ -1070,7 +1086,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<ProviderType, string>> */
+  "result": { "<ProviderType>": "example string" }
 }
 ```
 
@@ -1096,7 +1112,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<ProviderType, string>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<ProviderType, string>` - a key/value map keyed by `ProviderType`, each value a `string`.
 
 **Example**
 
@@ -1114,7 +1130,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<ProviderType, string>> */
+  "result": { "<ProviderType>": "example string" }
 }
 ```
 
@@ -1140,7 +1156,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<ProviderType, string>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<ProviderType, string>` - a key/value map keyed by `ProviderType`, each value a `string`.
 
 **Example**
 
@@ -1158,7 +1174,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<ProviderType, string>> */
+  "result": { "<ProviderType>": "example string" }
 }
 ```
 
@@ -1325,7 +1341,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "ProviderWallets": /* <Dictionary<ProviderType, List<IProviderWallet>>> */, "ProviderPrivateKey": /* <Dictionary<ProviderType, string>> */, "ProviderPublicKey": /* <Dictionary<ProviderType, List<string>>> */, "ProviderUsername": /* <Dictionary<ProviderType, string>> */, "ProviderWalletAddress": /* <Dictionary<ProviderType, List<string>>> */, "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Title": "example string", "FirstName": "example string", "LastName": "example string", "FullName": "example string", "FullNameWithTitle": "example string", "Username": "example string", "Email": "example string", "Password": "example string", "AvatarType": /* <EnumValue<AvatarType>> */, "AcceptTerms": true, "IsVerified": true, "JwtToken": "example string", "PasswordReset": "2026-01-01T00:00:00Z", "RefreshToken": "example string", "RefreshTokens": [{ "Id": 1, "Avatar": {}, "Token": "example string", "Expires": "2026-01-01T00:00:00Z", "Created": "2026-01-01T00:00:00Z", "CreatedByIp": "example string", "Revoked": "2026-01-01T00:00:00Z", "RevokedByIp": "example string", "ReplacedByToken": "example string" }], "ResetToken": "example string", "ResetTokenExpires": "2026-01-01T00:00:00Z", "VerificationToken": "example string", "Verified": "2026-01-01T00:00:00Z", "LastBeamedIn": "2026-01-01T00:00:00Z", "LastBeamedOut": "2026-01-01T00:00:00Z", "IsBeamedIn": true, "Image2D": "example string", "Karma": 1, "Level": 1, "XP": 1 }
+  "result": { "ProviderWallets": { "<ProviderType>": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "WalletId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Description": /* <new string> */, "PrivateKey": "example string", "PublicKey": "example string", "WalletAddress": "example string", "WalletAddressSegwitP2SH": "example string", "SecretRecoveryPhrase": "example string", "Transactions": [{ "TransactionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "FromWalletAddress": "example string", "ToWalletAddress": "example string", "Amount": 1.0, "Description": "example string", "CreatedDate": "2026-01-01T00:00:00Z", "TransactionType": {  }, "TransactionCategory": {  } }], "ProviderType": {  }, "Balance": 1.0, "IsDefaultWallet": true }] }, "ProviderPrivateKey": { "<ProviderType>": "example string" }, "ProviderPublicKey": { "<ProviderType>": ["example string"] }, "ProviderUsername": { "<ProviderType>": "example string" }, "ProviderWalletAddress": { "<ProviderType>": ["example string"] }, "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Title": "example string", "FirstName": "example string", "LastName": "example string", "FullName": "example string", "FullNameWithTitle": "example string", "Username": "example string", "Email": "example string", "Password": "example string", "AvatarType": { "Score": 1.0 }, "AcceptTerms": true, "IsVerified": true, "JwtToken": "example string", "PasswordReset": "2026-01-01T00:00:00Z", "RefreshToken": "example string", "RefreshTokens": [{ "Id": 1, "Avatar": {}, "Token": "example string", "Expires": "2026-01-01T00:00:00Z", "Created": "2026-01-01T00:00:00Z", "CreatedByIp": "example string", "Revoked": "2026-01-01T00:00:00Z", "RevokedByIp": "example string", "ReplacedByToken": "example string" }], "ResetToken": "example string", "ResetTokenExpires": "2026-01-01T00:00:00Z", "VerificationToken": "example string", "Verified": "2026-01-01T00:00:00Z", "LastBeamedIn": "2026-01-01T00:00:00Z", "LastBeamedOut": "2026-01-01T00:00:00Z", "IsBeamedIn": true, "Image2D": "example string", "Karma": 1, "Level": 1, "XP": 1 }
 }
 ```
 
@@ -1404,7 +1420,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "ProviderWallets": /* <Dictionary<ProviderType, List<IProviderWallet>>> */, "ProviderPrivateKey": /* <Dictionary<ProviderType, string>> */, "ProviderPublicKey": /* <Dictionary<ProviderType, List<string>>> */, "ProviderUsername": /* <Dictionary<ProviderType, string>> */, "ProviderWalletAddress": /* <Dictionary<ProviderType, List<string>>> */, "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Title": "example string", "FirstName": "example string", "LastName": "example string", "FullName": "example string", "FullNameWithTitle": "example string", "Username": "example string", "Email": "example string", "Password": "example string", "AvatarType": /* <EnumValue<AvatarType>> */, "AcceptTerms": true, "IsVerified": true, "JwtToken": "example string", "PasswordReset": "2026-01-01T00:00:00Z", "RefreshToken": "example string", "RefreshTokens": [{ "Id": 1, "Avatar": {}, "Token": "example string", "Expires": "2026-01-01T00:00:00Z", "Created": "2026-01-01T00:00:00Z", "CreatedByIp": "example string", "Revoked": "2026-01-01T00:00:00Z", "RevokedByIp": "example string", "ReplacedByToken": "example string" }], "ResetToken": "example string", "ResetTokenExpires": "2026-01-01T00:00:00Z", "VerificationToken": "example string", "Verified": "2026-01-01T00:00:00Z", "LastBeamedIn": "2026-01-01T00:00:00Z", "LastBeamedOut": "2026-01-01T00:00:00Z", "IsBeamedIn": true, "Image2D": "example string", "Karma": 1, "Level": 1, "XP": 1 }
+  "result": { "ProviderWallets": { "<ProviderType>": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "WalletId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Description": /* <new string> */, "PrivateKey": "example string", "PublicKey": "example string", "WalletAddress": "example string", "WalletAddressSegwitP2SH": "example string", "SecretRecoveryPhrase": "example string", "Transactions": [{ "TransactionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "FromWalletAddress": "example string", "ToWalletAddress": "example string", "Amount": 1.0, "Description": "example string", "CreatedDate": "2026-01-01T00:00:00Z", "TransactionType": {  }, "TransactionCategory": {  } }], "ProviderType": {  }, "Balance": 1.0, "IsDefaultWallet": true }] }, "ProviderPrivateKey": { "<ProviderType>": "example string" }, "ProviderPublicKey": { "<ProviderType>": ["example string"] }, "ProviderUsername": { "<ProviderType>": "example string" }, "ProviderWalletAddress": { "<ProviderType>": ["example string"] }, "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Title": "example string", "FirstName": "example string", "LastName": "example string", "FullName": "example string", "FullNameWithTitle": "example string", "Username": "example string", "Email": "example string", "Password": "example string", "AvatarType": { "Score": 1.0 }, "AcceptTerms": true, "IsVerified": true, "JwtToken": "example string", "PasswordReset": "2026-01-01T00:00:00Z", "RefreshToken": "example string", "RefreshTokens": [{ "Id": 1, "Avatar": {}, "Token": "example string", "Expires": "2026-01-01T00:00:00Z", "Created": "2026-01-01T00:00:00Z", "CreatedByIp": "example string", "Revoked": "2026-01-01T00:00:00Z", "RevokedByIp": "example string", "ReplacedByToken": "example string" }], "ResetToken": "example string", "ResetTokenExpires": "2026-01-01T00:00:00Z", "VerificationToken": "example string", "Verified": "2026-01-01T00:00:00Z", "LastBeamedIn": "2026-01-01T00:00:00Z", "LastBeamedOut": "2026-01-01T00:00:00Z", "IsBeamedIn": true, "Image2D": "example string", "Karma": 1, "Level": 1, "XP": 1 }
 }
 ```
 
@@ -1483,7 +1499,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "ProviderWallets": /* <Dictionary<ProviderType, List<IProviderWallet>>> */, "ProviderPrivateKey": /* <Dictionary<ProviderType, string>> */, "ProviderPublicKey": /* <Dictionary<ProviderType, List<string>>> */, "ProviderUsername": /* <Dictionary<ProviderType, string>> */, "ProviderWalletAddress": /* <Dictionary<ProviderType, List<string>>> */, "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Title": "example string", "FirstName": "example string", "LastName": "example string", "FullName": "example string", "FullNameWithTitle": "example string", "Username": "example string", "Email": "example string", "Password": "example string", "AvatarType": /* <EnumValue<AvatarType>> */, "AcceptTerms": true, "IsVerified": true, "JwtToken": "example string", "PasswordReset": "2026-01-01T00:00:00Z", "RefreshToken": "example string", "RefreshTokens": [{ "Id": 1, "Avatar": {}, "Token": "example string", "Expires": "2026-01-01T00:00:00Z", "Created": "2026-01-01T00:00:00Z", "CreatedByIp": "example string", "Revoked": "2026-01-01T00:00:00Z", "RevokedByIp": "example string", "ReplacedByToken": "example string" }], "ResetToken": "example string", "ResetTokenExpires": "2026-01-01T00:00:00Z", "VerificationToken": "example string", "Verified": "2026-01-01T00:00:00Z", "LastBeamedIn": "2026-01-01T00:00:00Z", "LastBeamedOut": "2026-01-01T00:00:00Z", "IsBeamedIn": true, "Image2D": "example string", "Karma": 1, "Level": 1, "XP": 1 }
+  "result": { "ProviderWallets": { "<ProviderType>": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "WalletId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Description": /* <new string> */, "PrivateKey": "example string", "PublicKey": "example string", "WalletAddress": "example string", "WalletAddressSegwitP2SH": "example string", "SecretRecoveryPhrase": "example string", "Transactions": [{ "TransactionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "FromWalletAddress": "example string", "ToWalletAddress": "example string", "Amount": 1.0, "Description": "example string", "CreatedDate": "2026-01-01T00:00:00Z", "TransactionType": {  }, "TransactionCategory": {  } }], "ProviderType": {  }, "Balance": 1.0, "IsDefaultWallet": true }] }, "ProviderPrivateKey": { "<ProviderType>": "example string" }, "ProviderPublicKey": { "<ProviderType>": ["example string"] }, "ProviderUsername": { "<ProviderType>": "example string" }, "ProviderWalletAddress": { "<ProviderType>": ["example string"] }, "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Title": "example string", "FirstName": "example string", "LastName": "example string", "FullName": "example string", "FullNameWithTitle": "example string", "Username": "example string", "Email": "example string", "Password": "example string", "AvatarType": { "Score": 1.0 }, "AcceptTerms": true, "IsVerified": true, "JwtToken": "example string", "PasswordReset": "2026-01-01T00:00:00Z", "RefreshToken": "example string", "RefreshTokens": [{ "Id": 1, "Avatar": {}, "Token": "example string", "Expires": "2026-01-01T00:00:00Z", "Created": "2026-01-01T00:00:00Z", "CreatedByIp": "example string", "Revoked": "2026-01-01T00:00:00Z", "RevokedByIp": "example string", "ReplacedByToken": "example string" }], "ResetToken": "example string", "ResetTokenExpires": "2026-01-01T00:00:00Z", "VerificationToken": "example string", "Verified": "2026-01-01T00:00:00Z", "LastBeamedIn": "2026-01-01T00:00:00Z", "LastBeamedOut": "2026-01-01T00:00:00Z", "IsBeamedIn": true, "Image2D": "example string", "Karma": 1, "Level": 1, "XP": 1 }
 }
 ```
 
@@ -1767,7 +1783,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Example**
 
@@ -1783,7 +1799,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<string, object>> */
+  "result": { "<string>": {} }
 }
 ```
 
@@ -1841,19 +1857,31 @@ Get's a given avatar's private key for the given provider type using the avatar'
 
 **Request**
 
-Body type: `ProviderKeyForAvatarParams` _(type definition not found - field list unavailable)_
+Body type: `ProviderKeyForAvatarParams`
+
+| Field | Type |
+| --- | --- |
+| `AvatarID` | `string` |
+| `AvatarUsername` | `string` |
+| `AvatarEmail` | `string` |
+| `ProviderType` | `string` |
+| `ProviderTypeToLoadAvatarFrom` | `string` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<string>`
+`result` type: `string` (array)
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.keys.getProviderPrivateKeyForAvatarById({
-    /* ...request body fields */
+    avatarID: "example string",
+    avatarUsername: "example string",
+    avatarEmail: "example string",
+    providerType: "example string",
+    providerTypeToLoadAvatarFrom: "example string"
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -1879,19 +1907,31 @@ Get's a given avatar's private key for the given provider type using the avatar'
 
 **Request**
 
-Body type: `ProviderKeyForAvatarParams` _(type definition not found - field list unavailable)_
+Body type: `ProviderKeyForAvatarParams`
+
+| Field | Type |
+| --- | --- |
+| `AvatarID` | `string` |
+| `AvatarUsername` | `string` |
+| `AvatarEmail` | `string` |
+| `ProviderType` | `string` |
+| `ProviderTypeToLoadAvatarFrom` | `string` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<string>`
+`result` type: `string` (array)
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.keys.getProviderPrivateKeyForAvatarByUsername({
-    /* ...request body fields */
+    avatarID: "example string",
+    avatarUsername: "example string",
+    avatarEmail: "example string",
+    providerType: "example string",
+    providerTypeToLoadAvatarFrom: "example string"
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -1917,19 +1957,31 @@ Get's a given avatar's public keys for the given provider type using the avatar'
 
 **Request**
 
-Body type: `ProviderKeyForAvatarParams` _(type definition not found - field list unavailable)_
+Body type: `ProviderKeyForAvatarParams`
+
+| Field | Type |
+| --- | --- |
+| `AvatarID` | `string` |
+| `AvatarUsername` | `string` |
+| `AvatarEmail` | `string` |
+| `ProviderType` | `string` |
+| `ProviderTypeToLoadAvatarFrom` | `string` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<string>`
+`result` type: `string` (array)
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.keys.getProviderPublicKeysForAvatarByEmail({
-    /* ...request body fields */
+    avatarID: "example string",
+    avatarUsername: "example string",
+    avatarEmail: "example string",
+    providerType: "example string",
+    providerTypeToLoadAvatarFrom: "example string"
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -1955,19 +2007,31 @@ Get's a given avatar's public keys for the given provider type using the avatar'
 
 **Request**
 
-Body type: `ProviderKeyForAvatarParams` _(type definition not found - field list unavailable)_
+Body type: `ProviderKeyForAvatarParams`
+
+| Field | Type |
+| --- | --- |
+| `AvatarID` | `string` |
+| `AvatarUsername` | `string` |
+| `AvatarEmail` | `string` |
+| `ProviderType` | `string` |
+| `ProviderTypeToLoadAvatarFrom` | `string` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<string>`
+`result` type: `string` (array)
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.keys.getProviderPublicKeysForAvatarById({
-    /* ...request body fields */
+    avatarID: "example string",
+    avatarUsername: "example string",
+    avatarEmail: "example string",
+    providerType: "example string",
+    providerTypeToLoadAvatarFrom: "example string"
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -1993,19 +2057,31 @@ Get's a given avatar's public keys for the given provider type using the avatar'
 
 **Request**
 
-Body type: `ProviderKeyForAvatarParams` _(type definition not found - field list unavailable)_
+Body type: `ProviderKeyForAvatarParams`
+
+| Field | Type |
+| --- | --- |
+| `AvatarID` | `string` |
+| `AvatarUsername` | `string` |
+| `AvatarEmail` | `string` |
+| `ProviderType` | `string` |
+| `ProviderTypeToLoadAvatarFrom` | `string` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<string>`
+`result` type: `string` (array)
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.keys.getProviderPublicKeysForAvatarByUsername({
-    /* ...request body fields */
+    avatarID: "example string",
+    avatarUsername: "example string",
+    avatarEmail: "example string",
+    providerType: "example string",
+    providerTypeToLoadAvatarFrom: "example string"
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -2031,7 +2107,15 @@ Get's a given avatar's unique storage key for the given provider type using the 
 
 **Request**
 
-Body type: `ProviderKeyForAvatarParams` _(type definition not found - field list unavailable)_
+Body type: `ProviderKeyForAvatarParams`
+
+| Field | Type |
+| --- | --- |
+| `AvatarID` | `string` |
+| `AvatarUsername` | `string` |
+| `AvatarEmail` | `string` |
+| `ProviderType` | `string` |
+| `ProviderTypeToLoadAvatarFrom` | `string` |
 
 **Response**
 
@@ -2043,7 +2127,11 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.keys.getProviderUniqueStorageKeyForAvatarByEmail({
-    /* ...request body fields */
+    avatarID: "example string",
+    avatarUsername: "example string",
+    avatarEmail: "example string",
+    providerType: "example string",
+    providerTypeToLoadAvatarFrom: "example string"
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -2069,7 +2157,15 @@ Get's a given avatar's unique storage key for the given provider type using the 
 
 **Request**
 
-Body type: `ProviderKeyForAvatarParams` _(type definition not found - field list unavailable)_
+Body type: `ProviderKeyForAvatarParams`
+
+| Field | Type |
+| --- | --- |
+| `AvatarID` | `string` |
+| `AvatarUsername` | `string` |
+| `AvatarEmail` | `string` |
+| `ProviderType` | `string` |
+| `ProviderTypeToLoadAvatarFrom` | `string` |
 
 **Response**
 
@@ -2081,7 +2177,11 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.keys.getProviderUniqueStorageKeyForAvatarById({
-    /* ...request body fields */
+    avatarID: "example string",
+    avatarUsername: "example string",
+    avatarEmail: "example string",
+    providerType: "example string",
+    providerTypeToLoadAvatarFrom: "example string"
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -2107,7 +2207,15 @@ Get's a given avatar's unique storage key for the given provider type using the 
 
 **Request**
 
-Body type: `ProviderKeyForAvatarParams` _(type definition not found - field list unavailable)_
+Body type: `ProviderKeyForAvatarParams`
+
+| Field | Type |
+| --- | --- |
+| `AvatarID` | `string` |
+| `AvatarUsername` | `string` |
+| `AvatarEmail` | `string` |
+| `ProviderType` | `string` |
+| `ProviderTypeToLoadAvatarFrom` | `string` |
 
 **Response**
 
@@ -2119,7 +2227,11 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.keys.getProviderUniqueStorageKeyForAvatarByUsername({
-    /* ...request body fields */
+    avatarID: "example string",
+    avatarUsername: "example string",
+    avatarEmail: "example string",
+    providerType: "example string",
+    providerTypeToLoadAvatarFrom: "example string"
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -2262,7 +2374,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "Id": /* <new Guid> */, "Username": "example string", "Email": "example string", "Karma": 1, "Level": 1, "XP": 1, "Model3D": "example string", "UmaJson": "example string", "Portrait": "example string", "DOB": "2026-01-01T00:00:00Z", "Address": "example string", "Town": "example string", "County": "example string", "Country": "example string", "Postcode": "example string", "Landline": "example string", "Mobile": "example string", "Achievements": [{ "AchievementEarnt": "2026-01-01T00:00:00Z", "AchievementType": /* <KarmaTypePositive> */, "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Description": "example string", "KarmaSource": /* <EnumValue<KarmaSourceType>> */, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "Name": "example string", "Provider": /* <EnumValue<ProviderType>> */, "WebLink": "example string" }], "Attributes": { "Dexterity": 1, "Intelligence": 1, "Magic": 1, "Speed": 1, "Strength": 1, "Toughness": 1, "Wisdom": 1, "Vitality": 1, "Endurance": 1 }, "Aura": { "Progress": 1, "Brightness": 1, "Size": 1, "ColourBlue": 1, "ColourGreen": 1, "ColourRed": 1, "Level": 1, "Value": 1 }, "Chakras": { "Crown": {  }, "Heart": {  }, "Root": {  }, "Sacral": {  }, "SolarPlexus": {  }, "ThirdEye": {  }, "Throat": {  } }, "DimensionLevelIds": /* <IDictionary<DimensionLevel, Guid>> */, "DimensionLevels": /* <IDictionary<DimensionLevel, IHolon>> */, "FavouriteColour": /* <ConsoleColor> */, "GeneKeys": [{ "Description": "example string", "Gift": "example string", "Name": "example string", "Shadow": "example string", "Sidhi": "example string" }], "Gifts": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GiftEarnt": "2026-01-01T00:00:00Z", "GiftType": /* <KarmaTypePositive> */, "KarmaSource": /* <EnumValue<KarmaSourceType>> */, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "Provider": /* <EnumValue<ProviderType>> */, "WebLink": "example string" }], "HeartRateData": [{ "HeartRateValue": 1, "TimeStamp": "2026-01-01T00:00:00Z" }], "HumanDesign": { "Type": "example string" }, "Inventory": [{ "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": /* <Dictionary<string, object>> */ }], "KarmaAkashicRecords": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Date": "2026-01-01T00:00:00Z", "Karma": 1, "KarmaEarntOrLost": /* <EnumValue<KarmaEarntOrLost>> */, "KarmaSource": /* <EnumValue<KarmaSourceType>> */, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "KarmaTypeNegative": /* <EnumValue<KarmaTypeNegative>> */, "KarmaTypePositive": /* <EnumValue<KarmaTypePositive>> */, "Provider": /* <EnumValue<ProviderType>> */, "TotalKarma": 1, "WebLink": "example string" }], "Omniverse": { "GreatGrandSuperStar": {  }, "Dimensions": { "EighthDimension": {  }, "NinthDimension": {  }, "TenthDimension": {  }, "EleventhDimension": {  }, "TwelfthDimension": {  }, "CustomDimensions": [{ "DimensionLevel": {  } }] }, "Multiverses": [{ "GrandSuperStar": { "Stars": [ /* <I> */ ] }, "Dimensions": { "FirstDimension": { "Universe": { "Dimensions": [], "GalaxyClusters": [{ "Galaxies": [{ "SuperStar": { "Stars": [{ "Luminosity": 1, "StarType": {  }, "StarClassification": {  }, "StarBinaryType": {  } }] }, "SolarSystems": [{ "Star": {}, "Planets": [{ "Moons": [{  }] }], "Asteroids": [{  }], "Comets": [{  }], "Meteroids": [{  }] }], "Nebulas": [{  }], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [] }], "SolarSystems": [], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [], "IsSuperCluster": true }], "SolarSystems": [], "Nebulas": [], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [] } }, "SecondDimension": { "Universe": {} }, "ThirdDimension": { "UniversePrime": {}, "MagicVerse": {}, "ParallelUniverses": [] }, "FourthDimension": { "Universe": {} }, "FifthDimension": { "Universe": {} }, "SixthDimension": { "Universe": {} }, "SeventhDimension": { "Universe": {} }, "CustomDimensions": [] } }] }, "Skills": { "Computers": 1, "Engineering": 1, "Farming": 1, "FireStarting": 1, "Fishing": 1, "Languages": 1, "Meditation": 1, "MeleeCombat": 1, "Mindfulness": 1, "Negotiating": 1, "RangedCombat": 1, "Research": 1, "Science": 1, "SpellCasting": 1, "Translating": 1, "Yoga": 1 }, "Spells": [{ "Description": "example string", "FireDamage": 1, "HealingPower": 1, "IceDamage": 1, "LightningDamage": 1, "Name": "example string", "PoisonDamage": 1, "WaterDamage": 1, "WindDamage": 1 }], "STARCLIColour": /* <ConsoleColor> */, "Stats": { "Energy": { "Current": 1, "Max": 1 }, "HP": {}, "Mana": {}, "Stamina": {} }, "SuperPowers": { "AstralProjection": 1, "BioLocatation": 1, "Flight": 1, "FreezeBreath": 1, "HeatVision": 1, "Invulnerability": 1, "RemoteViewing": 1, "SuperSpeed": 1, "SuperStrength": 1, "Telekinesis": 1, "Telepathy": 1, "Teleportation": 1, "XRayVision": 1 }, "ActiveQuestId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ActiveObjectiveId": "3fa85f64-5717-4562-b3fc-2c963f66afa6" }
+  "result": { "Id": /* <new Guid> */, "Username": "example string", "Email": "example string", "Karma": 1, "Level": 1, "XP": 1, "Model3D": "example string", "UmaJson": "example string", "Portrait": "example string", "DOB": "2026-01-01T00:00:00Z", "Address": "example string", "Town": "example string", "County": "example string", "Country": "example string", "Postcode": "example string", "Landline": "example string", "Mobile": "example string", "Achievements": [{ "AchievementEarnt": "2026-01-01T00:00:00Z", "AchievementType": {  }, "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Description": "example string", "KarmaSource": { "Score": 1.0 }, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "Name": "example string", "Provider": { "Score": 1.0 }, "WebLink": "example string" }], "Attributes": { "Dexterity": 1, "Intelligence": 1, "Magic": 1, "Speed": 1, "Strength": 1, "Toughness": 1, "Wisdom": 1, "Vitality": 1, "Endurance": 1 }, "Aura": { "Progress": 1, "Brightness": 1, "Size": 1, "ColourBlue": 1, "ColourGreen": 1, "ColourRed": 1, "Level": 1, "Value": 1 }, "Chakras": { "Crown": {  }, "Heart": {  }, "Root": {  }, "Sacral": {  }, "SolarPlexus": {  }, "ThirdEye": {  }, "Throat": {  } }, "DimensionLevelIds": /* <IDictionary<DimensionLevel, Guid>> */, "DimensionLevels": /* <IDictionary<DimensionLevel, IHolon>> */, "FavouriteColour": /* <ConsoleColor> */, "GeneKeys": [{ "Description": "example string", "Gift": "example string", "Name": "example string", "Shadow": "example string", "Sidhi": "example string" }], "Gifts": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GiftEarnt": "2026-01-01T00:00:00Z", "GiftType": {}, "KarmaSource": {}, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "Provider": {}, "WebLink": "example string" }], "HeartRateData": [{ "HeartRateValue": 1, "TimeStamp": "2026-01-01T00:00:00Z" }], "HumanDesign": { "Type": "example string" }, "Inventory": [{ "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": { "<string>": {} } }], "KarmaAkashicRecords": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Date": "2026-01-01T00:00:00Z", "Karma": 1, "KarmaEarntOrLost": { "Score": 1.0 }, "KarmaSource": {}, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "KarmaTypeNegative": { "Score": 1.0 }, "KarmaTypePositive": { "Score": 1.0 }, "Provider": {}, "TotalKarma": 1, "WebLink": "example string" }], "Omniverse": { "GreatGrandSuperStar": {  }, "Dimensions": { "EighthDimension": {  }, "NinthDimension": {  }, "TenthDimension": {  }, "EleventhDimension": {  }, "TwelfthDimension": {  }, "CustomDimensions": [{ "DimensionLevel": {  } }] }, "Multiverses": [{ "GrandSuperStar": { "Stars": [ /* <I> */ ] }, "Dimensions": { "FirstDimension": { "Universe": { "Dimensions": [], "GalaxyClusters": [{ "Galaxies": [{ "SuperStar": { "Stars": [{ "Luminosity": 1, "StarType": {  }, "StarClassification": {  }, "StarBinaryType": {  } }] }, "SolarSystems": [{ "Star": {}, "Planets": [{ "Moons": [{  }] }], "Asteroids": [{  }], "Comets": [{  }], "Meteroids": [{  }] }], "Nebulas": [{  }], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [] }], "SolarSystems": [], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [], "IsSuperCluster": true }], "SolarSystems": [], "Nebulas": [], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [] } }, "SecondDimension": { "Universe": {} }, "ThirdDimension": { "UniversePrime": {}, "MagicVerse": {}, "ParallelUniverses": [] }, "FourthDimension": { "Universe": {} }, "FifthDimension": { "Universe": {} }, "SixthDimension": { "Universe": {} }, "SeventhDimension": { "Universe": {} }, "CustomDimensions": [] } }] }, "Skills": { "Computers": 1, "Engineering": 1, "Farming": 1, "FireStarting": 1, "Fishing": 1, "Languages": 1, "Meditation": 1, "MeleeCombat": 1, "Mindfulness": 1, "Negotiating": 1, "RangedCombat": 1, "Research": 1, "Science": 1, "SpellCasting": 1, "Translating": 1, "Yoga": 1 }, "Spells": [{ "Description": "example string", "FireDamage": 1, "HealingPower": 1, "IceDamage": 1, "LightningDamage": 1, "Name": "example string", "PoisonDamage": 1, "WaterDamage": 1, "WindDamage": 1 }], "STARCLIColour": /* <ConsoleColor> */, "Stats": { "Energy": { "Current": 1, "Max": 1 }, "HP": {}, "Mana": {}, "Stamina": {} }, "SuperPowers": { "AstralProjection": 1, "BioLocatation": 1, "Flight": 1, "FreezeBreath": 1, "HeatVision": 1, "Invulnerability": 1, "RemoteViewing": 1, "SuperSpeed": 1, "SuperStrength": 1, "Telekinesis": 1, "Telepathy": 1, "Teleportation": 1, "XRayVision": 1 }, "ActiveQuestId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ActiveObjectiveId": "3fa85f64-5717-4562-b3fc-2c963f66afa6" }
 }
 ```
 
@@ -2349,7 +2461,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "Id": /* <new Guid> */, "Username": "example string", "Email": "example string", "Karma": 1, "Level": 1, "XP": 1, "Model3D": "example string", "UmaJson": "example string", "Portrait": "example string", "DOB": "2026-01-01T00:00:00Z", "Address": "example string", "Town": "example string", "County": "example string", "Country": "example string", "Postcode": "example string", "Landline": "example string", "Mobile": "example string", "Achievements": [{ "AchievementEarnt": "2026-01-01T00:00:00Z", "AchievementType": /* <KarmaTypePositive> */, "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Description": "example string", "KarmaSource": /* <EnumValue<KarmaSourceType>> */, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "Name": "example string", "Provider": /* <EnumValue<ProviderType>> */, "WebLink": "example string" }], "Attributes": { "Dexterity": 1, "Intelligence": 1, "Magic": 1, "Speed": 1, "Strength": 1, "Toughness": 1, "Wisdom": 1, "Vitality": 1, "Endurance": 1 }, "Aura": { "Progress": 1, "Brightness": 1, "Size": 1, "ColourBlue": 1, "ColourGreen": 1, "ColourRed": 1, "Level": 1, "Value": 1 }, "Chakras": { "Crown": {  }, "Heart": {  }, "Root": {  }, "Sacral": {  }, "SolarPlexus": {  }, "ThirdEye": {  }, "Throat": {  } }, "DimensionLevelIds": /* <IDictionary<DimensionLevel, Guid>> */, "DimensionLevels": /* <IDictionary<DimensionLevel, IHolon>> */, "FavouriteColour": /* <ConsoleColor> */, "GeneKeys": [{ "Description": "example string", "Gift": "example string", "Name": "example string", "Shadow": "example string", "Sidhi": "example string" }], "Gifts": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GiftEarnt": "2026-01-01T00:00:00Z", "GiftType": /* <KarmaTypePositive> */, "KarmaSource": /* <EnumValue<KarmaSourceType>> */, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "Provider": /* <EnumValue<ProviderType>> */, "WebLink": "example string" }], "HeartRateData": [{ "HeartRateValue": 1, "TimeStamp": "2026-01-01T00:00:00Z" }], "HumanDesign": { "Type": "example string" }, "Inventory": [{ "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": /* <Dictionary<string, object>> */ }], "KarmaAkashicRecords": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Date": "2026-01-01T00:00:00Z", "Karma": 1, "KarmaEarntOrLost": /* <EnumValue<KarmaEarntOrLost>> */, "KarmaSource": /* <EnumValue<KarmaSourceType>> */, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "KarmaTypeNegative": /* <EnumValue<KarmaTypeNegative>> */, "KarmaTypePositive": /* <EnumValue<KarmaTypePositive>> */, "Provider": /* <EnumValue<ProviderType>> */, "TotalKarma": 1, "WebLink": "example string" }], "Omniverse": { "GreatGrandSuperStar": {  }, "Dimensions": { "EighthDimension": {  }, "NinthDimension": {  }, "TenthDimension": {  }, "EleventhDimension": {  }, "TwelfthDimension": {  }, "CustomDimensions": [{ "DimensionLevel": {  } }] }, "Multiverses": [{ "GrandSuperStar": { "Stars": [ /* <I> */ ] }, "Dimensions": { "FirstDimension": { "Universe": { "Dimensions": [], "GalaxyClusters": [{ "Galaxies": [{ "SuperStar": { "Stars": [{ "Luminosity": 1, "StarType": {  }, "StarClassification": {  }, "StarBinaryType": {  } }] }, "SolarSystems": [{ "Star": {}, "Planets": [{ "Moons": [{  }] }], "Asteroids": [{  }], "Comets": [{  }], "Meteroids": [{  }] }], "Nebulas": [{  }], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [] }], "SolarSystems": [], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [], "IsSuperCluster": true }], "SolarSystems": [], "Nebulas": [], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [] } }, "SecondDimension": { "Universe": {} }, "ThirdDimension": { "UniversePrime": {}, "MagicVerse": {}, "ParallelUniverses": [] }, "FourthDimension": { "Universe": {} }, "FifthDimension": { "Universe": {} }, "SixthDimension": { "Universe": {} }, "SeventhDimension": { "Universe": {} }, "CustomDimensions": [] } }] }, "Skills": { "Computers": 1, "Engineering": 1, "Farming": 1, "FireStarting": 1, "Fishing": 1, "Languages": 1, "Meditation": 1, "MeleeCombat": 1, "Mindfulness": 1, "Negotiating": 1, "RangedCombat": 1, "Research": 1, "Science": 1, "SpellCasting": 1, "Translating": 1, "Yoga": 1 }, "Spells": [{ "Description": "example string", "FireDamage": 1, "HealingPower": 1, "IceDamage": 1, "LightningDamage": 1, "Name": "example string", "PoisonDamage": 1, "WaterDamage": 1, "WindDamage": 1 }], "STARCLIColour": /* <ConsoleColor> */, "Stats": { "Energy": { "Current": 1, "Max": 1 }, "HP": {}, "Mana": {}, "Stamina": {} }, "SuperPowers": { "AstralProjection": 1, "BioLocatation": 1, "Flight": 1, "FreezeBreath": 1, "HeatVision": 1, "Invulnerability": 1, "RemoteViewing": 1, "SuperSpeed": 1, "SuperStrength": 1, "Telekinesis": 1, "Telepathy": 1, "Teleportation": 1, "XRayVision": 1 }, "ActiveQuestId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ActiveObjectiveId": "3fa85f64-5717-4562-b3fc-2c963f66afa6" }
+  "result": { "Id": /* <new Guid> */, "Username": "example string", "Email": "example string", "Karma": 1, "Level": 1, "XP": 1, "Model3D": "example string", "UmaJson": "example string", "Portrait": "example string", "DOB": "2026-01-01T00:00:00Z", "Address": "example string", "Town": "example string", "County": "example string", "Country": "example string", "Postcode": "example string", "Landline": "example string", "Mobile": "example string", "Achievements": [{ "AchievementEarnt": "2026-01-01T00:00:00Z", "AchievementType": {  }, "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Description": "example string", "KarmaSource": { "Score": 1.0 }, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "Name": "example string", "Provider": { "Score": 1.0 }, "WebLink": "example string" }], "Attributes": { "Dexterity": 1, "Intelligence": 1, "Magic": 1, "Speed": 1, "Strength": 1, "Toughness": 1, "Wisdom": 1, "Vitality": 1, "Endurance": 1 }, "Aura": { "Progress": 1, "Brightness": 1, "Size": 1, "ColourBlue": 1, "ColourGreen": 1, "ColourRed": 1, "Level": 1, "Value": 1 }, "Chakras": { "Crown": {  }, "Heart": {  }, "Root": {  }, "Sacral": {  }, "SolarPlexus": {  }, "ThirdEye": {  }, "Throat": {  } }, "DimensionLevelIds": /* <IDictionary<DimensionLevel, Guid>> */, "DimensionLevels": /* <IDictionary<DimensionLevel, IHolon>> */, "FavouriteColour": /* <ConsoleColor> */, "GeneKeys": [{ "Description": "example string", "Gift": "example string", "Name": "example string", "Shadow": "example string", "Sidhi": "example string" }], "Gifts": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GiftEarnt": "2026-01-01T00:00:00Z", "GiftType": {}, "KarmaSource": {}, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "Provider": {}, "WebLink": "example string" }], "HeartRateData": [{ "HeartRateValue": 1, "TimeStamp": "2026-01-01T00:00:00Z" }], "HumanDesign": { "Type": "example string" }, "Inventory": [{ "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": { "<string>": {} } }], "KarmaAkashicRecords": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Date": "2026-01-01T00:00:00Z", "Karma": 1, "KarmaEarntOrLost": { "Score": 1.0 }, "KarmaSource": {}, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "KarmaTypeNegative": { "Score": 1.0 }, "KarmaTypePositive": { "Score": 1.0 }, "Provider": {}, "TotalKarma": 1, "WebLink": "example string" }], "Omniverse": { "GreatGrandSuperStar": {  }, "Dimensions": { "EighthDimension": {  }, "NinthDimension": {  }, "TenthDimension": {  }, "EleventhDimension": {  }, "TwelfthDimension": {  }, "CustomDimensions": [{ "DimensionLevel": {  } }] }, "Multiverses": [{ "GrandSuperStar": { "Stars": [ /* <I> */ ] }, "Dimensions": { "FirstDimension": { "Universe": { "Dimensions": [], "GalaxyClusters": [{ "Galaxies": [{ "SuperStar": { "Stars": [{ "Luminosity": 1, "StarType": {  }, "StarClassification": {  }, "StarBinaryType": {  } }] }, "SolarSystems": [{ "Star": {}, "Planets": [{ "Moons": [{  }] }], "Asteroids": [{  }], "Comets": [{  }], "Meteroids": [{  }] }], "Nebulas": [{  }], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [] }], "SolarSystems": [], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [], "IsSuperCluster": true }], "SolarSystems": [], "Nebulas": [], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [] } }, "SecondDimension": { "Universe": {} }, "ThirdDimension": { "UniversePrime": {}, "MagicVerse": {}, "ParallelUniverses": [] }, "FourthDimension": { "Universe": {} }, "FifthDimension": { "Universe": {} }, "SixthDimension": { "Universe": {} }, "SeventhDimension": { "Universe": {} }, "CustomDimensions": [] } }] }, "Skills": { "Computers": 1, "Engineering": 1, "Farming": 1, "FireStarting": 1, "Fishing": 1, "Languages": 1, "Meditation": 1, "MeleeCombat": 1, "Mindfulness": 1, "Negotiating": 1, "RangedCombat": 1, "Research": 1, "Science": 1, "SpellCasting": 1, "Translating": 1, "Yoga": 1 }, "Spells": [{ "Description": "example string", "FireDamage": 1, "HealingPower": 1, "IceDamage": 1, "LightningDamage": 1, "Name": "example string", "PoisonDamage": 1, "WaterDamage": 1, "WindDamage": 1 }], "STARCLIColour": /* <ConsoleColor> */, "Stats": { "Energy": { "Current": 1, "Max": 1 }, "HP": {}, "Mana": {}, "Stamina": {} }, "SuperPowers": { "AstralProjection": 1, "BioLocatation": 1, "Flight": 1, "FreezeBreath": 1, "HeatVision": 1, "Invulnerability": 1, "RemoteViewing": 1, "SuperSpeed": 1, "SuperStrength": 1, "Telekinesis": 1, "Telepathy": 1, "Teleportation": 1, "XRayVision": 1 }, "ActiveQuestId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ActiveObjectiveId": "3fa85f64-5717-4562-b3fc-2c963f66afa6" }
 }
 ```
 
@@ -3050,7 +3162,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "Id": /* <new Guid> */, "Username": "example string", "Email": "example string", "Karma": 1, "Level": 1, "XP": 1, "Model3D": "example string", "UmaJson": "example string", "Portrait": "example string", "DOB": "2026-01-01T00:00:00Z", "Address": "example string", "Town": "example string", "County": "example string", "Country": "example string", "Postcode": "example string", "Landline": "example string", "Mobile": "example string", "Achievements": [{ "AchievementEarnt": "2026-01-01T00:00:00Z", "AchievementType": /* <KarmaTypePositive> */, "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Description": "example string", "KarmaSource": /* <EnumValue<KarmaSourceType>> */, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "Name": "example string", "Provider": /* <EnumValue<ProviderType>> */, "WebLink": "example string" }], "Attributes": { "Dexterity": 1, "Intelligence": 1, "Magic": 1, "Speed": 1, "Strength": 1, "Toughness": 1, "Wisdom": 1, "Vitality": 1, "Endurance": 1 }, "Aura": { "Progress": 1, "Brightness": 1, "Size": 1, "ColourBlue": 1, "ColourGreen": 1, "ColourRed": 1, "Level": 1, "Value": 1 }, "Chakras": { "Crown": {  }, "Heart": {  }, "Root": {  }, "Sacral": {  }, "SolarPlexus": {  }, "ThirdEye": {  }, "Throat": {  } }, "DimensionLevelIds": /* <IDictionary<DimensionLevel, Guid>> */, "DimensionLevels": /* <IDictionary<DimensionLevel, IHolon>> */, "FavouriteColour": /* <ConsoleColor> */, "GeneKeys": [{ "Description": "example string", "Gift": "example string", "Name": "example string", "Shadow": "example string", "Sidhi": "example string" }], "Gifts": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GiftEarnt": "2026-01-01T00:00:00Z", "GiftType": /* <KarmaTypePositive> */, "KarmaSource": /* <EnumValue<KarmaSourceType>> */, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "Provider": /* <EnumValue<ProviderType>> */, "WebLink": "example string" }], "HeartRateData": [{ "HeartRateValue": 1, "TimeStamp": "2026-01-01T00:00:00Z" }], "HumanDesign": { "Type": "example string" }, "Inventory": [{ "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": /* <Dictionary<string, object>> */ }], "KarmaAkashicRecords": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Date": "2026-01-01T00:00:00Z", "Karma": 1, "KarmaEarntOrLost": /* <EnumValue<KarmaEarntOrLost>> */, "KarmaSource": /* <EnumValue<KarmaSourceType>> */, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "KarmaTypeNegative": /* <EnumValue<KarmaTypeNegative>> */, "KarmaTypePositive": /* <EnumValue<KarmaTypePositive>> */, "Provider": /* <EnumValue<ProviderType>> */, "TotalKarma": 1, "WebLink": "example string" }], "Omniverse": { "GreatGrandSuperStar": {  }, "Dimensions": { "EighthDimension": {  }, "NinthDimension": {  }, "TenthDimension": {  }, "EleventhDimension": {  }, "TwelfthDimension": {  }, "CustomDimensions": [{ "DimensionLevel": {  } }] }, "Multiverses": [{ "GrandSuperStar": { "Stars": [ /* <I> */ ] }, "Dimensions": { "FirstDimension": { "Universe": { "Dimensions": [], "GalaxyClusters": [{ "Galaxies": [{ "SuperStar": { "Stars": [{ "Luminosity": 1, "StarType": {  }, "StarClassification": {  }, "StarBinaryType": {  } }] }, "SolarSystems": [{ "Star": {}, "Planets": [{ "Moons": [{  }] }], "Asteroids": [{  }], "Comets": [{  }], "Meteroids": [{  }] }], "Nebulas": [{  }], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [] }], "SolarSystems": [], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [], "IsSuperCluster": true }], "SolarSystems": [], "Nebulas": [], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [] } }, "SecondDimension": { "Universe": {} }, "ThirdDimension": { "UniversePrime": {}, "MagicVerse": {}, "ParallelUniverses": [] }, "FourthDimension": { "Universe": {} }, "FifthDimension": { "Universe": {} }, "SixthDimension": { "Universe": {} }, "SeventhDimension": { "Universe": {} }, "CustomDimensions": [] } }] }, "Skills": { "Computers": 1, "Engineering": 1, "Farming": 1, "FireStarting": 1, "Fishing": 1, "Languages": 1, "Meditation": 1, "MeleeCombat": 1, "Mindfulness": 1, "Negotiating": 1, "RangedCombat": 1, "Research": 1, "Science": 1, "SpellCasting": 1, "Translating": 1, "Yoga": 1 }, "Spells": [{ "Description": "example string", "FireDamage": 1, "HealingPower": 1, "IceDamage": 1, "LightningDamage": 1, "Name": "example string", "PoisonDamage": 1, "WaterDamage": 1, "WindDamage": 1 }], "STARCLIColour": /* <ConsoleColor> */, "Stats": { "Energy": { "Current": 1, "Max": 1 }, "HP": {}, "Mana": {}, "Stamina": {} }, "SuperPowers": { "AstralProjection": 1, "BioLocatation": 1, "Flight": 1, "FreezeBreath": 1, "HeatVision": 1, "Invulnerability": 1, "RemoteViewing": 1, "SuperSpeed": 1, "SuperStrength": 1, "Telekinesis": 1, "Telepathy": 1, "Teleportation": 1, "XRayVision": 1 }, "ActiveQuestId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ActiveObjectiveId": "3fa85f64-5717-4562-b3fc-2c963f66afa6" }
+  "result": { "Id": /* <new Guid> */, "Username": "example string", "Email": "example string", "Karma": 1, "Level": 1, "XP": 1, "Model3D": "example string", "UmaJson": "example string", "Portrait": "example string", "DOB": "2026-01-01T00:00:00Z", "Address": "example string", "Town": "example string", "County": "example string", "Country": "example string", "Postcode": "example string", "Landline": "example string", "Mobile": "example string", "Achievements": [{ "AchievementEarnt": "2026-01-01T00:00:00Z", "AchievementType": {  }, "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Description": "example string", "KarmaSource": { "Score": 1.0 }, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "Name": "example string", "Provider": { "Score": 1.0 }, "WebLink": "example string" }], "Attributes": { "Dexterity": 1, "Intelligence": 1, "Magic": 1, "Speed": 1, "Strength": 1, "Toughness": 1, "Wisdom": 1, "Vitality": 1, "Endurance": 1 }, "Aura": { "Progress": 1, "Brightness": 1, "Size": 1, "ColourBlue": 1, "ColourGreen": 1, "ColourRed": 1, "Level": 1, "Value": 1 }, "Chakras": { "Crown": {  }, "Heart": {  }, "Root": {  }, "Sacral": {  }, "SolarPlexus": {  }, "ThirdEye": {  }, "Throat": {  } }, "DimensionLevelIds": /* <IDictionary<DimensionLevel, Guid>> */, "DimensionLevels": /* <IDictionary<DimensionLevel, IHolon>> */, "FavouriteColour": /* <ConsoleColor> */, "GeneKeys": [{ "Description": "example string", "Gift": "example string", "Name": "example string", "Shadow": "example string", "Sidhi": "example string" }], "Gifts": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GiftEarnt": "2026-01-01T00:00:00Z", "GiftType": {}, "KarmaSource": {}, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "Provider": {}, "WebLink": "example string" }], "HeartRateData": [{ "HeartRateValue": 1, "TimeStamp": "2026-01-01T00:00:00Z" }], "HumanDesign": { "Type": "example string" }, "Inventory": [{ "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": { "<string>": {} } }], "KarmaAkashicRecords": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Date": "2026-01-01T00:00:00Z", "Karma": 1, "KarmaEarntOrLost": { "Score": 1.0 }, "KarmaSource": {}, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "KarmaTypeNegative": { "Score": 1.0 }, "KarmaTypePositive": { "Score": 1.0 }, "Provider": {}, "TotalKarma": 1, "WebLink": "example string" }], "Omniverse": { "GreatGrandSuperStar": {  }, "Dimensions": { "EighthDimension": {  }, "NinthDimension": {  }, "TenthDimension": {  }, "EleventhDimension": {  }, "TwelfthDimension": {  }, "CustomDimensions": [{ "DimensionLevel": {  } }] }, "Multiverses": [{ "GrandSuperStar": { "Stars": [ /* <I> */ ] }, "Dimensions": { "FirstDimension": { "Universe": { "Dimensions": [], "GalaxyClusters": [{ "Galaxies": [{ "SuperStar": { "Stars": [{ "Luminosity": 1, "StarType": {  }, "StarClassification": {  }, "StarBinaryType": {  } }] }, "SolarSystems": [{ "Star": {}, "Planets": [{ "Moons": [{  }] }], "Asteroids": [{  }], "Comets": [{  }], "Meteroids": [{  }] }], "Nebulas": [{  }], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [] }], "SolarSystems": [], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [], "IsSuperCluster": true }], "SolarSystems": [], "Nebulas": [], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [] } }, "SecondDimension": { "Universe": {} }, "ThirdDimension": { "UniversePrime": {}, "MagicVerse": {}, "ParallelUniverses": [] }, "FourthDimension": { "Universe": {} }, "FifthDimension": { "Universe": {} }, "SixthDimension": { "Universe": {} }, "SeventhDimension": { "Universe": {} }, "CustomDimensions": [] } }] }, "Skills": { "Computers": 1, "Engineering": 1, "Farming": 1, "FireStarting": 1, "Fishing": 1, "Languages": 1, "Meditation": 1, "MeleeCombat": 1, "Mindfulness": 1, "Negotiating": 1, "RangedCombat": 1, "Research": 1, "Science": 1, "SpellCasting": 1, "Translating": 1, "Yoga": 1 }, "Spells": [{ "Description": "example string", "FireDamage": 1, "HealingPower": 1, "IceDamage": 1, "LightningDamage": 1, "Name": "example string", "PoisonDamage": 1, "WaterDamage": 1, "WindDamage": 1 }], "STARCLIColour": /* <ConsoleColor> */, "Stats": { "Energy": { "Current": 1, "Max": 1 }, "HP": {}, "Mana": {}, "Stamina": {} }, "SuperPowers": { "AstralProjection": 1, "BioLocatation": 1, "Flight": 1, "FreezeBreath": 1, "HeatVision": 1, "Invulnerability": 1, "RemoteViewing": 1, "SuperSpeed": 1, "SuperStrength": 1, "Telekinesis": 1, "Telepathy": 1, "Teleportation": 1, "XRayVision": 1 }, "ActiveQuestId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ActiveObjectiveId": "3fa85f64-5717-4562-b3fc-2c963f66afa6" }
 }
 ```
 
@@ -3064,7 +3176,7 @@ Link's a given telosAccount to the given avatar.
 
 **Request**
 
-Body type: `LinkProviderKeyToAvatar` _(type definition not found - field list unavailable)_
+Body type: `LinkProviderKeyToAvatar` _(type definition not found in the OASIS2 source - field list unavailable)_
 
 **Response**
 
@@ -3129,7 +3241,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "Id": /* <new Guid> */, "Username": "example string", "Email": "example string", "Karma": 1, "Level": 1, "XP": 1, "Model3D": "example string", "UmaJson": "example string", "Portrait": "example string", "DOB": "2026-01-01T00:00:00Z", "Address": "example string", "Town": "example string", "County": "example string", "Country": "example string", "Postcode": "example string", "Landline": "example string", "Mobile": "example string", "Achievements": [{ "AchievementEarnt": "2026-01-01T00:00:00Z", "AchievementType": /* <KarmaTypePositive> */, "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Description": "example string", "KarmaSource": /* <EnumValue<KarmaSourceType>> */, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "Name": "example string", "Provider": /* <EnumValue<ProviderType>> */, "WebLink": "example string" }], "Attributes": { "Dexterity": 1, "Intelligence": 1, "Magic": 1, "Speed": 1, "Strength": 1, "Toughness": 1, "Wisdom": 1, "Vitality": 1, "Endurance": 1 }, "Aura": { "Progress": 1, "Brightness": 1, "Size": 1, "ColourBlue": 1, "ColourGreen": 1, "ColourRed": 1, "Level": 1, "Value": 1 }, "Chakras": { "Crown": {  }, "Heart": {  }, "Root": {  }, "Sacral": {  }, "SolarPlexus": {  }, "ThirdEye": {  }, "Throat": {  } }, "DimensionLevelIds": /* <IDictionary<DimensionLevel, Guid>> */, "DimensionLevels": /* <IDictionary<DimensionLevel, IHolon>> */, "FavouriteColour": /* <ConsoleColor> */, "GeneKeys": [{ "Description": "example string", "Gift": "example string", "Name": "example string", "Shadow": "example string", "Sidhi": "example string" }], "Gifts": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GiftEarnt": "2026-01-01T00:00:00Z", "GiftType": /* <KarmaTypePositive> */, "KarmaSource": /* <EnumValue<KarmaSourceType>> */, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "Provider": /* <EnumValue<ProviderType>> */, "WebLink": "example string" }], "HeartRateData": [{ "HeartRateValue": 1, "TimeStamp": "2026-01-01T00:00:00Z" }], "HumanDesign": { "Type": "example string" }, "Inventory": [{ "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": /* <Dictionary<string, object>> */ }], "KarmaAkashicRecords": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Date": "2026-01-01T00:00:00Z", "Karma": 1, "KarmaEarntOrLost": /* <EnumValue<KarmaEarntOrLost>> */, "KarmaSource": /* <EnumValue<KarmaSourceType>> */, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "KarmaTypeNegative": /* <EnumValue<KarmaTypeNegative>> */, "KarmaTypePositive": /* <EnumValue<KarmaTypePositive>> */, "Provider": /* <EnumValue<ProviderType>> */, "TotalKarma": 1, "WebLink": "example string" }], "Omniverse": { "GreatGrandSuperStar": {  }, "Dimensions": { "EighthDimension": {  }, "NinthDimension": {  }, "TenthDimension": {  }, "EleventhDimension": {  }, "TwelfthDimension": {  }, "CustomDimensions": [{ "DimensionLevel": {  } }] }, "Multiverses": [{ "GrandSuperStar": { "Stars": [ /* <I> */ ] }, "Dimensions": { "FirstDimension": { "Universe": { "Dimensions": [], "GalaxyClusters": [{ "Galaxies": [{ "SuperStar": { "Stars": [{ "Luminosity": 1, "StarType": {  }, "StarClassification": {  }, "StarBinaryType": {  } }] }, "SolarSystems": [{ "Star": {}, "Planets": [{ "Moons": [{  }] }], "Asteroids": [{  }], "Comets": [{  }], "Meteroids": [{  }] }], "Nebulas": [{  }], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [] }], "SolarSystems": [], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [], "IsSuperCluster": true }], "SolarSystems": [], "Nebulas": [], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [] } }, "SecondDimension": { "Universe": {} }, "ThirdDimension": { "UniversePrime": {}, "MagicVerse": {}, "ParallelUniverses": [] }, "FourthDimension": { "Universe": {} }, "FifthDimension": { "Universe": {} }, "SixthDimension": { "Universe": {} }, "SeventhDimension": { "Universe": {} }, "CustomDimensions": [] } }] }, "Skills": { "Computers": 1, "Engineering": 1, "Farming": 1, "FireStarting": 1, "Fishing": 1, "Languages": 1, "Meditation": 1, "MeleeCombat": 1, "Mindfulness": 1, "Negotiating": 1, "RangedCombat": 1, "Research": 1, "Science": 1, "SpellCasting": 1, "Translating": 1, "Yoga": 1 }, "Spells": [{ "Description": "example string", "FireDamage": 1, "HealingPower": 1, "IceDamage": 1, "LightningDamage": 1, "Name": "example string", "PoisonDamage": 1, "WaterDamage": 1, "WindDamage": 1 }], "STARCLIColour": /* <ConsoleColor> */, "Stats": { "Energy": { "Current": 1, "Max": 1 }, "HP": {}, "Mana": {}, "Stamina": {} }, "SuperPowers": { "AstralProjection": 1, "BioLocatation": 1, "Flight": 1, "FreezeBreath": 1, "HeatVision": 1, "Invulnerability": 1, "RemoteViewing": 1, "SuperSpeed": 1, "SuperStrength": 1, "Telekinesis": 1, "Telepathy": 1, "Teleportation": 1, "XRayVision": 1 }, "ActiveQuestId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ActiveObjectiveId": "3fa85f64-5717-4562-b3fc-2c963f66afa6" }
+  "result": { "Id": /* <new Guid> */, "Username": "example string", "Email": "example string", "Karma": 1, "Level": 1, "XP": 1, "Model3D": "example string", "UmaJson": "example string", "Portrait": "example string", "DOB": "2026-01-01T00:00:00Z", "Address": "example string", "Town": "example string", "County": "example string", "Country": "example string", "Postcode": "example string", "Landline": "example string", "Mobile": "example string", "Achievements": [{ "AchievementEarnt": "2026-01-01T00:00:00Z", "AchievementType": {  }, "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Description": "example string", "KarmaSource": { "Score": 1.0 }, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "Name": "example string", "Provider": { "Score": 1.0 }, "WebLink": "example string" }], "Attributes": { "Dexterity": 1, "Intelligence": 1, "Magic": 1, "Speed": 1, "Strength": 1, "Toughness": 1, "Wisdom": 1, "Vitality": 1, "Endurance": 1 }, "Aura": { "Progress": 1, "Brightness": 1, "Size": 1, "ColourBlue": 1, "ColourGreen": 1, "ColourRed": 1, "Level": 1, "Value": 1 }, "Chakras": { "Crown": {  }, "Heart": {  }, "Root": {  }, "Sacral": {  }, "SolarPlexus": {  }, "ThirdEye": {  }, "Throat": {  } }, "DimensionLevelIds": /* <IDictionary<DimensionLevel, Guid>> */, "DimensionLevels": /* <IDictionary<DimensionLevel, IHolon>> */, "FavouriteColour": /* <ConsoleColor> */, "GeneKeys": [{ "Description": "example string", "Gift": "example string", "Name": "example string", "Shadow": "example string", "Sidhi": "example string" }], "Gifts": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "GiftEarnt": "2026-01-01T00:00:00Z", "GiftType": {}, "KarmaSource": {}, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "Provider": {}, "WebLink": "example string" }], "HeartRateData": [{ "HeartRateValue": 1, "TimeStamp": "2026-01-01T00:00:00Z" }], "HumanDesign": { "Type": "example string" }, "Inventory": [{ "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": { "<string>": {} } }], "KarmaAkashicRecords": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Date": "2026-01-01T00:00:00Z", "Karma": 1, "KarmaEarntOrLost": { "Score": 1.0 }, "KarmaSource": {}, "KarmaSourceDesc": "example string", "KarmaSourceTitle": "example string", "KarmaTypeNegative": { "Score": 1.0 }, "KarmaTypePositive": { "Score": 1.0 }, "Provider": {}, "TotalKarma": 1, "WebLink": "example string" }], "Omniverse": { "GreatGrandSuperStar": {  }, "Dimensions": { "EighthDimension": {  }, "NinthDimension": {  }, "TenthDimension": {  }, "EleventhDimension": {  }, "TwelfthDimension": {  }, "CustomDimensions": [{ "DimensionLevel": {  } }] }, "Multiverses": [{ "GrandSuperStar": { "Stars": [ /* <I> */ ] }, "Dimensions": { "FirstDimension": { "Universe": { "Dimensions": [], "GalaxyClusters": [{ "Galaxies": [{ "SuperStar": { "Stars": [{ "Luminosity": 1, "StarType": {  }, "StarClassification": {  }, "StarBinaryType": {  } }] }, "SolarSystems": [{ "Star": {}, "Planets": [{ "Moons": [{  }] }], "Asteroids": [{  }], "Comets": [{  }], "Meteroids": [{  }] }], "Nebulas": [{  }], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [] }], "SolarSystems": [], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [], "IsSuperCluster": true }], "SolarSystems": [], "Nebulas": [], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [] } }, "SecondDimension": { "Universe": {} }, "ThirdDimension": { "UniversePrime": {}, "MagicVerse": {}, "ParallelUniverses": [] }, "FourthDimension": { "Universe": {} }, "FifthDimension": { "Universe": {} }, "SixthDimension": { "Universe": {} }, "SeventhDimension": { "Universe": {} }, "CustomDimensions": [] } }] }, "Skills": { "Computers": 1, "Engineering": 1, "Farming": 1, "FireStarting": 1, "Fishing": 1, "Languages": 1, "Meditation": 1, "MeleeCombat": 1, "Mindfulness": 1, "Negotiating": 1, "RangedCombat": 1, "Research": 1, "Science": 1, "SpellCasting": 1, "Translating": 1, "Yoga": 1 }, "Spells": [{ "Description": "example string", "FireDamage": 1, "HealingPower": 1, "IceDamage": 1, "LightningDamage": 1, "Name": "example string", "PoisonDamage": 1, "WaterDamage": 1, "WindDamage": 1 }], "STARCLIColour": /* <ConsoleColor> */, "Stats": { "Energy": { "Current": 1, "Max": 1 }, "HP": {}, "Mana": {}, "Stamina": {} }, "SuperPowers": { "AstralProjection": 1, "BioLocatation": 1, "Flight": 1, "FreezeBreath": 1, "HeatVision": 1, "Invulnerability": 1, "RemoteViewing": 1, "SuperSpeed": 1, "SuperStrength": 1, "Telekinesis": 1, "Telepathy": 1, "Teleportation": 1, "XRayVision": 1 }, "ActiveQuestId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ActiveObjectiveId": "3fa85f64-5717-4562-b3fc-2c963f66afa6" }
 }
 ```
 
@@ -3149,20 +3261,31 @@ Route parameters:
 
 **Request**
 
-Body type: `UpdateKeyRequest` _(type definition not found - field list unavailable)_
+Body type: `UpdateKeyRequest`
+
+| Field | Type |
+| --- | --- |
+| `Name` | `string` |
+| `Type` | `string` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `KeyInfo` _(type definition not found - field list unavailable)_
+`result` type: `KeyInfo`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `MultiHash` |
+| `Name` | `string` |
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.keys.updateKey({
     keyId: '<keyId>',
-    /* ...request body fields */
+    name: "example string",
+    type: "example string"
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -3174,7 +3297,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <KeyInfo> */
+  "result": { "Id": /* <MultiHash> */, "Name": "example string" }
 }
 ```
 

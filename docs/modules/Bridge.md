@@ -32,20 +32,19 @@ Route parameters:
 
 **Request**
 
-Body type: `CancellationToken` _(type definition not found - field list unavailable)_
+No request body.
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IActionResult` _(type definition not found - field list unavailable)_
+`result` type: `IActionResult` (not part of the request/response payload).
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.bridge.checkOrderBalance({
-    orderId: '<orderId>',
-    /* ...request body fields */
+    orderId: '<orderId>'
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -57,7 +56,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IActionResult> */
+  "result": null
 }
 ```
 
@@ -98,13 +97,12 @@ Body type: `CreateBridgeOrderRequest`
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IActionResult` _(type definition not found - field list unavailable)_
+`result` type: `IActionResult` (not part of the request/response payload).
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.bridge.createOrder({
-    cancellationToken: '<cancellationToken>',
     fromToken: "example string",
     toToken: "example string",
     fromChain: "example string",
@@ -134,7 +132,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IActionResult> */
+  "result": null
 }
 ```
 
@@ -175,13 +173,12 @@ Body type: `CreateBridgeOrderRequest`
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IActionResult` _(type definition not found - field list unavailable)_
+`result` type: `IActionResult` (not part of the request/response payload).
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.bridge.createPrivateOrder({
-    cancellationToken: '<cancellationToken>',
     fromToken: "example string",
     toToken: "example string",
     fromChain: "example string",
@@ -211,7 +208,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IActionResult> */
+  "result": null
 }
 ```
 
@@ -225,21 +222,25 @@ Gets the current exchange rate between two tokens. Optimized for low-latency rea
 
 **Request**
 
-Body type: `CancellationToken` _(type definition not found - field list unavailable)_
+Query parameters:
+
+| Field | Type |
+| --- | --- |
+| `fromToken` | `string` |
+| `toToken` | `string` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IActionResult` _(type definition not found - field list unavailable)_
+`result` type: `IActionResult` (not part of the request/response payload).
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.bridge.getExchangeRate({
     fromToken: 'example string',
-    toToken: 'example string',
-    /* ...request body fields */
+    toToken: 'example string'
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -251,7 +252,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IActionResult> */
+  "result": null
 }
 ```
 
@@ -271,7 +272,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `object`
+`result` type: `object[]`
 
 **Example**
 
@@ -287,7 +288,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": {}
+  "result": [{}]
 }
 ```
 
@@ -318,13 +319,12 @@ Body type: `ViewingKeyAuditEntry`
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IActionResult` _(type definition not found - field list unavailable)_
+`result` type: `IActionResult` (not part of the request/response payload).
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.bridge.recordViewingKey({
-    cancellationToken: '<cancellationToken>',
     transactionId: "example string",
     viewingKey: "example string",
     sourceChain: "example string",
@@ -344,7 +344,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IActionResult> */
+  "result": null
 }
 ```
 
@@ -369,13 +369,12 @@ Body type: `ProofVerificationRequest`
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IActionResult` _(type definition not found - field list unavailable)_
+`result` type: `IActionResult` (not part of the request/response payload).
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.bridge.verifyProof({
-    cancellationToken: '<cancellationToken>',
     proofPayload: "example string",
     proofType: "example string"
   });
@@ -389,7 +388,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IActionResult> */
+  "result": null
 }
 ```
 

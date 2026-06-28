@@ -738,7 +738,7 @@
         "requestType": null,
         "responseType": {
           "wrapper": "OASISHttpResponseMessage",
-          "inner": "NextGenSoftware.OASIS.API.Core.Objects.Avatar.AvatarSessionManagement"
+          "inner": "AvatarSessionManagement"
         },
         "summary": "Get all active sessions for a specific avatar (OASIS SSO System)"
       },
@@ -789,7 +789,7 @@
         "requestType": "CreateSessionRequest",
         "responseType": {
           "wrapper": "OASISHttpResponseMessage",
-          "inner": "NextGenSoftware.OASIS.API.Core.Objects.Avatar.AvatarSession"
+          "inner": "AvatarSession"
         },
         "summary": "Create a new session for an avatar (OASIS SSO System)"
       },
@@ -810,7 +810,7 @@
         "requestType": "UpdateSessionRequest",
         "responseType": {
           "wrapper": "OASISHttpResponseMessage",
-          "inner": "NextGenSoftware.OASIS.API.Core.Objects.Avatar.AvatarSession"
+          "inner": "AvatarSession"
         },
         "summary": "Update an existing session (OASIS SSO System)"
       },
@@ -827,7 +827,7 @@
         "requestType": null,
         "responseType": {
           "wrapper": "OASISHttpResponseMessage",
-          "inner": "NextGenSoftware.OASIS.API.Core.Objects.Avatar.AvatarSessionStats"
+          "inner": "AvatarSessionStats"
         },
         "summary": "Get session statistics for an avatar (OASIS SSO System)"
       },
@@ -876,7 +876,10 @@
           "wrapper": "OASISHttpResponseMessage",
           "inner": "bool"
         },
-        "summary": "Decrements an item's quantity in the avatar's inventory. quantity must be 1 or greater. The item is removed only when its quantity reaches 0 after the decrement."
+        "summary": "Decrements an item's quantity in the avatar's inventory. quantity must be 1 or greater. The item is removed only when its quantity reaches 0 after the decrement.",
+        "query": [
+          "quantity"
+        ]
       },
       "AvatarHasItem": {
         "verb": "GET",
@@ -911,7 +914,10 @@
           "wrapper": "OASISHttpResponseMessage",
           "inner": "bool"
         },
-        "summary": "Checks if the avatar has a specific item by name in their inventory."
+        "summary": "Checks if the avatar has a specific item by name in their inventory.",
+        "query": [
+          "itemName"
+        ]
       },
       "SearchAvatarInventory": {
         "verb": "GET",
@@ -929,7 +935,10 @@
           "wrapper": "OASISHttpResponseMessage",
           "inner": "IEnumerable<IInventoryItem>"
         },
-        "summary": "Searches the avatar's inventory by name or description."
+        "summary": "Searches the avatar's inventory by name or description.",
+        "query": [
+          "searchTerm"
+        ]
       },
       "GetAvatarInventoryItem": {
         "verb": "GET",
@@ -1033,7 +1042,11 @@
           "wrapper": null,
           "inner": "IActionResult"
         },
-        "summary": "Gets the current exchange rate between two tokens. Optimized for low-latency real-time rate lookups."
+        "summary": "Gets the current exchange rate between two tokens. Optimized for low-latency real-time rate lookups.",
+        "query": [
+          "fromToken",
+          "toToken"
+        ]
       },
       "GetSupportedNetworks": {
         "verb": "GET",
@@ -1042,8 +1055,8 @@
         "queryParams": [],
         "requestType": null,
         "responseType": {
-          "wrapper": "IActionResult",
-          "inner": "object"
+          "wrapper": null,
+          "inner": "object[]"
         },
         "summary": "Gets supported networks for bridge operations."
       },
@@ -1122,7 +1135,10 @@
           "wrapper": "OASISResult",
           "inner": "string"
         },
-        "summary": "Starts a new chat session. PREVIEW - COMING SOON..."
+        "summary": "Starts a new chat session. PREVIEW - COMING SOON...",
+        "query": [
+          "sessionName"
+        ]
       },
       "SendMessage": {
         "verb": "POST",
@@ -1145,7 +1161,8 @@
           "wrapper": "OASISResult",
           "inner": "string"
         },
-        "summary": "Send a message in a chat session"
+        "summary": "Send a message in a chat session",
+        "bodyParam": "message"
       },
       "GetChatHistory": {
         "verb": "GET",
@@ -1173,7 +1190,11 @@
           "wrapper": "OASISResult",
           "inner": "List<ChatMessage>"
         },
-        "summary": "Get chat session history"
+        "summary": "Get chat session history",
+        "query": [
+          "limit",
+          "offset"
+        ]
       }
     }
   },
@@ -1218,13 +1239,22 @@
             "type": "Guid"
           }
         ],
-        "queryParams": [],
-        "requestType": "ProviderType?",
+        "queryParams": [
+          {
+            "name": "providerType",
+            "type": "ProviderType?",
+            "optional": true
+          }
+        ],
+        "requestType": null,
         "responseType": {
           "wrapper": "OASISHttpResponseMessage",
           "inner": "IClan"
         },
-        "summary": "Load a clan by Id.</summary>"
+        "summary": "Load a clan by Id.</summary>",
+        "query": [
+          "providerType"
+        ]
       },
       "LoadByName": {
         "verb": "GET",
@@ -1235,14 +1265,23 @@
             "name": "name",
             "type": "string",
             "optional": false
+          },
+          {
+            "name": "providerType",
+            "type": "ProviderType?",
+            "optional": true
           }
         ],
-        "requestType": "ProviderType?",
+        "requestType": null,
         "responseType": {
           "wrapper": "OASISHttpResponseMessage",
           "inner": "IClan"
         },
-        "summary": "Load a clan by name (case-insensitive).</summary>"
+        "summary": "Load a clan by name (case-insensitive).</summary>",
+        "query": [
+          "name",
+          "providerType"
+        ]
       },
       "List": {
         "verb": "GET",
@@ -1250,17 +1289,26 @@
         "routeParams": [],
         "queryParams": [
           {
+            "name": "ownerAvatarId",
+            "type": "Guid?",
+            "optional": true
+          },
+          {
             "name": "providerType",
             "type": "ProviderType?",
             "optional": true
           }
         ],
-        "requestType": "Guid?",
+        "requestType": null,
         "responseType": {
           "wrapper": "OASISHttpResponseMessage",
           "inner": "IEnumerable<IClan>"
         },
-        "summary": "List all clans, optionally filtered by owner avatar Id.</summary>"
+        "summary": "List all clans, optionally filtered by owner avatar Id.</summary>",
+        "query": [
+          "ownerAvatarId",
+          "providerType"
+        ]
       },
       "Delete": {
         "verb": "DELETE",
@@ -1271,13 +1319,22 @@
             "type": "Guid"
           }
         ],
-        "queryParams": [],
-        "requestType": "ProviderType?",
+        "queryParams": [
+          {
+            "name": "providerType",
+            "type": "ProviderType?",
+            "optional": true
+          }
+        ],
+        "requestType": null,
         "responseType": {
           "wrapper": "OASISHttpResponseMessage",
           "inner": "bool"
         },
-        "summary": "Delete a clan. Typically only the owner may delete (idempotent if not found).</summary>"
+        "summary": "Delete a clan. Typically only the owner may delete (idempotent if not found).</summary>",
+        "query": [
+          "providerType"
+        ]
       },
       "AddAvatarToClan": {
         "verb": "POST",
@@ -1292,13 +1349,22 @@
             "type": "Guid"
           }
         ],
-        "queryParams": [],
-        "requestType": "ProviderType?",
+        "queryParams": [
+          {
+            "name": "providerType",
+            "type": "ProviderType?",
+            "optional": true
+          }
+        ],
+        "requestType": null,
         "responseType": {
           "wrapper": "OASISHttpResponseMessage",
           "inner": "bool"
         },
-        "summary": "Add an avatar to a clan as a member.</summary>"
+        "summary": "Add an avatar to a clan as a member.</summary>",
+        "query": [
+          "providerType"
+        ]
       },
       "RemoveAvatarFromClan": {
         "verb": "DELETE",
@@ -1313,13 +1379,22 @@
             "type": "Guid"
           }
         ],
-        "queryParams": [],
-        "requestType": "ProviderType?",
+        "queryParams": [
+          {
+            "name": "providerType",
+            "type": "ProviderType?",
+            "optional": true
+          }
+        ],
+        "requestType": null,
         "responseType": {
           "wrapper": "OASISHttpResponseMessage",
           "inner": "bool"
         },
-        "summary": "Remove an avatar from a clan. Owner cannot be removed.</summary>"
+        "summary": "Remove an avatar from a clan. Owner cannot be removed.</summary>",
+        "query": [
+          "providerType"
+        ]
       },
       "GetMembers": {
         "verb": "GET",
@@ -1330,13 +1405,22 @@
             "type": "Guid"
           }
         ],
-        "queryParams": [],
-        "requestType": "ProviderType?",
+        "queryParams": [
+          {
+            "name": "providerType",
+            "type": "ProviderType?",
+            "optional": true
+          }
+        ],
+        "requestType": null,
         "responseType": {
           "wrapper": "OASISHttpResponseMessage",
           "inner": "IEnumerable<Guid>"
         },
-        "summary": "Get clan member avatar Ids.</summary>"
+        "summary": "Get clan member avatar Ids.</summary>",
+        "query": [
+          "providerType"
+        ]
       },
       "GetClanInventory": {
         "verb": "GET",
@@ -1347,13 +1431,22 @@
             "type": "Guid"
           }
         ],
-        "queryParams": [],
-        "requestType": "ProviderType?",
+        "queryParams": [
+          {
+            "name": "providerType",
+            "type": "ProviderType?",
+            "optional": true
+          }
+        ],
+        "requestType": null,
         "responseType": {
           "wrapper": "OASISHttpResponseMessage",
           "inner": "IEnumerable<IInventoryItem>"
         },
-        "summary": "Get clan treasury (inventory).</summary>"
+        "summary": "Get clan treasury (inventory).</summary>",
+        "query": [
+          "providerType"
+        ]
       }
     }
   },
@@ -1390,7 +1483,11 @@
           "wrapper": "OASISResult",
           "inner": "List<LeaderboardEntry>"
         },
-        "summary": "Get leaderboard for a specific competition type and season"
+        "summary": "Get leaderboard for a specific competition type and season",
+        "query": [
+          "limit",
+          "offset"
+        ]
       },
       "GetMyRank": {
         "verb": "GET",
@@ -1521,7 +1618,10 @@
           "wrapper": "OASISResult",
           "inner": "List<Tournament>"
         },
-        "summary": "Get active tournaments"
+        "summary": "Get active tournaments",
+        "query": [
+          "competitionType"
+        ]
       },
       "JoinTournament": {
         "verb": "POST",
@@ -1964,14 +2064,23 @@
             "name": "locationName",
             "type": "string",
             "optional": false
+          },
+          {
+            "name": "discoveryMethod",
+            "type": "EggDiscoveryMethod",
+            "optional": true
           }
         ],
-        "requestType": "EggDiscoveryMethod",
+        "requestType": null,
         "responseType": {
           "wrapper": "OASISResult",
           "inner": "Egg"
         },
-        "summary": "Discover a new egg"
+        "summary": "Discover a new egg",
+        "query": [
+          "discoveryMethod"
+        ],
+        "bodyParam": "eggType"
       },
       "HatchEgg": {
         "verb": "POST",
@@ -2203,7 +2312,11 @@
           "wrapper": "OASISResult",
           "inner": "List<GiftTransaction>"
         },
-        "summary": "Get gift history for the current avatar"
+        "summary": "Get gift history for the current avatar",
+        "query": [
+          "limit",
+          "offset"
+        ]
       },
       "GetGiftStats": {
         "verb": "GET",
@@ -2229,7 +2342,7 @@
         "queryParams": [],
         "requestType": null,
         "responseType": {
-          "wrapper": "IActionResult",
+          "wrapper": null,
           "inner": "object"
         },
         "summary": "Health check endpoint for Railway deployment"
@@ -2241,7 +2354,7 @@
         "queryParams": [],
         "requestType": null,
         "responseType": {
-          "wrapper": "IActionResult",
+          "wrapper": null,
           "inner": "object"
         },
         "summary": "Health check endpoint for Railway deployment"
@@ -2394,7 +2507,7 @@
     }
   },
   "HyperDriveController.cs": {
-    "route_prefix": "api/hyperdrive",
+    "route_prefix": "api/hyperDrive",
     "ops": {
       "GetConfiguration": {
         "verb": "GET",
@@ -2436,7 +2549,8 @@
           "wrapper": "ActionResult",
           "inner": "OASISResult<bool>"
         },
-        "summary": null
+        "summary": null,
+        "bodyParam": "mode"
       },
       "UpdateConfiguration": {
         "verb": "PUT",
@@ -2519,13 +2633,22 @@
         "verb": "GET",
         "route": "best-provider",
         "routeParams": [],
-        "queryParams": [],
-        "requestType": "LoadBalancingStrategy?",
+        "queryParams": [
+          {
+            "name": "strategy",
+            "type": "LoadBalancingStrategy?",
+            "optional": true
+          }
+        ],
+        "requestType": null,
         "responseType": {
           "wrapper": "ActionResult",
           "inner": "OASISResult<ProviderType>"
         },
-        "summary": "Gets the best provider based on current strategy"
+        "summary": "Gets the best provider based on current strategy",
+        "query": [
+          "strategy"
+        ]
       },
       "RecordRequest": {
         "verb": "POST",
@@ -2659,7 +2782,10 @@
           "wrapper": "ActionResult",
           "inner": "OASISResult<PredictiveAnalytics>"
         },
-        "summary": "Gets predictive analytics"
+        "summary": "Gets predictive analytics",
+        "query": [
+          "forecastDays"
+        ]
       },
       "GetAnalyticsReport": {
         "verb": "GET",
@@ -2667,17 +2793,26 @@
         "routeParams": [],
         "queryParams": [
           {
+            "name": "providerType",
+            "type": "ProviderType?",
+            "optional": true
+          },
+          {
             "name": "timeRange",
             "type": "TimeRange",
             "optional": true
           }
         ],
-        "requestType": "ProviderType?",
+        "requestType": null,
         "responseType": {
           "wrapper": "ActionResult",
           "inner": "OASISResult<AnalyticsReport>"
         },
-        "summary": "Gets comprehensive analytics report"
+        "summary": "Gets comprehensive analytics report",
+        "query": [
+          "providerType",
+          "timeRange"
+        ]
       },
       "GetDashboardData": {
         "verb": "GET",
@@ -3155,7 +3290,10 @@
           "wrapper": "ActionResult",
           "inner": "OASISResult<Dictionary<string, List<decimal>>>"
         },
-        "summary": null
+        "summary": null,
+        "query": [
+          "timeRange"
+        ]
       },
       "GetCostProjections": {
         "verb": "GET",
@@ -4897,7 +5035,12 @@
           "wrapper": "OASISResult",
           "inner": "List<MapLocation>"
         },
-        "summary": "Get nearby locations for the current avatar"
+        "summary": "Get nearby locations for the current avatar",
+        "query": [
+          "latitude",
+          "longitude",
+          "radiusKm"
+        ]
       },
       "VisitLocation": {
         "verb": "POST",
@@ -4920,7 +5063,8 @@
           "wrapper": "OASISResult",
           "inner": "bool"
         },
-        "summary": "Visit a location"
+        "summary": "Visit a location",
+        "bodyParam": "purpose"
       },
       "GetVisitHistory": {
         "verb": "GET",
@@ -4943,7 +5087,11 @@
           "wrapper": "OASISResult",
           "inner": "List<MapVisit>"
         },
-        "summary": "Get visit history for the current avatar"
+        "summary": "Get visit history for the current avatar",
+        "query": [
+          "limit",
+          "offset"
+        ]
       },
       "GetMapStats": {
         "verb": "GET",
@@ -4988,7 +5136,11 @@
           "wrapper": "OASISResult",
           "inner": "bool"
         },
-        "summary": "Send's a message to the given avatar"
+        "summary": "Send's a message to the given avatar",
+        "query": [
+          "messageType"
+        ],
+        "bodyParam": "content"
       },
       "GetMessages": {
         "verb": "GET",
@@ -5011,7 +5163,11 @@
           "wrapper": "OASISResult",
           "inner": "List<Message>"
         },
-        "summary": "Get messages for the current avatar"
+        "summary": "Get messages for the current avatar",
+        "query": [
+          "limit",
+          "offset"
+        ]
       },
       "GetConversation": {
         "verb": "GET",
@@ -5039,7 +5195,11 @@
           "wrapper": "OASISResult",
           "inner": "List<Message>"
         },
-        "summary": "Get conversation between current avatar and another avatar"
+        "summary": "Get conversation between current avatar and another avatar",
+        "query": [
+          "limit",
+          "offset"
+        ]
       },
       "MarkMessagesAsRead": {
         "verb": "POST",
@@ -5074,7 +5234,11 @@
           "wrapper": "OASISResult",
           "inner": "List<Notification>"
         },
-        "summary": "Get notifications for the current avatar"
+        "summary": "Get notifications for the current avatar",
+        "query": [
+          "limit",
+          "offset"
+        ]
       },
       "MarkNotificationsAsRead": {
         "verb": "POST",
@@ -5728,7 +5892,7 @@
     }
   },
   "OLandController.cs": {
-    "route_prefix": "api/oland",
+    "route_prefix": "api/oLand",
     "ops": {
       "GetOlandPrice": {
         "verb": "GET",
@@ -6083,13 +6247,22 @@
         "verb": "GET",
         "route": "logs",
         "routeParams": [],
-        "queryParams": [],
-        "requestType": "int?",
+        "queryParams": [
+          {
+            "name": "lines",
+            "type": "int?",
+            "optional": true
+          }
+        ],
+        "requestType": null,
         "responseType": {
           "wrapper": null,
           "inner": "IActionResult"
         },
-        "summary": "Get node logs"
+        "summary": "Get node logs",
+        "query": [
+          "lines"
+        ]
       },
       "UpdateNodeConfig": {
         "verb": "PUT",
@@ -7283,7 +7456,10 @@
           "wrapper": "OASISResult",
           "inner": "string"
         },
-        "summary": "Start's a video call. PREVIEW - COMING SOON..."
+        "summary": "Start's a video call. PREVIEW - COMING SOON...",
+        "query": [
+          "callName"
+        ]
       },
       "JoinVideoCall": {
         "verb": "POST",
@@ -7306,7 +7482,8 @@
           "wrapper": "OASISResult",
           "inner": "bool"
         },
-        "summary": "Join an existing video call"
+        "summary": "Join an existing video call",
+        "bodyParam": "connectionDetails"
       },
       "EndVideoCall": {
         "verb": "POST",
@@ -7914,7 +8091,8 @@
           "wrapper": "OASISResult",
           "inner": "object"
         },
-        "summary": "Transfer tokens between wallets."
+        "summary": "Transfer tokens between wallets.",
+        "bodyParam": "request"
       },
       "GetWalletAnalyticsAsync": {
         "verb": "GET",

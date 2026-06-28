@@ -119,7 +119,7 @@ Start's a video call. PREVIEW - COMING SOON...
 
 **Request**
 
-Body: `List<Guid>`
+Body type: `Guid` (array)
 
 **Response**
 

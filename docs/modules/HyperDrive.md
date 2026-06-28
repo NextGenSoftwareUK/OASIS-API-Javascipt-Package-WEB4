@@ -1,7 +1,7 @@
 # HyperDrive — `oasis.hyperDrive`
 
 Source controller: [`HyperDriveController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/HyperDriveController.cs)
-Route prefix: `api/hyperdrive`
+Route prefix: `api/hyperDrive`
 77 operation(s).
 
 Every method takes a single args object: any key matching a `{token}` in the route is substituted into the URL; everything else becomes the query string (GET/DELETE) or JSON body (POST/PUT). Every call resolves to the standard OASIS envelope:
@@ -22,7 +22,7 @@ Every method takes a single args object: any key matching a `{token}` in the rou
 
 Checks quota status for a specific type
 
-**GET** `api/hyperdrive/quota/status`
+**GET** `api/hyperDrive/quota/status`
 
 **Request**
 
@@ -32,7 +32,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Example**
 
@@ -48,7 +48,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<string, object>> */
+  "result": { "<string>": {} }
 }
 ```
 
@@ -56,23 +56,46 @@ Example response:
 
 ### `createFailoverTrigger`
 
-**POST** `api/hyperdrive/failover/triggers`
+**POST** `api/hyperDrive/failover/triggers`
 
 **Request**
 
-Body type: `FailoverTriggerConfig` _(type definition not found - field list unavailable)_
+Body type: `FailoverTriggerConfig`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `Name` | `string` |
+| `Condition` | `FailoverConditionConfig` |
+| `Priority` | `string` |
+| `IsEnabled` | `bool` |
+| `Action` | `FailoverActionConfig` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `FailoverTriggerConfig` _(type definition not found - field list unavailable)_
+`result` type: `FailoverTriggerConfig`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `Name` | `string` |
+| `Condition` | `FailoverConditionConfig` |
+| `Priority` | `string` |
+| `IsEnabled` | `bool` |
+| `Action` | `FailoverActionConfig` |
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.createFailoverTrigger({
-    /* ...request body fields */
+    id: "example string",
+    name: "example string",
+    condition: { "Type": "example string", "Operator": "example string", "Value": {}, "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Threshold": 1.0 },
+    priority: "example string",
+    isEnabled: true,
+    action: { "Type": "example string", "TargetProvider": "example string", "FallbackProviders": ["example string"], "CostLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -84,7 +107,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <FailoverTriggerConfig> */
+  "result": { "Id": "example string", "Name": "example string", "Condition": { "Type": "example string", "Operator": "example string", "Value": {}, "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Threshold": 1.0 }, "Priority": "example string", "IsEnabled": true, "Action": { "Type": "example string", "TargetProvider": "example string", "FallbackProviders": ["example string"], "CostLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } } }
 }
 ```
 
@@ -92,23 +115,49 @@ Example response:
 
 ### `createQuotaNotification`
 
-**POST** `api/hyperdrive/subscription/quota-notifications`
+**POST** `api/hyperDrive/subscription/quota-notifications`
 
 **Request**
 
-Body type: `QuotaNotificationConfig` _(type definition not found - field list unavailable)_
+Body type: `QuotaNotificationConfig`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `Name` | `string` |
+| `QuotaType` | `string` |
+| `Threshold` | `decimal` |
+| `NotificationChannels` | `List<string>` |
+| `Actions` | `List<QuotaActionConfig>` |
+| `IsEnabled` | `bool` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `QuotaNotificationConfig` _(type definition not found - field list unavailable)_
+`result` type: `QuotaNotificationConfig`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `Name` | `string` |
+| `QuotaType` | `string` |
+| `Threshold` | `decimal` |
+| `NotificationChannels` | `List<string>` |
+| `Actions` | `List<QuotaActionConfig>` |
+| `IsEnabled` | `bool` |
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.createQuotaNotification({
-    /* ...request body fields */
+    id: "example string",
+    name: "example string",
+    quotaType: "example string",
+    threshold: 1.0,
+    notificationChannels: ["example string"],
+    actions: [{ "Type": "example string", "Value": {}, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }],
+    isEnabled: true
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -120,7 +169,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <QuotaNotificationConfig> */
+  "result": { "Id": "example string", "Name": "example string", "QuotaType": "example string", "Threshold": 1.0, "NotificationChannels": ["example string"], "Actions": [{ "Type": "example string", "Value": {}, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }], "IsEnabled": true }
 }
 ```
 
@@ -128,23 +177,46 @@ Example response:
 
 ### `createReplicationTrigger`
 
-**POST** `api/hyperdrive/replication/triggers`
+**POST** `api/hyperDrive/replication/triggers`
 
 **Request**
 
-Body type: `ReplicationTriggerConfig` _(type definition not found - field list unavailable)_
+Body type: `ReplicationTriggerConfig`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `Name` | `string` |
+| `Condition` | `ReplicationConditionConfig` |
+| `Priority` | `string` |
+| `IsEnabled` | `bool` |
+| `Action` | `ReplicationActionConfig` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `ReplicationTriggerConfig` _(type definition not found - field list unavailable)_
+`result` type: `ReplicationTriggerConfig`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `Name` | `string` |
+| `Condition` | `ReplicationConditionConfig` |
+| `Priority` | `string` |
+| `IsEnabled` | `bool` |
+| `Action` | `ReplicationActionConfig` |
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.createReplicationTrigger({
-    /* ...request body fields */
+    id: "example string",
+    name: "example string",
+    condition: { "Type": "example string", "Operator": "example string", "Value": {}, "Field": "example string", "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] } },
+    priority: "example string",
+    isEnabled: true,
+    action: { "Type": "example string", "TargetProviders": ["example string"], "DataTypes": ["example string"], "Permissions": { "AvatarPermissions": { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "HolonPermissions": { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "ProviderPermissions": { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }] }, "FieldLevelPermissions": { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] }, "AccessControl": { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] } }, "CostLimit": 1.0, "Schedule": {} }
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -156,7 +228,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <ReplicationTriggerConfig> */
+  "result": { "Id": "example string", "Name": "example string", "Condition": { "Type": "example string", "Operator": "example string", "Value": {}, "Field": "example string", "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] } }, "Priority": "example string", "IsEnabled": true, "Action": { "Type": "example string", "TargetProviders": ["example string"], "DataTypes": ["example string"], "Permissions": { "AvatarPermissions": { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "HolonPermissions": { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "ProviderPermissions": { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }] }, "FieldLevelPermissions": { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] }, "AccessControl": { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": {}, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] } }, "CostLimit": 1.0, "Schedule": {} } }
 }
 ```
 
@@ -164,23 +236,46 @@ Example response:
 
 ### `createUsageAlert`
 
-**POST** `api/hyperdrive/subscription/usage-alerts`
+**POST** `api/hyperDrive/subscription/usage-alerts`
 
 **Request**
 
-Body type: `UsageAlertConfig` _(type definition not found - field list unavailable)_
+Body type: `UsageAlertConfig`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `Name` | `string` |
+| `Threshold` | `decimal` |
+| `ThresholdType` | `string` |
+| `NotificationChannels` | `List<string>` |
+| `IsEnabled` | `bool` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `UsageAlertConfig` _(type definition not found - field list unavailable)_
+`result` type: `UsageAlertConfig`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `Name` | `string` |
+| `Threshold` | `decimal` |
+| `ThresholdType` | `string` |
+| `NotificationChannels` | `List<string>` |
+| `IsEnabled` | `bool` |
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.createUsageAlert({
-    /* ...request body fields */
+    id: "example string",
+    name: "example string",
+    threshold: 1.0,
+    thresholdType: "example string",
+    notificationChannels: ["example string"],
+    isEnabled: true
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -192,7 +287,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <UsageAlertConfig> */
+  "result": { "Id": "example string", "Name": "example string", "Threshold": 1.0, "ThresholdType": "example string", "NotificationChannels": ["example string"], "IsEnabled": true }
 }
 ```
 
@@ -200,7 +295,7 @@ Example response:
 
 ### `deleteFailoverTrigger`
 
-**DELETE** `api/hyperdrive/failover/triggers/{id}`
+**DELETE** `api/hyperDrive/failover/triggers/{id}`
 
 Route parameters:
 
@@ -242,7 +337,7 @@ Example response:
 
 ### `deleteQuotaNotification`
 
-**DELETE** `api/hyperdrive/subscription/quota-notifications/{id}`
+**DELETE** `api/hyperDrive/subscription/quota-notifications/{id}`
 
 Route parameters:
 
@@ -284,7 +379,7 @@ Example response:
 
 ### `deleteReplicationTrigger`
 
-**DELETE** `api/hyperdrive/replication/triggers/{id}`
+**DELETE** `api/hyperDrive/replication/triggers/{id}`
 
 Route parameters:
 
@@ -326,7 +421,7 @@ Example response:
 
 ### `deleteUsageAlert`
 
-**DELETE** `api/hyperdrive/subscription/usage-alerts/{id}`
+**DELETE** `api/hyperDrive/subscription/usage-alerts/{id}`
 
 Route parameters:
 
@@ -370,7 +465,7 @@ Example response:
 
 Disables intelligent mode
 
-**POST** `api/hyperdrive/intelligent-mode/disable`
+**POST** `api/hyperDrive/intelligent-mode/disable`
 
 **Request**
 
@@ -406,7 +501,7 @@ Example response:
 
 Enables intelligent mode
 
-**POST** `api/hyperdrive/intelligent-mode/enable`
+**POST** `api/hyperDrive/intelligent-mode/enable`
 
 **Request**
 
@@ -442,7 +537,7 @@ Example response:
 
 Gets AI-powered optimization recommendations
 
-**GET** `api/hyperdrive/ai/recommendations`
+**GET** `api/hyperDrive/ai/recommendations`
 
 **Request**
 
@@ -452,7 +547,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<OptimizationRecommendation>` (array)
+`result` type: `OptimizationRecommendation` (array)
 
 | Field | Type |
 | --- | --- |
@@ -489,7 +584,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [{ "Id": "example string", "Title": "example string", "Description": "example string", "Category": "example string", "Type": /* <OptimizationType> */, "Priority": /* <PriorityLevel> */, "EstimatedImpact": 1.0, "EstimatedCost": 1.0, "AffectedProviders": [{  }], "ImplementationSteps": ["example string"], "CreatedAt": "2026-01-01T00:00:00Z", "ExpiresAt": "2026-01-01T00:00:00Z", "IsImplemented": true, "Metadata": /* <Dictionary<string, object>> */, "CreatedBy": "example string", "Reason": "example string", "Prerequisites": ["example string"], "ConfidenceScore": 1.0 }]
+  "result": [{ "Id": "example string", "Title": "example string", "Description": "example string", "Category": "example string", "Type": {  }, "Priority": {  }, "EstimatedImpact": 1.0, "EstimatedCost": 1.0, "AffectedProviders": [{  }], "ImplementationSteps": ["example string"], "CreatedAt": "2026-01-01T00:00:00Z", "ExpiresAt": "2026-01-01T00:00:00Z", "IsImplemented": true, "Metadata": { "<string>": {} }, "CreatedBy": "example string", "Reason": "example string", "Prerequisites": ["example string"], "ConfidenceScore": 1.0 }]
 }
 ```
 
@@ -499,24 +594,40 @@ Example response:
 
 Gets comprehensive analytics report
 
-**GET** `api/hyperdrive/analytics/report`
+**GET** `api/hyperDrive/analytics/report`
 
 **Request**
 
-Body type: `ProviderType?`
+Query parameters:
 
-_No fields._
+| Field | Type |
+| --- | --- |
+| `providerType` | `ProviderType? (optional)` |
+| `timeRange` | `TimeRange (optional)` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `AnalyticsReport` _(type definition not found - field list unavailable)_
+`result` type: `AnalyticsReport`
+
+| Field | Type |
+| --- | --- |
+| `GeneratedAt` | `DateTime` |
+| `TimeRange` | `TimeRange` |
+| `ProviderType` | `ProviderType?` |
+| `ProviderAnalytics` | `List<ProviderAnalytics>` |
+| `SystemMetrics` | `SystemMetrics` |
+| `TopPerformers` | `List<ProviderAnalytics>` |
+| `Underperformers` | `List<ProviderAnalytics>` |
+| `CostOptimization` | `List<CostOptimization>` |
+| `ReliabilityInsights` | `List<ReliabilityInsight>` |
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.getAnalyticsReport({
+    providerType: '<providerType>',
     timeRange: '<timeRange>'
   });
 if (isError) throw new Error(message);
@@ -529,7 +640,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <AnalyticsReport> */
+  "result": { "GeneratedAt": "2026-01-01T00:00:00Z", "TimeRange": {  }, "ProviderType": {  }, "ProviderAnalytics": [{ "ProviderType": {}, "TotalRequests": 1, "SuccessfulRequests": 1, "FailedRequests": 1, "AverageResponseTime": 1.0, "MinResponseTime": 1.0, "MaxResponseTime": 1.0, "AverageThroughput": 1.0, "TotalCost": 1.0, "AverageCost": 1.0, "ErrorRate": 1.0, "UptimePercentage": 1.0, "PeakUsageTime": "2026-01-01T00:00:00Z", "GeographicDistribution": { "<string>": 1 }, "CostTrend": 1.0, "PerformanceTrend": 1.0, "ReliabilityTrend": 1.0, "Anomalies": [{ "Timestamp": "2026-01-01T00:00:00Z", "Type": {  }, "Severity": {  }, "Description": "example string" }], "Recommendations": ["example string"] }], "SystemMetrics": { "OverallHealth": 1.0, "AveragePerformance": 1.0, "TotalCost": 1.0, "TotalProviders": 1 }, "TopPerformers": [], "Underperformers": [], "CostOptimization": [{ "Description": "example string", "PotentialSavings": 1.0, "Actions": ["example string"] }], "ReliabilityInsights": [{ "Description": "example string", "ReliabilityScore": 1.0, "Recommendations": ["example string"] }] }
 }
 ```
 
@@ -539,13 +650,15 @@ Example response:
 
 Gets the best provider based on current strategy
 
-**GET** `api/hyperdrive/best-provider`
+**GET** `api/hyperDrive/best-provider`
 
 **Request**
 
-Body type: `LoadBalancingStrategy?`
+Query parameters:
 
-_No fields._
+| Field | Type |
+| --- | --- |
+| `strategy` | `LoadBalancingStrategy? (optional)` |
 
 **Response**
 
@@ -558,7 +671,9 @@ _No fields._
 **Example**
 
 ```js
-const { isError, message, result } = await oasis.hyperDrive.getBestProvider({});
+const { isError, message, result } = await oasis.hyperDrive.getBestProvider({
+    strategy: '<strategy>'
+  });
 if (isError) throw new Error(message);
 console.log(result);
 ```
@@ -579,7 +694,7 @@ Example response:
 
 Gets the current HyperDrive configuration
 
-**GET** `api/hyperdrive/config`
+**GET** `api/hyperDrive/config`
 
 **Request**
 
@@ -622,67 +737,6 @@ Standard `OASISResult` envelope (see top of this page) with:
 | `PerformanceConfig` | `PerformanceConfig` |
 | `SecurityConfig` | `SecurityConfig` |
 | `MonitoringConfig` | `MonitoringConfig` |
-| `ProviderType` | `string` |
-| `Weight` | `int` |
-| `TimeoutMs` | `int` |
-| `MaxConnections` | `int` |
-| `ErrorThreshold` | `double` |
-| `MinUptime` | `double` |
-| `MaxLatencyMs` | `int` |
-| `Endpoint` | `string` |
-| `ApiKey` | `string` |
-| `SecretKey` | `string` |
-| `CustomSettings` | `Dictionary<string, string>` |
-| `DefaultRegion` | `string` |
-| `UserLocation` | `string` |
-| `MaxDistanceKm` | `double` |
-| `MaxNetworkHops` | `int` |
-| `Regions` | `Dictionary<string, GeographicRegion>` |
-| `Name` | `string` |
-| `Country` | `string` |
-| `City` | `string` |
-| `Latitude` | `double` |
-| `Longitude` | `double` |
-| `TimeZone` | `string` |
-| `Currency` | `string` |
-| `MaxCostPerOperation` | `double` |
-| `MaxStorageCostPerGB` | `double` |
-| `MaxComputeCostPerHour` | `double` |
-| `MaxNetworkCostPerGB` | `double` |
-| `ProviderCosts` | `Dictionary<string, CostAnalysisDNA>` |
-| `StorageCostPerGB` | `double` |
-| `ComputeCostPerHour` | `double` |
-| `NetworkCostPerGB` | `double` |
-| `TransactionCost` | `double` |
-| `ApiCallCost` | `double` |
-| `TotalCost` | `double` |
-| `LastUpdated` | `DateTime` |
-| `CostEfficiencyScore` | `int` |
-| `MaxResponseTimeMs` | `int` |
-| `MaxErrorRate` | `double` |
-| `MinThroughputMbps` | `int` |
-| `MaxConcurrentConnections` | `int` |
-| `QueueDepthThreshold` | `int` |
-| `MaxCpuUsage` | `double` |
-| `MaxMemoryUsage` | `double` |
-| `RequireEncryption` | `bool` |
-| `RequireAuthentication` | `bool` |
-| `RequireAuthorization` | `bool` |
-| `SessionTimeoutMs` | `int` |
-| `MaxConcurrentSessions` | `int` |
-| `AllowedIPs` | `List<string>` |
-| `BlockedIPs` | `List<string>` |
-| `SecurityHeaders` | `Dictionary<string, string>` |
-| `MetricsCollectionIntervalMs` | `int` |
-| `MaxMetricsHistory` | `int` |
-| `AlertThreshold` | `int` |
-| `EnableRealTimeMonitoring` | `bool` |
-| `EnablePerformanceProfiling` | `bool` |
-| `EnableCostTracking` | `bool` |
-| `EnableGeographicTracking` | `bool` |
-| `MonitoringEndpoints` | `List<string>` |
-| `CustomMetrics` | `Dictionary<string, string>` |
-| `ConnectionWeight` | `double` |
 
 **Example**
 
@@ -698,7 +752,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "IsEnabled": true, "DefaultStrategy": "example string", "AutoFailoverEnabled": true, "AutoReplicationEnabled": true, "AutoLoadBalancingEnabled": true, "MaxRetryAttempts": 1, "RequestTimeoutMs": 1, "HealthCheckIntervalMs": 1, "MaxConcurrentRequests": 1, "PerformanceWeight": 1.0, "CostWeight": 1.0, "GeographicWeight": 1.0, "AvailabilityWeight": 1.0, "LatencyWeight": 1.0, "ThroughputWeight": 1.0, "ReliabilityWeight": 1.0, "MaxLatencyThresholdMs": 1, "MaxErrorRateThreshold": 1.0, "MinUptimeThreshold": 1.0, "EnabledProviders": ["example string"], "AutoFailoverProviders": ["example string"], "AutoReplicationProviders": ["example string"], "LoadBalancingProviders": ["example string"], "ProviderConfigs": /* <Dictionary<string, ProviderConfig>> */, "GeographicConfig": /* <GeographicConfig> */, "CostConfig": /* <CostConfig> */, "PerformanceConfig": /* <PerformanceConfig> */, "SecurityConfig": /* <SecurityConfig> */, "MonitoringConfig": /* <MonitoringConfig> */, "ProviderType": "example string", "Weight": 1, "TimeoutMs": 1, "MaxConnections": 1, "ErrorThreshold": 1.0, "MinUptime": 1.0, "MaxLatencyMs": 1, "Endpoint": "example string", "ApiKey": "example string", "SecretKey": "example string", "CustomSettings": /* <Dictionary<string, string>> */, "DefaultRegion": "example string", "UserLocation": "example string", "MaxDistanceKm": 1.0, "MaxNetworkHops": 1, "Regions": /* <Dictionary<string, GeographicRegion>> */, "Name": "example string", "Country": "example string", "City": "example string", "Latitude": 1.0, "Longitude": 1.0, "TimeZone": "example string", "Currency": "example string", "MaxCostPerOperation": 1.0, "MaxStorageCostPerGB": 1.0, "MaxComputeCostPerHour": 1.0, "MaxNetworkCostPerGB": 1.0, "ProviderCosts": /* <Dictionary<string, CostAnalysisDNA>> */, "StorageCostPerGB": 1.0, "ComputeCostPerHour": 1.0, "NetworkCostPerGB": 1.0, "TransactionCost": 1.0, "ApiCallCost": 1.0, "TotalCost": 1.0, "LastUpdated": "2026-01-01T00:00:00Z", "CostEfficiencyScore": 1, "MaxResponseTimeMs": 1, "MaxErrorRate": 1.0, "MinThroughputMbps": 1, "MaxConcurrentConnections": 1, "QueueDepthThreshold": 1, "MaxCpuUsage": 1.0, "MaxMemoryUsage": 1.0, "RequireEncryption": true, "RequireAuthentication": true, "RequireAuthorization": true, "SessionTimeoutMs": 1, "MaxConcurrentSessions": 1, "AllowedIPs": ["example string"], "BlockedIPs": ["example string"], "SecurityHeaders": /* <Dictionary<string, string>> */, "MetricsCollectionIntervalMs": 1, "MaxMetricsHistory": 1, "AlertThreshold": 1, "EnableRealTimeMonitoring": true, "EnablePerformanceProfiling": true, "EnableCostTracking": true, "EnableGeographicTracking": true, "MonitoringEndpoints": ["example string"], "CustomMetrics": /* <Dictionary<string, string>> */, "ConnectionWeight": 1.0 }
+  "result": { "IsEnabled": true, "DefaultStrategy": "example string", "AutoFailoverEnabled": true, "AutoReplicationEnabled": true, "AutoLoadBalancingEnabled": true, "MaxRetryAttempts": 1, "RequestTimeoutMs": 1, "HealthCheckIntervalMs": 1, "MaxConcurrentRequests": 1, "PerformanceWeight": 1.0, "CostWeight": 1.0, "GeographicWeight": 1.0, "AvailabilityWeight": 1.0, "LatencyWeight": 1.0, "ThroughputWeight": 1.0, "ReliabilityWeight": 1.0, "MaxLatencyThresholdMs": 1, "MaxErrorRateThreshold": 1.0, "MinUptimeThreshold": 1.0, "EnabledProviders": ["example string"], "AutoFailoverProviders": ["example string"], "AutoReplicationProviders": ["example string"], "LoadBalancingProviders": ["example string"], "ProviderConfigs": { "<string>": { "ProviderType": "example string", "IsEnabled": true, "Weight": 1, "TimeoutMs": 1, "MaxConnections": 1, "ErrorThreshold": 1.0, "MinUptime": 1.0, "MaxLatencyMs": 1, "Endpoint": "example string", "ApiKey": "example string", "SecretKey": "example string", "CustomSettings": { "<string>": "example string" } } }, "GeographicConfig": { "IsEnabled": true, "DefaultRegion": "example string", "UserLocation": "example string", "MaxDistanceKm": 1.0, "MaxNetworkHops": 1, "MaxLatencyMs": 1, "Regions": { "<string>": { "Name": "example string", "Country": "example string", "City": "example string", "Latitude": 1.0, "Longitude": 1.0, "TimeZone": "example string", "MaxLatencyMs": 1.0, "MaxNetworkHops": 1 } } }, "CostConfig": { "IsEnabled": true, "Currency": "example string", "MaxCostPerOperation": 1.0, "MaxStorageCostPerGB": 1.0, "MaxComputeCostPerHour": 1.0, "MaxNetworkCostPerGB": 1.0, "ProviderCosts": { "<string>": { "ProviderType": "example string", "StorageCostPerGB": 1.0, "ComputeCostPerHour": 1.0, "NetworkCostPerGB": 1.0, "TransactionCost": 1.0, "ApiCallCost": 1.0, "TotalCost": 1.0, "Currency": "example string", "LastUpdated": "2026-01-01T00:00:00Z", "CostEfficiencyScore": 1 } } }, "PerformanceConfig": { "IsEnabled": true, "MaxResponseTimeMs": 1, "MaxErrorRate": 1.0, "MinUptime": 1.0, "MinThroughputMbps": 1, "MaxConcurrentConnections": 1, "QueueDepthThreshold": 1, "MaxCpuUsage": 1.0, "MaxMemoryUsage": 1.0 }, "SecurityConfig": { "IsEnabled": true, "RequireEncryption": true, "RequireAuthentication": true, "RequireAuthorization": true, "MaxRetryAttempts": 1, "SessionTimeoutMs": 1, "MaxConcurrentSessions": 1, "AllowedIPs": ["example string"], "BlockedIPs": ["example string"], "SecurityHeaders": { "<string>": "example string" } }, "MonitoringConfig": { "IsEnabled": true, "MetricsCollectionIntervalMs": 1, "MaxMetricsHistory": 1, "AlertThreshold": 1, "EnableRealTimeMonitoring": true, "EnablePerformanceProfiling": true, "EnableCostTracking": true, "EnableGeographicTracking": true, "MonitoringEndpoints": ["example string"], "CustomMetrics": { "<string>": "example string" } } }
 }
 ```
 
@@ -708,7 +762,7 @@ Example response:
 
 Gets active connection counts for all providers
 
-**GET** `api/hyperdrive/connections`
+**GET** `api/hyperDrive/connections`
 
 **Request**
 
@@ -718,7 +772,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<ProviderType, int>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<ProviderType, int>` - a key/value map keyed by `ProviderType`, each value a `int`.
 
 **Example**
 
@@ -734,7 +788,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<ProviderType, int>> */
+  "result": { "<ProviderType>": 1 }
 }
 ```
 
@@ -742,7 +796,7 @@ Example response:
 
 ### `getCostHistory`
 
-**GET** `api/hyperdrive/costs/history`
+**GET** `api/hyperDrive/costs/history`
 
 **Request**
 
@@ -756,7 +810,7 @@ Query parameters:
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<string, List<decimal>>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<string, List<decimal>>` - a key/value map keyed by `string`, each value a `List<decimal>`.
 
 **Example**
 
@@ -774,7 +828,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<string, List<decimal>>> */
+  "result": { "<string>": [1.0] }
 }
 ```
 
@@ -784,7 +838,7 @@ Example response:
 
 Gets cost optimization recommendations
 
-**GET** `api/hyperdrive/analytics/cost-optimization`
+**GET** `api/hyperDrive/analytics/cost-optimization`
 
 **Request**
 
@@ -794,7 +848,16 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<CostOptimizationRecommendation>` _(type definition not found - field list unavailable)_
+`result` type: `CostOptimizationRecommendation` (array)
+
+| Field | Type |
+| --- | --- |
+| `ProviderType` | `ProviderType` |
+| `CurrentCost` | `double` |
+| `CostTrend` | `double` |
+| `PotentialSavings` | `double` |
+| `RecommendedActions` | `List<string>` |
+| `Priority` | `Priority` |
 
 **Example**
 
@@ -810,7 +873,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <CostOptimizationRecommendation> */ ]
+  "result": [{ "ProviderType": {  }, "CurrentCost": 1.0, "CostTrend": 1.0, "PotentialSavings": 1.0, "RecommendedActions": ["example string"], "Priority": {  } }]
 }
 ```
 
@@ -818,7 +881,7 @@ Example response:
 
 ### `getCostOptimizationRule`
 
-**GET** `api/hyperdrive/replication/cost-optimization`
+**GET** `api/hyperDrive/replication/cost-optimization`
 
 **Request**
 
@@ -828,7 +891,17 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `CostOptimizationRuleConfig` _(type definition not found - field list unavailable)_
+`result` type: `CostOptimizationRuleConfig`
+
+| Field | Type |
+| --- | --- |
+| `IsEnabled` | `bool` |
+| `MaxCostPerReplication` | `decimal` |
+| `MaxCostPerMonth` | `decimal` |
+| `PreferredFreeProviders` | `List<string>` |
+| `AvoidHighGasProviders` | `bool` |
+| `GasFeeThreshold` | `decimal` |
+| `CostAlertThreshold` | `decimal` |
 
 **Example**
 
@@ -844,7 +917,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <CostOptimizationRuleConfig> */
+  "result": { "IsEnabled": true, "MaxCostPerReplication": 1.0, "MaxCostPerMonth": 1.0, "PreferredFreeProviders": ["example string"], "AvoidHighGasProviders": true, "GasFeeThreshold": 1.0, "CostAlertThreshold": 1.0 }
 }
 ```
 
@@ -852,7 +925,7 @@ Example response:
 
 ### `getCostProjections`
 
-**GET** `api/hyperdrive/costs/projections`
+**GET** `api/hyperDrive/costs/projections`
 
 **Request**
 
@@ -862,7 +935,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<string, decimal>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<string, decimal>` - a key/value map keyed by `string`, each value a `decimal`.
 
 **Example**
 
@@ -878,7 +951,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<string, decimal>> */
+  "result": { "<string>": 1.0 }
 }
 ```
 
@@ -886,7 +959,7 @@ Example response:
 
 ### `getCurrentCosts`
 
-**GET** `api/hyperdrive/costs/current`
+**GET** `api/hyperDrive/costs/current`
 
 **Request**
 
@@ -896,7 +969,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<string, decimal>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<string, decimal>` - a key/value map keyed by `string`, each value a `decimal`.
 
 **Example**
 
@@ -912,7 +985,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<string, decimal>> */
+  "result": { "<string>": 1.0 }
 }
 ```
 
@@ -922,7 +995,7 @@ Example response:
 
 Gets current usage statistics
 
-**GET** `api/hyperdrive/quota/usage`
+**GET** `api/hyperDrive/quota/usage`
 
 **Request**
 
@@ -932,7 +1005,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<string, int>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<string, int>` - a key/value map keyed by `string`, each value a `int`.
 
 **Example**
 
@@ -948,7 +1021,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<string, int>> */
+  "result": { "<string>": 1 }
 }
 ```
 
@@ -958,7 +1031,7 @@ Example response:
 
 Gets real-time dashboard data
 
-**GET** `api/hyperdrive/dashboard`
+**GET** `api/hyperDrive/dashboard`
 
 **Request**
 
@@ -968,7 +1041,19 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `DashboardData` _(type definition not found - field list unavailable)_
+`result` type: `DashboardData`
+
+| Field | Type |
+| --- | --- |
+| `Timestamp` | `DateTime` |
+| `ActiveProviders` | `int` |
+| `TotalRequests` | `int` |
+| `SystemHealth` | `double` |
+| `PerformanceMetrics` | `PerformanceMetrics` |
+| `CostMetrics` | `CostMetrics` |
+| `GeographicMetrics` | `GeographicMetrics` |
+| `Alerts` | `List<Alert>` |
+| `Trends` | `List<Trend>` |
 
 **Example**
 
@@ -984,7 +1069,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <DashboardData> */
+  "result": { "Timestamp": "2026-01-01T00:00:00Z", "ActiveProviders": 1, "TotalRequests": 1, "SystemHealth": 1.0, "PerformanceMetrics": { "TotalRequests": 1, "SuccessfulRequests": 1, "AverageResponseTime": 1.0, "Throughput": 1.0 }, "CostMetrics": { "TotalCost": 1.0, "AverageCost": 1.0, "CostPerRequest": 1.0 }, "GeographicMetrics": { "TotalRegions": 1, "TopRegion": "example string", "GeographicDistribution": { "<string>": 1 } }, "Alerts": [{ "ProviderType": {  }, "Type": {  }, "Severity": {  }, "Message": "example string", "Timestamp": "2026-01-01T00:00:00Z" }], "Trends": [{ "ProviderType": {}, "PerformanceTrend": 1.0, "CostTrend": 1.0, "ReliabilityTrend": 1.0 }] }
 }
 ```
 
@@ -994,7 +1079,7 @@ Example response:
 
 Gets data permissions configuration
 
-**GET** `api/hyperdrive/data-permissions`
+**GET** `api/hyperDrive/data-permissions`
 
 **Request**
 
@@ -1004,7 +1089,15 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `DataPermissionsConfig` _(type definition not found - field list unavailable)_
+`result` type: `DataPermissionsConfig`
+
+| Field | Type |
+| --- | --- |
+| `AvatarPermissions` | `AvatarPermissionsConfig` |
+| `HolonPermissions` | `HolonPermissionsConfig` |
+| `ProviderPermissions` | `ProviderPermissionsConfig` |
+| `FieldLevelPermissions` | `FieldLevelPermissionsConfig` |
+| `AccessControl` | `AccessControlConfig` |
 
 **Example**
 
@@ -1020,7 +1113,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <DataPermissionsConfig> */
+  "result": { "AvatarPermissions": { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "HolonPermissions": { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "ProviderPermissions": { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }] }, "FieldLevelPermissions": { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] }, "AccessControl": { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] } }
 }
 ```
 
@@ -1028,7 +1121,7 @@ Example response:
 
 ### `getDataTypeReplicationRules`
 
-**GET** `api/hyperdrive/replication/data-type-rules`
+**GET** `api/hyperDrive/replication/data-type-rules`
 
 **Request**
 
@@ -1038,7 +1131,17 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<DataTypeReplicationRuleConfig>` _(type definition not found - field list unavailable)_
+`result` type: `DataTypeReplicationRuleConfig` (array)
+
+| Field | Type |
+| --- | --- |
+| `DataType` | `string` |
+| `IsEnabled` | `bool` |
+| `RequiredProviders` | `List<string>` |
+| `OptionalProviders` | `List<string>` |
+| `Permissions` | `DataPermissionsConfig` |
+| `CostLimit` | `decimal` |
+| `Schedule` | `ScheduleConfig` |
 
 **Example**
 
@@ -1054,7 +1157,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <DataTypeReplicationRuleConfig> */ ]
+  "result": [{ "DataType": "example string", "IsEnabled": true, "RequiredProviders": ["example string"], "OptionalProviders": ["example string"], "Permissions": { "AvatarPermissions": { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "HolonPermissions": { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "ProviderPermissions": { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }] }, "FieldLevelPermissions": { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] }, "AccessControl": { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] } }, "CostLimit": 1.0, "Schedule": {} }]
 }
 ```
 
@@ -1062,7 +1165,7 @@ Example response:
 
 ### `getEscalationRules`
 
-**GET** `api/hyperdrive/failover/escalation-rules`
+**GET** `api/hyperDrive/failover/escalation-rules`
 
 **Request**
 
@@ -1072,7 +1175,15 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<EscalationRuleConfig>` _(type definition not found - field list unavailable)_
+`result` type: `EscalationRuleConfig` (array)
+
+| Field | Type |
+| --- | --- |
+| `Name` | `string` |
+| `Level` | `string` |
+| `Condition` | `FailoverConditionConfig` |
+| `Action` | `FailoverActionConfig` |
+| `Notification` | `NotificationRuleConfig` |
 
 **Example**
 
@@ -1088,7 +1199,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <EscalationRuleConfig> */ ]
+  "result": [{ "Name": "example string", "Level": "example string", "Condition": { "Type": "example string", "Operator": "example string", "Value": {}, "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Threshold": 1.0 }, "Action": { "Type": "example string", "TargetProvider": "example string", "FallbackProviders": ["example string"], "CostLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }, "Notification": { "Channels": ["example string"], "Message": "example string", "Priority": "example string", "IsEnabled": true } }]
 }
 ```
 
@@ -1098,7 +1209,7 @@ Example response:
 
 Gets failover rules configuration
 
-**GET** `api/hyperdrive/failover/rules`
+**GET** `api/hyperDrive/failover/rules`
 
 **Request**
 
@@ -1108,7 +1219,20 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `FailoverRulesConfig` _(type definition not found - field list unavailable)_
+`result` type: `FailoverRulesConfig`
+
+| Field | Type |
+| --- | --- |
+| `Mode` | `string` |
+| `IsEnabled` | `bool` |
+| `MaxFailoversPerMonth` | `int` |
+| `CostThreshold` | `decimal` |
+| `FreeProvidersOnly` | `bool` |
+| `GasFeeThreshold` | `decimal` |
+| `FailoverTriggers` | `List<FailoverTriggerConfig>` |
+| `ProviderRules` | `List<ProviderFailoverRuleConfig>` |
+| `IntelligentSelection` | `IntelligentSelectionRuleConfig` |
+| `EscalationRules` | `List<EscalationRuleConfig>` |
 
 **Example**
 
@@ -1124,7 +1248,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <FailoverRulesConfig> */
+  "result": { "Mode": "example string", "IsEnabled": true, "MaxFailoversPerMonth": 1, "CostThreshold": 1.0, "FreeProvidersOnly": true, "GasFeeThreshold": 1.0, "FailoverTriggers": [{ "Id": "example string", "Name": "example string", "Condition": { "Type": "example string", "Operator": "example string", "Value": {}, "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Threshold": 1.0 }, "Priority": "example string", "IsEnabled": true, "Action": { "Type": "example string", "TargetProvider": "example string", "FallbackProviders": ["example string"], "CostLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } } }], "ProviderRules": [{ "ProviderType": "example string", "IsEnabled": true, "Priority": 1, "CostLimit": 1.0, "GasFeeLimit": 1.0, "Conditions": [], "FallbackProviders": ["example string"] }], "IntelligentSelection": { "IsEnabled": true, "Algorithm": "example string", "Weights": { "Cost": 1.0, "Performance": 1.0, "Reliability": 1.0, "Security": 1.0, "Geographic": 1.0, "Availability": 1.0 }, "LearningEnabled": true, "AdaptationSpeed": "example string", "OptimizationGoals": [{ "Type": "example string", "Weight": 1.0, "Target": 1.0, "IsEnabled": true }] }, "EscalationRules": [{ "Name": "example string", "Level": "example string", "Condition": {}, "Action": {}, "Notification": { "Channels": ["example string"], "Message": "example string", "Priority": "example string", "IsEnabled": true } }] }
 }
 ```
 
@@ -1134,7 +1258,7 @@ Example response:
 
 Gets failure predictions
 
-**GET** `api/hyperdrive/failover/predictions`
+**GET** `api/hyperDrive/failover/predictions`
 
 **Request**
 
@@ -1167,7 +1291,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "Timestamp": "2026-01-01T00:00:00Z", "Predictions": [{ "ProviderType": {  }, "RiskLevel": /* <RiskLevel> */, "FailureProbability": 1.0, "PredictedFailureTime": "2026-01-01T00:00:00Z", "Confidence": 1.0, "RiskFactors": ["example string"], "RecommendedActions": ["example string"] }], "RecommendedActions": ["example string"], "RiskLevel": /* <RiskLevel> */ }
+  "result": { "Timestamp": "2026-01-01T00:00:00Z", "Predictions": [{ "ProviderType": {  }, "RiskLevel": {  }, "FailureProbability": 1.0, "PredictedFailureTime": "2026-01-01T00:00:00Z", "Confidence": 1.0, "RiskFactors": ["example string"], "RecommendedActions": ["example string"] }], "RecommendedActions": ["example string"], "RiskLevel": {} }
 }
 ```
 
@@ -1177,7 +1301,7 @@ Example response:
 
 Gets free providers list
 
-**GET** `api/hyperdrive/providers/free`
+**GET** `api/hyperDrive/providers/free`
 
 **Request**
 
@@ -1187,7 +1311,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<string>`
+`result` type: `string` (array)
 
 **Example**
 
@@ -1213,7 +1337,7 @@ Example response:
 
 Gets/sets HyperDrive mode (Legacy | OASISHyperDrive2)
 
-**GET** `api/hyperdrive/mode`
+**GET** `api/hyperDrive/mode`
 
 **Request**
 
@@ -1249,7 +1373,7 @@ Example response:
 
 Gets intelligent mode configuration
 
-**GET** `api/hyperdrive/intelligent-mode`
+**GET** `api/hyperDrive/intelligent-mode`
 
 **Request**
 
@@ -1259,7 +1383,18 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IntelligentModeConfig` _(type definition not found - field list unavailable)_
+`result` type: `IntelligentModeConfig`
+
+| Field | Type |
+| --- | --- |
+| `IsEnabled` | `bool` |
+| `AutoOptimization` | `bool` |
+| `CostAwareness` | `bool` |
+| `PerformanceOptimization` | `bool` |
+| `SecurityOptimization` | `bool` |
+| `LearningEnabled` | `bool` |
+| `AdaptationSpeed` | `string` |
+| `OptimizationGoals` | `List<OptimizationGoalConfig>` |
 
 **Example**
 
@@ -1275,7 +1410,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IntelligentModeConfig> */
+  "result": { "IsEnabled": true, "AutoOptimization": true, "CostAwareness": true, "PerformanceOptimization": true, "SecurityOptimization": true, "LearningEnabled": true, "AdaptationSpeed": "example string", "OptimizationGoals": [{ "Type": "example string", "Weight": 1.0, "Target": 1.0, "IsEnabled": true }] }
 }
 ```
 
@@ -1285,7 +1420,7 @@ Example response:
 
 Gets low-cost providers list
 
-**GET** `api/hyperdrive/providers/low-cost`
+**GET** `api/hyperDrive/providers/low-cost`
 
 **Request**
 
@@ -1295,7 +1430,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<string>`
+`result` type: `string` (array)
 
 **Example**
 
@@ -1321,7 +1456,7 @@ Example response:
 
 Gets performance metrics for all providers
 
-**GET** `api/hyperdrive/metrics`
+**GET** `api/hyperDrive/metrics`
 
 **Request**
 
@@ -1331,7 +1466,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<ProviderType, ProviderPerformanceMetrics>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<ProviderType, ProviderPerformanceMetrics>` - a key/value map keyed by `ProviderType`, each value a `ProviderPerformanceMetrics`.
 
 **Example**
 
@@ -1347,7 +1482,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<ProviderType, ProviderPerformanceMetrics>> */
+  "result": { "<ProviderType>": { "ProviderType": {  }, "ResponseTimeMs": 1.0, "ThroughputMbps": 1.0, "ErrorRate": 1.0, "UptimePercentage": 1.0, "ActiveConnections": 1, "CostPerOperation": 1.0, "GeographicRegion": "example string", "LastUpdated": "2026-01-01T00:00:00Z", "TotalRequests": 1, "SuccessfulRequests": 1, "FailedRequests": 1, "AverageLatency": 1.0, "PeakLatency": 1.0, "MinLatency": 1.0, "CpuUsage": 1.0, "MemoryUsage": 1.0, "NetworkLatency": 1.0, "BandwidthUtilization": 1.0, "QueueDepth": 1.0, "ProcessingTime": 1.0, "AvailabilityScore": 1.0, "PerformanceScore": 1.0, "CostScore": 1.0, "GeographicScore": 1.0, "OverallScore": 1.0, "AverageResponseTime": 1.0, "TotalResponseTime": 1.0, "LastActivity": "2026-01-01T00:00:00Z" } }
 }
 ```
 
@@ -1357,7 +1492,7 @@ Example response:
 
 Gets performance optimization recommendations
 
-**GET** `api/hyperdrive/analytics/performance-optimization`
+**GET** `api/hyperDrive/analytics/performance-optimization`
 
 **Request**
 
@@ -1367,7 +1502,16 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<PerformanceOptimizationRecommendation>` _(type definition not found - field list unavailable)_
+`result` type: `PerformanceOptimizationRecommendation` (array)
+
+| Field | Type |
+| --- | --- |
+| `ProviderType` | `ProviderType` |
+| `CurrentPerformance` | `double` |
+| `PerformanceTrend` | `double` |
+| `ErrorRate` | `double` |
+| `RecommendedActions` | `List<string>` |
+| `Priority` | `Priority` |
 
 **Example**
 
@@ -1383,7 +1527,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <PerformanceOptimizationRecommendation> */ ]
+  "result": [{ "ProviderType": {  }, "CurrentPerformance": 1.0, "PerformanceTrend": 1.0, "ErrorRate": 1.0, "RecommendedActions": ["example string"], "Priority": {  } }]
 }
 ```
 
@@ -1393,7 +1537,7 @@ Example response:
 
 Gets predictive analytics
 
-**GET** `api/hyperdrive/analytics/predictive/{providerType}`
+**GET** `api/hyperDrive/analytics/predictive/{providerType}`
 
 Route parameters:
 
@@ -1413,7 +1557,19 @@ Query parameters:
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `PredictiveAnalytics` _(type definition not found - field list unavailable)_
+`result` type: `PredictiveAnalytics`
+
+| Field | Type |
+| --- | --- |
+| `ProviderType` | `ProviderType` |
+| `ForecastDays` | `int` |
+| `Confidence` | `double` |
+| `Message` | `string` |
+| `PredictedPerformance` | `double` |
+| `PredictedCost` | `double` |
+| `PredictedReliability` | `double` |
+| `RiskFactors` | `List<string>` |
+| `Recommendations` | `List<string>` |
 
 **Example**
 
@@ -1432,7 +1588,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <PredictiveAnalytics> */
+  "result": { "ProviderType": {  }, "ForecastDays": 1, "Confidence": 1.0, "Message": "example string", "PredictedPerformance": 1.0, "PredictedCost": 1.0, "PredictedReliability": 1.0, "RiskFactors": ["example string"], "Recommendations": ["example string"] }
 }
 ```
 
@@ -1440,7 +1596,7 @@ Example response:
 
 ### `getProviderFailoverRules`
 
-**GET** `api/hyperdrive/failover/provider-rules`
+**GET** `api/hyperDrive/failover/provider-rules`
 
 **Request**
 
@@ -1450,7 +1606,17 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<ProviderFailoverRuleConfig>` _(type definition not found - field list unavailable)_
+`result` type: `ProviderFailoverRuleConfig` (array)
+
+| Field | Type |
+| --- | --- |
+| `ProviderType` | `string` |
+| `IsEnabled` | `bool` |
+| `Priority` | `int` |
+| `CostLimit` | `decimal` |
+| `GasFeeLimit` | `decimal` |
+| `Conditions` | `List<FailoverConditionConfig>` |
+| `FallbackProviders` | `List<string>` |
 
 **Example**
 
@@ -1466,7 +1632,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <ProviderFailoverRuleConfig> */ ]
+  "result": [{ "ProviderType": "example string", "IsEnabled": true, "Priority": 1, "CostLimit": 1.0, "GasFeeLimit": 1.0, "Conditions": [{ "Type": "example string", "Operator": "example string", "Value": {}, "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Threshold": 1.0 }], "FallbackProviders": ["example string"] }]
 }
 ```
 
@@ -1476,7 +1642,7 @@ Example response:
 
 Gets performance metrics for a specific provider
 
-**GET** `api/hyperdrive/metrics/{providerType}`
+**GET** `api/hyperDrive/metrics/{providerType}`
 
 Route parameters:
 
@@ -1550,7 +1716,7 @@ Example response:
 
 ### `getProviderReplicationRules`
 
-**GET** `api/hyperdrive/replication/provider-rules`
+**GET** `api/hyperDrive/replication/provider-rules`
 
 **Request**
 
@@ -1560,7 +1726,19 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<ProviderReplicationRuleConfig>` _(type definition not found - field list unavailable)_
+`result` type: `ProviderReplicationRuleConfig` (array)
+
+| Field | Type |
+| --- | --- |
+| `ProviderType` | `string` |
+| `IsEnabled` | `bool` |
+| `Priority` | `int` |
+| `CostLimit` | `decimal` |
+| `GasFeeLimit` | `decimal` |
+| `DataTypes` | `List<string>` |
+| `Permissions` | `DataPermissionsConfig` |
+| `Conditions` | `List<ReplicationConditionConfig>` |
+| `Schedule` | `ScheduleConfig` |
 
 **Example**
 
@@ -1576,7 +1754,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <ProviderReplicationRuleConfig> */ ]
+  "result": [{ "ProviderType": "example string", "IsEnabled": true, "Priority": 1, "CostLimit": 1.0, "GasFeeLimit": 1.0, "DataTypes": ["example string"], "Permissions": { "AvatarPermissions": { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "HolonPermissions": { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "ProviderPermissions": { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }] }, "FieldLevelPermissions": { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] }, "AccessControl": { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] } }, "Conditions": [{ "Type": "example string", "Operator": "example string", "Value": {}, "Field": "example string", "ProviderType": "example string", "TimeWindow": {} }], "Schedule": {} }]
 }
 ```
 
@@ -1586,7 +1764,7 @@ Example response:
 
 Gets quota limits for current subscription
 
-**GET** `api/hyperdrive/quota/limits`
+**GET** `api/hyperDrive/quota/limits`
 
 **Request**
 
@@ -1596,7 +1774,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<string, int>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<string, int>` - a key/value map keyed by `string`, each value a `int`.
 
 **Example**
 
@@ -1612,7 +1790,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<string, int>> */
+  "result": { "<string>": 1 }
 }
 ```
 
@@ -1620,7 +1798,7 @@ Example response:
 
 ### `getQuotaNotifications`
 
-**GET** `api/hyperdrive/subscription/quota-notifications`
+**GET** `api/hyperDrive/subscription/quota-notifications`
 
 **Request**
 
@@ -1630,7 +1808,17 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<QuotaNotificationConfig>` _(type definition not found - field list unavailable)_
+`result` type: `QuotaNotificationConfig` (array)
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `Name` | `string` |
+| `QuotaType` | `string` |
+| `Threshold` | `decimal` |
+| `NotificationChannels` | `List<string>` |
+| `Actions` | `List<QuotaActionConfig>` |
+| `IsEnabled` | `bool` |
 
 **Example**
 
@@ -1646,7 +1834,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <QuotaNotificationConfig> */ ]
+  "result": [{ "Id": "example string", "Name": "example string", "QuotaType": "example string", "Threshold": 1.0, "NotificationChannels": ["example string"], "Actions": [{ "Type": "example string", "Value": {}, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }], "IsEnabled": true }]
 }
 ```
 
@@ -1656,7 +1844,7 @@ Example response:
 
 Gets replication rules configuration
 
-**GET** `api/hyperdrive/replication/rules`
+**GET** `api/hyperDrive/replication/rules`
 
 **Request**
 
@@ -1666,7 +1854,22 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `ReplicationRulesConfig` _(type definition not found - field list unavailable)_
+`result` type: `ReplicationRulesConfig`
+
+| Field | Type |
+| --- | --- |
+| `Mode` | `string` |
+| `IsEnabled` | `bool` |
+| `MaxReplicationsPerMonth` | `int` |
+| `CostThreshold` | `decimal` |
+| `FreeProvidersOnly` | `bool` |
+| `GasFeeThreshold` | `decimal` |
+| `ReplicationTriggers` | `List<ReplicationTriggerConfig>` |
+| `ProviderRules` | `List<ProviderReplicationRuleConfig>` |
+| `DataTypeRules` | `List<DataTypeReplicationRuleConfig>` |
+| `ScheduleRules` | `List<ScheduleRuleConfig>` |
+| `CostOptimization` | `CostOptimizationRuleConfig` |
+| `IntelligentSelection` | `IntelligentSelectionRuleConfig` |
 
 **Example**
 
@@ -1682,7 +1885,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <ReplicationRulesConfig> */
+  "result": { "Mode": "example string", "IsEnabled": true, "MaxReplicationsPerMonth": 1, "CostThreshold": 1.0, "FreeProvidersOnly": true, "GasFeeThreshold": 1.0, "ReplicationTriggers": [{ "Id": "example string", "Name": "example string", "Condition": { "Type": "example string", "Operator": "example string", "Value": {}, "Field": "example string", "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] } }, "Priority": "example string", "IsEnabled": true, "Action": { "Type": "example string", "TargetProviders": ["example string"], "DataTypes": ["example string"], "Permissions": { "AvatarPermissions": { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "HolonPermissions": { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "ProviderPermissions": { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }] }, "FieldLevelPermissions": { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] }, "AccessControl": { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": {}, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] } }, "CostLimit": 1.0, "Schedule": {} } }], "ProviderRules": [{ "ProviderType": "example string", "IsEnabled": true, "Priority": 1, "CostLimit": 1.0, "GasFeeLimit": 1.0, "DataTypes": ["example string"], "Permissions": {}, "Conditions": [], "Schedule": {} }], "DataTypeRules": [{ "DataType": "example string", "IsEnabled": true, "RequiredProviders": ["example string"], "OptionalProviders": ["example string"], "Permissions": {}, "CostLimit": 1.0, "Schedule": {} }], "ScheduleRules": [{ "Name": "example string", "IsEnabled": true, "Schedule": {}, "DataTypes": ["example string"], "Providers": ["example string"], "Permissions": {} }], "CostOptimization": { "IsEnabled": true, "MaxCostPerReplication": 1.0, "MaxCostPerMonth": 1.0, "PreferredFreeProviders": ["example string"], "AvoidHighGasProviders": true, "GasFeeThreshold": 1.0, "CostAlertThreshold": 1.0 }, "IntelligentSelection": { "IsEnabled": true, "Algorithm": "example string", "Weights": { "Cost": 1.0, "Performance": 1.0, "Reliability": 1.0, "Security": 1.0, "Geographic": 1.0, "Availability": 1.0 }, "LearningEnabled": true, "AdaptationSpeed": "example string", "OptimizationGoals": [{ "Type": "example string", "Weight": 1.0, "Target": 1.0, "IsEnabled": true }] } }
 }
 ```
 
@@ -1690,7 +1893,7 @@ Example response:
 
 ### `getScheduleRules`
 
-**GET** `api/hyperdrive/replication/schedule-rules`
+**GET** `api/hyperDrive/replication/schedule-rules`
 
 **Request**
 
@@ -1700,7 +1903,16 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<ScheduleRuleConfig>` _(type definition not found - field list unavailable)_
+`result` type: `ScheduleRuleConfig` (array)
+
+| Field | Type |
+| --- | --- |
+| `Name` | `string` |
+| `IsEnabled` | `bool` |
+| `Schedule` | `ScheduleConfig` |
+| `DataTypes` | `List<string>` |
+| `Providers` | `List<string>` |
+| `Permissions` | `DataPermissionsConfig` |
 
 **Example**
 
@@ -1716,7 +1928,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <ScheduleRuleConfig> */ ]
+  "result": [{ "Name": "example string", "IsEnabled": true, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] }, "DataTypes": ["example string"], "Providers": ["example string"], "Permissions": { "AvatarPermissions": { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "HolonPermissions": { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "ProviderPermissions": { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": {} }] }, "FieldLevelPermissions": { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] }, "AccessControl": { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] } } }]
 }
 ```
 
@@ -1724,7 +1936,7 @@ Example response:
 
 ### `getSecurityRecommendations`
 
-**GET** `api/hyperdrive/recommendations/security`
+**GET** `api/hyperDrive/recommendations/security`
 
 **Request**
 
@@ -1734,7 +1946,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Example**
 
@@ -1750,7 +1962,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<string, object>> */
+  "result": { "<string>": {} }
 }
 ```
 
@@ -1758,7 +1970,7 @@ Example response:
 
 ### `getSmartRecommendations`
 
-**GET** `api/hyperdrive/recommendations/smart`
+**GET** `api/hyperDrive/recommendations/smart`
 
 **Request**
 
@@ -1768,7 +1980,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Example**
 
@@ -1784,7 +1996,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<string, object>> */
+  "result": { "<string>": {} }
 }
 ```
 
@@ -1794,7 +2006,7 @@ Example response:
 
 Gets HyperDrive status and health
 
-**GET** `api/hyperdrive/status`
+**GET** `api/hyperDrive/status`
 
 **Request**
 
@@ -1804,7 +2016,20 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `HyperDriveStatus` _(type definition not found - field list unavailable)_
+`result` type: `HyperDriveStatus`
+
+| Field | Type |
+| --- | --- |
+| `IsEnabled` | `bool` |
+| `AutoFailoverEnabled` | `bool` |
+| `AutoReplicationEnabled` | `bool` |
+| `AutoLoadBalancingEnabled` | `bool` |
+| `DefaultStrategy` | `LoadBalancingStrategy` |
+| `EnabledProviders` | `List<ProviderType>` |
+| `LoadBalancingProviders` | `List<ProviderType>` |
+| `TotalProviders` | `int` |
+| `ActiveProviders` | `int` |
+| `LastHealthCheck` | `DateTime` |
 
 **Example**
 
@@ -1820,7 +2045,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <HyperDriveStatus> */
+  "result": { "IsEnabled": true, "AutoFailoverEnabled": true, "AutoReplicationEnabled": true, "AutoLoadBalancingEnabled": true, "DefaultStrategy": {  }, "EnabledProviders": [{  }], "LoadBalancingProviders": [], "TotalProviders": 1, "ActiveProviders": 1, "LastHealthCheck": "2026-01-01T00:00:00Z" }
 }
 ```
 
@@ -1830,7 +2055,7 @@ Example response:
 
 Gets subscription configuration
 
-**GET** `api/hyperdrive/subscription/config`
+**GET** `api/hyperDrive/subscription/config`
 
 **Request**
 
@@ -1840,7 +2065,23 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `SubscriptionConfig` _(type definition not found - field list unavailable)_
+`result` type: `SubscriptionConfig`
+
+| Field | Type |
+| --- | --- |
+| `PlanType` | `string` |
+| `MaxReplicationsPerMonth` | `int` |
+| `MaxFailoversPerMonth` | `int` |
+| `MaxRequestsPerMonth` | `int` |
+| `MaxStorageGB` | `int` |
+| `PayAsYouGoEnabled` | `bool` |
+| `CostPerReplication` | `decimal` |
+| `CostPerFailover` | `decimal` |
+| `CostPerGB` | `decimal` |
+| `Currency` | `string` |
+| `BillingCycle` | `string` |
+| `UsageAlerts` | `List<UsageAlertConfig>` |
+| `QuotaNotifications` | `List<QuotaNotificationConfig>` |
 
 **Example**
 
@@ -1856,7 +2097,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <SubscriptionConfig> */
+  "result": { "PlanType": "example string", "MaxReplicationsPerMonth": 1, "MaxFailoversPerMonth": 1, "MaxRequestsPerMonth": 1, "MaxStorageGB": 1, "PayAsYouGoEnabled": true, "CostPerReplication": 1.0, "CostPerFailover": 1.0, "CostPerGB": 1.0, "Currency": "example string", "BillingCycle": "example string", "UsageAlerts": [{ "Id": "example string", "Name": "example string", "Threshold": 1.0, "ThresholdType": "example string", "NotificationChannels": ["example string"], "IsEnabled": true }], "QuotaNotifications": [{ "Id": "example string", "Name": "example string", "QuotaType": "example string", "Threshold": 1.0, "NotificationChannels": ["example string"], "Actions": [{ "Type": "example string", "Value": {}, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }], "IsEnabled": true }] }
 }
 ```
 
@@ -1864,7 +2105,7 @@ Example response:
 
 ### `getUsageAlerts`
 
-**GET** `api/hyperdrive/subscription/usage-alerts`
+**GET** `api/hyperDrive/subscription/usage-alerts`
 
 **Request**
 
@@ -1874,7 +2115,16 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<UsageAlertConfig>` _(type definition not found - field list unavailable)_
+`result` type: `UsageAlertConfig` (array)
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `Name` | `string` |
+| `Threshold` | `decimal` |
+| `ThresholdType` | `string` |
+| `NotificationChannels` | `List<string>` |
+| `IsEnabled` | `bool` |
 
 **Example**
 
@@ -1890,7 +2140,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <UsageAlertConfig> */ ]
+  "result": [{ "Id": "example string", "Name": "example string", "Threshold": 1.0, "ThresholdType": "example string", "NotificationChannels": ["example string"], "IsEnabled": true }]
 }
 ```
 
@@ -1900,11 +2150,11 @@ Example response:
 
 Initiates preventive failover
 
-**POST** `api/hyperdrive/failover/preventive`
+**POST** `api/hyperDrive/failover/preventive`
 
 **Request**
 
-Body type: `List<ProviderType>`
+Body type: `ProviderType` (array)
 
 _No fields._
 
@@ -1938,11 +2188,23 @@ Example response:
 
 Records analytics data
 
-**POST** `api/hyperdrive/analytics/record`
+**POST** `api/hyperDrive/analytics/record`
 
 **Request**
 
-Body type: `AnalyticsDataPoint` _(type definition not found - field list unavailable)_
+Body type: `AnalyticsDataPoint`
+
+| Field | Type |
+| --- | --- |
+| `Timestamp` | `DateTime` |
+| `ProviderType` | `ProviderType` |
+| `Success` | `bool` |
+| `ResponseTimeMs` | `double` |
+| `ThroughputMbps` | `double` |
+| `Cost` | `double` |
+| `Region` | `string` |
+| `UserId` | `string` |
+| `Operation` | `string` |
 
 **Response**
 
@@ -1954,7 +2216,15 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.recordAnalyticsData({
-    /* ...request body fields */
+    timestamp: "2026-01-01T00:00:00Z",
+    providerType: {  },
+    success: true,
+    responseTimeMs: 1.0,
+    throughputMbps: 1.0,
+    cost: 1.0,
+    region: "example string",
+    userId: "example string",
+    operation: "example string"
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -1976,11 +2246,16 @@ Example response:
 
 Records connection activity
 
-**POST** `api/hyperdrive/record-connection`
+**POST** `api/hyperDrive/record-connection`
 
 **Request**
 
-Body type: `RecordConnectionModel` _(type definition not found - field list unavailable)_
+Body type: `RecordConnectionModel`
+
+| Field | Type |
+| --- | --- |
+| `ProviderType` | `ProviderType` |
+| `IsConnecting` | `bool` |
 
 **Response**
 
@@ -1992,7 +2267,8 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.recordConnection({
-    /* ...request body fields */
+    providerType: {  },
+    isConnecting: true
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -2014,7 +2290,7 @@ Example response:
 
 Records failure event
 
-**POST** `api/hyperdrive/failover/record-failure`
+**POST** `api/hyperDrive/failover/record-failure`
 
 **Request**
 
@@ -2042,7 +2318,7 @@ Standard `OASISResult` envelope (see top of this page) with:
 const { isError, message, result } = await oasis.hyperDrive.recordFailureEvent({
     timestamp: "2026-01-01T00:00:00Z",
     providerType: {  },
-    failureType: /* <FailureType> */,
+    failureType: {  },
     description: "example string",
     duration: 1.0,
     cause: "example string",
@@ -2068,7 +2344,7 @@ Example response:
 
 Records performance data for AI training
 
-**POST** `api/hyperdrive/ai/record-performance`
+**POST** `api/hyperDrive/ai/record-performance`
 
 **Request**
 
@@ -2098,27 +2374,6 @@ Body type: `PerformanceDataPoint`
 | `UserAgent` | `string` |
 | `Location` | `GeographicLocation` |
 | `Tags` | `Dictionary<string, string>` |
-| `AverageLatency` | `double` |
-| `Throughput` | `double` |
-| `SuccessRate` | `double` |
-| `ErrorRate` | `double` |
-| `TotalCost` | `decimal` |
-| `TotalOperations` | `long` |
-| `TotalDuration` | `TimeSpan` |
-| `ProviderMetrics` | `Dictionary<ProviderType, double>` |
-| `OperationMetrics` | `Dictionary<string, double>` |
-| `StartTime` | `DateTime` |
-| `EndTime` | `DateTime` |
-| `TimeWindow` | `TimeSpan` |
-| `Name` | `string` |
-| `Description` | `string` |
-| `BaselineLatency` | `double` |
-| `BaselineThroughput` | `double` |
-| `BaselineCost` | `decimal` |
-| `CreatedAt` | `DateTime` |
-| `UpdatedAt` | `DateTime?` |
-| `IsActive` | `bool` |
-| `Conditions` | `Dictionary<string, object>` |
 
 **Response**
 
@@ -2141,8 +2396,8 @@ const { isError, message, result } = await oasis.hyperDrive.recordPerformanceDat
     dataSize: 1,
     retryCount: 1,
     cost: 1.0,
-    metrics: /* <Dictionary<string, object>> */,
-    context: /* <Dictionary<string, object>> */,
+    metrics: { "<string>": {} },
+    context: { "<string>": {} },
     userId: "example string",
     sessionId: "example string",
     requestId: "example string",
@@ -2151,28 +2406,7 @@ const { isError, message, result } = await oasis.hyperDrive.recordPerformanceDat
     sourceIP: "example string",
     userAgent: "example string",
     location: { "Latitude": 1.0, "Longitude": 1.0, "Country": "example string", "Region": "example string", "City": "example string" },
-    tags: /* <Dictionary<string, string>> */,
-    averageLatency: 1.0,
-    throughput: 1.0,
-    successRate: 1.0,
-    errorRate: 1.0,
-    totalCost: 1.0,
-    totalOperations: 1,
-    totalDuration: /* <TimeSpan> */,
-    providerMetrics: /* <Dictionary<ProviderType, double>> */,
-    operationMetrics: /* <Dictionary<string, double>> */,
-    startTime: "2026-01-01T00:00:00Z",
-    endTime: "2026-01-01T00:00:00Z",
-    timeWindow: /* <TimeSpan> */,
-    name: "example string",
-    description: "example string",
-    baselineLatency: 1.0,
-    baselineThroughput: 1.0,
-    baselineCost: 1.0,
-    createdAt: "2026-01-01T00:00:00Z",
-    updatedAt: "2026-01-01T00:00:00Z",
-    isActive: true,
-    conditions: /* <Dictionary<string, object>> */
+    tags: { "<string>": "example string" }
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -2194,11 +2428,18 @@ Example response:
 
 Records a request for performance tracking
 
-**POST** `api/hyperdrive/record-request`
+**POST** `api/hyperDrive/record-request`
 
 **Request**
 
-Body type: `RecordRequestModel` _(type definition not found - field list unavailable)_
+Body type: `RecordRequestModel`
+
+| Field | Type |
+| --- | --- |
+| `ProviderType` | `ProviderType` |
+| `Success` | `bool` |
+| `ResponseTimeMs` | `double` |
+| `Cost` | `double` |
 
 **Response**
 
@@ -2210,7 +2451,10 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.recordRequest({
-    /* ...request body fields */
+    providerType: {  },
+    success: true,
+    responseTimeMs: 1.0,
+    cost: 1.0
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -2232,7 +2476,7 @@ Example response:
 
 Resets all metrics
 
-**POST** `api/hyperdrive/metrics/reset-all`
+**POST** `api/hyperDrive/metrics/reset-all`
 
 **Request**
 
@@ -2268,7 +2512,7 @@ Example response:
 
 Resets configuration to defaults
 
-**POST** `api/hyperdrive/config/reset`
+**POST** `api/hyperDrive/config/reset`
 
 **Request**
 
@@ -2304,7 +2548,7 @@ Example response:
 
 Resets metrics for a specific provider
 
-**POST** `api/hyperdrive/metrics/{providerType}/reset`
+**POST** `api/hyperDrive/metrics/{providerType}/reset`
 
 Route parameters:
 
@@ -2346,11 +2590,11 @@ Example response:
 
 ### `setCostLimits`
 
-**PUT** `api/hyperdrive/costs/limits`
+**PUT** `api/hyperDrive/costs/limits`
 
 **Request**
 
-Body type: `Dictionary<string, decimal>` _(type definition not found - field list unavailable)_
+Body type: `Dictionary<string, decimal>` - a key/value map keyed by `string`, each value a `decimal`.
 
 **Response**
 
@@ -2382,7 +2626,7 @@ Example response:
 
 ### `setHyperDriveMode`
 
-**PUT** `api/hyperdrive/mode`
+**PUT** `api/hyperDrive/mode`
 
 **Request**
 
@@ -2424,7 +2668,7 @@ Example response:
 
 Updates the HyperDrive configuration
 
-**PUT** `api/hyperdrive/config`
+**PUT** `api/hyperDrive/config`
 
 **Request**
 
@@ -2461,67 +2705,6 @@ Body type: `OASISHyperDriveConfig`
 | `PerformanceConfig` | `PerformanceConfig` |
 | `SecurityConfig` | `SecurityConfig` |
 | `MonitoringConfig` | `MonitoringConfig` |
-| `ProviderType` | `string` |
-| `Weight` | `int` |
-| `TimeoutMs` | `int` |
-| `MaxConnections` | `int` |
-| `ErrorThreshold` | `double` |
-| `MinUptime` | `double` |
-| `MaxLatencyMs` | `int` |
-| `Endpoint` | `string` |
-| `ApiKey` | `string` |
-| `SecretKey` | `string` |
-| `CustomSettings` | `Dictionary<string, string>` |
-| `DefaultRegion` | `string` |
-| `UserLocation` | `string` |
-| `MaxDistanceKm` | `double` |
-| `MaxNetworkHops` | `int` |
-| `Regions` | `Dictionary<string, GeographicRegion>` |
-| `Name` | `string` |
-| `Country` | `string` |
-| `City` | `string` |
-| `Latitude` | `double` |
-| `Longitude` | `double` |
-| `TimeZone` | `string` |
-| `Currency` | `string` |
-| `MaxCostPerOperation` | `double` |
-| `MaxStorageCostPerGB` | `double` |
-| `MaxComputeCostPerHour` | `double` |
-| `MaxNetworkCostPerGB` | `double` |
-| `ProviderCosts` | `Dictionary<string, CostAnalysisDNA>` |
-| `StorageCostPerGB` | `double` |
-| `ComputeCostPerHour` | `double` |
-| `NetworkCostPerGB` | `double` |
-| `TransactionCost` | `double` |
-| `ApiCallCost` | `double` |
-| `TotalCost` | `double` |
-| `LastUpdated` | `DateTime` |
-| `CostEfficiencyScore` | `int` |
-| `MaxResponseTimeMs` | `int` |
-| `MaxErrorRate` | `double` |
-| `MinThroughputMbps` | `int` |
-| `MaxConcurrentConnections` | `int` |
-| `QueueDepthThreshold` | `int` |
-| `MaxCpuUsage` | `double` |
-| `MaxMemoryUsage` | `double` |
-| `RequireEncryption` | `bool` |
-| `RequireAuthentication` | `bool` |
-| `RequireAuthorization` | `bool` |
-| `SessionTimeoutMs` | `int` |
-| `MaxConcurrentSessions` | `int` |
-| `AllowedIPs` | `List<string>` |
-| `BlockedIPs` | `List<string>` |
-| `SecurityHeaders` | `Dictionary<string, string>` |
-| `MetricsCollectionIntervalMs` | `int` |
-| `MaxMetricsHistory` | `int` |
-| `AlertThreshold` | `int` |
-| `EnableRealTimeMonitoring` | `bool` |
-| `EnablePerformanceProfiling` | `bool` |
-| `EnableCostTracking` | `bool` |
-| `EnableGeographicTracking` | `bool` |
-| `MonitoringEndpoints` | `List<string>` |
-| `CustomMetrics` | `Dictionary<string, string>` |
-| `ConnectionWeight` | `double` |
 
 **Response**
 
@@ -2556,73 +2739,12 @@ const { isError, message, result } = await oasis.hyperDrive.updateConfiguration(
     autoFailoverProviders: ["example string"],
     autoReplicationProviders: ["example string"],
     loadBalancingProviders: ["example string"],
-    providerConfigs: /* <Dictionary<string, ProviderConfig>> */,
-    geographicConfig: /* <GeographicConfig> */,
-    costConfig: /* <CostConfig> */,
-    performanceConfig: /* <PerformanceConfig> */,
-    securityConfig: /* <SecurityConfig> */,
-    monitoringConfig: /* <MonitoringConfig> */,
-    providerType: "example string",
-    weight: 1,
-    timeoutMs: 1,
-    maxConnections: 1,
-    errorThreshold: 1.0,
-    minUptime: 1.0,
-    maxLatencyMs: 1,
-    endpoint: "example string",
-    apiKey: "example string",
-    secretKey: "example string",
-    customSettings: /* <Dictionary<string, string>> */,
-    defaultRegion: "example string",
-    userLocation: "example string",
-    maxDistanceKm: 1.0,
-    maxNetworkHops: 1,
-    regions: /* <Dictionary<string, GeographicRegion>> */,
-    name: "example string",
-    country: "example string",
-    city: "example string",
-    latitude: 1.0,
-    longitude: 1.0,
-    timeZone: "example string",
-    currency: "example string",
-    maxCostPerOperation: 1.0,
-    maxStorageCostPerGB: 1.0,
-    maxComputeCostPerHour: 1.0,
-    maxNetworkCostPerGB: 1.0,
-    providerCosts: /* <Dictionary<string, CostAnalysisDNA>> */,
-    storageCostPerGB: 1.0,
-    computeCostPerHour: 1.0,
-    networkCostPerGB: 1.0,
-    transactionCost: 1.0,
-    apiCallCost: 1.0,
-    totalCost: 1.0,
-    lastUpdated: "2026-01-01T00:00:00Z",
-    costEfficiencyScore: 1,
-    maxResponseTimeMs: 1,
-    maxErrorRate: 1.0,
-    minThroughputMbps: 1,
-    maxConcurrentConnections: 1,
-    queueDepthThreshold: 1,
-    maxCpuUsage: 1.0,
-    maxMemoryUsage: 1.0,
-    requireEncryption: true,
-    requireAuthentication: true,
-    requireAuthorization: true,
-    sessionTimeoutMs: 1,
-    maxConcurrentSessions: 1,
-    allowedIPs: ["example string"],
-    blockedIPs: ["example string"],
-    securityHeaders: /* <Dictionary<string, string>> */,
-    metricsCollectionIntervalMs: 1,
-    maxMetricsHistory: 1,
-    alertThreshold: 1,
-    enableRealTimeMonitoring: true,
-    enablePerformanceProfiling: true,
-    enableCostTracking: true,
-    enableGeographicTracking: true,
-    monitoringEndpoints: ["example string"],
-    customMetrics: /* <Dictionary<string, string>> */,
-    connectionWeight: 1.0
+    providerConfigs: { "<string>": { "ProviderType": "example string", "IsEnabled": true, "Weight": 1, "TimeoutMs": 1, "MaxConnections": 1, "ErrorThreshold": 1.0, "MinUptime": 1.0, "MaxLatencyMs": 1, "Endpoint": "example string", "ApiKey": "example string", "SecretKey": "example string", "CustomSettings": { "<string>": "example string" } } },
+    geographicConfig: { "IsEnabled": true, "DefaultRegion": "example string", "UserLocation": "example string", "MaxDistanceKm": 1.0, "MaxNetworkHops": 1, "MaxLatencyMs": 1, "Regions": { "<string>": { "Name": "example string", "Country": "example string", "City": "example string", "Latitude": 1.0, "Longitude": 1.0, "TimeZone": "example string", "MaxLatencyMs": 1.0, "MaxNetworkHops": 1 } } },
+    costConfig: { "IsEnabled": true, "Currency": "example string", "MaxCostPerOperation": 1.0, "MaxStorageCostPerGB": 1.0, "MaxComputeCostPerHour": 1.0, "MaxNetworkCostPerGB": 1.0, "ProviderCosts": { "<string>": { "ProviderType": "example string", "StorageCostPerGB": 1.0, "ComputeCostPerHour": 1.0, "NetworkCostPerGB": 1.0, "TransactionCost": 1.0, "ApiCallCost": 1.0, "TotalCost": 1.0, "Currency": "example string", "LastUpdated": "2026-01-01T00:00:00Z", "CostEfficiencyScore": 1 } } },
+    performanceConfig: { "IsEnabled": true, "MaxResponseTimeMs": 1, "MaxErrorRate": 1.0, "MinUptime": 1.0, "MinThroughputMbps": 1, "MaxConcurrentConnections": 1, "QueueDepthThreshold": 1, "MaxCpuUsage": 1.0, "MaxMemoryUsage": 1.0 },
+    securityConfig: { "IsEnabled": true, "RequireEncryption": true, "RequireAuthentication": true, "RequireAuthorization": true, "MaxRetryAttempts": 1, "SessionTimeoutMs": 1, "MaxConcurrentSessions": 1, "AllowedIPs": ["example string"], "BlockedIPs": ["example string"], "SecurityHeaders": { "<string>": "example string" } },
+    monitoringConfig: { "IsEnabled": true, "MetricsCollectionIntervalMs": 1, "MaxMetricsHistory": 1, "AlertThreshold": 1, "EnableRealTimeMonitoring": true, "EnablePerformanceProfiling": true, "EnableCostTracking": true, "EnableGeographicTracking": true, "MonitoringEndpoints": ["example string"], "CustomMetrics": { "<string>": "example string" } }
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -2644,7 +2766,7 @@ Example response:
 
 Updates cost analysis for a provider
 
-**PUT** `api/hyperdrive/cost/{providerType}`
+**PUT** `api/hyperDrive/cost/{providerType}`
 
 Route parameters:
 
@@ -2654,7 +2776,20 @@ Route parameters:
 
 **Request**
 
-Body type: `CostAnalysis` _(type definition not found - field list unavailable)_
+Body type: `CostAnalysis`
+
+| Field | Type |
+| --- | --- |
+| `ProviderType` | `ProviderType` |
+| `StorageCostPerGB` | `double` |
+| `ComputeCostPerHour` | `double` |
+| `NetworkCostPerGB` | `double` |
+| `TransactionCost` | `double` |
+| `ApiCallCost` | `double` |
+| `TotalCost` | `double` |
+| `Currency` | `string` |
+| `LastUpdated` | `DateTime` |
+| `CostEfficiencyScore` | `double` |
 
 **Response**
 
@@ -2666,8 +2801,16 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.updateCostAnalysis({
-    providerType: '<providerType>',
-    /* ...request body fields */
+    providerType: {  },
+    storageCostPerGB: 1.0,
+    computeCostPerHour: 1.0,
+    networkCostPerGB: 1.0,
+    transactionCost: 1.0,
+    apiCallCost: 1.0,
+    totalCost: 1.0,
+    currency: "example string",
+    lastUpdated: "2026-01-01T00:00:00Z",
+    costEfficiencyScore: 1.0
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -2687,23 +2830,49 @@ Example response:
 
 ### `updateCostOptimizationRule`
 
-**PUT** `api/hyperdrive/replication/cost-optimization`
+**PUT** `api/hyperDrive/replication/cost-optimization`
 
 **Request**
 
-Body type: `CostOptimizationRuleConfig` _(type definition not found - field list unavailable)_
+Body type: `CostOptimizationRuleConfig`
+
+| Field | Type |
+| --- | --- |
+| `IsEnabled` | `bool` |
+| `MaxCostPerReplication` | `decimal` |
+| `MaxCostPerMonth` | `decimal` |
+| `PreferredFreeProviders` | `List<string>` |
+| `AvoidHighGasProviders` | `bool` |
+| `GasFeeThreshold` | `decimal` |
+| `CostAlertThreshold` | `decimal` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `CostOptimizationRuleConfig` _(type definition not found - field list unavailable)_
+`result` type: `CostOptimizationRuleConfig`
+
+| Field | Type |
+| --- | --- |
+| `IsEnabled` | `bool` |
+| `MaxCostPerReplication` | `decimal` |
+| `MaxCostPerMonth` | `decimal` |
+| `PreferredFreeProviders` | `List<string>` |
+| `AvoidHighGasProviders` | `bool` |
+| `GasFeeThreshold` | `decimal` |
+| `CostAlertThreshold` | `decimal` |
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.updateCostOptimizationRule({
-    /* ...request body fields */
+    isEnabled: true,
+    maxCostPerReplication: 1.0,
+    maxCostPerMonth: 1.0,
+    preferredFreeProviders: ["example string"],
+    avoidHighGasProviders: true,
+    gasFeeThreshold: 1.0,
+    costAlertThreshold: 1.0
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -2715,7 +2884,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <CostOptimizationRuleConfig> */
+  "result": { "IsEnabled": true, "MaxCostPerReplication": 1.0, "MaxCostPerMonth": 1.0, "PreferredFreeProviders": ["example string"], "AvoidHighGasProviders": true, "GasFeeThreshold": 1.0, "CostAlertThreshold": 1.0 }
 }
 ```
 
@@ -2725,11 +2894,19 @@ Example response:
 
 Updates data permissions configuration
 
-**PUT** `api/hyperdrive/data-permissions`
+**PUT** `api/hyperDrive/data-permissions`
 
 **Request**
 
-Body type: `DataPermissionsConfig` _(type definition not found - field list unavailable)_
+Body type: `DataPermissionsConfig`
+
+| Field | Type |
+| --- | --- |
+| `AvatarPermissions` | `AvatarPermissionsConfig` |
+| `HolonPermissions` | `HolonPermissionsConfig` |
+| `ProviderPermissions` | `ProviderPermissionsConfig` |
+| `FieldLevelPermissions` | `FieldLevelPermissionsConfig` |
+| `AccessControl` | `AccessControlConfig` |
 
 **Response**
 
@@ -2741,7 +2918,11 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.updateDataPermissions({
-    /* ...request body fields */
+    avatarPermissions: { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } },
+    holonPermissions: { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } },
+    providerPermissions: { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }] },
+    fieldLevelPermissions: { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] },
+    accessControl: { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] }
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -2761,23 +2942,49 @@ Example response:
 
 ### `updateDataTypeReplicationRule`
 
-**PUT** `api/hyperdrive/replication/data-type-rules`
+**PUT** `api/hyperDrive/replication/data-type-rules`
 
 **Request**
 
-Body type: `DataTypeReplicationRuleConfig` _(type definition not found - field list unavailable)_
+Body type: `DataTypeReplicationRuleConfig`
+
+| Field | Type |
+| --- | --- |
+| `DataType` | `string` |
+| `IsEnabled` | `bool` |
+| `RequiredProviders` | `List<string>` |
+| `OptionalProviders` | `List<string>` |
+| `Permissions` | `DataPermissionsConfig` |
+| `CostLimit` | `decimal` |
+| `Schedule` | `ScheduleConfig` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `DataTypeReplicationRuleConfig` _(type definition not found - field list unavailable)_
+`result` type: `DataTypeReplicationRuleConfig`
+
+| Field | Type |
+| --- | --- |
+| `DataType` | `string` |
+| `IsEnabled` | `bool` |
+| `RequiredProviders` | `List<string>` |
+| `OptionalProviders` | `List<string>` |
+| `Permissions` | `DataPermissionsConfig` |
+| `CostLimit` | `decimal` |
+| `Schedule` | `ScheduleConfig` |
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.updateDataTypeReplicationRule({
-    /* ...request body fields */
+    dataType: "example string",
+    isEnabled: true,
+    requiredProviders: ["example string"],
+    optionalProviders: ["example string"],
+    permissions: { "AvatarPermissions": { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "HolonPermissions": { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "ProviderPermissions": { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }] }, "FieldLevelPermissions": { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] }, "AccessControl": { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] } },
+    costLimit: 1.0,
+    schedule: { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] }
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -2789,7 +2996,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <DataTypeReplicationRuleConfig> */
+  "result": { "DataType": "example string", "IsEnabled": true, "RequiredProviders": ["example string"], "OptionalProviders": ["example string"], "Permissions": { "AvatarPermissions": { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "HolonPermissions": { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "ProviderPermissions": { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }] }, "FieldLevelPermissions": { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] }, "AccessControl": { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] } }, "CostLimit": 1.0, "Schedule": {} }
 }
 ```
 
@@ -2797,23 +3004,43 @@ Example response:
 
 ### `updateEscalationRule`
 
-**PUT** `api/hyperdrive/failover/escalation-rules`
+**PUT** `api/hyperDrive/failover/escalation-rules`
 
 **Request**
 
-Body type: `EscalationRuleConfig` _(type definition not found - field list unavailable)_
+Body type: `EscalationRuleConfig`
+
+| Field | Type |
+| --- | --- |
+| `Name` | `string` |
+| `Level` | `string` |
+| `Condition` | `FailoverConditionConfig` |
+| `Action` | `FailoverActionConfig` |
+| `Notification` | `NotificationRuleConfig` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `EscalationRuleConfig` _(type definition not found - field list unavailable)_
+`result` type: `EscalationRuleConfig`
+
+| Field | Type |
+| --- | --- |
+| `Name` | `string` |
+| `Level` | `string` |
+| `Condition` | `FailoverConditionConfig` |
+| `Action` | `FailoverActionConfig` |
+| `Notification` | `NotificationRuleConfig` |
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.updateEscalationRule({
-    /* ...request body fields */
+    name: "example string",
+    level: "example string",
+    condition: { "Type": "example string", "Operator": "example string", "Value": {}, "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Threshold": 1.0 },
+    action: { "Type": "example string", "TargetProvider": "example string", "FallbackProviders": ["example string"], "CostLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } },
+    notification: { "Channels": ["example string"], "Message": "example string", "Priority": "example string", "IsEnabled": true }
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -2825,7 +3052,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <EscalationRuleConfig> */
+  "result": { "Name": "example string", "Level": "example string", "Condition": { "Type": "example string", "Operator": "example string", "Value": {}, "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Threshold": 1.0 }, "Action": { "Type": "example string", "TargetProvider": "example string", "FallbackProviders": ["example string"], "CostLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }, "Notification": { "Channels": ["example string"], "Message": "example string", "Priority": "example string", "IsEnabled": true } }
 }
 ```
 
@@ -2835,11 +3062,24 @@ Example response:
 
 Updates failover rules configuration
 
-**PUT** `api/hyperdrive/failover/rules`
+**PUT** `api/hyperDrive/failover/rules`
 
 **Request**
 
-Body type: `FailoverRulesConfig` _(type definition not found - field list unavailable)_
+Body type: `FailoverRulesConfig`
+
+| Field | Type |
+| --- | --- |
+| `Mode` | `string` |
+| `IsEnabled` | `bool` |
+| `MaxFailoversPerMonth` | `int` |
+| `CostThreshold` | `decimal` |
+| `FreeProvidersOnly` | `bool` |
+| `GasFeeThreshold` | `decimal` |
+| `FailoverTriggers` | `List<FailoverTriggerConfig>` |
+| `ProviderRules` | `List<ProviderFailoverRuleConfig>` |
+| `IntelligentSelection` | `IntelligentSelectionRuleConfig` |
+| `EscalationRules` | `List<EscalationRuleConfig>` |
 
 **Response**
 
@@ -2851,7 +3091,16 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.updateFailoverRules({
-    /* ...request body fields */
+    mode: "example string",
+    isEnabled: true,
+    maxFailoversPerMonth: 1,
+    costThreshold: 1.0,
+    freeProvidersOnly: true,
+    gasFeeThreshold: 1.0,
+    failoverTriggers: [{ "Id": "example string", "Name": "example string", "Condition": { "Type": "example string", "Operator": "example string", "Value": {}, "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Threshold": 1.0 }, "Priority": "example string", "IsEnabled": true, "Action": { "Type": "example string", "TargetProvider": "example string", "FallbackProviders": ["example string"], "CostLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } } }],
+    providerRules: [{ "ProviderType": "example string", "IsEnabled": true, "Priority": 1, "CostLimit": 1.0, "GasFeeLimit": 1.0, "Conditions": [{ "Type": "example string", "Operator": "example string", "Value": {}, "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Threshold": 1.0 }], "FallbackProviders": ["example string"] }],
+    intelligentSelection: { "IsEnabled": true, "Algorithm": "example string", "Weights": { "Cost": 1.0, "Performance": 1.0, "Reliability": 1.0, "Security": 1.0, "Geographic": 1.0, "Availability": 1.0 }, "LearningEnabled": true, "AdaptationSpeed": "example string", "OptimizationGoals": [{ "Type": "example string", "Weight": 1.0, "Target": 1.0, "IsEnabled": true }] },
+    escalationRules: [{ "Name": "example string", "Level": "example string", "Condition": { "Type": "example string", "Operator": "example string", "Value": {}, "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Threshold": 1.0 }, "Action": { "Type": "example string", "TargetProvider": "example string", "FallbackProviders": ["example string"], "CostLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }, "Notification": { "Channels": ["example string"], "Message": "example string", "Priority": "example string", "IsEnabled": true } }]
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -2871,7 +3120,7 @@ Example response:
 
 ### `updateFailoverTrigger`
 
-**PUT** `api/hyperdrive/failover/triggers/{id}`
+**PUT** `api/hyperDrive/failover/triggers/{id}`
 
 Route parameters:
 
@@ -2881,20 +3130,42 @@ Route parameters:
 
 **Request**
 
-Body type: `FailoverTriggerConfig` _(type definition not found - field list unavailable)_
+Body type: `FailoverTriggerConfig`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `Name` | `string` |
+| `Condition` | `FailoverConditionConfig` |
+| `Priority` | `string` |
+| `IsEnabled` | `bool` |
+| `Action` | `FailoverActionConfig` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `FailoverTriggerConfig` _(type definition not found - field list unavailable)_
+`result` type: `FailoverTriggerConfig`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `Name` | `string` |
+| `Condition` | `FailoverConditionConfig` |
+| `Priority` | `string` |
+| `IsEnabled` | `bool` |
+| `Action` | `FailoverActionConfig` |
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.updateFailoverTrigger({
-    id: '<id>',
-    /* ...request body fields */
+    id: "example string",
+    name: "example string",
+    condition: { "Type": "example string", "Operator": "example string", "Value": {}, "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Threshold": 1.0 },
+    priority: "example string",
+    isEnabled: true,
+    action: { "Type": "example string", "TargetProvider": "example string", "FallbackProviders": ["example string"], "CostLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -2906,7 +3177,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <FailoverTriggerConfig> */
+  "result": { "Id": "example string", "Name": "example string", "Condition": { "Type": "example string", "Operator": "example string", "Value": {}, "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Threshold": 1.0 }, "Priority": "example string", "IsEnabled": true, "Action": { "Type": "example string", "TargetProvider": "example string", "FallbackProviders": ["example string"], "CostLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } } }
 }
 ```
 
@@ -2916,7 +3187,7 @@ Example response:
 
 Updates geographic information for a provider
 
-**PUT** `api/hyperdrive/geographic/{providerType}`
+**PUT** `api/hyperDrive/geographic/{providerType}`
 
 Route parameters:
 
@@ -2926,7 +3197,19 @@ Route parameters:
 
 **Request**
 
-Body type: `GeographicInfo` _(type definition not found - field list unavailable)_
+Body type: `GeographicInfo`
+
+| Field | Type |
+| --- | --- |
+| `Region` | `string` |
+| `Country` | `string` |
+| `City` | `string` |
+| `Latitude` | `double` |
+| `Longitude` | `double` |
+| `TimeZone` | `string` |
+| `DistanceKm` | `double` |
+| `NetworkHops` | `int` |
+| `NetworkLatency` | `double` |
 
 **Response**
 
@@ -2939,7 +3222,15 @@ Standard `OASISResult` envelope (see top of this page) with:
 ```js
 const { isError, message, result } = await oasis.hyperDrive.updateGeographicInfo({
     providerType: '<providerType>',
-    /* ...request body fields */
+    region: "example string",
+    country: "example string",
+    city: "example string",
+    latitude: 1.0,
+    longitude: 1.0,
+    timeZone: "example string",
+    distanceKm: 1.0,
+    networkHops: 1,
+    networkLatency: 1.0
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -2961,11 +3252,22 @@ Example response:
 
 Updates intelligent mode configuration
 
-**PUT** `api/hyperdrive/intelligent-mode`
+**PUT** `api/hyperDrive/intelligent-mode`
 
 **Request**
 
-Body type: `IntelligentModeConfig` _(type definition not found - field list unavailable)_
+Body type: `IntelligentModeConfig`
+
+| Field | Type |
+| --- | --- |
+| `IsEnabled` | `bool` |
+| `AutoOptimization` | `bool` |
+| `CostAwareness` | `bool` |
+| `PerformanceOptimization` | `bool` |
+| `SecurityOptimization` | `bool` |
+| `LearningEnabled` | `bool` |
+| `AdaptationSpeed` | `string` |
+| `OptimizationGoals` | `List<OptimizationGoalConfig>` |
 
 **Response**
 
@@ -2977,7 +3279,14 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.updateIntelligentMode({
-    /* ...request body fields */
+    isEnabled: true,
+    autoOptimization: true,
+    costAwareness: true,
+    performanceOptimization: true,
+    securityOptimization: true,
+    learningEnabled: true,
+    adaptationSpeed: "example string",
+    optimizationGoals: [{ "Type": "example string", "Weight": 1.0, "Target": 1.0, "IsEnabled": true }]
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -2997,23 +3306,49 @@ Example response:
 
 ### `updateProviderFailoverRule`
 
-**PUT** `api/hyperdrive/failover/provider-rules`
+**PUT** `api/hyperDrive/failover/provider-rules`
 
 **Request**
 
-Body type: `ProviderFailoverRuleConfig` _(type definition not found - field list unavailable)_
+Body type: `ProviderFailoverRuleConfig`
+
+| Field | Type |
+| --- | --- |
+| `ProviderType` | `string` |
+| `IsEnabled` | `bool` |
+| `Priority` | `int` |
+| `CostLimit` | `decimal` |
+| `GasFeeLimit` | `decimal` |
+| `Conditions` | `List<FailoverConditionConfig>` |
+| `FallbackProviders` | `List<string>` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `ProviderFailoverRuleConfig` _(type definition not found - field list unavailable)_
+`result` type: `ProviderFailoverRuleConfig`
+
+| Field | Type |
+| --- | --- |
+| `ProviderType` | `string` |
+| `IsEnabled` | `bool` |
+| `Priority` | `int` |
+| `CostLimit` | `decimal` |
+| `GasFeeLimit` | `decimal` |
+| `Conditions` | `List<FailoverConditionConfig>` |
+| `FallbackProviders` | `List<string>` |
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.updateProviderFailoverRule({
-    /* ...request body fields */
+    providerType: "example string",
+    isEnabled: true,
+    priority: 1,
+    costLimit: 1.0,
+    gasFeeLimit: 1.0,
+    conditions: [{ "Type": "example string", "Operator": "example string", "Value": {}, "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Threshold": 1.0 }],
+    fallbackProviders: ["example string"]
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -3025,7 +3360,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <ProviderFailoverRuleConfig> */
+  "result": { "ProviderType": "example string", "IsEnabled": true, "Priority": 1, "CostLimit": 1.0, "GasFeeLimit": 1.0, "Conditions": [{ "Type": "example string", "Operator": "example string", "Value": {}, "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Threshold": 1.0 }], "FallbackProviders": ["example string"] }
 }
 ```
 
@@ -3033,23 +3368,55 @@ Example response:
 
 ### `updateProviderReplicationRule`
 
-**PUT** `api/hyperdrive/replication/provider-rules`
+**PUT** `api/hyperDrive/replication/provider-rules`
 
 **Request**
 
-Body type: `ProviderReplicationRuleConfig` _(type definition not found - field list unavailable)_
+Body type: `ProviderReplicationRuleConfig`
+
+| Field | Type |
+| --- | --- |
+| `ProviderType` | `string` |
+| `IsEnabled` | `bool` |
+| `Priority` | `int` |
+| `CostLimit` | `decimal` |
+| `GasFeeLimit` | `decimal` |
+| `DataTypes` | `List<string>` |
+| `Permissions` | `DataPermissionsConfig` |
+| `Conditions` | `List<ReplicationConditionConfig>` |
+| `Schedule` | `ScheduleConfig` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `ProviderReplicationRuleConfig` _(type definition not found - field list unavailable)_
+`result` type: `ProviderReplicationRuleConfig`
+
+| Field | Type |
+| --- | --- |
+| `ProviderType` | `string` |
+| `IsEnabled` | `bool` |
+| `Priority` | `int` |
+| `CostLimit` | `decimal` |
+| `GasFeeLimit` | `decimal` |
+| `DataTypes` | `List<string>` |
+| `Permissions` | `DataPermissionsConfig` |
+| `Conditions` | `List<ReplicationConditionConfig>` |
+| `Schedule` | `ScheduleConfig` |
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.updateProviderReplicationRule({
-    /* ...request body fields */
+    providerType: "example string",
+    isEnabled: true,
+    priority: 1,
+    costLimit: 1.0,
+    gasFeeLimit: 1.0,
+    dataTypes: ["example string"],
+    permissions: { "AvatarPermissions": { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "HolonPermissions": { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "ProviderPermissions": { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }] }, "FieldLevelPermissions": { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] }, "AccessControl": { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] } },
+    conditions: [{ "Type": "example string", "Operator": "example string", "Value": {}, "Field": "example string", "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] } }],
+    schedule: { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] }
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -3061,7 +3428,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <ProviderReplicationRuleConfig> */
+  "result": { "ProviderType": "example string", "IsEnabled": true, "Priority": 1, "CostLimit": 1.0, "GasFeeLimit": 1.0, "DataTypes": ["example string"], "Permissions": { "AvatarPermissions": { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "HolonPermissions": { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "ProviderPermissions": { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }] }, "FieldLevelPermissions": { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] }, "AccessControl": { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] } }, "Conditions": [{ "Type": "example string", "Operator": "example string", "Value": {}, "Field": "example string", "ProviderType": "example string", "TimeWindow": {} }], "Schedule": {} }
 }
 ```
 
@@ -3069,7 +3436,7 @@ Example response:
 
 ### `updateQuotaNotification`
 
-**PUT** `api/hyperdrive/subscription/quota-notifications/{id}`
+**PUT** `api/hyperDrive/subscription/quota-notifications/{id}`
 
 Route parameters:
 
@@ -3079,20 +3446,45 @@ Route parameters:
 
 **Request**
 
-Body type: `QuotaNotificationConfig` _(type definition not found - field list unavailable)_
+Body type: `QuotaNotificationConfig`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `Name` | `string` |
+| `QuotaType` | `string` |
+| `Threshold` | `decimal` |
+| `NotificationChannels` | `List<string>` |
+| `Actions` | `List<QuotaActionConfig>` |
+| `IsEnabled` | `bool` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `QuotaNotificationConfig` _(type definition not found - field list unavailable)_
+`result` type: `QuotaNotificationConfig`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `Name` | `string` |
+| `QuotaType` | `string` |
+| `Threshold` | `decimal` |
+| `NotificationChannels` | `List<string>` |
+| `Actions` | `List<QuotaActionConfig>` |
+| `IsEnabled` | `bool` |
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.updateQuotaNotification({
-    id: '<id>',
-    /* ...request body fields */
+    id: "example string",
+    name: "example string",
+    quotaType: "example string",
+    threshold: 1.0,
+    notificationChannels: ["example string"],
+    actions: [{ "Type": "example string", "Value": {}, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }],
+    isEnabled: true
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -3104,7 +3496,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <QuotaNotificationConfig> */
+  "result": { "Id": "example string", "Name": "example string", "QuotaType": "example string", "Threshold": 1.0, "NotificationChannels": ["example string"], "Actions": [{ "Type": "example string", "Value": {}, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }], "IsEnabled": true }
 }
 ```
 
@@ -3114,11 +3506,26 @@ Example response:
 
 Updates replication rules configuration
 
-**PUT** `api/hyperdrive/replication/rules`
+**PUT** `api/hyperDrive/replication/rules`
 
 **Request**
 
-Body type: `ReplicationRulesConfig` _(type definition not found - field list unavailable)_
+Body type: `ReplicationRulesConfig`
+
+| Field | Type |
+| --- | --- |
+| `Mode` | `string` |
+| `IsEnabled` | `bool` |
+| `MaxReplicationsPerMonth` | `int` |
+| `CostThreshold` | `decimal` |
+| `FreeProvidersOnly` | `bool` |
+| `GasFeeThreshold` | `decimal` |
+| `ReplicationTriggers` | `List<ReplicationTriggerConfig>` |
+| `ProviderRules` | `List<ProviderReplicationRuleConfig>` |
+| `DataTypeRules` | `List<DataTypeReplicationRuleConfig>` |
+| `ScheduleRules` | `List<ScheduleRuleConfig>` |
+| `CostOptimization` | `CostOptimizationRuleConfig` |
+| `IntelligentSelection` | `IntelligentSelectionRuleConfig` |
 
 **Response**
 
@@ -3130,7 +3537,18 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.updateReplicationRules({
-    /* ...request body fields */
+    mode: "example string",
+    isEnabled: true,
+    maxReplicationsPerMonth: 1,
+    costThreshold: 1.0,
+    freeProvidersOnly: true,
+    gasFeeThreshold: 1.0,
+    replicationTriggers: [{ "Id": "example string", "Name": "example string", "Condition": { "Type": "example string", "Operator": "example string", "Value": {}, "Field": "example string", "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] } }, "Priority": "example string", "IsEnabled": true, "Action": { "Type": "example string", "TargetProviders": ["example string"], "DataTypes": ["example string"], "Permissions": { "AvatarPermissions": { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "HolonPermissions": { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "ProviderPermissions": { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }] }, "FieldLevelPermissions": { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] }, "AccessControl": { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": {}, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] } }, "CostLimit": 1.0, "Schedule": {} } }],
+    providerRules: [{ "ProviderType": "example string", "IsEnabled": true, "Priority": 1, "CostLimit": 1.0, "GasFeeLimit": 1.0, "DataTypes": ["example string"], "Permissions": { "AvatarPermissions": { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "HolonPermissions": { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "ProviderPermissions": { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }] }, "FieldLevelPermissions": { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] }, "AccessControl": { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] } }, "Conditions": [{ "Type": "example string", "Operator": "example string", "Value": {}, "Field": "example string", "ProviderType": "example string", "TimeWindow": {} }], "Schedule": {} }],
+    dataTypeRules: [{ "DataType": "example string", "IsEnabled": true, "RequiredProviders": ["example string"], "OptionalProviders": ["example string"], "Permissions": { "AvatarPermissions": { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "HolonPermissions": { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "ProviderPermissions": { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }] }, "FieldLevelPermissions": { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] }, "AccessControl": { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] } }, "CostLimit": 1.0, "Schedule": {} }],
+    scheduleRules: [{ "Name": "example string", "IsEnabled": true, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] }, "DataTypes": ["example string"], "Providers": ["example string"], "Permissions": { "AvatarPermissions": { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "HolonPermissions": { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "ProviderPermissions": { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": {} }] }, "FieldLevelPermissions": { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] }, "AccessControl": { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] } } }],
+    costOptimization: { "IsEnabled": true, "MaxCostPerReplication": 1.0, "MaxCostPerMonth": 1.0, "PreferredFreeProviders": ["example string"], "AvoidHighGasProviders": true, "GasFeeThreshold": 1.0, "CostAlertThreshold": 1.0 },
+    intelligentSelection: { "IsEnabled": true, "Algorithm": "example string", "Weights": { "Cost": 1.0, "Performance": 1.0, "Reliability": 1.0, "Security": 1.0, "Geographic": 1.0, "Availability": 1.0 }, "LearningEnabled": true, "AdaptationSpeed": "example string", "OptimizationGoals": [{ "Type": "example string", "Weight": 1.0, "Target": 1.0, "IsEnabled": true }] }
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -3150,7 +3568,7 @@ Example response:
 
 ### `updateReplicationTrigger`
 
-**PUT** `api/hyperdrive/replication/triggers/{id}`
+**PUT** `api/hyperDrive/replication/triggers/{id}`
 
 Route parameters:
 
@@ -3160,20 +3578,42 @@ Route parameters:
 
 **Request**
 
-Body type: `ReplicationTriggerConfig` _(type definition not found - field list unavailable)_
+Body type: `ReplicationTriggerConfig`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `Name` | `string` |
+| `Condition` | `ReplicationConditionConfig` |
+| `Priority` | `string` |
+| `IsEnabled` | `bool` |
+| `Action` | `ReplicationActionConfig` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `ReplicationTriggerConfig` _(type definition not found - field list unavailable)_
+`result` type: `ReplicationTriggerConfig`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `Name` | `string` |
+| `Condition` | `ReplicationConditionConfig` |
+| `Priority` | `string` |
+| `IsEnabled` | `bool` |
+| `Action` | `ReplicationActionConfig` |
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.updateReplicationTrigger({
-    id: '<id>',
-    /* ...request body fields */
+    id: "example string",
+    name: "example string",
+    condition: { "Type": "example string", "Operator": "example string", "Value": {}, "Field": "example string", "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] } },
+    priority: "example string",
+    isEnabled: true,
+    action: { "Type": "example string", "TargetProviders": ["example string"], "DataTypes": ["example string"], "Permissions": { "AvatarPermissions": { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "HolonPermissions": { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "ProviderPermissions": { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }] }, "FieldLevelPermissions": { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] }, "AccessControl": { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] } }, "CostLimit": 1.0, "Schedule": {} }
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -3185,7 +3625,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <ReplicationTriggerConfig> */
+  "result": { "Id": "example string", "Name": "example string", "Condition": { "Type": "example string", "Operator": "example string", "Value": {}, "Field": "example string", "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] } }, "Priority": "example string", "IsEnabled": true, "Action": { "Type": "example string", "TargetProviders": ["example string"], "DataTypes": ["example string"], "Permissions": { "AvatarPermissions": { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "HolonPermissions": { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "ProviderPermissions": { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }] }, "FieldLevelPermissions": { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] }, "AccessControl": { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": {}, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] } }, "CostLimit": 1.0, "Schedule": {} } }
 }
 ```
 
@@ -3193,23 +3633,46 @@ Example response:
 
 ### `updateScheduleRule`
 
-**PUT** `api/hyperdrive/replication/schedule-rules`
+**PUT** `api/hyperDrive/replication/schedule-rules`
 
 **Request**
 
-Body type: `ScheduleRuleConfig` _(type definition not found - field list unavailable)_
+Body type: `ScheduleRuleConfig`
+
+| Field | Type |
+| --- | --- |
+| `Name` | `string` |
+| `IsEnabled` | `bool` |
+| `Schedule` | `ScheduleConfig` |
+| `DataTypes` | `List<string>` |
+| `Providers` | `List<string>` |
+| `Permissions` | `DataPermissionsConfig` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `ScheduleRuleConfig` _(type definition not found - field list unavailable)_
+`result` type: `ScheduleRuleConfig`
+
+| Field | Type |
+| --- | --- |
+| `Name` | `string` |
+| `IsEnabled` | `bool` |
+| `Schedule` | `ScheduleConfig` |
+| `DataTypes` | `List<string>` |
+| `Providers` | `List<string>` |
+| `Permissions` | `DataPermissionsConfig` |
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.updateScheduleRule({
-    /* ...request body fields */
+    name: "example string",
+    isEnabled: true,
+    schedule: { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] },
+    dataTypes: ["example string"],
+    providers: ["example string"],
+    permissions: { "AvatarPermissions": { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "HolonPermissions": { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "ProviderPermissions": { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }] }, "FieldLevelPermissions": { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] }, "AccessControl": { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] } }
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -3221,7 +3684,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <ScheduleRuleConfig> */
+  "result": { "Name": "example string", "IsEnabled": true, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] }, "DataTypes": ["example string"], "Providers": ["example string"], "Permissions": { "AvatarPermissions": { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "HolonPermissions": { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "ProviderPermissions": { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": {} }] }, "FieldLevelPermissions": { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] }, "AccessControl": { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] }, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] } } }
 }
 ```
 
@@ -3231,11 +3694,27 @@ Example response:
 
 Updates subscription configuration
 
-**PUT** `api/hyperdrive/subscription/config`
+**PUT** `api/hyperDrive/subscription/config`
 
 **Request**
 
-Body type: `SubscriptionConfig` _(type definition not found - field list unavailable)_
+Body type: `SubscriptionConfig`
+
+| Field | Type |
+| --- | --- |
+| `PlanType` | `string` |
+| `MaxReplicationsPerMonth` | `int` |
+| `MaxFailoversPerMonth` | `int` |
+| `MaxRequestsPerMonth` | `int` |
+| `MaxStorageGB` | `int` |
+| `PayAsYouGoEnabled` | `bool` |
+| `CostPerReplication` | `decimal` |
+| `CostPerFailover` | `decimal` |
+| `CostPerGB` | `decimal` |
+| `Currency` | `string` |
+| `BillingCycle` | `string` |
+| `UsageAlerts` | `List<UsageAlertConfig>` |
+| `QuotaNotifications` | `List<QuotaNotificationConfig>` |
 
 **Response**
 
@@ -3247,7 +3726,19 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.updateSubscriptionConfig({
-    /* ...request body fields */
+    planType: "example string",
+    maxReplicationsPerMonth: 1,
+    maxFailoversPerMonth: 1,
+    maxRequestsPerMonth: 1,
+    maxStorageGB: 1,
+    payAsYouGoEnabled: true,
+    costPerReplication: 1.0,
+    costPerFailover: 1.0,
+    costPerGB: 1.0,
+    currency: "example string",
+    billingCycle: "example string",
+    usageAlerts: [{ "Id": "example string", "Name": "example string", "Threshold": 1.0, "ThresholdType": "example string", "NotificationChannels": ["example string"], "IsEnabled": true }],
+    quotaNotifications: [{ "Id": "example string", "Name": "example string", "QuotaType": "example string", "Threshold": 1.0, "NotificationChannels": ["example string"], "Actions": [{ "Type": "example string", "Value": {}, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }], "IsEnabled": true }]
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -3267,7 +3758,7 @@ Example response:
 
 ### `updateUsageAlert`
 
-**PUT** `api/hyperdrive/subscription/usage-alerts/{id}`
+**PUT** `api/hyperDrive/subscription/usage-alerts/{id}`
 
 Route parameters:
 
@@ -3277,20 +3768,42 @@ Route parameters:
 
 **Request**
 
-Body type: `UsageAlertConfig` _(type definition not found - field list unavailable)_
+Body type: `UsageAlertConfig`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `Name` | `string` |
+| `Threshold` | `decimal` |
+| `ThresholdType` | `string` |
+| `NotificationChannels` | `List<string>` |
+| `IsEnabled` | `bool` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `UsageAlertConfig` _(type definition not found - field list unavailable)_
+`result` type: `UsageAlertConfig`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `Name` | `string` |
+| `Threshold` | `decimal` |
+| `ThresholdType` | `string` |
+| `NotificationChannels` | `List<string>` |
+| `IsEnabled` | `bool` |
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.hyperDrive.updateUsageAlert({
-    id: '<id>',
-    /* ...request body fields */
+    id: "example string",
+    name: "example string",
+    threshold: 1.0,
+    thresholdType: "example string",
+    notificationChannels: ["example string"],
+    isEnabled: true
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -3302,7 +3815,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <UsageAlertConfig> */
+  "result": { "Id": "example string", "Name": "example string", "Threshold": 1.0, "ThresholdType": "example string", "NotificationChannels": ["example string"], "IsEnabled": true }
 }
 ```
 
@@ -3312,7 +3825,7 @@ Example response:
 
 Validates the current configuration
 
-**POST** `api/hyperdrive/config/validate`
+**POST** `api/hyperDrive/config/validate`
 
 **Request**
 

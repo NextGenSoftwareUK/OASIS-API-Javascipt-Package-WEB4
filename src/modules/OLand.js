@@ -6,7 +6,7 @@
 const { makeOperation } = require('../core/routeHelper');
 
 /**
- * Generated wrapper for api/oland (source: ONODE WebAPI OLandController.cs).
+ * Generated wrapper for api/oLand (source: ONODE WebAPI OLandController.cs).
  * Every method takes a single args object: path-template tokens (e.g. {id})
  * are consumed from it automatically; any remaining keys are sent as the
  * query string (GET/DELETE) or JSON body (POST/PUT).
@@ -15,20 +15,20 @@ class OLandModule {
   constructor(http) {
     this._http = http;
 
-    // POST api/oland/delete-oland/{olandId}
-    this.deleteOlandAsync = makeOperation(http, "api/oland", "POST", "delete-oland/{olandId}");
-    // GET api/oland/get-oland-price
-    this.getOlandPrice = makeOperation(http, "api/oland", "GET", "get-oland-price");
-    // GET api/oland/load-all-olands
-    this.loadAllOlands = makeOperation(http, "api/oland", "GET", "load-all-olands");
-    // GET api/oland/load-oland/{olandId}
-    this.loadOlandAsync = makeOperation(http, "api/oland", "GET", "load-oland/{olandId}");
-    // POST api/oland/purchase-oland
-    this.purchaseOland = makeOperation(http, "api/oland", "POST", "purchase-oland");
-    // POST api/oland/save-oland
-    this.saveOlandAsync = makeOperation(http, "api/oland", "POST", "save-oland");
-    // POST api/oland/update-oland
-    this.updateOlandAsync = makeOperation(http, "api/oland", "POST", "update-oland");
+    // POST api/oLand/delete-oland/{olandId}
+    this.deleteOlandAsync = makeOperation(http, "api/oLand", "POST", "delete-oland/{olandId}");
+    // GET api/oLand/get-oland-price
+    this.getOlandPrice = makeOperation(http, "api/oLand", "GET", "get-oland-price");
+    // GET api/oLand/load-all-olands
+    this.loadAllOlands = makeOperation(http, "api/oLand", "GET", "load-all-olands");
+    // GET api/oLand/load-oland/{olandId}
+    this.loadOlandAsync = makeOperation(http, "api/oLand", "GET", "load-oland/{olandId}");
+    // POST api/oLand/purchase-oland
+    this.purchaseOland = makeOperation(http, "api/oLand", "POST", "purchase-oland");
+    // POST api/oLand/save-oland
+    this.saveOlandAsync = makeOperation(http, "api/oLand", "POST", "save-oland");
+    // POST api/oLand/update-oland
+    this.updateOlandAsync = makeOperation(http, "api/oLand", "POST", "update-oland");
   }
 }
 

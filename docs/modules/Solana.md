@@ -77,7 +77,7 @@ const { isError, message, result } = await oasis.solana.mintNft({
     offChainProvider: {  },
     onChainProvider: {  },
     nFTStandardType: {  },
-    nFTOffChainMetaType: /* <NFTOffChainMetaType> */,
+    nFTOffChainMetaType: {  },
     nFTTagsMergeStrategy: {  },
     nFTMetaDataMergeStrategy: {  },
     waitTillNFTMinted: true,

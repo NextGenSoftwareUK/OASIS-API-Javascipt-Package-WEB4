@@ -26,15 +26,50 @@ Discover a new egg
 
 **Request**
 
-Body type: `EggDiscoveryMethod`
+Body fields:
 
-_No fields._
+| Field | Type |
+| --- | --- |
+| `eggType` | `EggType` |
+| `name` | `string` |
+| `locationId` | `Guid` |
+| `locationName` | `string` |
+| `discoveryMethod` | `EggDiscoveryMethod (optional)` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Egg` _(type definition not found - field list unavailable)_
+`result` type: `Egg`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `AvatarId` | `Guid` |
+| `EggType` | `EggType` |
+| `Name` | `string` |
+| `Description` | `string` |
+| `Rarity` | `EggRarity` |
+| `DiscoveredAt` | `DateTime` |
+| `Location` | `string` |
+| `LocationId` | `Guid` |
+| `DiscoveryMethod` | `EggDiscoveryMethod` |
+| `IsDisplayed` | `bool` |
+| `GalleryPosition` | `GalleryPosition` |
+| `EggCategory` | `EggCategory` |
+| `IsHatchable` | `bool` |
+| `IsHatched` | `bool` |
+| `HatchedAt` | `DateTime?` |
+| `HatchedDate` | `DateTime?` |
+| `DiscoveredDate` | `DateTime?` |
+| `Score` | `int` |
+| `UnlockedQuests` | `List<string>` |
+| `UnlockedAreas` | `List<string>` |
+| `AvatarUpgrades` | `List<AvatarUpgrade>` |
+| `HatchedPets` | `List<Pet>` |
+| `Stats` | `Dictionary<string, object>` |
+| `Metadata` | `Dictionary<string, object>` |
+| `Tags` | `List<string>` |
 
 **Example**
 
@@ -43,7 +78,8 @@ const { isError, message, result } = await oasis.eggs.discoverEgg({
     eggType: '<eggType>',
     name: 'example string',
     locationId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-    locationName: 'example string'
+    locationName: 'example string',
+    discoveryMethod: '<discoveryMethod>'
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -55,7 +91,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Egg> */
+  "result": { "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "EggType": {  }, "Name": "example string", "Description": "example string", "Rarity": {  }, "DiscoveredAt": "2026-01-01T00:00:00Z", "Location": "example string", "LocationId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "DiscoveryMethod": {  }, "IsDisplayed": true, "GalleryPosition": {  }, "EggCategory": {  }, "IsHatchable": true, "IsHatched": true, "HatchedAt": "2026-01-01T00:00:00Z", "HatchedDate": "2026-01-01T00:00:00Z", "DiscoveredDate": "2026-01-01T00:00:00Z", "Score": 1, "UnlockedQuests": ["example string"], "UnlockedAreas": ["example string"], "AvatarUpgrades": [{ "UpgradeType": "example string", "Value": 1, "Description": "example string", "IsPermanent": true, "ExpiresAt": "2026-01-01T00:00:00Z" }], "HatchedPets": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Species": "example string", "Element": "example string", "Level": 1, "Experience": 1, "Stats": { "<string>": 1 }, "Abilities": ["example string"], "IsActive": true, "HatchedAt": "2026-01-01T00:00:00Z", "Metadata": { "<string>": {} } }], "Stats": { "<string>": {} }, "Metadata": { "<string>": {} }, "Tags": ["example string"] }
 }
 ```
 
@@ -75,7 +111,36 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<Egg>` _(type definition not found - field list unavailable)_
+`result` type: `Egg` (array)
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `AvatarId` | `Guid` |
+| `EggType` | `EggType` |
+| `Name` | `string` |
+| `Description` | `string` |
+| `Rarity` | `EggRarity` |
+| `DiscoveredAt` | `DateTime` |
+| `Location` | `string` |
+| `LocationId` | `Guid` |
+| `DiscoveryMethod` | `EggDiscoveryMethod` |
+| `IsDisplayed` | `bool` |
+| `GalleryPosition` | `GalleryPosition` |
+| `EggCategory` | `EggCategory` |
+| `IsHatchable` | `bool` |
+| `IsHatched` | `bool` |
+| `HatchedAt` | `DateTime?` |
+| `HatchedDate` | `DateTime?` |
+| `DiscoveredDate` | `DateTime?` |
+| `Score` | `int` |
+| `UnlockedQuests` | `List<string>` |
+| `UnlockedAreas` | `List<string>` |
+| `AvatarUpgrades` | `List<AvatarUpgrade>` |
+| `HatchedPets` | `List<Pet>` |
+| `Stats` | `Dictionary<string, object>` |
+| `Metadata` | `Dictionary<string, object>` |
+| `Tags` | `List<string>` |
 
 **Example**
 
@@ -91,7 +156,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <Egg> */ ]
+  "result": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "EggType": {  }, "Name": "example string", "Description": "example string", "Rarity": {  }, "DiscoveredAt": "2026-01-01T00:00:00Z", "Location": "example string", "LocationId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "DiscoveryMethod": {  }, "IsDisplayed": true, "GalleryPosition": {  }, "EggCategory": {  }, "IsHatchable": true, "IsHatched": true, "HatchedAt": "2026-01-01T00:00:00Z", "HatchedDate": "2026-01-01T00:00:00Z", "DiscoveredDate": "2026-01-01T00:00:00Z", "Score": 1, "UnlockedQuests": ["example string"], "UnlockedAreas": ["example string"], "AvatarUpgrades": [{ "UpgradeType": "example string", "Value": 1, "Description": "example string", "IsPermanent": true, "ExpiresAt": "2026-01-01T00:00:00Z" }], "HatchedPets": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Species": "example string", "Element": "example string", "Level": 1, "Experience": 1, "Stats": { "<string>": 1 }, "Abilities": ["example string"], "IsActive": true, "HatchedAt": "2026-01-01T00:00:00Z", "Metadata": { "<string>": {} } }], "Stats": { "<string>": {} }, "Metadata": { "<string>": {} }, "Tags": ["example string"] }]
 }
 ```
 
@@ -111,7 +176,17 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<EggQuestLeaderboard>` _(type definition not found - field list unavailable)_
+`result` type: `EggQuestLeaderboard` (array)
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `AvatarId` | `Guid` |
+| `AvatarName` | `string` |
+| `Score` | `int` |
+| `Rank` | `int` |
+| `LastUpdated` | `DateTime` |
+| `Achievements` | `Dictionary<string, object>` |
 
 **Example**
 
@@ -127,7 +202,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <EggQuestLeaderboard> */ ]
+  "result": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarName": "example string", "Score": 1, "Rank": 1, "LastUpdated": "2026-01-01T00:00:00Z", "Achievements": { "<string>": {} } }]
 }
 ```
 
@@ -147,7 +222,21 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<EggQuest>` _(type definition not found - field list unavailable)_
+`result` type: `EggQuest` (array)
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `AvatarId` | `Guid` |
+| `QuestName` | `string` |
+| `Description` | `string` |
+| `CreatedAt` | `DateTime` |
+| `CompletedAt` | `DateTime?` |
+| `IsActive` | `bool` |
+| `IsCompleted` | `bool` |
+| `RequiredSteps` | `int` |
+| `CompletedSteps` | `int` |
+| `Rewards` | `Dictionary<string, object>` |
 
 **Example**
 
@@ -163,7 +252,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <EggQuest> */ ]
+  "result": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "QuestName": "example string", "Description": "example string", "CreatedAt": "2026-01-01T00:00:00Z", "CompletedAt": "2026-01-01T00:00:00Z", "IsActive": true, "IsCompleted": true, "RequiredSteps": 1, "CompletedSteps": 1, "Rewards": { "<string>": {} } }]
 }
 ```
 
@@ -183,7 +272,36 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<Egg>` _(type definition not found - field list unavailable)_
+`result` type: `Egg` (array)
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `AvatarId` | `Guid` |
+| `EggType` | `EggType` |
+| `Name` | `string` |
+| `Description` | `string` |
+| `Rarity` | `EggRarity` |
+| `DiscoveredAt` | `DateTime` |
+| `Location` | `string` |
+| `LocationId` | `Guid` |
+| `DiscoveryMethod` | `EggDiscoveryMethod` |
+| `IsDisplayed` | `bool` |
+| `GalleryPosition` | `GalleryPosition` |
+| `EggCategory` | `EggCategory` |
+| `IsHatchable` | `bool` |
+| `IsHatched` | `bool` |
+| `HatchedAt` | `DateTime?` |
+| `HatchedDate` | `DateTime?` |
+| `DiscoveredDate` | `DateTime?` |
+| `Score` | `int` |
+| `UnlockedQuests` | `List<string>` |
+| `UnlockedAreas` | `List<string>` |
+| `AvatarUpgrades` | `List<AvatarUpgrade>` |
+| `HatchedPets` | `List<Pet>` |
+| `Stats` | `Dictionary<string, object>` |
+| `Metadata` | `Dictionary<string, object>` |
+| `Tags` | `List<string>` |
 
 **Example**
 
@@ -199,7 +317,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <Egg> */ ]
+  "result": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "EggType": {  }, "Name": "example string", "Description": "example string", "Rarity": {  }, "DiscoveredAt": "2026-01-01T00:00:00Z", "Location": "example string", "LocationId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "DiscoveryMethod": {  }, "IsDisplayed": true, "GalleryPosition": {  }, "EggCategory": {  }, "IsHatchable": true, "IsHatched": true, "HatchedAt": "2026-01-01T00:00:00Z", "HatchedDate": "2026-01-01T00:00:00Z", "DiscoveredDate": "2026-01-01T00:00:00Z", "Score": 1, "UnlockedQuests": ["example string"], "UnlockedAreas": ["example string"], "AvatarUpgrades": [{ "UpgradeType": "example string", "Value": 1, "Description": "example string", "IsPermanent": true, "ExpiresAt": "2026-01-01T00:00:00Z" }], "HatchedPets": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Species": "example string", "Element": "example string", "Level": 1, "Experience": 1, "Stats": { "<string>": 1 }, "Abilities": ["example string"], "IsActive": true, "HatchedAt": "2026-01-01T00:00:00Z", "Metadata": { "<string>": {} } }], "Stats": { "<string>": {} }, "Metadata": { "<string>": {} }, "Tags": ["example string"] }]
 }
 ```
 
@@ -225,7 +343,36 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Egg` _(type definition not found - field list unavailable)_
+`result` type: `Egg`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `AvatarId` | `Guid` |
+| `EggType` | `EggType` |
+| `Name` | `string` |
+| `Description` | `string` |
+| `Rarity` | `EggRarity` |
+| `DiscoveredAt` | `DateTime` |
+| `Location` | `string` |
+| `LocationId` | `Guid` |
+| `DiscoveryMethod` | `EggDiscoveryMethod` |
+| `IsDisplayed` | `bool` |
+| `GalleryPosition` | `GalleryPosition` |
+| `EggCategory` | `EggCategory` |
+| `IsHatchable` | `bool` |
+| `IsHatched` | `bool` |
+| `HatchedAt` | `DateTime?` |
+| `HatchedDate` | `DateTime?` |
+| `DiscoveredDate` | `DateTime?` |
+| `Score` | `int` |
+| `UnlockedQuests` | `List<string>` |
+| `UnlockedAreas` | `List<string>` |
+| `AvatarUpgrades` | `List<AvatarUpgrade>` |
+| `HatchedPets` | `List<Pet>` |
+| `Stats` | `Dictionary<string, object>` |
+| `Metadata` | `Dictionary<string, object>` |
+| `Tags` | `List<string>` |
 
 **Example**
 
@@ -243,7 +390,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Egg> */
+  "result": { "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "EggType": {  }, "Name": "example string", "Description": "example string", "Rarity": {  }, "DiscoveredAt": "2026-01-01T00:00:00Z", "Location": "example string", "LocationId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "DiscoveryMethod": {  }, "IsDisplayed": true, "GalleryPosition": {  }, "EggCategory": {  }, "IsHatchable": true, "IsHatched": true, "HatchedAt": "2026-01-01T00:00:00Z", "HatchedDate": "2026-01-01T00:00:00Z", "DiscoveredDate": "2026-01-01T00:00:00Z", "Score": 1, "UnlockedQuests": ["example string"], "UnlockedAreas": ["example string"], "AvatarUpgrades": [{ "UpgradeType": "example string", "Value": 1, "Description": "example string", "IsPermanent": true, "ExpiresAt": "2026-01-01T00:00:00Z" }], "HatchedPets": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Species": "example string", "Element": "example string", "Level": 1, "Experience": 1, "Stats": { "<string>": 1 }, "Abilities": ["example string"], "IsActive": true, "HatchedAt": "2026-01-01T00:00:00Z", "Metadata": { "<string>": {} } }], "Stats": { "<string>": {} }, "Metadata": { "<string>": {} }, "Tags": ["example string"] }
 }
 ```
 

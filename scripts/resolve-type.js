@@ -116,7 +116,8 @@ const PRIMITIVE_EXAMPLES = {
   byte: '1',
   'byte[]': '"<base64-bytes>"',
   Uri: '"https://example.com/asset.png"',
-  object: '{}'
+  object: '{}',
+  'object[]': '[{}]'
 };
 
 // Types that show up in C# signatures but aren't meaningful in the JS/HTTP
@@ -161,18 +162,27 @@ function resolveType(typeName, depth = 0) {
     return { kind: 'noise', typeName: cleaned, isCollection: false };
   }
 
-  const dict = parseDictionary(cleaned);
+  const wasCollection = isCollection(cleaned);
+  const afterListStrip = stripGenerics(cleaned);
+
+  const dict = parseDictionary(afterListStrip);
   if (dict) {
-    return { kind: 'dictionary', typeName: cleaned, isCollection: false, keyType: dict.keyType, valueType: dict.valueType };
+    return { kind: 'dictionary', typeName: afterListStrip, isCollection: wasCollection, keyType: dict.keyType, valueType: dict.valueType };
   }
 
-  const bare = stripGenerics(cleaned);
+  const bare = afterListStrip;
   if (isPrimitive(bare)) {
-    return { kind: 'primitive', typeName: bare, isCollection: isCollection(cleaned) };
+    return { kind: 'primitive', typeName: bare, isCollection: wasCollection };
   }
+
+  // For a custom generic wrapper like "EnumValue<ProviderType>" the index is
+  // keyed by the bare class name ("EnumValue") - its own fields don't depend
+  // on the type argument.
+  const genericBaseMatch = bare.match(/^(\w+)<[\s\S]+>$/);
+  const lookupName = genericBaseMatch ? genericBaseMatch[1] : bare;
 
   const index = buildTypeIndex();
-  const candidates = [bare, bare.replace(/^I/, '')];
+  const candidates = [lookupName, lookupName.replace(/^I/, '')];
   let entry = null;
   for (const c of candidates) {
     const hit = index.get(c.toLowerCase());
@@ -183,14 +193,14 @@ function resolveType(typeName, depth = 0) {
   }
 
   if (!entry) {
-    return { kind: 'unresolved', typeName: bare, isCollection: isCollection(cleaned) };
+    return { kind: 'unresolved', typeName: bare, isCollection: wasCollection };
   }
 
   const props = depth < 1 ? parseProperties(entry.body) : [];
   return {
     kind: 'object',
     typeName: bare,
-    isCollection: isCollection(cleaned),
+    isCollection: wasCollection,
     properties: props,
     filePath: entry.filePath
   };

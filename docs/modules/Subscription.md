@@ -26,19 +26,33 @@ Checks if user can perform HyperDrive operation based on quota
 
 **Request**
 
-Body type: `QuotaCheckRequest` _(type definition not found - field list unavailable)_
+Body type: `QuotaCheckRequest`
+
+| Field | Type |
+| --- | --- |
+| `OperationType` | `string` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `QuotaCheckResult` _(type definition not found - field list unavailable)_
+`result` type: `QuotaCheckResult`
+
+| Field | Type |
+| --- | --- |
+| `CanProceed` | `bool` |
+| `CurrentUsage` | `int` |
+| `Limit` | `int` |
+| `Remaining` | `int` |
+| `WouldExceedQuota` | `bool` |
+| `RequiresPayAsYouGo` | `bool` |
+| `EstimatedCost` | `decimal` |
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.subscription.checkHyperDriveQuota({
-    /* ...request body fields */
+    operationType: "example string"
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -50,7 +64,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <QuotaCheckResult> */
+  "result": { "CanProceed": true, "CurrentUsage": 1, "Limit": 1, "Remaining": 1, "WouldExceedQuota": true, "RequiresPayAsYouGo": true, "EstimatedCost": 1.0 }
 }
 ```
 
@@ -62,19 +76,40 @@ Example response:
 
 **Request**
 
-Body type: `CreateCheckoutSessionRequest` _(type definition not found - field list unavailable)_
+Body type: `CreateCheckoutSessionRequest`
+
+| Field | Type |
+| --- | --- |
+| `PlanId` | `string` |
+| `SuccessUrl` | `string` |
+| `CancelUrl` | `string` |
+| `CouponCode` | `string` |
+| `CustomerEmail` | `string` |
+| `AvatarId` | `string` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `CreateCheckoutSessionResponse` _(type definition not found - field list unavailable)_
+`result` type: `CreateCheckoutSessionResponse`
+
+| Field | Type |
+| --- | --- |
+| `IsError` | `bool` |
+| `Message` | `string` |
+| `SessionId` | `string` |
+| `SessionUrl` | `string` |
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.subscription.createCheckoutSession({
-    /* ...request body fields */
+    planId: "example string",
+    successUrl: "example string",
+    cancelUrl: "example string",
+    couponCode: "example string",
+    customerEmail: "example string",
+    avatarId: "example string"
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -86,7 +121,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <CreateCheckoutSessionResponse> */
+  "result": { "IsError": true, "Message": "example string", "SessionId": "example string", "SessionUrl": "example string" }
 }
 ```
 
@@ -106,7 +141,15 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `HyperDriveUsageDto` _(type definition not found - field list unavailable)_
+`result` type: `HyperDriveUsageDto`
+
+| Field | Type |
+| --- | --- |
+| `PlanType` | `string` |
+| `PayAsYouGoEnabled` | `bool` |
+| `CurrentUsage` | `Dictionary<string, int>` |
+| `Limits` | `Dictionary<string, int>` |
+| `Costs` | `Dictionary<string, decimal>` |
 
 **Example**
 
@@ -122,7 +165,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <HyperDriveUsageDto> */
+  "result": { "PlanType": "example string", "PayAsYouGoEnabled": true, "CurrentUsage": { "<string>": 1 }, "Limits": { "<string>": 1 }, "Costs": { "<string>": 1.0 } }
 }
 ```
 
@@ -208,7 +251,19 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<PlanDto>` _(type definition not found - field list unavailable)_
+`result` type: `PlanDto` (array)
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `Name` | `string` |
+| `PriceMonthly` | `decimal` |
+| `Currency` | `string` |
+| `Features` | `string[]` |
+| `IsContactSales` | `bool` |
+| `MaxRequestsPerMonth` | `int` |
+| `MaxStorageGB` | `int` |
+| `SupportLevel` | `string` |
 
 **Example**
 
@@ -224,7 +279,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <PlanDto> */ ]
+  "result": [{ "Id": "example string", "Name": "example string", "PriceMonthly": 1.0, "Currency": "example string", "Features": /* <string[]> */, "IsContactSales": true, "MaxRequestsPerMonth": 1, "MaxStorageGB": 1, "SupportLevel": "example string" }]
 }
 ```
 
@@ -242,7 +297,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IActionResult` _(type definition not found - field list unavailable)_
+`result` type: `IActionResult` (not part of the request/response payload).
 
 **Example**
 
@@ -258,7 +313,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IActionResult> */
+  "result": null
 }
 ```
 
@@ -276,7 +331,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IActionResult` _(type definition not found - field list unavailable)_
+`result` type: `IActionResult` (not part of the request/response payload).
 
 **Example**
 
@@ -292,7 +347,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IActionResult> */
+  "result": null
 }
 ```
 
@@ -304,19 +359,23 @@ Example response:
 
 **Request**
 
-Body type: `TogglePayAsYouGoRequest` _(type definition not found - field list unavailable)_
+Body type: `TogglePayAsYouGoRequest`
+
+| Field | Type |
+| --- | --- |
+| `Enabled` | `bool` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IActionResult` _(type definition not found - field list unavailable)_
+`result` type: `IActionResult` (not part of the request/response payload).
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.subscription.togglePayAsYouGo({
-    /* ...request body fields */
+    enabled: true
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -328,7 +387,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IActionResult> */
+  "result": null
 }
 ```
 
@@ -342,7 +401,12 @@ Updates HyperDrive configuration based on subscription plan
 
 **Request**
 
-Body type: `UpdateHyperDriveConfigRequest` _(type definition not found - field list unavailable)_
+Body type: `UpdateHyperDriveConfigRequest`
+
+| Field | Type |
+| --- | --- |
+| `PlanType` | `string` |
+| `PayAsYouGoEnabled` | `bool` |
 
 **Response**
 
@@ -354,7 +418,8 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.subscription.updateHyperDriveConfig({
-    /* ...request body fields */
+    planType: "example string",
+    payAsYouGoEnabled: true
   });
 if (isError) throw new Error(message);
 console.log(result);

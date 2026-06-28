@@ -32,7 +32,17 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<SocialProvider>` _(type definition not found - field list unavailable)_
+`result` type: `SocialProvider` (array)
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `Name` | `string` |
+| `AccessToken` | `string` |
+| `AvatarId` | `Guid` |
+| `IsActive` | `bool` |
+| `RegisteredAt` | `DateTime` |
+| `Settings` | `Dictionary<string, object>` |
 
 **Example**
 
@@ -48,7 +58,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <SocialProvider> */ ]
+  "result": [{ "Id": "example string", "Name": "example string", "AccessToken": "example string", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "IsActive": true, "RegisteredAt": "2026-01-01T00:00:00Z", "Settings": { "<string>": {} } }]
 }
 ```
 
@@ -68,7 +78,17 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<SocialPost>` _(type definition not found - field list unavailable)_
+`result` type: `SocialPost` (array)
+
+| Field | Type |
+| --- | --- |
+| `Id` | `string` |
+| `ProviderId` | `string` |
+| `ProviderName` | `string` |
+| `Content` | `string` |
+| `Timestamp` | `DateTime` |
+| `AvatarId` | `Guid` |
+| `Metadata` | `Dictionary<string, object>` |
 
 **Example**
 
@@ -84,7 +104,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <SocialPost> */ ]
+  "result": [{ "Id": "example string", "ProviderId": "example string", "ProviderName": "example string", "Content": "example string", "Timestamp": "2026-01-01T00:00:00Z", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Metadata": { "<string>": {} } }]
 }
 ```
 
@@ -98,7 +118,7 @@ Register a given social provider (FaceBook, Twitter, Instagram, LinkedIn, etc)
 
 **Request**
 
-Body type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+Body type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Response**
 
@@ -138,7 +158,7 @@ Share a holon to social media
 
 **Request**
 
-Body: `List<string>`
+Body type: `string` (array)
 
 **Response**
 

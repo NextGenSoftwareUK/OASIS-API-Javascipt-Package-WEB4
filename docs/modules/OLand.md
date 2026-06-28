@@ -1,7 +1,7 @@
 # OLand — `oasis.oLand`
 
 Source controller: [`OLandController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/OLandController.cs)
-Route prefix: `api/oland`
+Route prefix: `api/oLand`
 7 operation(s).
 
 Every method takes a single args object: any key matching a `{token}` in the route is substituted into the URL; everything else becomes the query string (GET/DELETE) or JSON body (POST/PUT). Every call resolves to the standard OASIS envelope:
@@ -20,7 +20,7 @@ Every method takes a single args object: any key matching a `{token}` in the rou
 
 ### `deleteOlandAsync`
 
-**POST** `api/oland/delete-oland/{olandId}`
+**POST** `api/oLand/delete-oland/{olandId}`
 
 Route parameters:
 
@@ -109,7 +109,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "CreatedOASISType": /* <EnumValue<OASISType>> */, "CreatedProviderType": /* <EnumValue<ProviderType>> */, "GlobalHolonData": {  }, "InstanceSavedOnProviderType": /* <EnumValue<ProviderType>> */, "IsChanged": true, "IsNewHolon": true, "IsSaving": true, "Original": {}, "PreviousVersionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "PreviousVersionProviderUniqueStorageKey": /* <Dictionary<ProviderType, string>> */, "ProviderMetaData": /* <Dictionary<ProviderType, Dictionary<string, string>>> */, "ProviderUniqueStorageKey": /* <Dictionary<ProviderType, string>> */, "Nodes": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Parent": {}, "NodeName": "example string", "NodeType": {  } }], "ParentOmniverseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentOmniverse": { "GreatGrandSuperStar": {  }, "Dimensions": { "EighthDimension": {  }, "NinthDimension": {  }, "TenthDimension": {  }, "EleventhDimension": {  }, "TwelfthDimension": {  }, "CustomDimensions": [{ "DimensionLevel": {  } }] }, "Multiverses": [{ "GrandSuperStar": { "Stars": [ /* <I> */ ] }, "Dimensions": { "FirstDimension": { "Universe": { "Dimensions": [], "GalaxyClusters": [{ "Galaxies": [{ "SuperStar": { "Stars": [{ "Luminosity": 1, "StarType": {  }, "StarClassification": {  }, "StarBinaryType": {  } }] }, "SolarSystems": [{ "Star": {}, "Planets": [{ "Moons": [{  }] }], "Asteroids": [{  }], "Comets": [{  }], "Meteroids": [{  }] }], "Nebulas": [{  }], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [] }], "SolarSystems": [], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [], "IsSuperCluster": true }], "SolarSystems": [], "Nebulas": [], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [] } }, "SecondDimension": { "Universe": {} }, "ThirdDimension": { "UniversePrime": {}, "MagicVerse": {}, "ParallelUniverses": [] }, "FourthDimension": { "Universe": {} }, "FifthDimension": { "Universe": {} }, "SixthDimension": { "Universe": {} }, "SeventhDimension": { "Universe": {} }, "CustomDimensions": [] } }] }, "ParentMultiverseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentMultiverse": {}, "ParentUniverseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentUniverse": {}, "ParentDimensionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentDimension": {}, "DimensionLevel": {}, "SubDimensionLevel": {  }, "ParentGalaxyClusterId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentGalaxyCluster": {}, "ParentGalaxyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentGalaxy": {}, "ParentSolarSystemId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentSolarSystem": {}, "ParentGreatGrandSuperStarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentGreatGrandSuperStar": {}, "ParentGrandSuperStarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentGrandSuperStar": {}, "ParentSuperStarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentSuperStar": {}, "ParentStarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentStar": {}, "ParentPlanetId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentPlanet": {}, "ParentMoonId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentMoon": {}, "ParentCelestialSpaceId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentCelestialSpace": { "NearestStar": {}, "CelestialBodies": /* <ReadOnlyCollection<ICelestialBody>> */, "CelestialSpaces": /* <ReadOnlyCollection<ICelestialSpace>> */, "Children": /* <new ReadOnlyCollection<IHolon>> */ }, "ParentCelestialBodyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentCelestialBody": { "CelestialBodyCore": { "Holons": [], "Zomes": [{ "HoloNETClient": { "Name": "example string", "Desc": "example string", "number": 1, "WebSocket": /* <WebSocket.WebSocket> */, "Logger": /* <ILogger> */, "HolochainVersion": /* <HolochainVersion> */ }, "ZomeName": "example string", "Holons": [{ "GlobalHolonData": {}, "ProviderUniqueStorageKey": /* <Dictionary<ProviderType, string>> */, "ProviderMetaData": /* <Dictionary<ProviderType, Dictionary<string, string>>> */, "CustomKey": "example string", "IsNewHolon": true, "IsSaving": true, "PreviousVersionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "PreviousVersionProviderUniqueStorageKey": /* <Dictionary<ProviderType, string>> */, "CreatedProviderType": /* <EnumValue<ProviderType>> */, "InstanceSavedOnProviderType": /* <EnumValue<ProviderType>> */, "CreatedOASISType": /* <EnumValue<OASISType>> */, "Nodes": [], "ParentOmniverseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentOmniverse": {}, "ParentMultiverseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentMultiverse": {}, "ParentUniverseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentUniverse": {}, "ParentDimensionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentDimension": {}, "DimensionLevel": {}, "SubDimensionLevel": {}, "ParentGalaxyClusterId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentGalaxyCluster": {}, "ParentGalaxyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentGalaxy": {}, "ParentSolarSystemId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentSolarSystem": {}, "ParentGreatGrandSuperStarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentGreatGrandSuperStar": {}, "ParentGrandSuperStarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentGrandSuperStar": {}, "ParentSuperStarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentSuperStar": {}, "ParentStarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentStar": {}, "ParentPlanetId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentPlanet": {}, "ParentMoonId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentMoon": {}, "ParentCelestialSpaceId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentCelestialSpace": {}, "ParentCelestialBodyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentCelestialBody": {}, "ParentZomeId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentZome": {} }] }] }, "CurrentOrbitAngleOfParentStar": 1, "Density": 1, "DistanceFromParentStarInMetres": 1, "GravitaionalPull": 1, "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Mass": 1, "NumberActiveAvatars": 1, "NumberRegisteredAvatars": 1, "OrbitPeriod": 1, "OrbitPositionFromParentStar": 1, "ProviderUniqueStorageKey": /* <Dictionary<ProviderType, string>> */, "RotationPeriod": 1, "RotationSpeed": 1, "TiltAngle": 1, "Weight": 1 }, "ParentZomeId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentZome": {} }
+  "result": { "CreatedOASISType": { "Score": 1.0 }, "CreatedProviderType": { "Score": 1.0 }, "GlobalHolonData": {  }, "InstanceSavedOnProviderType": {}, "IsChanged": true, "IsNewHolon": true, "IsSaving": true, "Original": {}, "PreviousVersionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "PreviousVersionProviderUniqueStorageKey": { "<ProviderType>": "example string" }, "ProviderMetaData": { "<ProviderType>": { "<string>": "example string" } }, "ProviderUniqueStorageKey": { "<ProviderType>": "example string" }, "Nodes": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Parent": {}, "NodeName": "example string", "NodeType": {  } }], "ParentOmniverseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentOmniverse": { "GreatGrandSuperStar": {  }, "Dimensions": { "EighthDimension": {  }, "NinthDimension": {  }, "TenthDimension": {  }, "EleventhDimension": {  }, "TwelfthDimension": {  }, "CustomDimensions": [{ "DimensionLevel": {  } }] }, "Multiverses": [{ "GrandSuperStar": { "Stars": [ /* <I> */ ] }, "Dimensions": { "FirstDimension": { "Universe": { "Dimensions": [], "GalaxyClusters": [{ "Galaxies": [{ "SuperStar": { "Stars": [{ "Luminosity": 1, "StarType": {  }, "StarClassification": {  }, "StarBinaryType": {  } }] }, "SolarSystems": [{ "Star": {}, "Planets": [{ "Moons": [{  }] }], "Asteroids": [{  }], "Comets": [{  }], "Meteroids": [{  }] }], "Nebulas": [{  }], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [] }], "SolarSystems": [], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [], "IsSuperCluster": true }], "SolarSystems": [], "Nebulas": [], "Stars": [], "Planets": [], "Asteroids": [], "Comets": [], "Meteroids": [] } }, "SecondDimension": { "Universe": {} }, "ThirdDimension": { "UniversePrime": {}, "MagicVerse": {}, "ParallelUniverses": [] }, "FourthDimension": { "Universe": {} }, "FifthDimension": { "Universe": {} }, "SixthDimension": { "Universe": {} }, "SeventhDimension": { "Universe": {} }, "CustomDimensions": [] } }] }, "ParentMultiverseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentMultiverse": {}, "ParentUniverseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentUniverse": {}, "ParentDimensionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentDimension": {}, "DimensionLevel": {}, "SubDimensionLevel": {  }, "ParentGalaxyClusterId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentGalaxyCluster": {}, "ParentGalaxyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentGalaxy": {}, "ParentSolarSystemId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentSolarSystem": {}, "ParentGreatGrandSuperStarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentGreatGrandSuperStar": {}, "ParentGrandSuperStarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentGrandSuperStar": {}, "ParentSuperStarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentSuperStar": {}, "ParentStarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentStar": {}, "ParentPlanetId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentPlanet": {}, "ParentMoonId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentMoon": {}, "ParentCelestialSpaceId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentCelestialSpace": { "NearestStar": {}, "CelestialBodies": /* <ReadOnlyCollection<ICelestialBody>> */, "CelestialSpaces": /* <ReadOnlyCollection<ICelestialSpace>> */, "Children": /* <new ReadOnlyCollection<IHolon>> */ }, "ParentCelestialBodyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentCelestialBody": { "CelestialBodyCore": { "Holons": [], "Zomes": [{ "HoloNETClient": { "WebSocket": /* <WebSocket.WebSocket> */, "Logger": /* <ILogger> */, "HolochainVersion": {  } }, "ZomeName": "example string", "Holons": [{ "GlobalHolonData": {}, "ProviderUniqueStorageKey": { "<ProviderType>": "example string" }, "ProviderMetaData": { "<ProviderType>": { "<string>": "example string" } }, "CustomKey": "example string", "IsNewHolon": true, "IsSaving": true, "PreviousVersionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "PreviousVersionProviderUniqueStorageKey": { "<ProviderType>": "example string" }, "CreatedProviderType": {}, "InstanceSavedOnProviderType": {}, "CreatedOASISType": {}, "Nodes": [], "ParentOmniverseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentOmniverse": {}, "ParentMultiverseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentMultiverse": {}, "ParentUniverseId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentUniverse": {}, "ParentDimensionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentDimension": {}, "DimensionLevel": {}, "SubDimensionLevel": {}, "ParentGalaxyClusterId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentGalaxyCluster": {}, "ParentGalaxyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentGalaxy": {}, "ParentSolarSystemId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentSolarSystem": {}, "ParentGreatGrandSuperStarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentGreatGrandSuperStar": {}, "ParentGrandSuperStarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentGrandSuperStar": {}, "ParentSuperStarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentSuperStar": {}, "ParentStarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentStar": {}, "ParentPlanetId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentPlanet": {}, "ParentMoonId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentMoon": {}, "ParentCelestialSpaceId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentCelestialSpace": {}, "ParentCelestialBodyId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentCelestialBody": {}, "ParentZomeId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentZome": {} }] }] }, "CurrentOrbitAngleOfParentStar": 1, "Density": 1, "DistanceFromParentStarInMetres": 1, "GravitaionalPull": 1, "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Mass": 1, "NumberActiveAvatars": 1, "NumberRegisteredAvatars": 1, "OrbitPeriod": 1, "OrbitPositionFromParentStar": 1, "ProviderUniqueStorageKey": { "<ProviderType>": "example string" }, "RotationPeriod": 1, "RotationSpeed": 1, "TiltAngle": 1, "Weight": 1 }, "ParentZomeId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "ParentZome": {} }
 }
 ```
 
@@ -117,7 +117,7 @@ Example response:
 
 ### `getOlandPrice`
 
-**GET** `api/oland/get-oland-price`
+**GET** `api/oLand/get-oland-price`
 
 **Request**
 
@@ -159,7 +159,7 @@ Example response:
 
 ### `loadAllOlands`
 
-**GET** `api/oland/load-all-olands`
+**GET** `api/oLand/load-all-olands`
 
 **Request**
 
@@ -169,7 +169,19 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IOLand>` _(type definition not found - field list unavailable)_
+`result` type: `IOLand` (array)
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `Price` | `decimal` |
+| `Discount` | `decimal` |
+| `OlandsCount` | `int` |
+| `TopSize` | `decimal` |
+| `RightSize` | `decimal` |
+| `UnitOfMeasure` | `string` |
+| `IsRemoved` | `bool` |
+| `PreviousId` | `Guid` |
 
 **Example**
 
@@ -185,7 +197,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <IOLand> */ ]
+  "result": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Price": 1.0, "Discount": 1.0, "OlandsCount": 1, "TopSize": 1.0, "RightSize": 1.0, "UnitOfMeasure": "example string", "IsRemoved": true, "PreviousId": "3fa85f64-5717-4562-b3fc-2c963f66afa6" }]
 }
 ```
 
@@ -193,7 +205,7 @@ Example response:
 
 ### `loadOlandAsync`
 
-**GET** `api/oland/load-oland/{olandId}`
+**GET** `api/oLand/load-oland/{olandId}`
 
 Route parameters:
 
@@ -209,7 +221,19 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IOLand` _(type definition not found - field list unavailable)_
+`result` type: `IOLand`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `Price` | `decimal` |
+| `Discount` | `decimal` |
+| `OlandsCount` | `int` |
+| `TopSize` | `decimal` |
+| `RightSize` | `decimal` |
+| `UnitOfMeasure` | `string` |
+| `IsRemoved` | `bool` |
+| `PreviousId` | `Guid` |
 
 **Example**
 
@@ -227,7 +251,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IOLand> */
+  "result": { "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Price": 1.0, "Discount": 1.0, "OlandsCount": 1, "TopSize": 1.0, "RightSize": 1.0, "UnitOfMeasure": "example string", "IsRemoved": true, "PreviousId": "3fa85f64-5717-4562-b3fc-2c963f66afa6" }
 }
 ```
 
@@ -235,7 +259,7 @@ Example response:
 
 ### `purchaseOland`
 
-**POST** `api/oland/purchase-oland`
+**POST** `api/oLand/purchase-oland`
 
 **Request**
 
@@ -291,11 +315,23 @@ Example response:
 
 ### `saveOlandAsync`
 
-**POST** `api/oland/save-oland`
+**POST** `api/oLand/save-oland`
 
 **Request**
 
-Body type: `IOLand` _(type definition not found - field list unavailable)_
+Body type: `IOLand`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `Price` | `decimal` |
+| `Discount` | `decimal` |
+| `OlandsCount` | `int` |
+| `TopSize` | `decimal` |
+| `RightSize` | `decimal` |
+| `UnitOfMeasure` | `string` |
+| `IsRemoved` | `bool` |
+| `PreviousId` | `Guid` |
 
 **Response**
 
@@ -307,7 +343,15 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.oLand.saveOlandAsync({
-    /* ...request body fields */
+    id: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    price: 1.0,
+    discount: 1.0,
+    olandsCount: 1,
+    topSize: 1.0,
+    rightSize: 1.0,
+    unitOfMeasure: "example string",
+    isRemoved: true,
+    previousId: "3fa85f64-5717-4562-b3fc-2c963f66afa6"
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -327,11 +371,23 @@ Example response:
 
 ### `updateOlandAsync`
 
-**POST** `api/oland/update-oland`
+**POST** `api/oLand/update-oland`
 
 **Request**
 
-Body type: `IOLand` _(type definition not found - field list unavailable)_
+Body type: `IOLand`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `Price` | `decimal` |
+| `Discount` | `decimal` |
+| `OlandsCount` | `int` |
+| `TopSize` | `decimal` |
+| `RightSize` | `decimal` |
+| `UnitOfMeasure` | `string` |
+| `IsRemoved` | `bool` |
+| `PreviousId` | `Guid` |
 
 **Response**
 
@@ -343,7 +399,15 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.oLand.updateOlandAsync({
-    /* ...request body fields */
+    id: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    price: 1.0,
+    discount: 1.0,
+    olandsCount: 1,
+    topSize: 1.0,
+    rightSize: 1.0,
+    unitOfMeasure: "example string",
+    isRemoved: true,
+    previousId: "3fa85f64-5717-4562-b3fc-2c963f66afa6"
   });
 if (isError) throw new Error(message);
 console.log(result);

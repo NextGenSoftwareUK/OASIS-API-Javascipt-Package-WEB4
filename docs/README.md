@@ -1,6 +1,6 @@
 # WEB4 OASIS API — JavaScript SDK Reference
 
-Generated from `endpoints.json` (extracted from the ONODE WebAPI controllers) by
+Generated from `endpoints.json` (extracted from the WebAPI controllers) by
 `scripts/generate-full-docs.js`. Regenerate the full pipeline after the API
 changes:
 
@@ -30,13 +30,13 @@ node scripts/generate-full-docs.js
 | [`oasis.gifts`](modules/Gifts.md) | `api/gifts` | 6 |
 | [`oasis.health`](modules/Health.md) | `api/health` | 2 |
 | [`oasis.holochain`](modules/Holochain.md) | `api/holochain` | 7 |
-| [`oasis.hyperDrive`](modules/HyperDrive.md) | `api/hyperdrive` | 77 |
+| [`oasis.hyperDrive`](modules/HyperDrive.md) | `api/hyperDrive` | 77 |
 | [`oasis.karma`](modules/Karma.md) | `api/karma` | 12 |
 | [`oasis.keys`](modules/Keys.md) | `api/keys` | 59 |
 | [`oasis.map`](modules/Map.md) | `api/map` | 22 |
 | [`oasis.messaging`](modules/Messaging.md) | `api/messaging` | 6 |
 | [`oasis.nft`](modules/Nft.md) | `api/nft` | 32 |
-| [`oasis.oLand`](modules/OLand.md) | `api/oland` | 7 |
+| [`oasis.oLand`](modules/OLand.md) | `api/oLand` | 7 |
 | [`oasis.oNET`](modules/ONET.md) | `api/v1/onet` | 11 |
 | [`oasis.oNODE`](modules/ONODE.md) | `api/v1/onode` | 13 |
 | [`oasis.provider`](modules/Provider.md) | `api/provider` | 31 |

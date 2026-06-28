@@ -120,7 +120,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IOASISProvider>` (array)
+`result` type: `IOASISProvider` (array)
 
 | Field | Type |
 | --- | --- |
@@ -146,7 +146,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [{ "ProviderName": "example string", "ProviderDescription": "example string", "ProviderCategory": /* <EnumValue<ProviderCategory>> */, "ProviderCategories": [ /* <EnumValue<ProviderCategory>> */ ], "ProviderType": /* <EnumValue<ProviderType>> */, "Activated": true, "IsProviderActivated": true }]
+  "result": [{ "ProviderName": "example string", "ProviderDescription": "example string", "ProviderCategory": { "Score": 1.0 }, "ProviderCategories": [], "ProviderType": { "Score": 1.0 }, "Activated": true, "IsProviderActivated": true }]
 }
 ```
 
@@ -166,7 +166,11 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<EnumValue<ProviderType>>` _(type definition not found - field list unavailable)_
+`result` type: `EnumValue<ProviderType>` (array)
+
+| Field | Type |
+| --- | --- |
+| `Score` | `double` |
 
 **Example**
 
@@ -182,7 +186,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <EnumValue<ProviderType>> */ ]
+  "result": [{ "Score": 1.0 }]
 }
 ```
 
@@ -202,7 +206,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IOASISProvider>` (array)
+`result` type: `IOASISProvider` (array)
 
 | Field | Type |
 | --- | --- |
@@ -228,7 +232,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [{ "ProviderName": "example string", "ProviderDescription": "example string", "ProviderCategory": /* <EnumValue<ProviderCategory>> */, "ProviderCategories": [ /* <EnumValue<ProviderCategory>> */ ], "ProviderType": /* <EnumValue<ProviderType>> */, "Activated": true, "IsProviderActivated": true }]
+  "result": [{ "ProviderName": "example string", "ProviderDescription": "example string", "ProviderCategory": { "Score": 1.0 }, "ProviderCategories": [], "ProviderType": { "Score": 1.0 }, "Activated": true, "IsProviderActivated": true }]
 }
 ```
 
@@ -254,7 +258,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IOASISProvider>` (array)
+`result` type: `IOASISProvider` (array)
 
 | Field | Type |
 | --- | --- |
@@ -282,7 +286,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [{ "ProviderName": "example string", "ProviderDescription": "example string", "ProviderCategory": /* <EnumValue<ProviderCategory>> */, "ProviderCategories": [ /* <EnumValue<ProviderCategory>> */ ], "ProviderType": /* <EnumValue<ProviderType>> */, "Activated": true, "IsProviderActivated": true }]
+  "result": [{ "ProviderName": "example string", "ProviderDescription": "example string", "ProviderCategory": { "Score": 1.0 }, "ProviderCategories": [], "ProviderType": { "Score": 1.0 }, "Activated": true, "IsProviderActivated": true }]
 }
 ```
 
@@ -302,7 +306,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IOASISProvider>` (array)
+`result` type: `IOASISProvider` (array)
 
 | Field | Type |
 | --- | --- |
@@ -328,7 +332,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [{ "ProviderName": "example string", "ProviderDescription": "example string", "ProviderCategory": /* <EnumValue<ProviderCategory>> */, "ProviderCategories": [ /* <EnumValue<ProviderCategory>> */ ], "ProviderType": /* <EnumValue<ProviderType>> */, "Activated": true, "IsProviderActivated": true }]
+  "result": [{ "ProviderName": "example string", "ProviderDescription": "example string", "ProviderCategory": { "Score": 1.0 }, "ProviderCategories": [], "ProviderType": { "Score": 1.0 }, "Activated": true, "IsProviderActivated": true }]
 }
 ```
 
@@ -348,7 +352,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IOASISProvider>` (array)
+`result` type: `IOASISProvider` (array)
 
 | Field | Type |
 | --- | --- |
@@ -374,7 +378,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [{ "ProviderName": "example string", "ProviderDescription": "example string", "ProviderCategory": /* <EnumValue<ProviderCategory>> */, "ProviderCategories": [ /* <EnumValue<ProviderCategory>> */ ], "ProviderType": /* <EnumValue<ProviderType>> */, "Activated": true, "IsProviderActivated": true }]
+  "result": [{ "ProviderName": "example string", "ProviderDescription": "example string", "ProviderCategory": { "Score": 1.0 }, "ProviderCategories": [], "ProviderType": { "Score": 1.0 }, "Activated": true, "IsProviderActivated": true }]
 }
 ```
 
@@ -394,7 +398,9 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IOASISStorageProvider` _(type definition not found - field list unavailable)_
+`result` type: `IOASISStorageProvider`
+
+_No fields._
 
 **Example**
 
@@ -410,7 +416,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IOASISStorageProvider> */
+  "result": {  }
 }
 ```
 
@@ -430,7 +436,11 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `EnumValue<ProviderType>` _(type definition not found - field list unavailable)_
+`result` type: `EnumValue<ProviderType>`
+
+| Field | Type |
+| --- | --- |
+| `Score` | `double` |
 
 **Example**
 
@@ -446,7 +456,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <EnumValue<ProviderType>> */
+  "result": { "Score": 1.0 }
 }
 ```
 
@@ -466,7 +476,11 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<EnumValue<ProviderType>>` _(type definition not found - field list unavailable)_
+`result` type: `EnumValue<ProviderType>` (array)
+
+| Field | Type |
+| --- | --- |
+| `Score` | `double` |
 
 **Example**
 
@@ -482,7 +496,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <EnumValue<ProviderType>> */ ]
+  "result": [{ "Score": 1.0 }]
 }
 ```
 
@@ -502,7 +516,11 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<EnumValue<ProviderType>>` _(type definition not found - field list unavailable)_
+`result` type: `EnumValue<ProviderType>` (array)
+
+| Field | Type |
+| --- | --- |
+| `Score` | `double` |
 
 **Example**
 
@@ -518,7 +536,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <EnumValue<ProviderType>> */ ]
+  "result": [{ "Score": 1.0 }]
 }
 ```
 
@@ -538,7 +556,11 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<EnumValue<ProviderType>>` _(type definition not found - field list unavailable)_
+`result` type: `EnumValue<ProviderType>` (array)
+
+| Field | Type |
+| --- | --- |
+| `Score` | `double` |
 
 **Example**
 
@@ -554,7 +576,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <EnumValue<ProviderType>> */ ]
+  "result": [{ "Score": 1.0 }]
 }
 ```
 
@@ -608,7 +630,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "ProviderName": "example string", "ProviderDescription": "example string", "ProviderCategory": /* <EnumValue<ProviderCategory>> */, "ProviderCategories": [ /* <EnumValue<ProviderCategory>> */ ], "ProviderType": /* <EnumValue<ProviderType>> */, "Activated": true, "IsProviderActivated": true }
+  "result": { "ProviderName": "example string", "ProviderDescription": "example string", "ProviderCategory": { "Score": 1.0 }, "ProviderCategories": [], "ProviderType": { "Score": 1.0 }, "Activated": true, "IsProviderActivated": true }
 }
 ```
 
@@ -766,7 +788,9 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IOASISStorageProvider>` _(type definition not found - field list unavailable)_
+`result` type: `IOASISStorageProvider` (array)
+
+_No fields._
 
 **Example**
 
@@ -784,7 +808,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <IOASISStorageProvider> */ ]
+  "result": [{  }]
 }
 ```
 

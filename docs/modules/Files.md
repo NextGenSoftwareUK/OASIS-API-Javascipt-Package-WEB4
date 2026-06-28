@@ -82,7 +82,14 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `FileDownload` _(type definition not found - field list unavailable)_
+`result` type: `FileDownload`
+
+| Field | Type |
+| --- | --- |
+| `FileName` | `string` |
+| `ContentType` | `string` |
+| `Data` | `byte[]` |
+| `Size` | `long` |
 
 **Example**
 
@@ -100,7 +107,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <FileDownload> */
+  "result": { "FileName": "example string", "ContentType": "example string", "Data": "<base64-bytes>", "Size": 1 }
 }
 ```
 
@@ -120,7 +127,18 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<StoredFile>` _(type definition not found - field list unavailable)_
+`result` type: `StoredFile` (array)
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `AvatarId` | `Guid` |
+| `FileName` | `string` |
+| `ContentType` | `string` |
+| `Size` | `long` |
+| `UploadedAt` | `DateTime` |
+| `ModifiedAt` | `DateTime?` |
+| `Metadata` | `Dictionary<string, object>` |
 
 **Example**
 
@@ -136,7 +154,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <StoredFile> */ ]
+  "result": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "FileName": "example string", "ContentType": "example string", "Size": 1, "UploadedAt": "2026-01-01T00:00:00Z", "ModifiedAt": "2026-01-01T00:00:00Z", "Metadata": { "<string>": {} } }]
 }
 ```
 
@@ -162,7 +180,18 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `StoredFile` _(type definition not found - field list unavailable)_
+`result` type: `StoredFile`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `AvatarId` | `Guid` |
+| `FileName` | `string` |
+| `ContentType` | `string` |
+| `Size` | `long` |
+| `UploadedAt` | `DateTime` |
+| `ModifiedAt` | `DateTime?` |
+| `Metadata` | `Dictionary<string, object>` |
 
 **Example**
 
@@ -180,7 +209,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <StoredFile> */
+  "result": { "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "FileName": "example string", "ContentType": "example string", "Size": 1, "UploadedAt": "2026-01-01T00:00:00Z", "ModifiedAt": "2026-01-01T00:00:00Z", "Metadata": { "<string>": {} } }
 }
 ```
 
@@ -200,7 +229,7 @@ Route parameters:
 
 **Request**
 
-Body type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+Body type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Response**
 
@@ -239,13 +268,24 @@ Upload a file for the current avatar.
 
 **Request**
 
-Body: `byte[]`
+Body type: `byte[]`
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `StoredFile` _(type definition not found - field list unavailable)_
+`result` type: `StoredFile`
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `AvatarId` | `Guid` |
+| `FileName` | `string` |
+| `ContentType` | `string` |
+| `Size` | `long` |
+| `UploadedAt` | `DateTime` |
+| `ModifiedAt` | `DateTime?` |
+| `Metadata` | `Dictionary<string, object>` |
 
 **Example**
 
@@ -266,7 +306,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <StoredFile> */
+  "result": { "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "FileName": "example string", "ContentType": "example string", "Size": 1, "UploadedAt": "2026-01-01T00:00:00Z", "ModifiedAt": "2026-01-01T00:00:00Z", "Metadata": { "<string>": {} } }
 }
 ```
 

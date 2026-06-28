@@ -32,7 +32,17 @@ Route parameters:
 
 **Request**
 
-Body type: `CreateWalletRequest` _(type definition not found - field list unavailable)_
+Body type: `CreateWalletRequest`
+
+| Field | Type |
+| --- | --- |
+| `Name` | `string` |
+| `Description` | `string` |
+| `WalletProviderType` | `ProviderType` |
+| `GenerateKeyPair` | `bool` |
+| `IsDefaultWallet` | `bool` |
+| `ShowSecretRecoveryPhase` | `bool` |
+| `ShowPrivateKey` | `bool` |
 
 **Response**
 
@@ -62,7 +72,13 @@ Standard `OASISResult` envelope (see top of this page) with:
 const { isError, message, result } = await oasis.wallet.createWalletForAvatarByEmailAsync({
     email: '<email>',
     providerTypeToLoadSave: '<providerTypeToLoadSave>',
-    /* ...request body fields */
+    name: "example string",
+    description: "example string",
+    walletProviderType: {  },
+    generateKeyPair: true,
+    isDefaultWallet: true,
+    showSecretRecoveryPhase: true,
+    showPrivateKey: true
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -94,7 +110,17 @@ Route parameters:
 
 **Request**
 
-Body type: `CreateWalletRequest` _(type definition not found - field list unavailable)_
+Body type: `CreateWalletRequest`
+
+| Field | Type |
+| --- | --- |
+| `Name` | `string` |
+| `Description` | `string` |
+| `WalletProviderType` | `ProviderType` |
+| `GenerateKeyPair` | `bool` |
+| `IsDefaultWallet` | `bool` |
+| `ShowSecretRecoveryPhase` | `bool` |
+| `ShowPrivateKey` | `bool` |
 
 **Response**
 
@@ -124,7 +150,13 @@ Standard `OASISResult` envelope (see top of this page) with:
 const { isError, message, result } = await oasis.wallet.createWalletForAvatarByIdAsync({
     avatarId: '<avatarId>',
     providerTypeToLoadSave: '<providerTypeToLoadSave>',
-    /* ...request body fields */
+    name: "example string",
+    description: "example string",
+    walletProviderType: {  },
+    generateKeyPair: true,
+    isDefaultWallet: true,
+    showSecretRecoveryPhase: true,
+    showPrivateKey: true
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -156,7 +188,17 @@ Route parameters:
 
 **Request**
 
-Body type: `CreateWalletRequest` _(type definition not found - field list unavailable)_
+Body type: `CreateWalletRequest`
+
+| Field | Type |
+| --- | --- |
+| `Name` | `string` |
+| `Description` | `string` |
+| `WalletProviderType` | `ProviderType` |
+| `GenerateKeyPair` | `bool` |
+| `IsDefaultWallet` | `bool` |
+| `ShowSecretRecoveryPhase` | `bool` |
+| `ShowPrivateKey` | `bool` |
 
 **Response**
 
@@ -186,7 +228,13 @@ Standard `OASISResult` envelope (see top of this page) with:
 const { isError, message, result } = await oasis.wallet.createWalletForAvatarByUsernameAsync({
     username: '<username>',
     providerTypeToLoadSave: '<providerTypeToLoadSave>',
-    /* ...request body fields */
+    name: "example string",
+    description: "example string",
+    walletProviderType: {  },
+    generateKeyPair: true,
+    isDefaultWallet: true,
+    showSecretRecoveryPhase: true,
+    showPrivateKey: true
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -461,7 +509,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<object>`
+`result` type: `object` (array)
 
 **Example**
 
@@ -610,7 +658,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<object>`
+`result` type: `object` (array)
 
 **Example**
 
@@ -656,7 +704,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<IProviderWallet>` (array)
+`result` type: `IProviderWallet` (array)
 
 | Field | Type |
 | --- | --- |
@@ -1129,7 +1177,7 @@ Query parameters:
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<ProviderType, List<IProviderWallet>>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<ProviderType, List<IProviderWallet>>` - a key/value map keyed by `ProviderType`, each value a `List<IProviderWallet>`.
 
 **Example**
 
@@ -1148,7 +1196,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<ProviderType, List<IProviderWallet>>> */
+  "result": { "<ProviderType>": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "WalletId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Description": /* <new string> */, "PrivateKey": "example string", "PublicKey": "example string", "WalletAddress": "example string", "WalletAddressSegwitP2SH": "example string", "SecretRecoveryPhrase": "example string", "Transactions": [{ "TransactionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "FromWalletAddress": "example string", "ToWalletAddress": "example string", "Amount": 1.0, "Description": "example string", "CreatedDate": "2026-01-01T00:00:00Z", "TransactionType": {  }, "TransactionCategory": {  } }], "ProviderType": {  }, "Balance": 1.0, "IsDefaultWallet": true }] }
 }
 ```
 
@@ -1180,7 +1228,7 @@ Query parameters:
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<ProviderType, List<IProviderWallet>>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<ProviderType, List<IProviderWallet>>` - a key/value map keyed by `ProviderType`, each value a `List<IProviderWallet>`.
 
 **Example**
 
@@ -1201,7 +1249,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<ProviderType, List<IProviderWallet>>> */
+  "result": { "<ProviderType>": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "WalletId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Description": /* <new string> */, "PrivateKey": "example string", "PublicKey": "example string", "WalletAddress": "example string", "WalletAddressSegwitP2SH": "example string", "SecretRecoveryPhrase": "example string", "Transactions": [{ "TransactionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "FromWalletAddress": "example string", "ToWalletAddress": "example string", "Amount": 1.0, "Description": "example string", "CreatedDate": "2026-01-01T00:00:00Z", "TransactionType": {  }, "TransactionCategory": {  } }], "ProviderType": {  }, "Balance": 1.0, "IsDefaultWallet": true }] }
 }
 ```
 
@@ -1233,7 +1281,7 @@ Query parameters:
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<ProviderType, List<IProviderWallet>>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<ProviderType, List<IProviderWallet>>` - a key/value map keyed by `ProviderType`, each value a `List<IProviderWallet>`.
 
 **Example**
 
@@ -1254,7 +1302,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<ProviderType, List<IProviderWallet>>> */
+  "result": { "<ProviderType>": [{ "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "WalletId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Description": /* <new string> */, "PrivateKey": "example string", "PublicKey": "example string", "WalletAddress": "example string", "WalletAddressSegwitP2SH": "example string", "SecretRecoveryPhrase": "example string", "Transactions": [{ "TransactionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "FromWalletAddress": "example string", "ToWalletAddress": "example string", "Amount": 1.0, "Description": "example string", "CreatedDate": "2026-01-01T00:00:00Z", "TransactionType": {  }, "TransactionCategory": {  } }], "ProviderType": {  }, "Balance": 1.0, "IsDefaultWallet": true }] }
 }
 ```
 
@@ -1274,7 +1322,7 @@ Route parameters:
 
 **Request**
 
-Body type: `Dictionary<ProviderType, List<IProviderWallet>>` _(type definition not found - field list unavailable)_
+Body type: `Dictionary<ProviderType, List<IProviderWallet>>` - a key/value map keyed by `ProviderType`, each value a `List<IProviderWallet>`.
 
 **Response**
 
@@ -1320,7 +1368,7 @@ Route parameters:
 
 **Request**
 
-Body type: `Dictionary<ProviderType, List<IProviderWallet>>` _(type definition not found - field list unavailable)_
+Body type: `Dictionary<ProviderType, List<IProviderWallet>>` - a key/value map keyed by `ProviderType`, each value a `List<IProviderWallet>`.
 
 **Response**
 
@@ -1366,7 +1414,7 @@ Route parameters:
 
 **Request**
 
-Body type: `Dictionary<ProviderType, List<IProviderWallet>>` _(type definition not found - field list unavailable)_
+Body type: `Dictionary<ProviderType, List<IProviderWallet>>` - a key/value map keyed by `ProviderType`, each value a `List<IProviderWallet>`.
 
 **Response**
 
@@ -1449,8 +1497,8 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.wallet.sendTokenAsync({
-    fromProvider: /* <EnumValue<ProviderType>> */,
-    toProvider: /* <EnumValue<ProviderType>> */,
+    fromProvider: { "Score": 1.0 },
+    toProvider: { "Score": 1.0 },
     fromAvatarId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     fromAvatarUsername: "example string",
     fromAvatarEmail: "example string",
@@ -1744,7 +1792,13 @@ Route parameters:
 
 **Request**
 
-Body type: `UpdateWalletRequest` _(type definition not found - field list unavailable)_
+Body type: `UpdateWalletRequest`
+
+| Field | Type |
+| --- | --- |
+| `Name` | `string` |
+| `Description` | `string` |
+| `WalletProviderType` | `ProviderType` |
 
 **Response**
 
@@ -1775,7 +1829,9 @@ const { isError, message, result } = await oasis.wallet.updateWalletForAvatarByE
     email: '<email>',
     walletId: '<walletId>',
     providerTypeToLoadSave: '<providerTypeToLoadSave>',
-    /* ...request body fields */
+    name: "example string",
+    description: "example string",
+    walletProviderType: {  }
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -1808,7 +1864,13 @@ Route parameters:
 
 **Request**
 
-Body type: `UpdateWalletRequest` _(type definition not found - field list unavailable)_
+Body type: `UpdateWalletRequest`
+
+| Field | Type |
+| --- | --- |
+| `Name` | `string` |
+| `Description` | `string` |
+| `WalletProviderType` | `ProviderType` |
 
 **Response**
 
@@ -1839,7 +1901,9 @@ const { isError, message, result } = await oasis.wallet.updateWalletForAvatarByI
     avatarId: '<avatarId>',
     walletId: '<walletId>',
     providerTypeToLoadSave: '<providerTypeToLoadSave>',
-    /* ...request body fields */
+    name: "example string",
+    description: "example string",
+    walletProviderType: {  }
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -1872,7 +1936,13 @@ Route parameters:
 
 **Request**
 
-Body type: `UpdateWalletRequest` _(type definition not found - field list unavailable)_
+Body type: `UpdateWalletRequest`
+
+| Field | Type |
+| --- | --- |
+| `Name` | `string` |
+| `Description` | `string` |
+| `WalletProviderType` | `ProviderType` |
 
 **Response**
 
@@ -1903,7 +1973,9 @@ const { isError, message, result } = await oasis.wallet.updateWalletForAvatarByU
     username: '<username>',
     walletId: '<walletId>',
     providerTypeToLoadSave: '<providerTypeToLoadSave>',
-    /* ...request body fields */
+    name: "example string",
+    description: "example string",
+    walletProviderType: {  }
   });
 if (isError) throw new Error(message);
 console.log(result);

@@ -43,12 +43,18 @@ Query parameters:
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<ChatMessage>` (array)
+`result` type: `ChatMessage` (array)
 
 | Field | Type |
 | --- | --- |
-| `Role` | `string` |
+| `Id` | `string` |
+| `SessionId` | `string` |
+| `SenderId` | `Guid` |
 | `Content` | `string` |
+| `MessageType` | `MessageType` |
+| `Timestamp` | `DateTime` |
+| `IsDelivered` | `bool` |
+| `IsRead` | `bool` |
 
 **Example**
 
@@ -68,7 +74,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [{ "Role": "example string", "Content": "example string" }]
+  "result": [{ "Id": "example string", "SessionId": "example string", "SenderId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Content": "example string", "MessageType": {  }, "Timestamp": "2026-01-01T00:00:00Z", "IsDelivered": true, "IsRead": true }]
 }
 ```
 
@@ -131,7 +137,7 @@ Starts a new chat session. PREVIEW - COMING SOON...
 
 **Request**
 
-Body: `List<Guid>`
+Body type: `Guid` (array)
 
 **Response**
 

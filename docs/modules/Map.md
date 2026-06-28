@@ -264,7 +264,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+`result` type: `Dictionary<string, object>` - a key/value map keyed by `string`, each value a `object`.
 
 **Example**
 
@@ -280,7 +280,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <Dictionary<string, object>> */
+  "result": { "<string>": {} }
 }
 ```
 
@@ -306,7 +306,18 @@ Query parameters:
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<MapLocation>` _(type definition not found - field list unavailable)_
+`result` type: `MapLocation` (array)
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `Name` | `string` |
+| `Description` | `string` |
+| `Latitude` | `double` |
+| `Longitude` | `double` |
+| `Type` | `LocationType` |
+| `IsActive` | `bool` |
+| `Metadata` | `Dictionary<string, object>` |
 
 **Example**
 
@@ -326,7 +337,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <MapLocation> */ ]
+  "result": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Description": "example string", "Latitude": 1.0, "Longitude": 1.0, "Type": {  }, "IsActive": true, "Metadata": { "<string>": {} } }]
 }
 ```
 
@@ -351,7 +362,15 @@ Query parameters:
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<MapVisit>` _(type definition not found - field list unavailable)_
+`result` type: `MapVisit` (array)
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `AvatarId` | `Guid` |
+| `LocationId` | `Guid` |
+| `Purpose` | `string` |
+| `VisitedAt` | `DateTime` |
 
 **Example**
 
@@ -370,7 +389,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <MapVisit> */ ]
+  "result": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "LocationId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Purpose": "example string", "VisitedAt": "2026-01-01T00:00:00Z" }]
 }
 ```
 
@@ -604,13 +623,26 @@ Search the map for locations, points of interest, and other map features
 
 **Request**
 
-Body type: `LocationType?` _(type definition not found - field list unavailable)_
+Body type: `LocationType`
+
+_No fields._
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `List<MapLocation>` _(type definition not found - field list unavailable)_
+`result` type: `MapLocation` (array)
+
+| Field | Type |
+| --- | --- |
+| `Id` | `Guid` |
+| `Name` | `string` |
+| `Description` | `string` |
+| `Latitude` | `double` |
+| `Longitude` | `double` |
+| `Type` | `LocationType` |
+| `IsActive` | `bool` |
+| `Metadata` | `Dictionary<string, object>` |
 
 **Example**
 
@@ -619,8 +651,7 @@ const { isError, message, result } = await oasis.map.search({
     query: 'example string',
     latitude: '<latitude>',
     longitude: '<longitude>',
-    radiusKm: '<radiusKm>',
-    /* ...request body fields */
+    radiusKm: '<radiusKm>'
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -632,7 +663,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [ /* <MapLocation> */ ]
+  "result": [{ "Id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Description": "example string", "Latitude": 1.0, "Longitude": 1.0, "Type": {  }, "IsActive": true, "Metadata": { "<string>": {} } }]
 }
 ```
 

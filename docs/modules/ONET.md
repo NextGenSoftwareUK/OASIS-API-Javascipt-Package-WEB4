@@ -26,19 +26,25 @@ Broadcast message to network
 
 **Request**
 
-Body type: `BroadcastMessageRequest` _(type definition not found - field list unavailable)_
+Body type: `BroadcastMessageRequest`
+
+| Field | Type |
+| --- | --- |
+| `Message` | `string` |
+| `MessageType` | `string` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IActionResult` _(type definition not found - field list unavailable)_
+`result` type: `IActionResult` (not part of the request/response payload).
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.oNET.broadcastMessage({
-    /* ...request body fields */
+    message: "example string",
+    messageType: "example string"
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -50,7 +56,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IActionResult> */
+  "result": null
 }
 ```
 
@@ -64,19 +70,25 @@ Connect to a specific node
 
 **Request**
 
-Body type: `ConnectNodeRequest` _(type definition not found - field list unavailable)_
+Body type: `ConnectNodeRequest`
+
+| Field | Type |
+| --- | --- |
+| `NodeId` | `string` |
+| `NodeAddress` | `string` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IActionResult` _(type definition not found - field list unavailable)_
+`result` type: `IActionResult` (not part of the request/response payload).
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.oNET.connectToNode({
-    /* ...request body fields */
+    nodeId: "example string",
+    nodeAddress: "example string"
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -88,7 +100,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IActionResult> */
+  "result": null
 }
 ```
 
@@ -102,19 +114,23 @@ Disconnect from a specific node
 
 **Request**
 
-Body type: `DisconnectNodeRequest` _(type definition not found - field list unavailable)_
+Body type: `DisconnectNodeRequest`
+
+| Field | Type |
+| --- | --- |
+| `NodeId` | `string` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IActionResult` _(type definition not found - field list unavailable)_
+`result` type: `IActionResult` (not part of the request/response payload).
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.oNET.disconnectFromNode({
-    /* ...request body fields */
+    nodeId: "example string"
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -126,7 +142,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IActionResult> */
+  "result": null
 }
 ```
 
@@ -146,7 +162,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IActionResult` _(type definition not found - field list unavailable)_
+`result` type: `IActionResult` (not part of the request/response payload).
 
 **Example**
 
@@ -162,7 +178,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IActionResult> */
+  "result": null
 }
 ```
 
@@ -182,7 +198,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IActionResult` _(type definition not found - field list unavailable)_
+`result` type: `IActionResult` (not part of the request/response payload).
 
 **Example**
 
@@ -198,7 +214,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IActionResult> */
+  "result": null
 }
 ```
 
@@ -218,7 +234,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IActionResult` _(type definition not found - field list unavailable)_
+`result` type: `IActionResult` (not part of the request/response payload).
 
 **Example**
 
@@ -234,7 +250,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IActionResult> */
+  "result": null
 }
 ```
 
@@ -254,7 +270,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IActionResult` _(type definition not found - field list unavailable)_
+`result` type: `IActionResult` (not part of the request/response payload).
 
 **Example**
 
@@ -270,7 +286,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IActionResult> */
+  "result": null
 }
 ```
 
@@ -290,7 +306,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IActionResult` _(type definition not found - field list unavailable)_
+`result` type: `IActionResult` (not part of the request/response payload).
 
 **Example**
 
@@ -306,7 +322,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IActionResult> */
+  "result": null
 }
 ```
 
@@ -326,7 +342,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IActionResult` _(type definition not found - field list unavailable)_
+`result` type: `IActionResult` (not part of the request/response payload).
 
 **Example**
 
@@ -342,7 +358,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IActionResult> */
+  "result": null
 }
 ```
 
@@ -362,7 +378,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IActionResult` _(type definition not found - field list unavailable)_
+`result` type: `IActionResult` (not part of the request/response payload).
 
 **Example**
 
@@ -378,7 +394,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IActionResult> */
+  "result": null
 }
 ```
 
@@ -397,656 +413,18 @@ Body type: `OASISDNA`
 | Field | Type |
 | --- | --- |
 | `OASIS` | `OASIS` |
-| `CurrentLiveVersion` | `string` |
-| `CurrentStagingVersion` | `string` |
-| `OASISVersion` | `string` |
-| `Terms` | `string` |
-| `Logging` | `LoggingSettings` |
-| `ErrorHandling` | `ErrorHandlingSettings` |
-| `Security` | `SecuritySettings` |
-| `Email` | `EmailSettings` |
-| `StorageProviders` | `StorageProviderSettings` |
-| `OASISHyperDriveConfig` | `OASISHyperDriveConfig` |
-| `Web6` | `Web6Settings` |
-| `HyperDriveMode` | `string` |
-| `ReplicationRules` | `ReplicationRulesConfig` |
-| `FailoverRules` | `FailoverRulesConfig` |
-| `SubscriptionConfig` | `SubscriptionConfig` |
-| `DataPermissions` | `DataPermissionsConfig` |
-| `IntelligentMode` | `IntelligentModeConfig` |
-| `OASISSystemAccountId` | `string` |
-| `OASISAPIURL` | `string` |
-| `NetworkId` | `string` |
-| `SettingsLookupHolonId` | `Guid` |
-| `StatsCacheEnabled` | `bool` |
-| `StatsCacheTtlSeconds` | `int` |
-| `DefaultProvider` | `string` |
-| `DefaultOpenServModel` | `string` |
-| `DefaultRoutingPriority` | `string` |
-| `DefaultRoutingFallbackEnabled` | `bool` |
-| `OpenServ` | `OpenServSettings` |
-| `FAHRN` | `FAHRNSettings` |
-| `HolonicBraid` | `HolonicBraidSettings` |
-| `HolonicMemory` | `HolonicMemorySettings` |
-| `BaseUrl` | `string` |
-| `DefaultModel` | `string` |
-| `AvailableModels` | `List<string>` |
-| `EMAAlpha` | `double` |
-| `DefaultDispatchMode` | `string` |
-| `AutoSeedOpenServAgentsOnStartup` | `bool` |
-| `MaxDecomposedSubProblems` | `int` |
-| `AutoPersistWinningPlan` | `bool` |
-| `DefaultRetentionPolicy` | `string` |
-| `RecordDispatchOutcomes` | `bool` |
-| `HideVerificationToken` | `bool` |
-| `HideRefreshTokens` | `bool` |
-| `SecretKey` | `string` |
-| `JwtTokenExpirationMinutes` | `int` |
-| `RefreshTokenExpirationDays` | `int` |
-| `AvatarPassword` | `EncryptionSettings` |
-| `OASISProviderPrivateKeys` | `EncryptionSettings` |
-| `ShowStackTrace` | `bool` |
-| `ThrowExceptionsOnErrors` | `bool` |
-| `ThrowExceptionsOnWarnings` | `bool` |
-| `LogAllErrors` | `bool` |
-| `LogAllWarnings` | `bool` |
-| `ErrorHandlingBehaviour` | `ErrorHandlingBehaviour` |
-| `WarningHandlingBehaviour` | `WarningHandlingBehaviour` |
-| `LoggingFramework` | `string` |
-| `AlsoUseDefaultLogProvider` | `bool` |
-| `LogToConsole` | `bool` |
-| `ShowColouredLogs` | `bool` |
-| `DebugColour` | `ConsoleColor` |
-| `InfoColour` | `ConsoleColor` |
-| `WarningColour` | `ConsoleColor` |
-| `ErrorColour` | `ConsoleColor` |
-| `LogToFile` | `bool` |
-| `LogPath` | `string` |
-| `LogFileName` | `string` |
-| `MaxLogFileSize` | `int` |
-| `NumberOfRetriesToLogToFile` | `int` |
-| `RetryLoggingToFileEverySeconds` | `int` |
-| `InsertExtraNewLineAfterLogMessage` | `bool` |
-| `IndentLogMessagesBy` | `int` |
-| `BCryptEncryptionEnabled` | `bool` |
-| `Rijndael256EncryptionEnabled` | `bool` |
-| `Rijndael256Key` | `string` |
-| `QuantumEncryptionEnabled` | `bool` |
-| `LogSwitchingProvidersToConsole` | `bool` |
-| `LogSwitchingProvidersToFile` | `bool` |
-| `LogSwitchingProviders` | `bool` |
-| `ProviderMethodCallTimeOutSeconds` | `int` |
-| `ActivateProviderTimeOutSeconds` | `int` |
-| `DectivateProviderTimeOutSeconds` | `int` |
-| `AutoReplicationEnabled` | `bool` |
-| `AutoFailOverEnabled` | `bool` |
-| `AutoFailOverEnabledForAvatarLogin` | `bool` |
-| `AutoFailOverEnabledForCheckIfEmailAlreadyInUse` | `bool` |
-| `AutoFailOverEnabledForCheckIfUsernameAlreadyInUse` | `bool` |
-| `AutoLoadBalanceEnabled` | `bool` |
-| `AutoLoadBalanceReadPollIntervalMins` | `int` |
-| `AutoLoadBalanceWritePollIntervalMins` | `int` |
-| `AutoReplicationProviders` | `string` |
-| `AutoLoadBalanceProviders` | `string` |
-| `AutoFailOverProviders` | `string` |
-| `AutoFailOverProvidersForAvatarLogin` | `string` |
-| `AutoFailOverProvidersForCheckIfEmailAlreadyInUse` | `string` |
-| `AutoFailOverProvidersForCheckIfUsernameAlreadyInUse` | `string` |
-| `AutoFailOverProvidersForCheckIfOASISSystemAccountExists` | `string` |
-| `AutoFailOverLocalProvidersEnabled` | `bool` |
-| `AutoFailOverLocalProviders` | `string` |
-| `OASISProviderBootType` | `string` |
-| `AzureCosmosDBOASIS` | `AzureOASISProviderSettings` |
-| `HoloOASIS` | `HoloOASISProviderSettings` |
-| `MongoDBOASIS` | `MongoDBOASISProviderSettings` |
-| `EOSIOOASIS` | `EOSIOASISProviderSettings` |
-| `TelosOASIS` | `TelosOASISProviderSettings` |
-| `SEEDSOASIS` | `SEEDSOASISProviderSettings` |
-| `ThreeFoldOASIS` | `ThreeFoldOASISProviderSettings` |
-| `EthereumOASIS` | `EthereumOASISProviderSettings` |
-| `ArbitrumOASIS` | `ArbitrumOASISProviderSettings` |
-| `RootstockOASIS` | `RootstockOASISProviderSettings` |
-| `PolygonOASIS` | `PolygonOASISProviderSettings` |
-| `SQLLiteDBOASIS` | `SQLLiteDBOASISSettings` |
-| `IPFSOASIS` | `IPFSOASISSettings` |
-| `Neo4jOASIS` | `Neo4jOASISSettings` |
-| `SolanaOASIS` | `SolanaOASISSettings` |
-| `CargoOASIS` | `CargoOASISSettings` |
-| `LocalFileOASIS` | `LocalFileOASISSettings` |
-| `PinataOASIS` | `PinataOASISSettings` |
-| `BitcoinOASIS` | `BitcoinOASISProviderSettings` |
-| `CardanoOASIS` | `CardanoOASISProviderSettings` |
-| `PolkadotOASIS` | `PolkadotOASISProviderSettings` |
-| `BNBChainOASIS` | `BNBChainOASISProviderSettings` |
-| `FantomOASIS` | `FantomOASISProviderSettings` |
-| `OptimismOASIS` | `OptimismOASISProviderSettings` |
-| `ChainLinkOASIS` | `ChainLinkOASISProviderSettings` |
-| `ElrondOASIS` | `ElrondOASISProviderSettings` |
-| `AptosOASIS` | `AptosOASISProviderSettings` |
-| `TRONOASIS` | `TRONOASISProviderSettings` |
-| `HashgraphOASIS` | `HashgraphOASISProviderSettings` |
-| `AvalancheOASIS` | `AvalancheOASISProviderSettings` |
-| `CosmosBlockChainOASIS` | `CosmosBlockChainOASISProviderSettings` |
-| `NEAROASIS` | `NEAROASISProviderSettings` |
-| `BaseOASIS` | `BaseOASISProviderSettings` |
-| `SuiOASIS` | `SuiOASISProviderSettings` |
-| `MoralisOASIS` | `MoralisOASISProviderSettings` |
-| `ActivityPubOASIS` | `ActivityPubOASISProviderSettings` |
-| `GoogleCloudOASIS` | `GoogleCloudOASISProviderSettings` |
-| `EmailFrom` | `string` |
-| `SmtpHost` | `string` |
-| `SmtpPort` | `int` |
-| `SmtpUser` | `string` |
-| `SmtpPass` | `string` |
-| `ResendKey` | `string` |
-| `DisableAllEmails` | `bool` |
-| `SendVerificationEmail` | `bool` |
-| `OASISWebSiteURL` | `string` |
-| `ConnectionString` | `string` |
-| `SingingMessage` | `string` |
-| `PrivateKey` | `string` |
-| `HostUrl` | `string` |
-| `WalletMnemonicWords` | `string` |
-| `PublicKey` | `string` |
-| `HolochainVersion` | `HolochainVersion` |
-| `UseLocalNode` | `bool` |
-| `UseHoloNetwork` | `bool` |
-| `HoloNetworkURI` | `string` |
-| `LocalNodeURI` | `string` |
-| `HoloNETORMUseReflection` | `bool` |
-| `STARBasePath` | `string` |
-| `RustDNARSMTemplateFolder` | `string` |
-| `RustTemplateLib` | `string` |
-| `RustTemplateHolon` | `string` |
-| `RustTemplateValidation` | `string` |
-| `RustTemplateCreate` | `string` |
-| `RustTemplateRead` | `string` |
-| `RustTemplateUpdate` | `string` |
-| `RustTemplateDelete` | `string` |
-| `RustTemplateList` | `string` |
-| `RustTemplateInt` | `string` |
-| `RustTemplateString` | `string` |
-| `RustTemplateBool` | `string` |
-| `DBName` | `string` |
-| `AccountName` | `string` |
-| `AccountPrivateKey` | `string` |
-| `ChainId` | `string` |
-| `ChainPrivateKey` | `string` |
-| `ContractAddress` | `string` |
-| `Abi` | `string` |
-| `LookUpIPFSAddress` | `string` |
-| `Username` | `string` |
-| `Password` | `string` |
-| `FilePath` | `string` |
-| `ServiceEndpoint` | `string` |
-| `AuthKey` | `string` |
-| `CollectionNames` | `string` |
-| `Mode` | `string` |
-| `IsEnabled` | `bool` |
-| `MaxReplicationsPerMonth` | `int` |
-| `CostThreshold` | `decimal` |
-| `FreeProvidersOnly` | `bool` |
-| `GasFeeThreshold` | `decimal` |
-| `ReplicationTriggers` | `List<ReplicationTriggerConfig>` |
-| `ProviderRules` | `List<ProviderReplicationRuleConfig>` |
-| `DataTypeRules` | `List<DataTypeReplicationRuleConfig>` |
-| `ScheduleRules` | `List<ScheduleRuleConfig>` |
-| `CostOptimization` | `CostOptimizationRuleConfig` |
-| `IntelligentSelection` | `IntelligentSelectionRuleConfig` |
-| `MaxFailoversPerMonth` | `int` |
-| `FailoverTriggers` | `List<FailoverTriggerConfig>` |
-| `EscalationRules` | `List<EscalationRuleConfig>` |
-| `PlanType` | `string` |
-| `MaxRequestsPerMonth` | `int` |
-| `MaxStorageGB` | `int` |
-| `PayAsYouGoEnabled` | `bool` |
-| `CostPerReplication` | `decimal` |
-| `CostPerFailover` | `decimal` |
-| `CostPerGB` | `decimal` |
-| `Currency` | `string` |
-| `BillingCycle` | `string` |
-| `UsageAlerts` | `List<UsageAlertConfig>` |
-| `QuotaNotifications` | `List<QuotaNotificationConfig>` |
-| `AvatarPermissions` | `AvatarPermissionsConfig` |
-| `HolonPermissions` | `HolonPermissionsConfig` |
-| `ProviderPermissions` | `ProviderPermissionsConfig` |
-| `FieldLevelPermissions` | `FieldLevelPermissionsConfig` |
-| `AccessControl` | `AccessControlConfig` |
-| `AutoOptimization` | `bool` |
-| `CostAwareness` | `bool` |
-| `PerformanceOptimization` | `bool` |
-| `SecurityOptimization` | `bool` |
-| `LearningEnabled` | `bool` |
-| `AdaptationSpeed` | `string` |
-| `OptimizationGoals` | `List<OptimizationGoalConfig>` |
-| `Id` | `string` |
-| `Name` | `string` |
-| `Condition` | `ReplicationConditionConfig` |
-| `Priority` | `string` |
-| `Action` | `ReplicationActionConfig` |
-| `Type` | `string` |
-| `Operator` | `string` |
-| `Value` | `object` |
-| `Field` | `string` |
-| `ProviderType` | `string` |
-| `TimeWindow` | `TimeWindowConfig` |
-| `TargetProviders` | `List<string>` |
-| `DataTypes` | `List<string>` |
-| `Permissions` | `DataPermissionsConfig` |
-| `CostLimit` | `decimal` |
-| `Schedule` | `ScheduleConfig` |
-| `GasFeeLimit` | `decimal` |
-| `Conditions` | `List<ReplicationConditionConfig>` |
-| `DataType` | `string` |
-| `RequiredProviders` | `List<string>` |
-| `OptionalProviders` | `List<string>` |
-| `Providers` | `List<string>` |
-| `MaxCostPerReplication` | `decimal` |
-| `MaxCostPerMonth` | `decimal` |
-| `PreferredFreeProviders` | `List<string>` |
-| `AvoidHighGasProviders` | `bool` |
-| `CostAlertThreshold` | `decimal` |
-| `Algorithm` | `string` |
-| `Weights` | `SelectionWeightsConfig` |
-| `Threshold` | `decimal?` |
-| `TargetProvider` | `string` |
-| `FallbackProviders` | `List<string>` |
-| `Level` | `string` |
-| `Notification` | `NotificationRuleConfig` |
-| `Fields` | `List<AvatarFieldPermissionConfig>` |
-| `DefaultPermission` | `string` |
-| `ProviderOverrides` | `Dictionary<string, List<AvatarFieldPermissionConfig>>` |
-| `FieldName` | `string` |
-| `Permission` | `string` |
-| `IsEncrypted` | `bool` |
-| `IsRequired` | `bool` |
-| `ProviderTypes` | `List<string>` |
-| `HolonTypes` | `List<HolonTypePermissionConfig>` |
-| `HolonType` | `string` |
-| `AllowedDataTypes` | `List<string>` |
-| `Rules` | `List<FieldPermissionRuleConfig>` |
-| `FieldPath` | `string` |
-| `Encryption` | `Dictionary<string, bool>` |
-| `Required` | `Dictionary<string, bool>` |
-| `AuthenticationRequired` | `bool` |
-| `AuthorizationLevel` | `string` |
-| `EncryptionLevel` | `string` |
-| `AuditLogging` | `bool` |
-| `AccessPolicies` | `List<AccessPolicyConfig>` |
-| `UserRole` | `string` |
-| `SubscriptionPlan` | `string` |
-| `Location` | `string` |
-| `DeviceType` | `string` |
-| `ThresholdType` | `string` |
-| `NotificationChannels` | `List<string>` |
-| `QuotaType` | `string` |
-| `Actions` | `List<QuotaActionConfig>` |
-| `Channels` | `List<string>` |
-| `Message` | `string` |
-| `Interval` | `int?` |
-| `IntervalUnit` | `string` |
-| `CronExpression` | `string` |
-| `TimeZone` | `string` |
-| `StartTime` | `string` |
-| `EndTime` | `string` |
-| `DaysOfWeek` | `List<string>` |
-| `DaysOfMonth` | `List<int>` |
-| `Start` | `string` |
-| `End` | `string` |
-| `Cost` | `decimal` |
-| `Performance` | `decimal` |
-| `Reliability` | `decimal` |
-| `Geographic` | `decimal` |
-| `Availability` | `decimal` |
-| `Weight` | `decimal` |
-| `Target` | `decimal` |
-| `RpcEndpoint` | `string` |
-| `Network` | `string` |
-| `ProjectId` | `string` |
-| `ApiKey` | `string` |
-| `UserAgent` | `string` |
-| `AcceptHeader` | `string` |
-| `TimeoutSeconds` | `int` |
-| `EnableCaching` | `bool` |
-| `CacheExpirationMinutes` | `int` |
-| `BucketName` | `string` |
-| `CredentialsPath` | `string` |
-| `FirestoreDatabaseId` | `string` |
-| `BigQueryDatasetId` | `string` |
-| `EnableStorage` | `bool` |
-| `EnableFirestore` | `bool` |
-| `EnableBigQuery` | `bool` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IActionResult` _(type definition not found - field list unavailable)_
+`result` type: `IActionResult` (not part of the request/response payload).
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.oNET.updateOASISDNA({
-    oASIS: /* <OASIS> */,
-    currentLiveVersion: "example string",
-    currentStagingVersion: "example string",
-    oASISVersion: "example string",
-    terms: "example string",
-    logging: /* <LoggingSettings> */,
-    errorHandling: /* <ErrorHandlingSettings> */,
-    security: /* <SecuritySettings> */,
-    email: /* <EmailSettings> */,
-    storageProviders: /* <StorageProviderSettings> */,
-    oASISHyperDriveConfig: { "IsEnabled": true, "DefaultStrategy": "example string", "AutoFailoverEnabled": true, "AutoReplicationEnabled": true, "AutoLoadBalancingEnabled": true, "MaxRetryAttempts": 1, "RequestTimeoutMs": 1, "HealthCheckIntervalMs": 1, "MaxConcurrentRequests": 1, "PerformanceWeight": 1.0, "CostWeight": 1.0, "GeographicWeight": 1.0, "AvailabilityWeight": 1.0, "LatencyWeight": 1.0, "ThroughputWeight": 1.0, "ReliabilityWeight": 1.0, "MaxLatencyThresholdMs": 1, "MaxErrorRateThreshold": 1.0, "MinUptimeThreshold": 1.0, "EnabledProviders": ["example string"], "AutoFailoverProviders": ["example string"], "AutoReplicationProviders": ["example string"], "LoadBalancingProviders": ["example string"], "ProviderConfigs": /* <Dictionary<string, ProviderConfig>> */, "GeographicConfig": /* <GeographicConfig> */, "CostConfig": /* <CostConfig> */, "PerformanceConfig": /* <PerformanceConfig> */, "SecurityConfig": /* <SecurityConfig> */, "MonitoringConfig": /* <MonitoringConfig> */, "ProviderType": "example string", "Weight": 1, "TimeoutMs": 1, "MaxConnections": 1, "ErrorThreshold": 1.0, "MinUptime": 1.0, "MaxLatencyMs": 1, "Endpoint": "example string", "ApiKey": "example string", "SecretKey": "example string", "CustomSettings": /* <Dictionary<string, string>> */, "DefaultRegion": "example string", "UserLocation": "example string", "MaxDistanceKm": 1.0, "MaxNetworkHops": 1, "Regions": /* <Dictionary<string, GeographicRegion>> */, "Name": "example string", "Country": "example string", "City": "example string", "Latitude": 1.0, "Longitude": 1.0, "TimeZone": "example string", "Currency": "example string", "MaxCostPerOperation": 1.0, "MaxStorageCostPerGB": 1.0, "MaxComputeCostPerHour": 1.0, "MaxNetworkCostPerGB": 1.0, "ProviderCosts": /* <Dictionary<string, CostAnalysisDNA>> */, "StorageCostPerGB": 1.0, "ComputeCostPerHour": 1.0, "NetworkCostPerGB": 1.0, "TransactionCost": 1.0, "ApiCallCost": 1.0, "TotalCost": 1.0, "LastUpdated": "2026-01-01T00:00:00Z", "CostEfficiencyScore": 1, "MaxResponseTimeMs": 1, "MaxErrorRate": 1.0, "MinThroughputMbps": 1, "MaxConcurrentConnections": 1, "QueueDepthThreshold": 1, "MaxCpuUsage": 1.0, "MaxMemoryUsage": 1.0, "RequireEncryption": true, "RequireAuthentication": true, "RequireAuthorization": true, "SessionTimeoutMs": 1, "MaxConcurrentSessions": 1, "AllowedIPs": ["example string"], "BlockedIPs": ["example string"], "SecurityHeaders": /* <Dictionary<string, string>> */, "MetricsCollectionIntervalMs": 1, "MaxMetricsHistory": 1, "AlertThreshold": 1, "EnableRealTimeMonitoring": true, "EnablePerformanceProfiling": true, "EnableCostTracking": true, "EnableGeographicTracking": true, "MonitoringEndpoints": ["example string"], "CustomMetrics": /* <Dictionary<string, string>> */, "ConnectionWeight": 1.0 },
-    web6: /* <Web6Settings> */,
-    hyperDriveMode: "example string",
-    replicationRules: /* <ReplicationRulesConfig> */,
-    failoverRules: /* <FailoverRulesConfig> */,
-    subscriptionConfig: /* <SubscriptionConfig> */,
-    dataPermissions: /* <DataPermissionsConfig> */,
-    intelligentMode: /* <IntelligentModeConfig> */,
-    oASISSystemAccountId: "example string",
-    oASISAPIURL: "example string",
-    networkId: "example string",
-    settingsLookupHolonId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    statsCacheEnabled: true,
-    statsCacheTtlSeconds: 1,
-    defaultProvider: "example string",
-    defaultOpenServModel: "example string",
-    defaultRoutingPriority: "example string",
-    defaultRoutingFallbackEnabled: true,
-    openServ: /* <OpenServSettings> */,
-    fAHRN: /* <FAHRNSettings> */,
-    holonicBraid: /* <HolonicBraidSettings> */,
-    holonicMemory: /* <HolonicMemorySettings> */,
-    baseUrl: "example string",
-    defaultModel: "example string",
-    availableModels: ["example string"],
-    eMAAlpha: 1.0,
-    defaultDispatchMode: "example string",
-    autoSeedOpenServAgentsOnStartup: true,
-    maxDecomposedSubProblems: 1,
-    autoPersistWinningPlan: true,
-    defaultRetentionPolicy: "example string",
-    recordDispatchOutcomes: true,
-    hideVerificationToken: true,
-    hideRefreshTokens: true,
-    secretKey: "example string",
-    jwtTokenExpirationMinutes: 1,
-    refreshTokenExpirationDays: 1,
-    avatarPassword: /* <EncryptionSettings> */,
-    oASISProviderPrivateKeys: /* <EncryptionSettings> */,
-    showStackTrace: true,
-    throwExceptionsOnErrors: true,
-    throwExceptionsOnWarnings: true,
-    logAllErrors: true,
-    logAllWarnings: true,
-    errorHandlingBehaviour: /* <ErrorHandlingBehaviour> */,
-    warningHandlingBehaviour: /* <WarningHandlingBehaviour> */,
-    loggingFramework: "example string",
-    alsoUseDefaultLogProvider: true,
-    logToConsole: true,
-    showColouredLogs: true,
-    debugColour: /* <ConsoleColor> */,
-    infoColour: /* <ConsoleColor> */,
-    warningColour: /* <ConsoleColor> */,
-    errorColour: /* <ConsoleColor> */,
-    logToFile: true,
-    logPath: "example string",
-    logFileName: "example string",
-    maxLogFileSize: 1,
-    numberOfRetriesToLogToFile: 1,
-    retryLoggingToFileEverySeconds: 1,
-    insertExtraNewLineAfterLogMessage: true,
-    indentLogMessagesBy: 1,
-    bCryptEncryptionEnabled: true,
-    rijndael256EncryptionEnabled: true,
-    rijndael256Key: "example string",
-    quantumEncryptionEnabled: true,
-    logSwitchingProvidersToConsole: true,
-    logSwitchingProvidersToFile: true,
-    logSwitchingProviders: true,
-    providerMethodCallTimeOutSeconds: 1,
-    activateProviderTimeOutSeconds: 1,
-    dectivateProviderTimeOutSeconds: 1,
-    autoReplicationEnabled: true,
-    autoFailOverEnabled: true,
-    autoFailOverEnabledForAvatarLogin: true,
-    autoFailOverEnabledForCheckIfEmailAlreadyInUse: true,
-    autoFailOverEnabledForCheckIfUsernameAlreadyInUse: true,
-    autoLoadBalanceEnabled: true,
-    autoLoadBalanceReadPollIntervalMins: 1,
-    autoLoadBalanceWritePollIntervalMins: 1,
-    autoReplicationProviders: "example string",
-    autoLoadBalanceProviders: "example string",
-    autoFailOverProviders: "example string",
-    autoFailOverProvidersForAvatarLogin: "example string",
-    autoFailOverProvidersForCheckIfEmailAlreadyInUse: "example string",
-    autoFailOverProvidersForCheckIfUsernameAlreadyInUse: "example string",
-    autoFailOverProvidersForCheckIfOASISSystemAccountExists: "example string",
-    autoFailOverLocalProvidersEnabled: true,
-    autoFailOverLocalProviders: "example string",
-    oASISProviderBootType: "example string",
-    azureCosmosDBOASIS: /* <AzureOASISProviderSettings> */,
-    holoOASIS: /* <HoloOASISProviderSettings> */,
-    mongoDBOASIS: /* <MongoDBOASISProviderSettings> */,
-    eOSIOOASIS: /* <EOSIOASISProviderSettings> */,
-    telosOASIS: /* <TelosOASISProviderSettings> */,
-    sEEDSOASIS: /* <SEEDSOASISProviderSettings> */,
-    threeFoldOASIS: /* <ThreeFoldOASISProviderSettings> */,
-    ethereumOASIS: /* <EthereumOASISProviderSettings> */,
-    arbitrumOASIS: /* <ArbitrumOASISProviderSettings> */,
-    rootstockOASIS: /* <RootstockOASISProviderSettings> */,
-    polygonOASIS: /* <PolygonOASISProviderSettings> */,
-    sQLLiteDBOASIS: /* <SQLLiteDBOASISSettings> */,
-    iPFSOASIS: /* <IPFSOASISSettings> */,
-    neo4jOASIS: /* <Neo4jOASISSettings> */,
-    solanaOASIS: /* <SolanaOASISSettings> */,
-    cargoOASIS: /* <CargoOASISSettings> */,
-    localFileOASIS: /* <LocalFileOASISSettings> */,
-    pinataOASIS: /* <PinataOASISSettings> */,
-    bitcoinOASIS: /* <BitcoinOASISProviderSettings> */,
-    cardanoOASIS: /* <CardanoOASISProviderSettings> */,
-    polkadotOASIS: /* <PolkadotOASISProviderSettings> */,
-    bNBChainOASIS: /* <BNBChainOASISProviderSettings> */,
-    fantomOASIS: /* <FantomOASISProviderSettings> */,
-    optimismOASIS: /* <OptimismOASISProviderSettings> */,
-    chainLinkOASIS: /* <ChainLinkOASISProviderSettings> */,
-    elrondOASIS: /* <ElrondOASISProviderSettings> */,
-    aptosOASIS: /* <AptosOASISProviderSettings> */,
-    tRONOASIS: /* <TRONOASISProviderSettings> */,
-    hashgraphOASIS: /* <HashgraphOASISProviderSettings> */,
-    avalancheOASIS: /* <AvalancheOASISProviderSettings> */,
-    cosmosBlockChainOASIS: /* <CosmosBlockChainOASISProviderSettings> */,
-    nEAROASIS: /* <NEAROASISProviderSettings> */,
-    baseOASIS: /* <BaseOASISProviderSettings> */,
-    suiOASIS: /* <SuiOASISProviderSettings> */,
-    moralisOASIS: /* <MoralisOASISProviderSettings> */,
-    activityPubOASIS: /* <ActivityPubOASISProviderSettings> */,
-    googleCloudOASIS: /* <GoogleCloudOASISProviderSettings> */,
-    emailFrom: "example string",
-    smtpHost: "example string",
-    smtpPort: 1,
-    smtpUser: "example string",
-    smtpPass: "example string",
-    resendKey: "example string",
-    disableAllEmails: true,
-    sendVerificationEmail: true,
-    oASISWebSiteURL: "example string",
-    connectionString: "example string",
-    singingMessage: "example string",
-    privateKey: "example string",
-    hostUrl: "example string",
-    walletMnemonicWords: "example string",
-    publicKey: "example string",
-    holochainVersion: /* <HolochainVersion> */,
-    useLocalNode: true,
-    useHoloNetwork: true,
-    holoNetworkURI: "example string",
-    localNodeURI: "example string",
-    holoNETORMUseReflection: true,
-    sTARBasePath: "example string",
-    rustDNARSMTemplateFolder: "example string",
-    rustTemplateLib: "example string",
-    rustTemplateHolon: "example string",
-    rustTemplateValidation: "example string",
-    rustTemplateCreate: "example string",
-    rustTemplateRead: "example string",
-    rustTemplateUpdate: "example string",
-    rustTemplateDelete: "example string",
-    rustTemplateList: "example string",
-    rustTemplateInt: "example string",
-    rustTemplateString: "example string",
-    rustTemplateBool: "example string",
-    dBName: "example string",
-    accountName: "example string",
-    accountPrivateKey: "example string",
-    chainId: "example string",
-    chainPrivateKey: "example string",
-    contractAddress: "example string",
-    abi: "example string",
-    lookUpIPFSAddress: "example string",
-    username: "example string",
-    password: "example string",
-    filePath: "example string",
-    serviceEndpoint: "example string",
-    authKey: "example string",
-    collectionNames: "example string",
-    mode: "example string",
-    isEnabled: true,
-    maxReplicationsPerMonth: 1,
-    costThreshold: 1.0,
-    freeProvidersOnly: true,
-    gasFeeThreshold: 1.0,
-    replicationTriggers: [ /* <ReplicationTriggerConfig> */ ],
-    providerRules: [ /* <ProviderReplicationRuleConfig> */ ],
-    dataTypeRules: [ /* <DataTypeReplicationRuleConfig> */ ],
-    scheduleRules: [ /* <ScheduleRuleConfig> */ ],
-    costOptimization: /* <CostOptimizationRuleConfig> */,
-    intelligentSelection: /* <IntelligentSelectionRuleConfig> */,
-    maxFailoversPerMonth: 1,
-    failoverTriggers: [ /* <FailoverTriggerConfig> */ ],
-    escalationRules: [ /* <EscalationRuleConfig> */ ],
-    planType: "example string",
-    maxRequestsPerMonth: 1,
-    maxStorageGB: 1,
-    payAsYouGoEnabled: true,
-    costPerReplication: 1.0,
-    costPerFailover: 1.0,
-    costPerGB: 1.0,
-    currency: "example string",
-    billingCycle: "example string",
-    usageAlerts: [ /* <UsageAlertConfig> */ ],
-    quotaNotifications: [ /* <QuotaNotificationConfig> */ ],
-    avatarPermissions: /* <AvatarPermissionsConfig> */,
-    holonPermissions: /* <HolonPermissionsConfig> */,
-    providerPermissions: /* <ProviderPermissionsConfig> */,
-    fieldLevelPermissions: /* <FieldLevelPermissionsConfig> */,
-    accessControl: /* <AccessControlConfig> */,
-    autoOptimization: true,
-    costAwareness: true,
-    performanceOptimization: true,
-    securityOptimization: true,
-    learningEnabled: true,
-    adaptationSpeed: "example string",
-    optimizationGoals: [ /* <OptimizationGoalConfig> */ ],
-    id: "example string",
-    name: "example string",
-    condition: /* <ReplicationConditionConfig> */,
-    priority: "example string",
-    action: /* <ReplicationActionConfig> */,
-    type: "example string",
-    operator: "example string",
-    value: {},
-    field: "example string",
-    providerType: "example string",
-    timeWindow: /* <TimeWindowConfig> */,
-    targetProviders: ["example string"],
-    dataTypes: ["example string"],
-    permissions: /* <DataPermissionsConfig> */,
-    costLimit: 1.0,
-    schedule: /* <ScheduleConfig> */,
-    gasFeeLimit: 1.0,
-    conditions: [ /* <ReplicationConditionConfig> */ ],
-    dataType: "example string",
-    requiredProviders: ["example string"],
-    optionalProviders: ["example string"],
-    providers: ["example string"],
-    maxCostPerReplication: 1.0,
-    maxCostPerMonth: 1.0,
-    preferredFreeProviders: ["example string"],
-    avoidHighGasProviders: true,
-    costAlertThreshold: 1.0,
-    algorithm: "example string",
-    weights: /* <SelectionWeightsConfig> */,
-    threshold: 1.0,
-    targetProvider: "example string",
-    fallbackProviders: ["example string"],
-    level: "example string",
-    notification: /* <NotificationRuleConfig> */,
-    fields: [ /* <AvatarFieldPermissionConfig> */ ],
-    defaultPermission: "example string",
-    providerOverrides: /* <Dictionary<string, List<AvatarFieldPermissionConfig>>> */,
-    fieldName: "example string",
-    permission: "example string",
-    isEncrypted: true,
-    isRequired: true,
-    providerTypes: ["example string"],
-    holonTypes: [ /* <HolonTypePermissionConfig> */ ],
-    holonType: "example string",
-    allowedDataTypes: ["example string"],
-    rules: [ /* <FieldPermissionRuleConfig> */ ],
-    fieldPath: "example string",
-    encryption: /* <Dictionary<string, bool>> */,
-    required: /* <Dictionary<string, bool>> */,
-    authenticationRequired: true,
-    authorizationLevel: "example string",
-    encryptionLevel: "example string",
-    auditLogging: true,
-    accessPolicies: [ /* <AccessPolicyConfig> */ ],
-    userRole: "example string",
-    subscriptionPlan: "example string",
-    location: "example string",
-    deviceType: "example string",
-    thresholdType: "example string",
-    notificationChannels: ["example string"],
-    quotaType: "example string",
-    actions: [ /* <QuotaActionConfig> */ ],
-    channels: ["example string"],
-    message: "example string",
-    interval: 1,
-    intervalUnit: "example string",
-    cronExpression: "example string",
-    timeZone: "example string",
-    startTime: "example string",
-    endTime: "example string",
-    daysOfWeek: ["example string"],
-    daysOfMonth: [1],
-    start: "example string",
-    end: "example string",
-    cost: 1.0,
-    performance: 1.0,
-    reliability: 1.0,
-    geographic: 1.0,
-    availability: 1.0,
-    weight: 1.0,
-    target: 1.0,
-    rpcEndpoint: "example string",
-    network: "example string",
-    projectId: "example string",
-    apiKey: "example string",
-    userAgent: "example string",
-    acceptHeader: "example string",
-    timeoutSeconds: 1,
-    enableCaching: true,
-    cacheExpirationMinutes: 1,
-    bucketName: "example string",
-    credentialsPath: "example string",
-    firestoreDatabaseId: "example string",
-    bigQueryDatasetId: "example string",
-    enableStorage: true,
-    enableFirestore: true,
-    enableBigQuery: true
+    oASIS: { "CurrentLiveVersion": "example string", "CurrentStagingVersion": "example string", "OASISVersion": "example string", "Terms": "example string", "Logging": { "LoggingFramework": "example string", "AlsoUseDefaultLogProvider": true, "LogToConsole": true, "ShowColouredLogs": true, "DebugColour": /* <ConsoleColor> */, "InfoColour": /* <ConsoleColor> */, "WarningColour": /* <ConsoleColor> */, "ErrorColour": /* <ConsoleColor> */, "LogToFile": true, "LogPath": "example string", "LogFileName": "example string", "MaxLogFileSize": 1, "NumberOfRetriesToLogToFile": 1, "RetryLoggingToFileEverySeconds": 1, "InsertExtraNewLineAfterLogMessage": true, "IndentLogMessagesBy": 1 }, "ErrorHandling": { "ShowStackTrace": true, "ThrowExceptionsOnErrors": true, "ThrowExceptionsOnWarnings": true, "LogAllErrors": true, "LogAllWarnings": true, "ErrorHandlingBehaviour": {  }, "WarningHandlingBehaviour": /* <WarningHandlingBehaviour> */ }, "Security": { "HideVerificationToken": true, "HideRefreshTokens": true, "SecretKey": "example string", "JwtTokenExpirationMinutes": 1, "RefreshTokenExpirationDays": 1, "AvatarPassword": { "BCryptEncryptionEnabled": true, "Rijndael256EncryptionEnabled": true, "Rijndael256Key": "example string", "QuantumEncryptionEnabled": true }, "OASISProviderPrivateKeys": {} }, "Email": { "EmailFrom": "example string", "SmtpHost": "example string", "SmtpPort": 1, "SmtpUser": "example string", "SmtpPass": "example string", "ResendKey": "example string", "DisableAllEmails": true, "SendVerificationEmail": true, "OASISWebSiteURL": "example string" }, "StorageProviders": { "LogSwitchingProvidersToConsole": true, "LogSwitchingProvidersToFile": true, "LogSwitchingProviders": true, "ProviderMethodCallTimeOutSeconds": 1, "ActivateProviderTimeOutSeconds": 1, "DectivateProviderTimeOutSeconds": 1, "AutoReplicationEnabled": true, "AutoFailOverEnabled": true, "AutoFailOverEnabledForAvatarLogin": true, "AutoFailOverEnabledForCheckIfEmailAlreadyInUse": true, "AutoFailOverEnabledForCheckIfUsernameAlreadyInUse": true, "AutoLoadBalanceEnabled": true, "AutoLoadBalanceReadPollIntervalMins": 1, "AutoLoadBalanceWritePollIntervalMins": 1, "AutoReplicationProviders": "example string", "AutoLoadBalanceProviders": "example string", "AutoFailOverProviders": "example string", "AutoFailOverProvidersForAvatarLogin": "example string", "AutoFailOverProvidersForCheckIfEmailAlreadyInUse": "example string", "AutoFailOverProvidersForCheckIfUsernameAlreadyInUse": "example string", "AutoFailOverProvidersForCheckIfOASISSystemAccountExists": "example string", "AutoFailOverLocalProvidersEnabled": true, "AutoFailOverLocalProviders": "example string", "OASISProviderBootType": "example string", "AzureCosmosDBOASIS": { "ServiceEndpoint": "example string", "AuthKey": "example string", "DBName": "example string", "CollectionNames": "example string" }, "HoloOASIS": { "HolochainVersion": {  }, "UseLocalNode": true, "UseHoloNetwork": true, "HoloNetworkURI": "example string", "LocalNodeURI": "example string", "HoloNETORMUseReflection": true, "STARBasePath": "example string", "RustDNARSMTemplateFolder": "example string", "RustTemplateLib": "example string", "RustTemplateHolon": "example string", "RustTemplateValidation": "example string", "RustTemplateCreate": "example string", "RustTemplateRead": "example string", "RustTemplateUpdate": "example string", "RustTemplateDelete": "example string", "RustTemplateList": "example string", "RustTemplateInt": "example string", "RustTemplateString": "example string", "RustTemplateBool": "example string" }, "MongoDBOASIS": { "DBName": "example string" }, "EOSIOOASIS": { "AccountName": "example string", "AccountPrivateKey": "example string", "ChainId": "example string" }, "TelosOASIS": { "RpcEndpoint": "example string", "Network": "example string", "ChainId": "example string" }, "SEEDSOASIS": {  }, "ThreeFoldOASIS": {  }, "EthereumOASIS": { "ChainPrivateKey": "example string", "ChainId": 1, "ContractAddress": "example string" }, "ArbitrumOASIS": { "ChainPrivateKey": "example string", "ChainId": 1, "ContractAddress": "example string" }, "RootstockOASIS": { "ChainPrivateKey": "example string", "ContractAddress": "example string", "Abi": "example string" }, "PolygonOASIS": { "ChainPrivateKey": "example string", "ContractAddress": "example string", "Abi": "example string" }, "SQLLiteDBOASIS": {  }, "IPFSOASIS": { "LookUpIPFSAddress": "example string" }, "Neo4jOASIS": { "Username": "example string", "Password": "example string" }, "SolanaOASIS": { "WalletMnemonicWords": "example string", "PrivateKey": "example string", "PublicKey": "example string" }, "CargoOASIS": { "SingingMessage": "example string", "PrivateKey": "example string", "HostUrl": "example string" }, "LocalFileOASIS": { "FilePath": "example string" }, "PinataOASIS": { "ConnectionString": "example string" }, "BitcoinOASIS": { "RpcEndpoint": "example string", "Network": "example string" }, "CardanoOASIS": { "RpcEndpoint": "example string", "NetworkId": "example string", "ProjectId": "example string" }, "PolkadotOASIS": { "RpcEndpoint": "example string", "Network": "example string" }, "BNBChainOASIS": { "RpcEndpoint": "example string", "NetworkId": "example string", "ChainId": "example string" }, "FantomOASIS": { "RpcEndpoint": "example string", "NetworkId": "example string", "ChainId": "example string" }, "OptimismOASIS": { "RpcEndpoint": "example string", "NetworkId": "example string", "ChainId": "example string" }, "ChainLinkOASIS": { "RpcEndpoint": "example string", "NetworkId": "example string", "ChainId": "example string" }, "ElrondOASIS": { "RpcEndpoint": "example string", "Network": "example string", "ChainId": "example string" }, "AptosOASIS": { "RpcEndpoint": "example string", "Network": "example string", "ChainId": "example string", "PrivateKey": "example string", "ContractAddress": "example string" }, "TRONOASIS": { "RpcEndpoint": "example string", "Network": "example string", "ChainId": "example string" }, "HashgraphOASIS": { "RpcEndpoint": "example string", "Network": "example string", "ChainId": "example string" }, "AvalancheOASIS": { "RpcEndpoint": "example string", "NetworkId": "example string", "ChainId": "example string", "ChainPrivateKey": "example string", "ContractAddress": "example string" }, "CosmosBlockChainOASIS": { "RpcEndpoint": "example string", "Network": "example string", "ChainId": "example string" }, "NEAROASIS": { "RpcEndpoint": "example string", "Network": "example string", "ChainId": "example string" }, "BaseOASIS": { "RpcEndpoint": "example string", "NetworkId": "example string", "ChainId": "example string", "ChainPrivateKey": "example string", "ContractAddress": "example string" }, "SuiOASIS": { "RpcEndpoint": "example string", "Network": "example string", "ChainId": "example string", "ContractAddress": "example string" }, "MoralisOASIS": { "ApiKey": "example string", "RpcEndpoint": "example string", "Network": "example string" }, "ActivityPubOASIS": { "BaseUrl": "example string", "UserAgent": "example string", "AcceptHeader": "example string", "TimeoutSeconds": 1, "EnableCaching": true, "CacheExpirationMinutes": 1 }, "GoogleCloudOASIS": { "ProjectId": "example string", "BucketName": "example string", "CredentialsPath": "example string", "FirestoreDatabaseId": "example string", "BigQueryDatasetId": "example string", "EnableStorage": true, "EnableFirestore": true, "EnableBigQuery": true } }, "OASISHyperDriveConfig": { "IsEnabled": true, "DefaultStrategy": "example string", "AutoFailoverEnabled": true, "AutoReplicationEnabled": true, "AutoLoadBalancingEnabled": true, "MaxRetryAttempts": 1, "RequestTimeoutMs": 1, "HealthCheckIntervalMs": 1, "MaxConcurrentRequests": 1, "PerformanceWeight": 1.0, "CostWeight": 1.0, "GeographicWeight": 1.0, "AvailabilityWeight": 1.0, "LatencyWeight": 1.0, "ThroughputWeight": 1.0, "ReliabilityWeight": 1.0, "MaxLatencyThresholdMs": 1, "MaxErrorRateThreshold": 1.0, "MinUptimeThreshold": 1.0, "EnabledProviders": ["example string"], "AutoFailoverProviders": ["example string"], "AutoReplicationProviders": ["example string"], "LoadBalancingProviders": ["example string"], "ProviderConfigs": { "<string>": { "ProviderType": "example string", "IsEnabled": true, "Weight": 1, "TimeoutMs": 1, "MaxConnections": 1, "ErrorThreshold": 1.0, "MinUptime": 1.0, "MaxLatencyMs": 1, "Endpoint": "example string", "ApiKey": "example string", "SecretKey": "example string", "CustomSettings": { "<string>": "example string" } } }, "GeographicConfig": { "IsEnabled": true, "DefaultRegion": "example string", "UserLocation": "example string", "MaxDistanceKm": 1.0, "MaxNetworkHops": 1, "MaxLatencyMs": 1, "Regions": { "<string>": { "Name": "example string", "Country": "example string", "City": "example string", "Latitude": 1.0, "Longitude": 1.0, "TimeZone": "example string", "MaxLatencyMs": 1.0, "MaxNetworkHops": 1 } } }, "CostConfig": { "IsEnabled": true, "Currency": "example string", "MaxCostPerOperation": 1.0, "MaxStorageCostPerGB": 1.0, "MaxComputeCostPerHour": 1.0, "MaxNetworkCostPerGB": 1.0, "ProviderCosts": { "<string>": { "ProviderType": "example string", "StorageCostPerGB": 1.0, "ComputeCostPerHour": 1.0, "NetworkCostPerGB": 1.0, "TransactionCost": 1.0, "ApiCallCost": 1.0, "TotalCost": 1.0, "Currency": "example string", "LastUpdated": "2026-01-01T00:00:00Z", "CostEfficiencyScore": 1 } } }, "PerformanceConfig": { "IsEnabled": true, "MaxResponseTimeMs": 1, "MaxErrorRate": 1.0, "MinUptime": 1.0, "MinThroughputMbps": 1, "MaxConcurrentConnections": 1, "QueueDepthThreshold": 1, "MaxCpuUsage": 1.0, "MaxMemoryUsage": 1.0 }, "SecurityConfig": { "IsEnabled": true, "RequireEncryption": true, "RequireAuthentication": true, "RequireAuthorization": true, "MaxRetryAttempts": 1, "SessionTimeoutMs": 1, "MaxConcurrentSessions": 1, "AllowedIPs": ["example string"], "BlockedIPs": ["example string"], "SecurityHeaders": { "<string>": "example string" } }, "MonitoringConfig": { "IsEnabled": true, "MetricsCollectionIntervalMs": 1, "MaxMetricsHistory": 1, "AlertThreshold": 1, "EnableRealTimeMonitoring": true, "EnablePerformanceProfiling": true, "EnableCostTracking": true, "EnableGeographicTracking": true, "MonitoringEndpoints": ["example string"], "CustomMetrics": { "<string>": "example string" } } }, "Web6": { "DefaultProvider": "example string", "DefaultOpenServModel": "example string", "DefaultRoutingPriority": "example string", "DefaultRoutingFallbackEnabled": true, "OpenServ": { "BaseUrl": "example string", "DefaultModel": "example string", "AvailableModels": ["example string"] }, "FAHRN": { "EMAAlpha": 1.0, "DefaultDispatchMode": "example string", "AutoSeedOpenServAgentsOnStartup": true, "MaxDecomposedSubProblems": 1 }, "HolonicBraid": { "AutoPersistWinningPlan": true }, "HolonicMemory": { "DefaultRetentionPolicy": "example string", "RecordDispatchOutcomes": true } }, "HyperDriveMode": "example string", "ReplicationRules": { "Mode": "example string", "IsEnabled": true, "MaxReplicationsPerMonth": 1, "CostThreshold": 1.0, "FreeProvidersOnly": true, "GasFeeThreshold": 1.0, "ReplicationTriggers": [{ "Id": "example string", "Name": "example string", "Condition": { "Type": "example string", "Operator": "example string", "Value": {}, "Field": "example string", "ProviderType": "example string", "TimeWindow": { "Start": "example string", "End": "example string", "TimeZone": "example string", "DaysOfWeek": ["example string"] } }, "Priority": "example string", "IsEnabled": true, "Action": { "Type": "example string", "TargetProviders": ["example string"], "DataTypes": ["example string"], "Permissions": { "AvatarPermissions": { "IsEnabled": true, "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "HolonPermissions": { "IsEnabled": true, "HolonTypes": [{ "HolonType": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true, "ProviderTypes": ["example string"], "Fields": [{ "FieldName": "example string", "Permission": "example string", "IsEncrypted": true, "IsRequired": true }] }], "DefaultPermission": "example string", "ProviderOverrides": { "<string>": [] } }, "ProviderPermissions": { "IsEnabled": true, "Providers": [{ "ProviderType": "example string", "Permission": "example string", "AllowedDataTypes": ["example string"], "CostLimit": 1.0, "GasFeeLimit": 1.0, "Schedule": { "Type": "example string", "Interval": 1, "IntervalUnit": "example string", "CronExpression": "example string", "TimeZone": "example string", "StartTime": "example string", "EndTime": "example string", "DaysOfWeek": ["example string"], "DaysOfMonth": [1] } }] }, "FieldLevelPermissions": { "IsEnabled": true, "Rules": [{ "FieldPath": "example string", "DataType": "example string", "Permissions": { "<string>": "example string" }, "Encryption": { "<string>": true }, "Required": { "<string>": true } }] }, "AccessControl": { "IsEnabled": true, "AuthenticationRequired": true, "AuthorizationLevel": "example string", "EncryptionLevel": "example string", "AuditLogging": true, "AccessPolicies": [{ "Name": "example string", "Condition": { "UserRole": "example string", "SubscriptionPlan": "example string", "TimeWindow": {}, "Location": "example string", "DeviceType": "example string" }, "Permissions": "example string", "Providers": ["example string"], "DataTypes": ["example string"] }] } }, "CostLimit": 1.0, "Schedule": {} } }], "ProviderRules": [{ "ProviderType": "example string", "IsEnabled": true, "Priority": 1, "CostLimit": 1.0, "GasFeeLimit": 1.0, "DataTypes": ["example string"], "Permissions": {}, "Conditions": [], "Schedule": {} }], "DataTypeRules": [{ "DataType": "example string", "IsEnabled": true, "RequiredProviders": ["example string"], "OptionalProviders": ["example string"], "Permissions": {}, "CostLimit": 1.0, "Schedule": {} }], "ScheduleRules": [{ "Name": "example string", "IsEnabled": true, "Schedule": {}, "DataTypes": ["example string"], "Providers": ["example string"], "Permissions": {} }], "CostOptimization": { "IsEnabled": true, "MaxCostPerReplication": 1.0, "MaxCostPerMonth": 1.0, "PreferredFreeProviders": ["example string"], "AvoidHighGasProviders": true, "GasFeeThreshold": 1.0, "CostAlertThreshold": 1.0 }, "IntelligentSelection": { "IsEnabled": true, "Algorithm": "example string", "Weights": { "Cost": 1.0, "Performance": 1.0, "Reliability": 1.0, "Security": 1.0, "Geographic": 1.0, "Availability": 1.0 }, "LearningEnabled": true, "AdaptationSpeed": "example string", "OptimizationGoals": [{ "Type": "example string", "Weight": 1.0, "Target": 1.0, "IsEnabled": true }] } }, "FailoverRules": { "Mode": "example string", "IsEnabled": true, "MaxFailoversPerMonth": 1, "CostThreshold": 1.0, "FreeProvidersOnly": true, "GasFeeThreshold": 1.0, "FailoverTriggers": [{ "Id": "example string", "Name": "example string", "Condition": { "Type": "example string", "Operator": "example string", "Value": {}, "ProviderType": "example string", "TimeWindow": {}, "Threshold": 1.0 }, "Priority": "example string", "IsEnabled": true, "Action": { "Type": "example string", "TargetProvider": "example string", "FallbackProviders": ["example string"], "CostLimit": 1.0, "Schedule": {} } }], "ProviderRules": [{ "ProviderType": "example string", "IsEnabled": true, "Priority": 1, "CostLimit": 1.0, "GasFeeLimit": 1.0, "Conditions": [], "FallbackProviders": ["example string"] }], "IntelligentSelection": {}, "EscalationRules": [{ "Name": "example string", "Level": "example string", "Condition": {}, "Action": {}, "Notification": { "Channels": ["example string"], "Message": "example string", "Priority": "example string", "IsEnabled": true } }] }, "SubscriptionConfig": { "PlanType": "example string", "MaxReplicationsPerMonth": 1, "MaxFailoversPerMonth": 1, "MaxRequestsPerMonth": 1, "MaxStorageGB": 1, "PayAsYouGoEnabled": true, "CostPerReplication": 1.0, "CostPerFailover": 1.0, "CostPerGB": 1.0, "Currency": "example string", "BillingCycle": "example string", "UsageAlerts": [{ "Id": "example string", "Name": "example string", "Threshold": 1.0, "ThresholdType": "example string", "NotificationChannels": ["example string"], "IsEnabled": true }], "QuotaNotifications": [{ "Id": "example string", "Name": "example string", "QuotaType": "example string", "Threshold": 1.0, "NotificationChannels": ["example string"], "Actions": [{ "Type": "example string", "Value": {}, "Schedule": {} }], "IsEnabled": true }] }, "DataPermissions": {}, "IntelligentMode": { "IsEnabled": true, "AutoOptimization": true, "CostAwareness": true, "PerformanceOptimization": true, "SecurityOptimization": true, "LearningEnabled": true, "AdaptationSpeed": "example string", "OptimizationGoals": [] }, "OASISSystemAccountId": "example string", "OASISAPIURL": "example string", "NetworkId": "example string", "SettingsLookupHolonId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "StatsCacheEnabled": true, "StatsCacheTtlSeconds": 1 }
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -1058,7 +436,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": /* <IActionResult> */
+  "result": null
 }
 ```
 

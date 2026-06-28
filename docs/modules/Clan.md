@@ -33,9 +33,11 @@ Route parameters:
 
 **Request**
 
-Body type: `ProviderType?`
+Body fields:
 
-_No fields._
+| Field | Type |
+| --- | --- |
+| `providerType` | `ProviderType? (optional)` |
 
 **Response**
 
@@ -48,7 +50,8 @@ Standard `OASISResult` envelope (see top of this page) with:
 ```js
 const { isError, message, result } = await oasis.clan.addAvatarToClan({
     clanId: '<clanId>',
-    avatarId: '<avatarId>'
+    avatarId: '<avatarId>',
+    providerType: '<providerType>'
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -110,7 +113,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "OwnerAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "MemberIds": ["3fa85f64-5717-4562-b3fc-2c963f66afa6"], "Inventory": [{ "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": /* <Dictionary<string, object>> */ }] }
+  "result": { "OwnerAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "MemberIds": ["3fa85f64-5717-4562-b3fc-2c963f66afa6"], "Inventory": [{ "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": { "<string>": {} } }] }
 }
 ```
 
@@ -130,9 +133,11 @@ Route parameters:
 
 **Request**
 
-Body type: `ProviderType?`
+Query parameters:
 
-_No fields._
+| Field | Type |
+| --- | --- |
+| `providerType` | `ProviderType? (optional)` |
 
 **Response**
 
@@ -144,7 +149,8 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.clan.delete({
-    clanId: '<clanId>'
+    clanId: '<clanId>',
+    providerType: '<providerType>'
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -176,15 +182,17 @@ Route parameters:
 
 **Request**
 
-Body type: `ProviderType?`
+Query parameters:
 
-_No fields._
+| Field | Type |
+| --- | --- |
+| `providerType` | `ProviderType? (optional)` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IInventoryItem>` (array)
+`result` type: `IInventoryItem` (array)
 
 | Field | Type |
 | --- | --- |
@@ -213,7 +221,8 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.clan.getClanInventory({
-    clanId: '<clanId>'
+    clanId: '<clanId>',
+    providerType: '<providerType>'
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -225,7 +234,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [{ "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": /* <Dictionary<string, object>> */ }]
+  "result": [{ "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": { "<string>": {} } }]
 }
 ```
 
@@ -245,21 +254,24 @@ Route parameters:
 
 **Request**
 
-Body type: `ProviderType?`
+Query parameters:
 
-_No fields._
+| Field | Type |
+| --- | --- |
+| `providerType` | `ProviderType? (optional)` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<Guid>`
+`result` type: `Guid` (array)
 
 **Example**
 
 ```js
 const { isError, message, result } = await oasis.clan.getMembers({
-    clanId: '<clanId>'
+    clanId: '<clanId>',
+    providerType: '<providerType>'
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -285,13 +297,18 @@ List all clans, optionally filtered by owner avatar Id.</summary>
 
 **Request**
 
-Body: `Guid?`
+Query parameters:
+
+| Field | Type |
+| --- | --- |
+| `ownerAvatarId` | `Guid? (optional)` |
+| `providerType` | `ProviderType? (optional)` |
 
 **Response**
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IEnumerable<IClan>` (array)
+`result` type: `IClan` (array)
 
 | Field | Type |
 | --- | --- |
@@ -303,8 +320,8 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.clan.list({
-    providerType: '<providerType>',
-    /* ...request body fields */
+    ownerAvatarId: '<ownerAvatarId>',
+    providerType: '<providerType>'
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -316,7 +333,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": [{ "OwnerAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "MemberIds": ["3fa85f64-5717-4562-b3fc-2c963f66afa6"], "Inventory": [{ "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": /* <Dictionary<string, object>> */ }] }]
+  "result": [{ "OwnerAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "MemberIds": ["3fa85f64-5717-4562-b3fc-2c963f66afa6"], "Inventory": [{ "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": { "<string>": {} } }] }]
 }
 ```
 
@@ -336,9 +353,11 @@ Route parameters:
 
 **Request**
 
-Body type: `ProviderType?`
+Query parameters:
 
-_No fields._
+| Field | Type |
+| --- | --- |
+| `providerType` | `ProviderType? (optional)` |
 
 **Response**
 
@@ -356,7 +375,8 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.clan.load({
-    clanId: '<clanId>'
+    clanId: '<clanId>',
+    providerType: '<providerType>'
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -368,7 +388,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "OwnerAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "MemberIds": ["3fa85f64-5717-4562-b3fc-2c963f66afa6"], "Inventory": [{ "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": /* <Dictionary<string, object>> */ }] }
+  "result": { "OwnerAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "MemberIds": ["3fa85f64-5717-4562-b3fc-2c963f66afa6"], "Inventory": [{ "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": { "<string>": {} } }] }
 }
 ```
 
@@ -382,9 +402,12 @@ Load a clan by name (case-insensitive).</summary>
 
 **Request**
 
-Body type: `ProviderType?`
+Query parameters:
 
-_No fields._
+| Field | Type |
+| --- | --- |
+| `name` | `string` |
+| `providerType` | `ProviderType? (optional)` |
 
 **Response**
 
@@ -402,7 +425,8 @@ Standard `OASISResult` envelope (see top of this page) with:
 
 ```js
 const { isError, message, result } = await oasis.clan.loadByName({
-    name: 'example string'
+    name: 'example string',
+    providerType: '<providerType>'
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -414,7 +438,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "OwnerAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "MemberIds": ["3fa85f64-5717-4562-b3fc-2c963f66afa6"], "Inventory": [{ "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": /* <Dictionary<string, object>> */ }] }
+  "result": { "OwnerAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "MemberIds": ["3fa85f64-5717-4562-b3fc-2c963f66afa6"], "Inventory": [{ "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": { "<string>": {} } }] }
 }
 ```
 
@@ -435,9 +459,11 @@ Route parameters:
 
 **Request**
 
-Body type: `ProviderType?`
+Query parameters:
 
-_No fields._
+| Field | Type |
+| --- | --- |
+| `providerType` | `ProviderType? (optional)` |
 
 **Response**
 
@@ -450,7 +476,8 @@ Standard `OASISResult` envelope (see top of this page) with:
 ```js
 const { isError, message, result } = await oasis.clan.removeAvatarFromClan({
     clanId: '<clanId>',
-    avatarId: '<avatarId>'
+    avatarId: '<avatarId>',
+    providerType: '<providerType>'
   });
 if (isError) throw new Error(message);
 console.log(result);
@@ -519,7 +546,7 @@ Example response:
 {
   "isError": false,
   "message": "",
-  "result": { "OwnerAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "MemberIds": ["3fa85f64-5717-4562-b3fc-2c963f66afa6"], "Inventory": [{ "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": /* <Dictionary<string, object>> */ }] }
+  "result": { "OwnerAvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "MemberIds": ["3fa85f64-5717-4562-b3fc-2c963f66afa6"], "Inventory": [{ "Image2D": "<base64-bytes>", "Image2DURI": "https://example.com/asset.png", "ThumbnailUrl": "example string", "Object3D": "<base64-bytes>", "Object3DURI": "https://example.com/asset.png", "Quantity": 1, "Stack": true, "IsStackable": true, "GameSource": "example string", "ItemType": "example string", "NftId": "example string", "Rarity": "example string", "MaxQuantity": 1, "Weight": 1.0, "IsUsable": true, "IsTradeable": true, "OwnerAvatarId": "example string", "AcquiredOn": "2026-01-01T00:00:00Z", "LastUsedOn": "2026-01-01T00:00:00Z", "Properties": { "<string>": {} } }] }
 }
 ```
 
