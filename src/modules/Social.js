@@ -15,13 +15,13 @@ class SocialModule {
   constructor(http) {
     this._http = http;
 
-    // Get api/social/registered-providers
+    // GET api/social/registered-providers
     this.getRegisteredProviders = makeOperation(http, "api/social", "GET", "registered-providers");
-    // Get api/social/social-feed
+    // GET api/social/social-feed
     this.getSocialFeed = makeOperation(http, "api/social", "GET", "social-feed");
-    // Post api/social/register-social-provider
+    // POST api/social/register-social-provider
     this.registerSocialProvider = makeOperation(http, "api/social", "POST", "register-social-provider");
-    // Post api/social/share-holon
+    // POST api/social/share-holon
     this.shareHolon = makeOperation(http, "api/social", "POST", "share-holon");
   }
 }

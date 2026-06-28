@@ -15,17 +15,19 @@ class BridgeModule {
   constructor(http) {
     this._http = http;
 
-    // Get api/v1/bridge/orders/{orderId:guid}/check-balance
+    // GET api/v1/bridge/orders/{orderId:guid}/check-balance
     this.checkOrderBalance = makeOperation(http, "api/v1/bridge", "GET", "orders/{orderId:guid}/check-balance");
-    // Post api/v1/bridge/orders
+    // POST api/v1/bridge/orders
     this.createOrder = makeOperation(http, "api/v1/bridge", "POST", "orders");
-    // Post api/v1/bridge/orders/private
+    // POST api/v1/bridge/orders/private
     this.createPrivateOrder = makeOperation(http, "api/v1/bridge", "POST", "orders/private");
-    // Get api/v1/bridge/exchange-rate
+    // GET api/v1/bridge/exchange-rate
     this.getExchangeRate = makeOperation(http, "api/v1/bridge", "GET", "exchange-rate");
-    // Post api/v1/bridge/viewing-keys/audit
+    // GET api/v1/bridge/networks
+    this.getSupportedNetworks = makeOperation(http, "api/v1/bridge", "GET", "networks");
+    // POST api/v1/bridge/viewing-keys/audit
     this.recordViewingKey = makeOperation(http, "api/v1/bridge", "POST", "viewing-keys/audit");
-    // Post api/v1/bridge/proofs/verify
+    // POST api/v1/bridge/proofs/verify
     this.verifyProof = makeOperation(http, "api/v1/bridge", "POST", "proofs/verify");
   }
 }

@@ -15,21 +15,21 @@ class StatsModule {
   constructor(http) {
     this._http = http;
 
-    // Get api/stats/chat-stats/{avatarId}
+    // GET api/stats/chat-stats/{avatarId}
     this.getChatStats = makeOperation(http, "api/stats", "GET", "chat-stats/{avatarId}");
-    // Get api/stats/gift-stats/{avatarId}
+    // GET api/stats/gift-stats/{avatarId}
     this.getGiftStats = makeOperation(http, "api/stats", "GET", "gift-stats/{avatarId}");
-    // Get api/stats/karma-history/{avatarId}
+    // GET api/stats/karma-history/{avatarId}
     this.getKarmaHistory = makeOperation(http, "api/stats", "GET", "karma-history/{avatarId}");
-    // Get api/stats/karma-stats/{avatarId}
+    // GET api/stats/karma-stats/{avatarId}
     this.getKarmaStats = makeOperation(http, "api/stats", "GET", "karma-stats/{avatarId}");
-    // Get api/stats/key-stats/{avatarId}
+    // GET api/stats/key-stats/{avatarId}
     this.getKeyStats = makeOperation(http, "api/stats", "GET", "key-stats/{avatarId}");
-    // Get api/stats/leaderboard-stats/{avatarId}
+    // GET api/stats/leaderboard-stats/{avatarId}
     this.getLeaderboardStats = makeOperation(http, "api/stats", "GET", "leaderboard-stats/{avatarId}");
-    // Get api/stats/get-stats-for-current-logged-in-avatar
+    // GET api/stats/get-stats-for-current-logged-in-avatar
     this.getStatsForCurrentLoggedInAvatar = makeOperation(http, "api/stats", "GET", "get-stats-for-current-logged-in-avatar");
-    // Get api/stats/system-stats
+    // GET api/stats/system-stats
     this.getSystemStats = makeOperation(http, "api/stats", "GET", "system-stats");
   }
 }

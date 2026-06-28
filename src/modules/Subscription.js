@@ -15,25 +15,25 @@ class SubscriptionModule {
   constructor(http) {
     this._http = http;
 
-    // Post api/subscription/check-hyperdrive-quota
+    // POST api/subscription/check-hyperdrive-quota
     this.checkHyperDriveQuota = makeOperation(http, "api/subscription", "POST", "check-hyperdrive-quota");
-    // Post api/subscription/checkout/session
+    // POST api/subscription/checkout/session
     this.createCheckoutSession = makeOperation(http, "api/subscription", "POST", "checkout/session");
-    // Get api/subscription/hyperdrive-usage
+    // GET api/subscription/hyperdrive-usage
     this.getHyperDriveUsage = makeOperation(http, "api/subscription", "GET", "hyperdrive-usage");
-    // Get api/subscription/orders/me
+    // GET api/subscription/orders/me
     this.getMyOrders = makeOperation(http, "api/subscription", "GET", "orders/me");
-    // Get api/subscription/subscriptions/me
+    // GET api/subscription/subscriptions/me
     this.getMySubscriptions = makeOperation(http, "api/subscription", "GET", "subscriptions/me");
-    // Get api/subscription/plans
+    // GET api/subscription/plans
     this.getPlans = makeOperation(http, "api/subscription", "GET", "plans");
-    // Get api/subscription/usage
+    // GET api/subscription/usage
     this.getUsage = makeOperation(http, "api/subscription", "GET", "usage");
-    // Post api/subscription/webhooks/stripe
+    // POST api/subscription/webhooks/stripe
     this.stripeWebhook = makeOperation(http, "api/subscription", "POST", "webhooks/stripe");
-    // Post api/subscription/toggle-pay-as-you-go
+    // POST api/subscription/toggle-pay-as-you-go
     this.togglePayAsYouGo = makeOperation(http, "api/subscription", "POST", "toggle-pay-as-you-go");
-    // Post api/subscription/update-hyperdrive-config
+    // POST api/subscription/update-hyperdrive-config
     this.updateHyperDriveConfig = makeOperation(http, "api/subscription", "POST", "update-hyperdrive-config");
   }
 }

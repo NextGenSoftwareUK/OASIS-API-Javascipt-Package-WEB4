@@ -6,18 +6,22 @@
 const { makeOperation } = require('../core/routeHelper');
 
 /**
- * Generated wrapper for api/share (source: ONODE WebAPI ShareController.cs).
+ * Generated wrapper for api/core (source: ONODE WebAPI CoreController.cs).
  * Every method takes a single args object: path-template tokens (e.g. {id})
  * are consumed from it automatically; any remaining keys are sent as the
  * query string (GET/DELETE) or JSON body (POST/PUT).
  */
-class ShareModule {
+class CoreModule {
   constructor(http) {
     this._http = http;
 
-    // GET api/share/share-holon/{holonId:guid}/{avatarId:guid}
-    this.shareHolon = makeOperation(http, "api/share", "GET", "share-holon/{holonId:guid}/{avatarId:guid}");
+    // POST api/core/generate-moon
+    this.generateMoon = makeOperation(http, "api/core", "POST", "generate-moon");
+    // GET api/core/config
+    this.getSystemConfig = makeOperation(http, "api/core", "GET", "config");
+    // GET api/core/health
+    this.getSystemHealth = makeOperation(http, "api/core", "GET", "health");
   }
 }
 
-module.exports = { ShareModule };
+module.exports = { CoreModule };

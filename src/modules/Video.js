@@ -15,11 +15,11 @@ class VideoModule {
   constructor(http) {
     this._http = http;
 
-    // Post api/video/end-call/{callId}
+    // POST api/video/end-call/{callId}
     this.endVideoCall = makeOperation(http, "api/video", "POST", "end-call/{callId}");
-    // Post api/video/join-call/{callId}
+    // POST api/video/join-call/{callId}
     this.joinVideoCall = makeOperation(http, "api/video", "POST", "join-call/{callId}");
-    // Post api/video/start-video-call
+    // POST api/video/start-video-call
     this.startVideoCall = makeOperation(http, "api/video", "POST", "start-video-call");
   }
 }

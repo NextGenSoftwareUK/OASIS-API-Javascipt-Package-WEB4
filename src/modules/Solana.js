@@ -15,10 +15,10 @@ class SolanaModule {
   constructor(http) {
     this._http = http;
 
-    // Post api/solana/
-    this.mintNft = makeOperation(http, "api/solana", "POST", "");
-    // Post api/solana/
-    this.sendTransaction = makeOperation(http, "api/solana", "POST", "");
+    // POST api/solana/Mint
+    this.mintNft = makeOperation(http, "api/solana", "POST", "Mint");
+    // POST api/solana/Send
+    this.sendTransaction = makeOperation(http, "api/solana", "POST", "Send");
   }
 }
 

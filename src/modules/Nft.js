@@ -15,70 +15,70 @@ class NftModule {
   constructor(http) {
     this._http = http;
 
-    // Post api/nft/
-    this.collectGeoNFTAsync = makeOperation(http, "api/nft", "POST", "");
-    // Post api/nft/
-    this.collectNFTAsync = makeOperation(http, "api/nft", "POST", "");
-    // Post api/nft/
-    this.createWeb4NFTCollectionAsync = makeOperation(http, "api/nft", "POST", "");
-    // Post api/nft/
-    this.exportWeb4NFTAsync = makeOperation(http, "api/nft", "POST", "");
-    // Post api/nft/
-    this.exportWeb4NFTToFileAsync = makeOperation(http, "api/nft", "POST", "");
-    // Get api/nft/
-    this.getNFTProviderFromProviderType = makeOperation(http, "api/nft", "GET", "");
-    // Post api/nft/
-    this.importWeb3NFTAsync = makeOperation(http, "api/nft", "POST", "");
-    // Post api/nft/
-    this.importWeb4NFTAsync = makeOperation(http, "api/nft", "POST", "");
-    // Post api/nft/
-    this.importWeb4NFTFromFileAsync = makeOperation(http, "api/nft", "POST", "");
-    // Get api/nft/
-    this.loadAllGeoNFTsAsync = makeOperation(http, "api/nft", "GET", "");
-    // Get api/nft/
-    this.loadAllGeoNFTsForMintAddressAsync = makeOperation(http, "api/nft", "GET", "");
-    // Get api/nft/
-    this.loadAllWeb3NFTsAsync = makeOperation(http, "api/nft", "GET", "");
-    // Get api/nft/
-    this.loadAllWeb3NFTsForAvatarAsync = makeOperation(http, "api/nft", "GET", "");
-    // Get api/nft/
-    this.loadAllWeb3NFTsForMintAddressAsync = makeOperation(http, "api/nft", "GET", "");
-    // Get api/nft/
-    this.loadAllWeb4GeoNFTsAsync = makeOperation(http, "api/nft", "GET", "");
-    // Get api/nft/
-    this.loadAllWeb4GeoNFTsForAvatarAsync = makeOperation(http, "api/nft", "GET", "");
-    // Get api/nft/
-    this.loadAllWeb4NFTsAsync = makeOperation(http, "api/nft", "GET", "");
-    // Get api/nft/
-    this.loadAllWeb4NFTsForAvatarAsync = makeOperation(http, "api/nft", "GET", "");
-    // Get api/nft/
-    this.loadAllWeb4NFTsForMintAddressAsync = makeOperation(http, "api/nft", "GET", "");
-    // Get api/nft/
-    this.loadWeb3NftByHashAsync = makeOperation(http, "api/nft", "GET", "");
-    // Get api/nft/
-    this.loadWeb3NftByIdAsync = makeOperation(http, "api/nft", "GET", "");
-    // Get api/nft/
-    this.loadWeb4NftByHashAsync = makeOperation(http, "api/nft", "GET", "");
-    // Get api/nft/
-    this.loadWeb4NftByIdAsync = makeOperation(http, "api/nft", "GET", "");
-    // Post api/nft/
-    this.mintAndPlaceGeoNFTAsync = makeOperation(http, "api/nft", "POST", "");
-    // Post api/nft/
-    this.mintNftAsync = makeOperation(http, "api/nft", "POST", "");
-    // Post api/nft/
-    this.placeGeoNFTAsync = makeOperation(http, "api/nft", "POST", "");
-    // Post api/nft/
-    this.remintNftAsync = makeOperation(http, "api/nft", "POST", "");
-    // Get api/nft/
-    this.searchWeb4GeoNFTsAsync = makeOperation(http, "api/nft", "GET", "");
-    // Get api/nft/
-    this.searchWeb4NFTCollectionsAsync = makeOperation(http, "api/nft", "GET", "");
-    // Get api/nft/
-    this.searchWeb4NFTsAsync = makeOperation(http, "api/nft", "GET", "");
-    // Post api/nft/
-    this.sendNFTAsync = makeOperation(http, "api/nft", "POST", "");
-    // Post api/nft/
-    this.updateWeb4NftAsync = makeOperation(http, "api/nft", "POST", "");
+    // POST api/nft/collect-geo-nft
+    this.collectGeoNFTAsync = makeOperation(http, "api/nft", "POST", "collect-geo-nft");
+    // POST api/nft/collect-nft
+    this.collectNFTAsync = makeOperation(http, "api/nft", "POST", "collect-nft");
+    // POST api/nft/create-web4-nft-collection
+    this.createWeb4NFTCollectionAsync = makeOperation(http, "api/nft", "POST", "create-web4-nft-collection");
+    // POST api/nft/export-web4-nft
+    this.exportWeb4NFTAsync = makeOperation(http, "api/nft", "POST", "export-web4-nft");
+    // POST api/nft/export-web4-nft-to-file/{oasisNFTId}/{fullPathToExportTo}
+    this.exportWeb4NFTToFileAsync = makeOperation(http, "api/nft", "POST", "export-web4-nft-to-file/{oasisNFTId}/{fullPathToExportTo}");
+    // GET api/nft/get-nft-provider-from-provider-type/{providerType}
+    this.getNFTProviderFromProviderType = makeOperation(http, "api/nft", "GET", "get-nft-provider-from-provider-type/{providerType}");
+    // POST api/nft/import-web3-nft
+    this.importWeb3NFTAsync = makeOperation(http, "api/nft", "POST", "import-web3-nft");
+    // POST api/nft/import-web4-nft/{importedByAvatarId}
+    this.importWeb4NFTAsync = makeOperation(http, "api/nft", "POST", "import-web4-nft/{importedByAvatarId}");
+    // POST api/nft/import-web4-nft-from-file/{importedByAvatarId}/{fullPathToOASISNFTJsonFile}
+    this.importWeb4NFTFromFileAsync = makeOperation(http, "api/nft", "POST", "import-web4-nft-from-file/{importedByAvatarId}/{fullPathToOASISNFTJsonFile}");
+    // GET api/nft/load-all-geo-nfts
+    this.loadAllGeoNFTsAsync = makeOperation(http, "api/nft", "GET", "load-all-geo-nfts");
+    // GET api/nft/load-all-geo-nfts-for-mint-wallet-address/{mintWalletAddress}
+    this.loadAllGeoNFTsForMintAddressAsync = makeOperation(http, "api/nft", "GET", "load-all-geo-nfts-for-mint-wallet-address/{mintWalletAddress}");
+    // GET api/nft/load-all-web3-nfts
+    this.loadAllWeb3NFTsAsync = makeOperation(http, "api/nft", "GET", "load-all-web3-nfts");
+    // GET api/nft/load-all-web3-nfts-for-avatar/{avatarId}
+    this.loadAllWeb3NFTsForAvatarAsync = makeOperation(http, "api/nft", "GET", "load-all-web3-nfts-for-avatar/{avatarId}");
+    // GET api/nft/load-all-web3-nfts-for-mint-address/{mintWalletAddress}
+    this.loadAllWeb3NFTsForMintAddressAsync = makeOperation(http, "api/nft", "GET", "load-all-web3-nfts-for-mint-address/{mintWalletAddress}");
+    // GET api/nft/load-all-geo-nfts/{providerType}/{setGlobally}
+    this.loadAllWeb4GeoNFTsAsync = makeOperation(http, "api/nft", "GET", "load-all-geo-nfts/{providerType}/{setGlobally}");
+    // GET api/nft/load-all-geo-nfts-for-avatar/{avatarId}
+    this.loadAllWeb4GeoNFTsForAvatarAsync = makeOperation(http, "api/nft", "GET", "load-all-geo-nfts-for-avatar/{avatarId}");
+    // GET api/nft/load-all-nfts
+    this.loadAllWeb4NFTsAsync = makeOperation(http, "api/nft", "GET", "load-all-nfts");
+    // GET api/nft/load-all-nfts-for_avatar/{avatarId}
+    this.loadAllWeb4NFTsForAvatarAsync = makeOperation(http, "api/nft", "GET", "load-all-nfts-for_avatar/{avatarId}");
+    // GET api/nft/load-all-nfts-for-mint-wallet-address/{mintWalletAddress}
+    this.loadAllWeb4NFTsForMintAddressAsync = makeOperation(http, "api/nft", "GET", "load-all-nfts-for-mint-wallet-address/{mintWalletAddress}");
+    // GET api/nft/load-web3-nft-by-hash/{onChainNftHash}
+    this.loadWeb3NftByHashAsync = makeOperation(http, "api/nft", "GET", "load-web3-nft-by-hash/{onChainNftHash}");
+    // GET api/nft/load-web3-nft-by-id/{id}
+    this.loadWeb3NftByIdAsync = makeOperation(http, "api/nft", "GET", "load-web3-nft-by-id/{id}");
+    // GET api/nft/load-nft-by-hash/{hash}
+    this.loadWeb4NftByHashAsync = makeOperation(http, "api/nft", "GET", "load-nft-by-hash/{hash}");
+    // GET api/nft/load-nft-by-id/{id}
+    this.loadWeb4NftByIdAsync = makeOperation(http, "api/nft", "GET", "load-nft-by-id/{id}");
+    // POST api/nft/mint-and-place-geo-nft
+    this.mintAndPlaceGeoNFTAsync = makeOperation(http, "api/nft", "POST", "mint-and-place-geo-nft");
+    // POST api/nft/mint-nft
+    this.mintNftAsync = makeOperation(http, "api/nft", "POST", "mint-nft");
+    // POST api/nft/place-geo-nft
+    this.placeGeoNFTAsync = makeOperation(http, "api/nft", "POST", "place-geo-nft");
+    // POST api/nft/remint-nft
+    this.remintNftAsync = makeOperation(http, "api/nft", "POST", "remint-nft");
+    // GET api/nft/search-web4-geo-nfts/{searchTerm}/{avatarId}
+    this.searchWeb4GeoNFTsAsync = makeOperation(http, "api/nft", "GET", "search-web4-geo-nfts/{searchTerm}/{avatarId}");
+    // GET api/nft/search-web4-nft-collections/{searchTerm}/{avatarId}
+    this.searchWeb4NFTCollectionsAsync = makeOperation(http, "api/nft", "GET", "search-web4-nft-collections/{searchTerm}/{avatarId}");
+    // GET api/nft/search-web4-nfts/{searchTerm}/{avatarId}
+    this.searchWeb4NFTsAsync = makeOperation(http, "api/nft", "GET", "search-web4-nfts/{searchTerm}/{avatarId}");
+    // POST api/nft/send-nft
+    this.sendNFTAsync = makeOperation(http, "api/nft", "POST", "send-nft");
+    // POST api/nft/update-web4-nft
+    this.updateWeb4NftAsync = makeOperation(http, "api/nft", "POST", "update-web4-nft");
   }
 }
 

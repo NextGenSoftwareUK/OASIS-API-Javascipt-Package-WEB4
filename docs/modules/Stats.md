@@ -4,34 +4,356 @@ Source controller: [`StatsController.cs`](https://github.com/NextGenSoftwareUK/O
 Route prefix: `api/stats`
 8 operation(s).
 
-All methods are generated 1:1 from the controller's real `[Http*]` routes (see
-[Conventions](../README.md#calling-any-endpoint)). They take a single args
-object: any key matching a `{token}` in the route is substituted into the
-URL; everything else becomes the query string (GET/DELETE) or JSON body
-(POST/PUT).
+Every method takes a single args object: any key matching a `{token}` in the route is substituted into the URL; everything else becomes the query string (GET/DELETE) or JSON body (POST/PUT). Every call resolves to the standard OASIS envelope:
 
-## Methods
+```ts
+{
+  isError: boolean;
+  isWarning: boolean;
+  message: string;
+  errorCode?: string;
+  result: T; // see each endpoint's Response section below
+}
+```
 
-| Method | HTTP | Route | Route params |
-| --- | --- | --- | --- |
-| `getChatStats` | GET | `api/stats/chat-stats/{avatarId}` | `avatarId` |
-| `getGiftStats` | GET | `api/stats/gift-stats/{avatarId}` | `avatarId` |
-| `getKarmaHistory` | GET | `api/stats/karma-history/{avatarId}` | `avatarId` |
-| `getKarmaStats` | GET | `api/stats/karma-stats/{avatarId}` | `avatarId` |
-| `getKeyStats` | GET | `api/stats/key-stats/{avatarId}` | `avatarId` |
-| `getLeaderboardStats` | GET | `api/stats/leaderboard-stats/{avatarId}` | `avatarId` |
-| `getStatsForCurrentLoggedInAvatar` | GET | `api/stats/get-stats-for-current-logged-in-avatar` | – |
-| `getSystemStats` | GET | `api/stats/system-stats` | – |
+## Operations
 
-## Example
+### `getChatStats`
+
+Get chat statistics for an avatar
+
+**GET** `api/stats/chat-stats/{avatarId}`
+
+Route parameters:
+
+| Field | Type |
+| --- | --- |
+| `avatarId` | `Guid` |
+
+**Request**
+
+No request body.
+
+**Response**
+
+Standard `OASISResult` envelope (see top of this page) with:
+
+`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+
+**Example**
 
 ```js
-const oasis = new OASISClient({ baseUrl: '...' });
-oasis.setToken(jwtToken); // or: await oasis.auth.login({ username, password })
-
 const { isError, message, result } = await oasis.stats.getChatStats({
     avatarId: '<avatarId>'
   });
 if (isError) throw new Error(message);
 console.log(result);
 ```
+
+Example response:
+
+```json
+{
+  "isError": false,
+  "message": "",
+  "result": /* <Dictionary<string, object>> */
+}
+```
+
+---
+
+### `getGiftStats`
+
+Get gift statistics for an avatar
+
+**GET** `api/stats/gift-stats/{avatarId}`
+
+Route parameters:
+
+| Field | Type |
+| --- | --- |
+| `avatarId` | `Guid` |
+
+**Request**
+
+No request body.
+
+**Response**
+
+Standard `OASISResult` envelope (see top of this page) with:
+
+`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+
+**Example**
+
+```js
+const { isError, message, result } = await oasis.stats.getGiftStats({
+    avatarId: '<avatarId>'
+  });
+if (isError) throw new Error(message);
+console.log(result);
+```
+
+Example response:
+
+```json
+{
+  "isError": false,
+  "message": "",
+  "result": /* <Dictionary<string, object>> */
+}
+```
+
+---
+
+### `getKarmaHistory`
+
+Get karma history for an avatar
+
+**GET** `api/stats/karma-history/{avatarId}`
+
+Route parameters:
+
+| Field | Type |
+| --- | --- |
+| `avatarId` | `Guid` |
+
+**Request**
+
+Query parameters:
+
+| Field | Type |
+| --- | --- |
+| `limit` | `int (optional)` |
+
+**Response**
+
+Standard `OASISResult` envelope (see top of this page) with:
+
+`result` type: `List<Dictionary<string, object>>` _(type definition not found - field list unavailable)_
+
+**Example**
+
+```js
+const { isError, message, result } = await oasis.stats.getKarmaHistory({
+    avatarId: '<avatarId>',
+    limit: 1
+  });
+if (isError) throw new Error(message);
+console.log(result);
+```
+
+Example response:
+
+```json
+{
+  "isError": false,
+  "message": "",
+  "result": [ /* <Dictionary<string, object>> */ ]
+}
+```
+
+---
+
+### `getKarmaStats`
+
+Get karma statistics for an avatar
+
+**GET** `api/stats/karma-stats/{avatarId}`
+
+Route parameters:
+
+| Field | Type |
+| --- | --- |
+| `avatarId` | `Guid` |
+
+**Request**
+
+No request body.
+
+**Response**
+
+Standard `OASISResult` envelope (see top of this page) with:
+
+`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+
+**Example**
+
+```js
+const { isError, message, result } = await oasis.stats.getKarmaStats({
+    avatarId: '<avatarId>'
+  });
+if (isError) throw new Error(message);
+console.log(result);
+```
+
+Example response:
+
+```json
+{
+  "isError": false,
+  "message": "",
+  "result": /* <Dictionary<string, object>> */
+}
+```
+
+---
+
+### `getKeyStats`
+
+Get key statistics for an avatar
+
+**GET** `api/stats/key-stats/{avatarId}`
+
+Route parameters:
+
+| Field | Type |
+| --- | --- |
+| `avatarId` | `Guid` |
+
+**Request**
+
+No request body.
+
+**Response**
+
+Standard `OASISResult` envelope (see top of this page) with:
+
+`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+
+**Example**
+
+```js
+const { isError, message, result } = await oasis.stats.getKeyStats({
+    avatarId: '<avatarId>'
+  });
+if (isError) throw new Error(message);
+console.log(result);
+```
+
+Example response:
+
+```json
+{
+  "isError": false,
+  "message": "",
+  "result": /* <Dictionary<string, object>> */
+}
+```
+
+---
+
+### `getLeaderboardStats`
+
+Get leaderboard statistics for an avatar
+
+**GET** `api/stats/leaderboard-stats/{avatarId}`
+
+Route parameters:
+
+| Field | Type |
+| --- | --- |
+| `avatarId` | `Guid` |
+
+**Request**
+
+No request body.
+
+**Response**
+
+Standard `OASISResult` envelope (see top of this page) with:
+
+`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+
+**Example**
+
+```js
+const { isError, message, result } = await oasis.stats.getLeaderboardStats({
+    avatarId: '<avatarId>'
+  });
+if (isError) throw new Error(message);
+console.log(result);
+```
+
+Example response:
+
+```json
+{
+  "isError": false,
+  "message": "",
+  "result": /* <Dictionary<string, object>> */
+}
+```
+
+---
+
+### `getStatsForCurrentLoggedInAvatar`
+
+Get comprehensive stats for the currently logged in avatar
+
+**GET** `api/stats/get-stats-for-current-logged-in-avatar`
+
+**Request**
+
+No request body.
+
+**Response**
+
+Standard `OASISResult` envelope (see top of this page) with:
+
+`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+
+**Example**
+
+```js
+const { isError, message, result } = await oasis.stats.getStatsForCurrentLoggedInAvatar({});
+if (isError) throw new Error(message);
+console.log(result);
+```
+
+Example response:
+
+```json
+{
+  "isError": false,
+  "message": "",
+  "result": /* <Dictionary<string, object>> */
+}
+```
+
+---
+
+### `getSystemStats`
+
+Get system-wide statistics
+
+**GET** `api/stats/system-stats`
+
+**Request**
+
+No request body.
+
+**Response**
+
+Standard `OASISResult` envelope (see top of this page) with:
+
+`result` type: `Dictionary<string, object>` _(type definition not found - field list unavailable)_
+
+**Example**
+
+```js
+const { isError, message, result } = await oasis.stats.getSystemStats({});
+if (isError) throw new Error(message);
+console.log(result);
+```
+
+Example response:
+
+```json
+{
+  "isError": false,
+  "message": "",
+  "result": /* <Dictionary<string, object>> */
+}
+```
+

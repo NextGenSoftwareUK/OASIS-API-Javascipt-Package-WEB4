@@ -15,7 +15,7 @@ class SearchModule {
   constructor(http) {
     this._http = http;
 
-    // Get api/search/{searchParams}
+    // GET api/search/{searchParams}
     this.get = makeOperation(http, "api/search", "GET", "{searchParams}");
   }
 }

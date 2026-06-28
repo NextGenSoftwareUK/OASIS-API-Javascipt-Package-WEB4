@@ -15,17 +15,17 @@ class EggsModule {
   constructor(http) {
     this._http = http;
 
-    // Post api/eggs/discover
+    // POST api/eggs/discover
     this.discoverEgg = makeOperation(http, "api/eggs", "POST", "discover");
-    // Get api/eggs/get-all-eggs
+    // GET api/eggs/get-all-eggs
     this.getAllEggs = makeOperation(http, "api/eggs", "GET", "get-all-eggs");
-    // Get api/eggs/get-current-egg-quest-leader-board
+    // GET api/eggs/get-current-egg-quest-leader-board
     this.getCurrentEggQuestLeaderBoard = makeOperation(http, "api/eggs", "GET", "get-current-egg-quest-leader-board");
-    // Get api/eggs/get-current-egg-quests
+    // GET api/eggs/get-current-egg-quests
     this.getCurrentEggQuests = makeOperation(http, "api/eggs", "GET", "get-current-egg-quests");
-    // Get api/eggs/my-eggs
+    // GET api/eggs/my-eggs
     this.getMyEggs = makeOperation(http, "api/eggs", "GET", "my-eggs");
-    // Post api/eggs/hatch/{eggId}
+    // POST api/eggs/hatch/{eggId}
     this.hatchEgg = makeOperation(http, "api/eggs", "POST", "hatch/{eggId}");
   }
 }

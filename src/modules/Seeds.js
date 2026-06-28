@@ -15,11 +15,11 @@ class SeedsModule {
   constructor(http) {
     this._http = http;
 
-    // Get api/seeds/me/transactions
+    // GET api/seeds/me/transactions
     this.getMySeedTransactions = makeOperation(http, "api/seeds", "GET", "me/transactions");
-    // Get api/seeds/avatar/{avatarId}/transactions
+    // GET api/seeds/avatar/{avatarId}/transactions
     this.getSeedTransactionsForAvatar = makeOperation(http, "api/seeds", "GET", "avatar/{avatarId}/transactions");
-    // Post api/seeds/save-seed-transaction
+    // POST api/seeds/save-seed-transaction
     this.saveSeedTransaction = makeOperation(http, "api/seeds", "POST", "save-seed-transaction");
   }
 }

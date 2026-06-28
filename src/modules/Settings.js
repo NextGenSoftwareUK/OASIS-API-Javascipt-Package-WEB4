@@ -15,33 +15,31 @@ class SettingsModule {
   constructor(http) {
     this._http = http;
 
-    // Get api/settings/get-all-settings-for-current-logged-in-avatar
+    // GET api/settings/get-all-settings-for-current-logged-in-avatar
     this.getAllSettingsForCurrentLoggedInAvatar = makeOperation(http, "api/settings", "GET", "get-all-settings-for-current-logged-in-avatar");
-    // Get api/settings/hyperdrive-settings
+    // GET api/settings/hyperdrive-settings
     this.getHyperDriveSettings = makeOperation(http, "api/settings", "GET", "hyperdrive-settings");
-    // Get api/settings/notification-preferences
+    // GET api/settings/notification-preferences
     this.getNotificationPreferences = makeOperation(http, "api/settings", "GET", "notification-preferences");
-    // Get api/settings/privacy-settings
+    // GET api/settings/privacy-settings
     this.getPrivacySettings = makeOperation(http, "api/settings", "GET", "privacy-settings");
-    // Get api/settings/subscription-settings
+    // GET api/settings/subscription-settings
     this.getSubscriptionSettings = makeOperation(http, "api/settings", "GET", "subscription-settings");
-    // Get api/settings/system-config
+    // GET api/settings/system-config
     this.getSystemConfig = makeOperation(http, "api/settings", "GET", "system-config");
-    // Get api/settings/system-settings
+    // GET api/settings/system-settings
     this.getSystemSettings = makeOperation(http, "api/settings", "GET", "system-settings");
-    // Get api/settings/version
-    this.getVersion = makeOperation(http, "api/settings", "GET", "version");
-    // Put api/settings/hyperdrive-settings
+    // PUT api/settings/hyperdrive-settings
     this.updateHyperDriveSettings = makeOperation(http, "api/settings", "PUT", "hyperdrive-settings");
-    // Put api/settings/notification-preferences
+    // PUT api/settings/notification-preferences
     this.updateNotificationPreferences = makeOperation(http, "api/settings", "PUT", "notification-preferences");
-    // Put api/settings/privacy-settings
+    // PUT api/settings/privacy-settings
     this.updatePrivacySettings = makeOperation(http, "api/settings", "PUT", "privacy-settings");
-    // Put api/settings/update-settings
+    // PUT api/settings/update-settings
     this.updateSettings = makeOperation(http, "api/settings", "PUT", "update-settings");
-    // Put api/settings/subscription-settings
+    // PUT api/settings/subscription-settings
     this.updateSubscriptionSettings = makeOperation(http, "api/settings", "PUT", "subscription-settings");
-    // Put api/settings/system-settings
+    // PUT api/settings/system-settings
     this.updateSystemSettings = makeOperation(http, "api/settings", "PUT", "system-settings");
   }
 }

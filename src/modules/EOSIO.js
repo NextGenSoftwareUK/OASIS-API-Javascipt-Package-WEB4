@@ -15,23 +15,23 @@ class EOSIOModule {
   constructor(http) {
     this._http = http;
 
-    // Get api/eosio/get-avatar-for-eosio-account-name
+    // GET api/eosio/get-avatar-for-eosio-account-name
     this.getAvatarForEOSIOAccountName = makeOperation(http, "api/eosio", "GET", "get-avatar-for-eosio-account-name");
-    // Get api/eosio/get-avatar-id-for-eosio-account-name
+    // GET api/eosio/get-avatar-id-for-eosio-account-name
     this.getAvatarIdForEOSIOAccountName = makeOperation(http, "api/eosio", "GET", "get-avatar-id-for-eosio-account-name");
-    // Get api/eosio/get-balance-for-avatar
+    // GET api/eosio/get-balance-for-avatar
     this.getBalanceForAvatar = makeOperation(http, "api/eosio", "GET", "get-balance-for-avatar");
-    // Get api/eosio/get-balance-for-eosio-account
+    // GET api/eosio/get-balance-for-eosio-account
     this.getBalanceForEOSIOAccount = makeOperation(http, "api/eosio", "GET", "get-balance-for-eosio-account");
-    // Get api/eosio/get-eosio-account
+    // GET api/eosio/get-eosio-account
     this.getEOSIOAccount = makeOperation(http, "api/eosio", "GET", "get-eosio-account");
-    // Get api/eosio/get-eosio-account-for-avatar
+    // GET api/eosio/get-eosio-account-for-avatar
     this.getEOSIOAccountForAvatar = makeOperation(http, "api/eosio", "GET", "get-eosio-account-for-avatar");
-    // Get api/eosio/get-eosio-account-name-for-avatar
+    // GET api/eosio/get-eosio-account-name-for-avatar
     this.getEOSIOAccountNamesForAvatar = makeOperation(http, "api/eosio", "GET", "get-eosio-account-name-for-avatar");
-    // Get api/eosio/get-eosio-account-private-key-for-avatar
+    // GET api/eosio/get-eosio-account-private-key-for-avatar
     this.getTelosAccountPrivateKeyForAvatar = makeOperation(http, "api/eosio", "GET", "get-eosio-account-private-key-for-avatar");
-    // Post api/eosio/{avatarId}/{eosioAccountName}
+    // POST api/eosio/{avatarId}/{eosioAccountName}
     this.linkEOSIOAccountToAvatar = makeOperation(http, "api/eosio", "POST", "{avatarId}/{eosioAccountName}");
   }
 }

@@ -15,25 +15,25 @@ class DataModule {
   constructor(http) {
     this._http = http;
 
-    // Delete api/data/delete-holon
+    // DELETE api/data/delete-holon
     this.deleteHolon = makeOperation(http, "api/data", "DELETE", "delete-holon");
-    // Post api/data/load-all-holons
+    // POST api/data/load-all-holons
     this.loadAllHolons = makeOperation(http, "api/data", "POST", "load-all-holons");
-    // Post api/data/load-data
+    // POST api/data/load-data
     this.loadData = makeOperation(http, "api/data", "POST", "load-data");
-    // Post api/data/load-file
+    // POST api/data/load-file
     this.loadFile = makeOperation(http, "api/data", "POST", "load-file");
-    // Post api/data/load-holon
+    // POST api/data/load-holon
     this.loadHolon = makeOperation(http, "api/data", "POST", "load-holon");
-    // Post api/data/load-holons-for-parent
+    // POST api/data/load-holons-for-parent
     this.loadHolonsForParent = makeOperation(http, "api/data", "POST", "load-holons-for-parent");
-    // Post api/data/save-data
+    // POST api/data/save-data
     this.saveData = makeOperation(http, "api/data", "POST", "save-data");
-    // Post api/data/save-file
+    // POST api/data/save-file
     this.saveFile = makeOperation(http, "api/data", "POST", "save-file");
-    // Post api/data/save-holon
+    // POST api/data/save-holon
     this.saveHolon = makeOperation(http, "api/data", "POST", "save-holon");
-    // Post api/data/save-holon-off-chain
+    // POST api/data/save-holon-off-chain
     this.saveHolonOffChain = makeOperation(http, "api/data", "POST", "save-holon-off-chain");
   }
 }

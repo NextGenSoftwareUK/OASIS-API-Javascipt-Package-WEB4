@@ -15,27 +15,27 @@ class ONETModule {
   constructor(http) {
     this._http = http;
 
-    // Post api/v1/onet/network/broadcast
+    // POST api/v1/onet/network/broadcast
     this.broadcastMessage = makeOperation(http, "api/v1/onet", "POST", "network/broadcast");
-    // Post api/v1/onet/network/connect
+    // POST api/v1/onet/network/connect
     this.connectToNode = makeOperation(http, "api/v1/onet", "POST", "network/connect");
-    // Post api/v1/onet/network/disconnect
+    // POST api/v1/onet/network/disconnect
     this.disconnectFromNode = makeOperation(http, "api/v1/onet", "POST", "network/disconnect");
-    // Get api/v1/onet/network/nodes
+    // GET api/v1/onet/network/nodes
     this.getConnectedNodes = makeOperation(http, "api/v1/onet", "GET", "network/nodes");
-    // Get api/v1/onet/network/stats
+    // GET api/v1/onet/network/stats
     this.getNetworkStats = makeOperation(http, "api/v1/onet", "GET", "network/stats");
-    // Get api/v1/onet/network/status
+    // GET api/v1/onet/network/status
     this.getNetworkStatus = makeOperation(http, "api/v1/onet", "GET", "network/status");
-    // Get api/v1/onet/network/topology
+    // GET api/v1/onet/network/topology
     this.getNetworkTopology = makeOperation(http, "api/v1/onet", "GET", "network/topology");
-    // Get api/v1/onet/oasisdna
+    // GET api/v1/onet/oasisdna
     this.getOASISDNA = makeOperation(http, "api/v1/onet", "GET", "oasisdna");
-    // Post api/v1/onet/network/start
+    // POST api/v1/onet/network/start
     this.startNetwork = makeOperation(http, "api/v1/onet", "POST", "network/start");
-    // Post api/v1/onet/network/stop
+    // POST api/v1/onet/network/stop
     this.stopNetwork = makeOperation(http, "api/v1/onet", "POST", "network/stop");
-    // Put api/v1/onet/oasisdna
+    // PUT api/v1/onet/oasisdna
     this.updateOASISDNA = makeOperation(http, "api/v1/onet", "PUT", "oasisdna");
   }
 }

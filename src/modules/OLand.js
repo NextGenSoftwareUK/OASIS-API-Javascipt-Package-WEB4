@@ -15,20 +15,20 @@ class OLandModule {
   constructor(http) {
     this._http = http;
 
-    // Post api/oland/
-    this.deleteOlandAsync = makeOperation(http, "api/oland", "POST", "");
-    // Get api/oland/
-    this.getOlandPrice = makeOperation(http, "api/oland", "GET", "");
-    // Get api/oland/
-    this.loadAllOlands = makeOperation(http, "api/oland", "GET", "");
-    // Get api/oland/
-    this.loadOlandAsync = makeOperation(http, "api/oland", "GET", "");
-    // Post api/oland/
-    this.purchaseOland = makeOperation(http, "api/oland", "POST", "");
-    // Post api/oland/
-    this.saveOlandAsync = makeOperation(http, "api/oland", "POST", "");
-    // Post api/oland/
-    this.updateOlandAsync = makeOperation(http, "api/oland", "POST", "");
+    // POST api/oland/delete-oland/{olandId}
+    this.deleteOlandAsync = makeOperation(http, "api/oland", "POST", "delete-oland/{olandId}");
+    // GET api/oland/get-oland-price
+    this.getOlandPrice = makeOperation(http, "api/oland", "GET", "get-oland-price");
+    // GET api/oland/load-all-olands
+    this.loadAllOlands = makeOperation(http, "api/oland", "GET", "load-all-olands");
+    // GET api/oland/load-oland/{olandId}
+    this.loadOlandAsync = makeOperation(http, "api/oland", "GET", "load-oland/{olandId}");
+    // POST api/oland/purchase-oland
+    this.purchaseOland = makeOperation(http, "api/oland", "POST", "purchase-oland");
+    // POST api/oland/save-oland
+    this.saveOlandAsync = makeOperation(http, "api/oland", "POST", "save-oland");
+    // POST api/oland/update-oland
+    this.updateOlandAsync = makeOperation(http, "api/oland", "POST", "update-oland");
   }
 }
 

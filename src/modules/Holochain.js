@@ -15,19 +15,19 @@ class HolochainModule {
   constructor(http) {
     this._http = http;
 
-    // Get api/holochain/get-avatar-for-holochain-agentid
+    // GET api/holochain/get-avatar-for-holochain-agentid
     this.getAvatarForHolochainAgentId = makeOperation(http, "api/holochain", "GET", "get-avatar-for-holochain-agentid");
-    // Get api/holochain/get-avatar-id-for-holochain-agentid
+    // GET api/holochain/get-avatar-id-for-holochain-agentid
     this.getAvatarIdForHolochainAgentId = makeOperation(http, "api/holochain", "GET", "get-avatar-id-for-holochain-agentid");
-    // Get api/holochain/get-holo-fuel-balance-for-agentId
+    // GET api/holochain/get-holo-fuel-balance-for-agentId
     this.getHoloFuelBalanceForAgentId = makeOperation(http, "api/holochain", "GET", "get-holo-fuel-balance-for-agentId");
-    // Get api/holochain/get-holo-fuel-balance-for-avatar
+    // GET api/holochain/get-holo-fuel-balance-for-avatar
     this.getHoloFuelBalanceForAvatar = makeOperation(http, "api/holochain", "GET", "get-holo-fuel-balance-for-avatar");
-    // Get api/holochain/get-holochain-agentids-for-avatar
+    // GET api/holochain/get-holochain-agentids-for-avatar
     this.getHolochainAgentIdsForAvatar = makeOperation(http, "api/holochain", "GET", "get-holochain-agentids-for-avatar");
-    // Get api/holochain/get-holochain-agent-private-keys-for-avatar
+    // GET api/holochain/get-holochain-agent-private-keys-for-avatar
     this.getHolochainAgentPrivateKeysForAvatar = makeOperation(http, "api/holochain", "GET", "get-holochain-agent-private-keys-for-avatar");
-    // Post api/holochain/{avatarId}/{holochainAgentId}
+    // POST api/holochain/{avatarId}/{holochainAgentId}
     this.linkHolochainAgentIdToAvatar = makeOperation(http, "api/holochain", "POST", "{avatarId}/{holochainAgentId}");
   }
 }

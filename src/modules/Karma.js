@@ -15,29 +15,29 @@ class KarmaModule {
   constructor(http) {
     this._http = http;
 
-    // Post api/karma/add-karma-to-avatar/{avatarId}
+    // POST api/karma/add-karma-to-avatar/{avatarId}
     this.addKarmaToAvatar = makeOperation(http, "api/karma", "POST", "add-karma-to-avatar/{avatarId}");
-    // Get api/karma/get-karma-akashic-records-for-avatar/{avatarId}
+    // GET api/karma/get-karma-akashic-records-for-avatar/{avatarId}
     this.getKarmaAkashicRecordsForAvatar = makeOperation(http, "api/karma", "GET", "get-karma-akashic-records-for-avatar/{avatarId}");
-    // Get api/karma/get-karma-for-avatar/{avatarId}
+    // GET api/karma/get-karma-for-avatar/{avatarId}
     this.getKarmaForAvatar = makeOperation(http, "api/karma", "GET", "get-karma-for-avatar/{avatarId}");
-    // Get api/karma/get-karma-history/{avatarId}
+    // GET api/karma/get-karma-history/{avatarId}
     this.getKarmaHistory = makeOperation(http, "api/karma", "GET", "get-karma-history/{avatarId}");
-    // Get api/karma/get-karma-stats/{avatarId}
+    // GET api/karma/get-karma-stats/{avatarId}
     this.getKarmaStats = makeOperation(http, "api/karma", "GET", "get-karma-stats/{avatarId}");
-    // Get api/karma/get-negative-karma-weighting/{karmaType}
+    // GET api/karma/get-negative-karma-weighting/{karmaType}
     this.getNegativeKarmaWeighting = makeOperation(http, "api/karma", "GET", "get-negative-karma-weighting/{karmaType}");
-    // Get api/karma/get-positive-karma-weighting/{karmaType}
+    // GET api/karma/get-positive-karma-weighting/{karmaType}
     this.getPositiveKarmaWeighting = makeOperation(http, "api/karma", "GET", "get-positive-karma-weighting/{karmaType}");
-    // Post api/karma/remove-karma-from-avatar/{avatarId}
+    // POST api/karma/remove-karma-from-avatar/{avatarId}
     this.removeKarmaFromAvatar = makeOperation(http, "api/karma", "POST", "remove-karma-from-avatar/{avatarId}");
-    // Post api/karma/set-negative-karma-weighting/{karmaType}/{weighting}
+    // POST api/karma/set-negative-karma-weighting/{karmaType}/{weighting}
     this.setNegativeKarmaWeighting = makeOperation(http, "api/karma", "POST", "set-negative-karma-weighting/{karmaType}/{weighting}");
-    // Post api/karma/set-positive-karma-weighting/{karmaType}/{weighting}
+    // POST api/karma/set-positive-karma-weighting/{karmaType}/{weighting}
     this.setPositiveKarmaWeighting = makeOperation(http, "api/karma", "POST", "set-positive-karma-weighting/{karmaType}/{weighting}");
-    // Post api/karma/vote-for-negative-karma-weighting/{karmaType}/{weighting}
+    // POST api/karma/vote-for-negative-karma-weighting/{karmaType}/{weighting}
     this.voteForNegativeKarmaWeighting = makeOperation(http, "api/karma", "POST", "vote-for-negative-karma-weighting/{karmaType}/{weighting}");
-    // Post api/karma/vote-for-positive-karma-weighting/{karmaType}/{weighting}
+    // POST api/karma/vote-for-positive-karma-weighting/{karmaType}/{weighting}
     this.voteForPositiveKarmaWeighting = makeOperation(http, "api/karma", "POST", "vote-for-positive-karma-weighting/{karmaType}/{weighting}");
   }
 }

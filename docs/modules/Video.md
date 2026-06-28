@@ -4,30 +4,147 @@ Source controller: [`VideoController.cs`](https://github.com/NextGenSoftwareUK/O
 Route prefix: `api/video`
 3 operation(s).
 
-All methods are generated 1:1 from the controller's real `[Http*]` routes (see
-[Conventions](../README.md#calling-any-endpoint)). They take a single args
-object: any key matching a `{token}` in the route is substituted into the
-URL; everything else becomes the query string (GET/DELETE) or JSON body
-(POST/PUT).
+Every method takes a single args object: any key matching a `{token}` in the route is substituted into the URL; everything else becomes the query string (GET/DELETE) or JSON body (POST/PUT). Every call resolves to the standard OASIS envelope:
 
-## Methods
+```ts
+{
+  isError: boolean;
+  isWarning: boolean;
+  message: string;
+  errorCode?: string;
+  result: T; // see each endpoint's Response section below
+}
+```
 
-| Method | HTTP | Route | Route params |
-| --- | --- | --- | --- |
-| `endVideoCall` | POST | `api/video/end-call/{callId}` | `callId` |
-| `joinVideoCall` | POST | `api/video/join-call/{callId}` | `callId` |
-| `startVideoCall` | POST | `api/video/start-video-call` | – |
+## Operations
 
-## Example
+### `endVideoCall`
+
+End a video call
+
+**POST** `api/video/end-call/{callId}`
+
+Route parameters:
+
+| Field | Type |
+| --- | --- |
+| `callId` | `string` |
+
+**Request**
+
+No request body.
+
+**Response**
+
+Standard `OASISResult` envelope (see top of this page) with:
+
+`result` type: `bool`
+
+**Example**
 
 ```js
-const oasis = new OASISClient({ baseUrl: '...' });
-oasis.setToken(jwtToken); // or: await oasis.auth.login({ username, password })
-
 const { isError, message, result } = await oasis.video.endVideoCall({
-    callId: '<callId>',
-    /* ...other fields per the request body */
+    callId: '<callId>'
   });
 if (isError) throw new Error(message);
 console.log(result);
 ```
+
+Example response:
+
+```json
+{
+  "isError": false,
+  "message": "",
+  "result": true
+}
+```
+
+---
+
+### `joinVideoCall`
+
+Join an existing video call
+
+**POST** `api/video/join-call/{callId}`
+
+Route parameters:
+
+| Field | Type |
+| --- | --- |
+| `callId` | `string` |
+
+**Request**
+
+Body fields:
+
+| Field | Type |
+| --- | --- |
+| `connectionDetails` | `string (optional)` |
+
+**Response**
+
+Standard `OASISResult` envelope (see top of this page) with:
+
+`result` type: `bool`
+
+**Example**
+
+```js
+const { isError, message, result } = await oasis.video.joinVideoCall({
+    callId: '<callId>',
+    connectionDetails: 'example string'
+  });
+if (isError) throw new Error(message);
+console.log(result);
+```
+
+Example response:
+
+```json
+{
+  "isError": false,
+  "message": "",
+  "result": true
+}
+```
+
+---
+
+### `startVideoCall`
+
+Start's a video call. PREVIEW - COMING SOON...
+
+**POST** `api/video/start-video-call`
+
+**Request**
+
+Body: `List<Guid>`
+
+**Response**
+
+Standard `OASISResult` envelope (see top of this page) with:
+
+`result` type: `string`
+
+**Example**
+
+```js
+const { isError, message, result } = await oasis.video.startVideoCall({
+    callName: 'example string',
+    /* ...request body fields */
+  });
+if (isError) throw new Error(message);
+console.log(result);
+```
+
+Example response:
+
+```json
+{
+  "isError": false,
+  "message": "",
+  "result": "example string"
+}
+```
+

@@ -15,25 +15,25 @@ class ClanModule {
   constructor(http) {
     this._http = http;
 
-    // Post api/clan/{clanId:guid}/members/{avatarId:guid}
+    // POST api/clan/{clanId:guid}/members/{avatarId:guid}
     this.addAvatarToClan = makeOperation(http, "api/clan", "POST", "{clanId:guid}/members/{avatarId:guid}");
-    // Post api/clan/
+    // POST api/clan/
     this.create = makeOperation(http, "api/clan", "POST", "");
-    // Delete api/clan/{clanId:guid}
+    // DELETE api/clan/{clanId:guid}
     this.delete = makeOperation(http, "api/clan", "DELETE", "{clanId:guid}");
-    // Get api/clan/{clanId:guid}/inventory
+    // GET api/clan/{clanId:guid}/inventory
     this.getClanInventory = makeOperation(http, "api/clan", "GET", "{clanId:guid}/inventory");
-    // Get api/clan/{clanId:guid}/members
+    // GET api/clan/{clanId:guid}/members
     this.getMembers = makeOperation(http, "api/clan", "GET", "{clanId:guid}/members");
-    // Get api/clan/
+    // GET api/clan/
     this.list = makeOperation(http, "api/clan", "GET", "");
-    // Get api/clan/{clanId:guid}
+    // GET api/clan/{clanId:guid}
     this.load = makeOperation(http, "api/clan", "GET", "{clanId:guid}");
-    // Get api/clan/by-name
+    // GET api/clan/by-name
     this.loadByName = makeOperation(http, "api/clan", "GET", "by-name");
-    // Delete api/clan/{clanId:guid}/members/{avatarId:guid}
+    // DELETE api/clan/{clanId:guid}/members/{avatarId:guid}
     this.removeAvatarFromClan = makeOperation(http, "api/clan", "DELETE", "{clanId:guid}/members/{avatarId:guid}");
-    // Put api/clan/{clanId:guid}
+    // PUT api/clan/{clanId:guid}
     this.update = makeOperation(http, "api/clan", "PUT", "{clanId:guid}");
   }
 }

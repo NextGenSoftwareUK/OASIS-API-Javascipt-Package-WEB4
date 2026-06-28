@@ -4,31 +4,371 @@ Source controller: [`HolochainController.cs`](https://github.com/NextGenSoftware
 Route prefix: `api/holochain`
 7 operation(s).
 
-All methods are generated 1:1 from the controller's real `[Http*]` routes (see
-[Conventions](../README.md#calling-any-endpoint)). They take a single args
-object: any key matching a `{token}` in the route is substituted into the
-URL; everything else becomes the query string (GET/DELETE) or JSON body
-(POST/PUT).
+Every method takes a single args object: any key matching a `{token}` in the route is substituted into the URL; everything else becomes the query string (GET/DELETE) or JSON body (POST/PUT). Every call resolves to the standard OASIS envelope:
 
-## Methods
+```ts
+{
+  isError: boolean;
+  isWarning: boolean;
+  message: string;
+  errorCode?: string;
+  result: T; // see each endpoint's Response section below
+}
+```
 
-| Method | HTTP | Route | Route params |
-| --- | --- | --- | --- |
-| `getAvatarForHolochainAgentId` | GET | `api/holochain/get-avatar-for-holochain-agentid` | – |
-| `getAvatarIdForHolochainAgentId` | GET | `api/holochain/get-avatar-id-for-holochain-agentid` | – |
-| `getHolochainAgentIdsForAvatar` | GET | `api/holochain/get-holochain-agentids-for-avatar` | – |
-| `getHolochainAgentPrivateKeysForAvatar` | GET | `api/holochain/get-holochain-agent-private-keys-for-avatar` | – |
-| `getHoloFuelBalanceForAgentId` | GET | `api/holochain/get-holo-fuel-balance-for-agentId` | – |
-| `getHoloFuelBalanceForAvatar` | GET | `api/holochain/get-holo-fuel-balance-for-avatar` | – |
-| `linkHolochainAgentIdToAvatar` | POST | `api/holochain/{avatarId}/{holochainAgentId}` | `avatarId`, `holochainAgentId` |
+## Operations
 
-## Example
+### `getAvatarForHolochainAgentId`
+
+Get's the Avatar for the the given Holochain agent id.
+
+**GET** `api/holochain/get-avatar-for-holochain-agentid`
+
+**Request**
+
+Query parameters:
+
+| Field | Type |
+| --- | --- |
+| `agentId` | `string` |
+
+**Response**
+
+Standard `OASISResult` envelope (see top of this page) with:
+
+`result` type: `IAvatar`
+
+| Field | Type |
+| --- | --- |
+| `ProviderWallets` | `Dictionary<ProviderType, List<IProviderWallet>>` |
+| `ProviderPrivateKey` | `Dictionary<ProviderType, string>` |
+| `ProviderPublicKey` | `Dictionary<ProviderType, List<string>>` |
+| `ProviderUsername` | `Dictionary<ProviderType, string>` |
+| `ProviderWalletAddress` | `Dictionary<ProviderType, List<string>>` |
+| `AvatarId` | `Guid` |
+| `Title` | `string` |
+| `FirstName` | `string` |
+| `LastName` | `string` |
+| `FullName` | `string` |
+| `FullNameWithTitle` | `string` |
+| `Username` | `string` |
+| `Email` | `string` |
+| `Password` | `string` |
+| `AvatarType` | `EnumValue<AvatarType>` |
+| `AcceptTerms` | `bool` |
+| `IsVerified` | `bool` |
+| `JwtToken` | `string` |
+| `PasswordReset` | `DateTime?` |
+| `RefreshToken` | `string` |
+| `RefreshTokens` | `List<RefreshToken>` |
+| `ResetToken` | `string` |
+| `ResetTokenExpires` | `DateTime?` |
+| `VerificationToken` | `string` |
+| `Verified` | `DateTime?` |
+| `LastBeamedIn` | `DateTime?` |
+| `LastBeamedOut` | `DateTime?` |
+| `IsBeamedIn` | `bool` |
+| `Image2D` | `string` |
+| `Karma` | `int` |
+| `Level` | `int` |
+| `XP` | `int` |
+
+**Example**
 
 ```js
-const oasis = new OASISClient({ baseUrl: '...' });
-oasis.setToken(jwtToken); // or: await oasis.auth.login({ username, password })
-
-const { isError, message, result } = await oasis.holochain.getAvatarForHolochainAgentId({});
+const { isError, message, result } = await oasis.holochain.getAvatarForHolochainAgentId({
+    agentId: 'example string'
+  });
 if (isError) throw new Error(message);
 console.log(result);
 ```
+
+Example response:
+
+```json
+{
+  "isError": false,
+  "message": "",
+  "result": { "ProviderWallets": /* <Dictionary<ProviderType, List<IProviderWallet>>> */, "ProviderPrivateKey": /* <Dictionary<ProviderType, string>> */, "ProviderPublicKey": /* <Dictionary<ProviderType, List<string>>> */, "ProviderUsername": /* <Dictionary<ProviderType, string>> */, "ProviderWalletAddress": /* <Dictionary<ProviderType, List<string>>> */, "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Title": "example string", "FirstName": "example string", "LastName": "example string", "FullName": "example string", "FullNameWithTitle": "example string", "Username": "example string", "Email": "example string", "Password": "example string", "AvatarType": /* <EnumValue<AvatarType>> */, "AcceptTerms": true, "IsVerified": true, "JwtToken": "example string", "PasswordReset": "2026-01-01T00:00:00Z", "RefreshToken": "example string", "RefreshTokens": [{ "Id": 1, "Avatar": {}, "Token": "example string", "Expires": "2026-01-01T00:00:00Z", "Created": "2026-01-01T00:00:00Z", "CreatedByIp": "example string", "Revoked": "2026-01-01T00:00:00Z", "RevokedByIp": "example string", "ReplacedByToken": "example string" }], "ResetToken": "example string", "ResetTokenExpires": "2026-01-01T00:00:00Z", "VerificationToken": "example string", "Verified": "2026-01-01T00:00:00Z", "LastBeamedIn": "2026-01-01T00:00:00Z", "LastBeamedOut": "2026-01-01T00:00:00Z", "IsBeamedIn": true, "Image2D": "example string", "Karma": 1, "Level": 1, "XP": 1 }
+}
+```
+
+---
+
+### `getAvatarIdForHolochainAgentId`
+
+Get's the Avatar id for the the given EOS account name.
+
+**GET** `api/holochain/get-avatar-id-for-holochain-agentid`
+
+**Request**
+
+Query parameters:
+
+| Field | Type |
+| --- | --- |
+| `agentId` | `string` |
+
+**Response**
+
+Standard `OASISResult` envelope (see top of this page) with:
+
+`result` type: `Guid`
+
+**Example**
+
+```js
+const { isError, message, result } = await oasis.holochain.getAvatarIdForHolochainAgentId({
+    agentId: 'example string'
+  });
+if (isError) throw new Error(message);
+console.log(result);
+```
+
+Example response:
+
+```json
+{
+  "isError": false,
+  "message": "",
+  "result": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
+
+---
+
+### `getHoloFuelBalanceForAgentId`
+
+Get's the HoloFuel balance for the given agent.
+
+**GET** `api/holochain/get-holo-fuel-balance-for-agentId`
+
+**Request**
+
+Query parameters:
+
+| Field | Type |
+| --- | --- |
+| `agentID` | `string` |
+
+**Response**
+
+Standard `OASISResult` envelope (see top of this page) with:
+
+`result` type: `string`
+
+**Example**
+
+```js
+const { isError, message, result } = await oasis.holochain.getHoloFuelBalanceForAgentId({
+    agentID: 'example string'
+  });
+if (isError) throw new Error(message);
+console.log(result);
+```
+
+Example response:
+
+```json
+{
+  "isError": false,
+  "message": "",
+  "result": "example string"
+}
+```
+
+---
+
+### `getHoloFuelBalanceForAvatar`
+
+Get's the EOSIO balance for the given avatar.
+
+**GET** `api/holochain/get-holo-fuel-balance-for-avatar`
+
+**Request**
+
+Query parameters:
+
+| Field | Type |
+| --- | --- |
+| `avatarId` | `Guid` |
+
+**Response**
+
+Standard `OASISResult` envelope (see top of this page) with:
+
+`result` type: `string`
+
+**Example**
+
+```js
+const { isError, message, result } = await oasis.holochain.getHoloFuelBalanceForAvatar({
+    avatarId: '3fa85f64-5717-4562-b3fc-2c963f66afa6'
+  });
+if (isError) throw new Error(message);
+console.log(result);
+```
+
+Example response:
+
+```json
+{
+  "isError": false,
+  "message": "",
+  "result": "example string"
+}
+```
+
+---
+
+### `getHolochainAgentIdsForAvatar`
+
+Get's the Holochain Agent ID(s) for the given Avatar.
+
+**GET** `api/holochain/get-holochain-agentids-for-avatar`
+
+**Request**
+
+Query parameters:
+
+| Field | Type |
+| --- | --- |
+| `avatarId` | `Guid` |
+
+**Response**
+
+Standard `OASISResult` envelope (see top of this page) with:
+
+`result` type: `List<string>`
+
+**Example**
+
+```js
+const { isError, message, result } = await oasis.holochain.getHolochainAgentIdsForAvatar({
+    avatarId: '3fa85f64-5717-4562-b3fc-2c963f66afa6'
+  });
+if (isError) throw new Error(message);
+console.log(result);
+```
+
+Example response:
+
+```json
+{
+  "isError": false,
+  "message": "",
+  "result": ["example string"]
+}
+```
+
+---
+
+### `getHolochainAgentPrivateKeysForAvatar`
+
+Get's the Holochain Agent's private key's for the given Avatar.
+
+**GET** `api/holochain/get-holochain-agent-private-keys-for-avatar`
+
+**Request**
+
+Query parameters:
+
+| Field | Type |
+| --- | --- |
+| `avatarId` | `Guid` |
+
+**Response**
+
+Standard `OASISResult` envelope (see top of this page) with:
+
+`result` type: `List<string>`
+
+**Example**
+
+```js
+const { isError, message, result } = await oasis.holochain.getHolochainAgentPrivateKeysForAvatar({
+    avatarId: '3fa85f64-5717-4562-b3fc-2c963f66afa6'
+  });
+if (isError) throw new Error(message);
+console.log(result);
+```
+
+Example response:
+
+```json
+{
+  "isError": false,
+  "message": "",
+  "result": ["example string"]
+}
+```
+
+---
+
+### `linkHolochainAgentIdToAvatar`
+
+Link's a given holochain AgentId to the given avatar.
+
+**POST** `api/holochain/{avatarId}/{holochainAgentId}`
+
+Route parameters:
+
+| Field | Type |
+| --- | --- |
+| `avatarId` | `Guid` |
+| `holochainAgentId` | `string` |
+
+**Request**
+
+Body fields:
+
+| Field | Type |
+| --- | --- |
+| `walletId` | `Guid` |
+| `providerToLoadSaveAvatarTo` | `ProviderType (optional)` |
+
+**Response**
+
+Standard `OASISResult` envelope (see top of this page) with:
+
+`result` type: `IProviderWallet`
+
+| Field | Type |
+| --- | --- |
+| `AvatarId` | `Guid` |
+| `WalletId` | `Guid` |
+| `Name` | `string` |
+| `Description` | `new string` |
+| `PrivateKey` | `string` |
+| `PublicKey` | `string` |
+| `WalletAddress` | `string` |
+| `WalletAddressSegwitP2SH` | `string` |
+| `SecretRecoveryPhrase` | `string` |
+| `Transactions` | `List<IWalletTransaction>` |
+| `ProviderType` | `ProviderType` |
+| `Balance` | `double` |
+| `IsDefaultWallet` | `bool` |
+
+**Example**
+
+```js
+const { isError, message, result } = await oasis.holochain.linkHolochainAgentIdToAvatar({
+    avatarId: '<avatarId>',
+    holochainAgentId: '<holochainAgentId>',
+    walletId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+    providerToLoadSaveAvatarTo: '<providerToLoadSaveAvatarTo>'
+  });
+if (isError) throw new Error(message);
+console.log(result);
+```
+
+Example response:
+
+```json
+{
+  "isError": false,
+  "message": "",
+  "result": { "AvatarId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "WalletId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "Name": "example string", "Description": /* <new string> */, "PrivateKey": "example string", "PublicKey": "example string", "WalletAddress": "example string", "WalletAddressSegwitP2SH": "example string", "SecretRecoveryPhrase": "example string", "Transactions": [{ "TransactionId": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "FromWalletAddress": "example string", "ToWalletAddress": "example string", "Amount": 1.0, "Description": "example string", "CreatedDate": "2026-01-01T00:00:00Z", "TransactionType": {  }, "TransactionCategory": {  } }], "ProviderType": {  }, "Balance": 1.0, "IsDefaultWallet": true }
+}
+```
+

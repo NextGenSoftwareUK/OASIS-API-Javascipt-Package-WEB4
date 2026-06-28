@@ -15,17 +15,17 @@ class MessagingModule {
   constructor(http) {
     this._http = http;
 
-    // Get api/messaging/conversation/{otherAvatarId}
+    // GET api/messaging/conversation/{otherAvatarId}
     this.getConversation = makeOperation(http, "api/messaging", "GET", "conversation/{otherAvatarId}");
-    // Get api/messaging/messages
+    // GET api/messaging/messages
     this.getMessages = makeOperation(http, "api/messaging", "GET", "messages");
-    // Get api/messaging/notifications
+    // GET api/messaging/notifications
     this.getNotifications = makeOperation(http, "api/messaging", "GET", "notifications");
-    // Post api/messaging/mark-messages-read
+    // POST api/messaging/mark-messages-read
     this.markMessagesAsRead = makeOperation(http, "api/messaging", "POST", "mark-messages-read");
-    // Post api/messaging/mark-notifications-read
+    // POST api/messaging/mark-notifications-read
     this.markNotificationsAsRead = makeOperation(http, "api/messaging", "POST", "mark-notifications-read");
-    // Post api/messaging/send-message-to-avatar/{toAvatarId}
+    // POST api/messaging/send-message-to-avatar/{toAvatarId}
     this.sendMessageToAvatar = makeOperation(http, "api/messaging", "POST", "send-message-to-avatar/{toAvatarId}");
   }
 }

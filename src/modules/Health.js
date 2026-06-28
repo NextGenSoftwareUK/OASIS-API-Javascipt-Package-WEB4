@@ -15,9 +15,9 @@ class HealthModule {
   constructor(http) {
     this._http = http;
 
-    // Get api/health/
+    // GET api/health/
     this.get = makeOperation(http, "api/health", "GET", "");
-    // Get api/health/health
+    // GET api/health/health
     this.health = makeOperation(http, "api/health", "GET", "health");
   }
 }

@@ -15,67 +15,67 @@ class ProviderModule {
   constructor(http) {
     this._http = http;
 
-    // Post api/provider/activate-provider/{providerType}
+    // POST api/provider/activate-provider/{providerType}
     this.activateProvider = makeOperation(http, "api/provider", "POST", "activate-provider/{providerType}");
-    // Post api/provider/deactivate-provider/{providerType}
+    // POST api/provider/deactivate-provider/{providerType}
     this.deActivateProvider = makeOperation(http, "api/provider", "POST", "deactivate-provider/{providerType}");
-    // Get api/provider/get-all-registered-network-providers
+    // GET api/provider/get-all-registered-network-providers
     this.getAllRegisteredNetworkProviders = makeOperation(http, "api/provider", "GET", "get-all-registered-network-providers");
-    // Get api/provider/get-all-registered-provider-types
+    // GET api/provider/get-all-registered-provider-types
     this.getAllRegisteredProviderTypes = makeOperation(http, "api/provider", "GET", "get-all-registered-provider-types");
-    // Get api/provider/get-all-registered-providers
+    // GET api/provider/get-all-registered-providers
     this.getAllRegisteredProviders = makeOperation(http, "api/provider", "GET", "get-all-registered-providers");
-    // Get api/provider/get-all-registered-providers-for-category/{category}
+    // GET api/provider/get-all-registered-providers-for-category/{category}
     this.getAllRegisteredProvidersForCategory = makeOperation(http, "api/provider", "GET", "get-all-registered-providers-for-category/{category}");
-    // Get api/provider/get-all-registered-renderer-providers
+    // GET api/provider/get-all-registered-renderer-providers
     this.getAllRegisteredRendererProviders = makeOperation(http, "api/provider", "GET", "get-all-registered-renderer-providers");
-    // Get api/provider/get-all-registered-storage-providers
+    // GET api/provider/get-all-registered-storage-providers
     this.getAllRegisteredStorageProviders = makeOperation(http, "api/provider", "GET", "get-all-registered-storage-providers");
-    // Get api/provider/get-current-storage-provider
+    // GET api/provider/get-current-storage-provider
     this.getCurrentStorageProvider = makeOperation(http, "api/provider", "GET", "get-current-storage-provider");
-    // Get api/provider/get-current-storage-provider-type
+    // GET api/provider/get-current-storage-provider-type
     this.getCurrentStorageProviderType = makeOperation(http, "api/provider", "GET", "get-current-storage-provider-type");
-    // Get api/provider/get-providers-that-are-auto-replicating
+    // GET api/provider/get-providers-that-are-auto-replicating
     this.getProvidersThatAreAutoReplicating = makeOperation(http, "api/provider", "GET", "get-providers-that-are-auto-replicating");
-    // Get api/provider/get-providers-that-have-auto-fail-over-enabled
+    // GET api/provider/get-providers-that-have-auto-fail-over-enabled
     this.getProvidersThatHaveAutoFailOverEnabled = makeOperation(http, "api/provider", "GET", "get-providers-that-have-auto-fail-over-enabled");
-    // Get api/provider/get-providers-that-have-auto-load-balance-enabled
+    // GET api/provider/get-providers-that-have-auto-load-balance-enabled
     this.getProvidersThatHaveAutoLoadBalanceEnabled = makeOperation(http, "api/provider", "GET", "get-providers-that-have-auto-load-balance-enabled");
-    // Get api/provider/get-registered-provider/{providerType}
+    // GET api/provider/get-registered-provider/{providerType}
     this.getRegisteredProvider = makeOperation(http, "api/provider", "GET", "get-registered-provider/{providerType}");
-    // Get api/provider/is-provider-registered/{providerType}
+    // GET api/provider/is-provider-registered/{providerType}
     this.isProviderRegistered = makeOperation(http, "api/provider", "GET", "is-provider-registered/{providerType}");
-    // Post api/provider/register-provider/{provider}
+    // POST api/provider/register-provider/{provider}
     this.registerProvider = makeOperation(http, "api/provider", "POST", "register-provider/{provider}");
-    // Post api/provider/register-provider-type/{providerType}
+    // POST api/provider/register-provider-type/{providerType}
     this.registerProviderType = makeOperation(http, "api/provider", "POST", "register-provider-type/{providerType}");
-    // Post api/provider/register-provider-types/{providerTypes}
+    // POST api/provider/register-provider-types/{providerTypes}
     this.registerProviderTypes = makeOperation(http, "api/provider", "POST", "register-provider-types/{providerTypes}");
-    // Post api/provider/register-providers/{providers}
+    // POST api/provider/register-providers/{providers}
     this.registerProviders = makeOperation(http, "api/provider", "POST", "register-providers/{providers}");
-    // Post api/provider/set-and-activate-current-storage-provider/{providerType}/{setGlobally}
+    // POST api/provider/set-and-activate-current-storage-provider/{providerType}/{setGlobally}
     this.setAndActivateCurrentStorageProvider = makeOperation(http, "api/provider", "POST", "set-and-activate-current-storage-provider/{providerType}/{setGlobally}");
-    // Post api/provider/set-auto-fail-over-for-all-providers/{addToFailOverList}
+    // POST api/provider/set-auto-fail-over-for-all-providers/{addToFailOverList}
     this.setAutoFailOverForAllProviders = makeOperation(http, "api/provider", "POST", "set-auto-fail-over-for-all-providers/{addToFailOverList}");
-    // Post api/provider/set-auto-fail-over-for-list-of-providers/{addToFailOverList}/{providerTypes}
+    // POST api/provider/set-auto-fail-over-for-list-of-providers/{addToFailOverList}/{providerTypes}
     this.setAutoFailOverForListOfProviders = makeOperation(http, "api/provider", "POST", "set-auto-fail-over-for-list-of-providers/{addToFailOverList}/{providerTypes}");
-    // Post api/provider/set-auto-load-balance-for-all-providers/{addToLoadBalanceList}
+    // POST api/provider/set-auto-load-balance-for-all-providers/{addToLoadBalanceList}
     this.setAutoLoadBalanceForAllProviders = makeOperation(http, "api/provider", "POST", "set-auto-load-balance-for-all-providers/{addToLoadBalanceList}");
-    // Post api/provider/set-auto-load-balance-for-list-of-providers/{addToLoadBalanceList}/{providerTypes}
+    // POST api/provider/set-auto-load-balance-for-list-of-providers/{addToLoadBalanceList}/{providerTypes}
     this.setAutoLoadBalanceForListOfProviders = makeOperation(http, "api/provider", "POST", "set-auto-load-balance-for-list-of-providers/{addToLoadBalanceList}/{providerTypes}");
-    // Post api/provider/set-auto-replicate-for-all-providers/{autoReplicate}
+    // POST api/provider/set-auto-replicate-for-all-providers/{autoReplicate}
     this.setAutoReplicateForAllProviders = makeOperation(http, "api/provider", "POST", "set-auto-replicate-for-all-providers/{autoReplicate}");
-    // Post api/provider/set-auto-replicate-for-list-of-providers/{autoReplicate}/{providerTypes}
+    // POST api/provider/set-auto-replicate-for-list-of-providers/{autoReplicate}/{providerTypes}
     this.setAutoReplicateForListOfProviders = makeOperation(http, "api/provider", "POST", "set-auto-replicate-for-list-of-providers/{autoReplicate}/{providerTypes}");
-    // Post api/provider/set-provider-config/{providerType}/{connectionString}
+    // POST api/provider/set-provider-config/{providerType}/{connectionString}
     this.setProviderConfig = makeOperation(http, "api/provider", "POST", "set-provider-config/{providerType}/{connectionString}");
-    // Post api/provider/unregister-provider/{provider}
+    // POST api/provider/unregister-provider/{provider}
     this.unRegisterProvider = makeOperation(http, "api/provider", "POST", "unregister-provider/{provider}");
-    // Post api/provider/unregister-provider-type/{providerType}
+    // POST api/provider/unregister-provider-type/{providerType}
     this.unRegisterProviderType = makeOperation(http, "api/provider", "POST", "unregister-provider-type/{providerType}");
-    // Post api/provider/unregister-provider-types/{providerTypes}
+    // POST api/provider/unregister-provider-types/{providerTypes}
     this.unRegisterProviderTypes = makeOperation(http, "api/provider", "POST", "unregister-provider-types/{providerTypes}");
-    // Post api/provider/unregister-providers/{providers}
+    // POST api/provider/unregister-providers/{providers}
     this.unRegisterProviders = makeOperation(http, "api/provider", "POST", "unregister-providers/{providers}");
   }
 }

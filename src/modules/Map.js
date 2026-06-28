@@ -15,51 +15,49 @@ class MapModule {
   constructor(http) {
     this._http = http;
 
-    // Post api/map/CreateAndDrawRouteOnMapBetweenHolons/{holonDNA}
+    // POST api/map/CreateAndDrawRouteOnMapBetweenHolons/{holonDNA}
     this.createAndDrawRouteOnMapBetweenHolons = makeOperation(http, "api/map", "POST", "CreateAndDrawRouteOnMapBetweenHolons/{holonDNA}");
-    // Post api/map/CreateAndDrawRouteOnMapBeweenPoints/{points}
+    // POST api/map/CreateAndDrawRouteOnMapBeweenPoints/{points}
     this.createAndDrawRouteOnMapBeweenPoints = makeOperation(http, "api/map", "POST", "CreateAndDrawRouteOnMapBeweenPoints/{points}");
-    // Post api/map/Draw2DSpriteOnHUD/{sprite}/{x}/{y}
+    // POST api/map/Draw2DSpriteOnHUD/{sprite}/{x}/{y}
     this.draw2DSpriteOnHUD = makeOperation(http, "api/map", "POST", "Draw2DSpriteOnHUD/{sprite}/{x}/{y}");
-    // Post api/map/Draw2DSpriteOnMap/{sprite}/{x}/{y}
+    // POST api/map/Draw2DSpriteOnMap/{sprite}/{x}/{y}
     this.draw2DSpriteOnMap = makeOperation(http, "api/map", "POST", "Draw2DSpriteOnMap/{sprite}/{x}/{y}");
-    // Post api/map/Draw3DObjectOnMap/{obj}/{x}/{y}
+    // POST api/map/Draw3DObjectOnMap/{obj}/{x}/{y}
     this.draw3DObjectOnMap = makeOperation(http, "api/map", "POST", "Draw3DObjectOnMap/{obj}/{x}/{y}");
-    // Get api/map/stats
+    // GET api/map/stats
     this.getMapStats = makeOperation(http, "api/map", "GET", "stats");
-    // Get api/map/nearby
+    // GET api/map/nearby
     this.getNearbyLocations = makeOperation(http, "api/map", "GET", "nearby");
-    // Get api/map/visit-history
+    // GET api/map/visit-history
     this.getVisitHistory = makeOperation(http, "api/map", "GET", "visit-history");
-    // Post api/map/HighlightBuildingOnMap/{building}
+    // POST api/map/HighlightBuildingOnMap/{building}
     this.highlightBuildingOnMap = makeOperation(http, "api/map", "POST", "HighlightBuildingOnMap/{building}");
-    // Post api/map/PamMapDown/{value}
+    // POST api/map/PamMapDown/{value}
     this.pamMapDown = makeOperation(http, "api/map", "POST", "PamMapDown/{value}");
-    // Post api/map/PamMapLeft/{value}
+    // POST api/map/PamMapLeft/{value}
     this.pamMapLeft = makeOperation(http, "api/map", "POST", "PamMapLeft/{value}");
-    // Post api/map/PamMapRight/{value}
+    // POST api/map/PamMapRight/{value}
     this.pamMapRight = makeOperation(http, "api/map", "POST", "PamMapRight/{value}");
-    // Post api/map/PamMapUp/{value}
+    // POST api/map/PamMapUp/{value}
     this.pamMapUp = makeOperation(http, "api/map", "POST", "PamMapUp/{value}");
-    // Post api/map/search
+    // POST api/map/search
     this.search = makeOperation(http, "api/map", "POST", "search");
-    // Get api/map/search-locations
-    this.searchLocations = makeOperation(http, "api/map", "GET", "search-locations");
-    // Post api/map/SelectBuildingOnMap/{building}
+    // POST api/map/SelectBuildingOnMap/{building}
     this.selectBuildingOnMap = makeOperation(http, "api/map", "POST", "SelectBuildingOnMap/{building}");
-    // Post api/map/SelectHolonOnMap/{holon}
+    // POST api/map/SelectHolonOnMap/{holon}
     this.selectHolonOnMap = makeOperation(http, "api/map", "POST", "SelectHolonOnMap/{holon}");
-    // Post api/map/SelectQuestOnMap/{quest}
+    // POST api/map/SelectQuestOnMap/{quest}
     this.selectQuestOnMap = makeOperation(http, "api/map", "POST", "SelectQuestOnMap/{quest}");
-    // Post api/map/visit/{locationId}
+    // POST api/map/visit/{locationId}
     this.visitLocation = makeOperation(http, "api/map", "POST", "visit/{locationId}");
-    // Post api/map/ZoomMapIn/{value}
+    // POST api/map/ZoomMapIn/{value}
     this.zoomMapIn = makeOperation(http, "api/map", "POST", "ZoomMapIn/{value}");
-    // Post api/map/ZoomMapOut/{value}
+    // POST api/map/ZoomMapOut/{value}
     this.zoomMapOut = makeOperation(http, "api/map", "POST", "ZoomMapOut/{value}");
-    // Post api/map/ZoomToHolonOnMap/{holon}
+    // POST api/map/ZoomToHolonOnMap/{holon}
     this.zoomToHolonOnMap = makeOperation(http, "api/map", "POST", "ZoomToHolonOnMap/{holon}");
-    // Post api/map/ZoomToQuestOnMap/{quest}
+    // POST api/map/ZoomToQuestOnMap/{quest}
     this.zoomToQuestOnMap = makeOperation(http, "api/map", "POST", "ZoomToQuestOnMap/{quest}");
   }
 }

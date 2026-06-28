@@ -15,11 +15,11 @@ class ChatModule {
   constructor(http) {
     this._http = http;
 
-    // Get api/chat/history/{sessionId}
+    // GET api/chat/history/{sessionId}
     this.getChatHistory = makeOperation(http, "api/chat", "GET", "history/{sessionId}");
-    // Post api/chat/send-message/{sessionId}
+    // POST api/chat/send-message/{sessionId}
     this.sendMessage = makeOperation(http, "api/chat", "POST", "send-message/{sessionId}");
-    // Post api/chat/start-new-chat-session
+    // POST api/chat/start-new-chat-session
     this.startNewChatSession = makeOperation(http, "api/chat", "POST", "start-new-chat-session");
   }
 }

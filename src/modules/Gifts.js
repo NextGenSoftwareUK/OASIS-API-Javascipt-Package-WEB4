@@ -15,17 +15,17 @@ class GiftsModule {
   constructor(http) {
     this._http = http;
 
-    // Get api/gifts/history
+    // GET api/gifts/history
     this.getGiftHistory = makeOperation(http, "api/gifts", "GET", "history");
-    // Get api/gifts/stats
+    // GET api/gifts/stats
     this.getGiftStats = makeOperation(http, "api/gifts", "GET", "stats");
-    // Get api/gifts/my-gifts
+    // GET api/gifts/my-gifts
     this.getMyGifts = makeOperation(http, "api/gifts", "GET", "my-gifts");
-    // Post api/gifts/open-gift/{giftId}
+    // POST api/gifts/open-gift/{giftId}
     this.openGift = makeOperation(http, "api/gifts", "POST", "open-gift/{giftId}");
-    // Post api/gifts/receive-gift/{giftId}
+    // POST api/gifts/receive-gift/{giftId}
     this.receiveGift = makeOperation(http, "api/gifts", "POST", "receive-gift/{giftId}");
-    // Post api/gifts/send-gift/{toAvatarId}
+    // POST api/gifts/send-gift/{toAvatarId}
     this.sendGift = makeOperation(http, "api/gifts", "POST", "send-gift/{toAvatarId}");
   }
 }

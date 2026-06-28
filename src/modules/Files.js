@@ -15,17 +15,17 @@ class FilesModule {
   constructor(http) {
     this._http = http;
 
-    // Delete api/files/delete-file/{fileId}
+    // DELETE api/files/delete-file/{fileId}
     this.deleteFile = makeOperation(http, "api/files", "DELETE", "delete-file/{fileId}");
-    // Get api/files/download-file/{fileId}
+    // GET api/files/download-file/{fileId}
     this.downloadFile = makeOperation(http, "api/files", "GET", "download-file/{fileId}");
-    // Get api/files/get-all-files-stored-for-current-logged-in-avatar
+    // GET api/files/get-all-files-stored-for-current-logged-in-avatar
     this.getAllFilesStoredForCurrentLoggedInAvatar = makeOperation(http, "api/files", "GET", "get-all-files-stored-for-current-logged-in-avatar");
-    // Get api/files/file-metadata/{fileId}
+    // GET api/files/file-metadata/{fileId}
     this.getFileMetadata = makeOperation(http, "api/files", "GET", "file-metadata/{fileId}");
-    // Put api/files/update-file-metadata/{fileId}
+    // PUT api/files/update-file-metadata/{fileId}
     this.updateFileMetadata = makeOperation(http, "api/files", "PUT", "update-file-metadata/{fileId}");
-    // Post api/files/upload-file
+    // POST api/files/upload-file
     this.uploadFile = makeOperation(http, "api/files", "POST", "upload-file");
   }
 }
