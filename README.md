@@ -147,6 +147,13 @@ If the answer is YES, then please [proceed to here](https://github.com/NextGenSo
 <http://www.ourworldthegame.com><br>
 <http://www.nextgenworld.co.uk><br>
 
+<https://www.npmjs.com/package/@oasisomniverse/web5-api><br>
+<https://www.npmjs.com/package/@oasisomniverse/web6-api><br>
+<https://www.npmjs.com/package/@oasisomniverse/web7-api><br>
+<https://www.npmjs.com/package/@oasisomniverse/web8-api><br>
+<https://www.npmjs.com/package/@oasisomniverse/web9-api><br>
+<https://www.npmjs.com/package/@oasisomniverse/web10-api><br>
+
 **TOGETHER WE CAN CREATE A BETTER WORLD**
 
 In Love, Light & Hope,<br>
