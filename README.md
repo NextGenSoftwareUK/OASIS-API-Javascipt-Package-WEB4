@@ -131,13 +131,14 @@ If the answer is YES, then please [proceed to here](https://github.com/NextGenSo
 
 <a href="https://drive.google.com/file/d/1b_G08UTALUg4H3jPlBdElZAFvyRcVKj1/view">Dev Requirements To Join The Our World Tribe</a><br>
 <a href="https://drive.google.com/file/d/12pCk20iLw_uA1yIfojcP6WwvyOT4WRiO/view?usp=sharing">The Our World Mission (Summary)</a><br>
-<http://www.ourworldthegame.com><br>
-<http://oasisplatform.world/swagger><br>
+<http://web4.oasisomniverse.one><br>
+<http://api.web4.oasisomniverse.one><br>
 <https://github.com/NextGenSoftwareUK/OASIS><br>
+<http://oasisomniverse.one><br>
+<http://www.ourworldthegame.com><br>
 <http://www.gofundme.com/ourworldthegame><br>
 
-<http://www.nextgensoftware.co.uk><br>
-<http://www.yoga4autism.com><br>
+<http://www.nextgenworld.co.uk><br>
 
 <https://youtu.be/wdYa5wQUfrg><br>
 <https://www.youtube.com/watch?v=2oY4_LZBW4M&t=3s><br>
