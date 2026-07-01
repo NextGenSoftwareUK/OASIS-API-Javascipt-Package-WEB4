@@ -1,6 +1,6 @@
-# WEB4 OASIS API Javascript Package
+# @oasisomniverse/web4-api
 
-- [WEB4 OASIS API Javascript Package](#web4-oasis-api-javascript-package)
+- [@oasisomniverse/web4-api](#oasisomniverseweb4-api)
   - [About WEB4](#about-web4)
   - [Previous Versions](#previous-versions)
   - [About The OASIS Omniverse](#about-the-oasis-omniverse)
@@ -19,6 +19,14 @@
   - [Regenerating](#regenerating)
   - [Testing](#testing)
   - [Full documentation](#full-documentation)
+
+Isomorphic (Node 18+ and browser) JavaScript/TypeScript-friendly client for the
+**WEB4 OASIS API** - full coverage of the OASIS ONODE WebAPI: Avatar, Karma,
+Data, Wallet, NFT, Holochain, HyperDrive, Keys, Map, Provider and every other
+controller (32 modules, 483 operations).
+
+Zero dependencies. Wraps the global `fetch`. Works the same in Node and the
+browser.
 
 ## About WEB4
 
@@ -149,8 +157,6 @@ The Our World Tribe
 ```bash
 npm install @oasisomniverse/web4-api
 ```
-
-Zero dependencies. Wraps the global `fetch`. Isomorphic — works the same in Node.js 18+ and the browser. Covers every controller on the OASIS ONODE WebAPI (32 modules, 483 operations) — not just Avatar/Karma/Data/NFT.
 
 ## Quick start
 
