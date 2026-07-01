@@ -81,7 +81,7 @@ Check out more info below:<br><br>
 [First Production Release Of The WEB4 OASIS API](https://www.ourworldthegame.com/single-post/first-production-ready-release-of-@oasisomniverse/web4-api-more) <br>
 [Annoucing WEB5 STAR ODK/HDK/COSMIC](https://www.ourworldthegame.com/single-post/announcing-star-odk-hdk-cosmic)  <br>
 [STAR ODK/HDK/COSMIC/OASIS API/Our World Update](https://www.ourworldthegame.com/single-post/star-odk-hdk-cosmic-oasis-api-our-world-update) <br>
-[Main WEB4 OASIS API & WEB5 STAR Repo](https://github.com/NextGenSoftwareUK/Our-World-OASIS-API-HoloNET-HoloUnity-And-.NET-HDK)
+[Main WEB4 OASIS API & WEB5 STAR Repo](https://github.com/NextGenSoftwareUK/OASIS)
 
 <a name="web4-oasisapi-packages"></a>
 
@@ -100,7 +100,7 @@ Check out more info below:<br><br>
 
 ### C #
 
-<https://github.com/NextGenSoftwareUK/Our-World-OASIS-API-HoloNET-HoloUnity-And-.NET-HDK>
+<https://github.com/NextGenSoftwareUK/OASIS>
 
 <a name="get-involved"></a>
 
@@ -127,13 +127,13 @@ Thank you and we hope we find interest from people to join us on this exciting i
 
 **Ready to be a hero?**
 
-If the answer is YES, then please [proceed to here](https://github.com/NextGenSoftwareUK/Our-World-OASIS-API-HoloNET-HoloUnity-And-.NET-HDK/wiki/So-You-Want-To-Get-Involved%3F-Ready-To-Be-A-Hero%3F)...
+If the answer is YES, then please [proceed to here](https://github.com/NextGenSoftwareUK/OASIS/wiki/So-You-Want-To-Get-Involved%3F-Ready-To-Be-A-Hero%3F)...
 
 <a href="https://drive.google.com/file/d/1b_G08UTALUg4H3jPlBdElZAFvyRcVKj1/view">Dev Requirements To Join The Our World Tribe</a><br>
 <a href="https://drive.google.com/file/d/12pCk20iLw_uA1yIfojcP6WwvyOT4WRiO/view?usp=sharing">The Our World Mission (Summary)</a><br>
 <http://www.ourworldthegame.com><br>
 <http://oasisplatform.world/swagger><br>
-<https://github.com/NextGenSoftwareUK/Our-World-OASIS-API-HoloNET-HoloUnity-And-.NET-HDK><br>
+<https://github.com/NextGenSoftwareUK/OASIS><br>
 <http://www.gofundme.com/ourworldthegame><br>
 
 <http://www.nextgensoftware.co.uk><br>
