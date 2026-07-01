@@ -2,7 +2,7 @@
 
 `@oasisomniverse/web4-api` is an isomorphic client for the WEB4 OASIS API - it runs the
 same way in Node.js 18+ and in the browser, has zero dependencies (it uses the
-global `fetch`), and covers every controller on the OASIS2 ONODE WebAPI.
+global `fetch`), and covers every controller on the OASIS ONODE WebAPI.
 
 ## Install
 
@@ -49,7 +49,7 @@ registration, logout, and how to manage sessions in stateless environments
 
 ## Calling any endpoint
 
-Every controller on the OASIS2 WebAPI is exposed as a lowerCamel property on
+Every controller on the OASIS WebAPI is exposed as a lowerCamel property on
 the client, e.g. `oasis.avatar`, `oasis.data`, `oasis.karma`, `oasis.nft`,
 `oasis.wallet`, `oasis.map`, `oasis.search`, `oasis.hyperDrive`. See the
 [Module Reference](./README.md#module-reference) for the full list (32
@@ -126,4 +126,4 @@ endpoint.
 
 - [Auth & Sessions](./auth.md)
 - [Module Reference](./README.md#module-reference)
-- [Regenerating modules/docs](../README.md#regenerating-module-coverage) when the OASIS2 API changes
+- [Regenerating modules/docs](../README.md#regenerating-module-coverage) when the OASIS API changes

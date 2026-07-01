@@ -1,6 +1,6 @@
 # Video — `oasis.video`
 
-Source controller: [`VideoController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/VideoController.cs)
+Source controller: [`VideoController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/VideoController.cs)
 Route prefix: `api/video`
 3 operation(s).
 

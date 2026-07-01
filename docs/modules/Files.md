@@ -1,6 +1,6 @@
 # Files — `oasis.files`
 
-Source controller: [`FilesController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/FilesController.cs)
+Source controller: [`FilesController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/FilesController.cs)
 Route prefix: `api/files`
 6 operation(s).
 

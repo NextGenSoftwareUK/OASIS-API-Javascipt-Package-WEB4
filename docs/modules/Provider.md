@@ -1,6 +1,6 @@
 # Provider — `oasis.provider`
 
-Source controller: [`ProviderController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/ProviderController.cs)
+Source controller: [`ProviderController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/ProviderController.cs)
 Route prefix: `api/provider`
 31 operation(s).
 

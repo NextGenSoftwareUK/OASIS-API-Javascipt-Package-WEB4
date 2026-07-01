@@ -1,6 +1,6 @@
 # Messaging — `oasis.messaging`
 
-Source controller: [`MessagingController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/MessagingController.cs)
+Source controller: [`MessagingController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/MessagingController.cs)
 Route prefix: `api/messaging`
 6 operation(s).
 

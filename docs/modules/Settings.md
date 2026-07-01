@@ -1,6 +1,6 @@
 # Settings — `oasis.settings`
 
-Source controller: [`SettingsController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/SettingsController.cs)
+Source controller: [`SettingsController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/SettingsController.cs)
 Route prefix: `api/settings`
 13 operation(s).
 

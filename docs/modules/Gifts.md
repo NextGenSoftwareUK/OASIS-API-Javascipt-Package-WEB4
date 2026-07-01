@@ -1,6 +1,6 @@
 # Gifts — `oasis.gifts`
 
-Source controller: [`GiftsController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/GiftsController.cs)
+Source controller: [`GiftsController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/GiftsController.cs)
 Route prefix: `api/gifts`
 6 operation(s).
 

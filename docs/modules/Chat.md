@@ -1,6 +1,6 @@
 # Chat — `oasis.chat`
 
-Source controller: [`ChatController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/ChatController.cs)
+Source controller: [`ChatController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/ChatController.cs)
 Route prefix: `api/chat`
 3 operation(s).
 

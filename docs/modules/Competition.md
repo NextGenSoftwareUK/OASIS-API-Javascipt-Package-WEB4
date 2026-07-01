@@ -1,6 +1,6 @@
 # Competition — `oasis.competition`
 
-Source controller: [`CompetitionController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/CompetitionController.cs)
+Source controller: [`CompetitionController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/CompetitionController.cs)
 Route prefix: `api/competition`
 9 operation(s).
 

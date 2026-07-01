@@ -13,7 +13,7 @@ const { AuthModule } = require('./modules/Auth');
  *   await oasis.auth.login({ username: 'me@example.com', password: '...' });
  *   const karma = await oasis.karma.getKarmaForAvatar({ avatarId: oasis.auth.getSession().avatarId });
  *
- * Every controller on the OASIS2 ONODE WebAPI is reachable as a lowerCamel
+ * Every controller on the OASIS ONODE WebAPI is reachable as a lowerCamel
  * property (oasis.avatar, oasis.data, oasis.karma, oasis.nft, oasis.wallet,
  * oasis.hyperDrive, oasis.map, oasis.search, ...). Generated methods take a
  * single args object; route template tokens (e.g. {id}) are consumed from it

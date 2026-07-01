@@ -1,6 +1,6 @@
 # Search — `oasis.search`
 
-Source controller: [`SearchController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/SearchController.cs)
+Source controller: [`SearchController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/SearchController.cs)
 Route prefix: `api/search`
 1 operation(s).
 

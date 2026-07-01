@@ -1,6 +1,6 @@
 # Holochain — `oasis.holochain`
 
-Source controller: [`HolochainController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/HolochainController.cs)
+Source controller: [`HolochainController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/HolochainController.cs)
 Route prefix: `api/holochain`
 7 operation(s).
 

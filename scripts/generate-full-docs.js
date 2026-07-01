@@ -2,7 +2,7 @@
 
 /**
  * Generates full per-endpoint docs/modules/<Name>.md (real request/response
- * fields + example JSON, pulled from endpoints.json + the OASIS2 C# source)
+ * fields + example JSON, pulled from endpoints.json + the OASIS C# source)
  * plus the docs/README.md index.
  *
  * Pipeline: node scripts/extract-endpoints.js && node scripts/generate-modules.js
@@ -53,7 +53,7 @@ function describeType(typeName, unresolvedTypes) {
   }
   if (resolved.kind === 'unresolved') {
     unresolvedTypes.add(resolved.typeName);
-    return `type: \`${resolved.typeName}\`${resolved.isCollection ? ' (array)' : ''} _(type definition not found in the OASIS2 source - field list unavailable)_`;
+    return `type: \`${resolved.typeName}\`${resolved.isCollection ? ' (array)' : ''} _(type definition not found in the OASIS source - field list unavailable)_`;
   }
   if (resolved.kind === 'noise') {
     return `type: \`${resolved.typeName}\` (not part of the request/response payload).`;
@@ -166,7 +166,7 @@ Example response:
 
   const content = `# ${moduleName} — \`${clientVar}.${clientProp}\`
 
-Source controller: [\`${filename}\`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/${githubControllerBasePath}/${filename})
+Source controller: [\`${filename}\`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/${githubControllerBasePath}/${filename})
 Route prefix: \`${info.route_prefix}\`
 ${opNames.length} operation(s).
 

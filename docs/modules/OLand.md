@@ -1,6 +1,6 @@
 # OLand — `oasis.oLand`
 
-Source controller: [`OLandController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/OLandController.cs)
+Source controller: [`OLandController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/OLandController.cs)
 Route prefix: `api/oLand`
 7 operation(s).
 

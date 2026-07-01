@@ -1,6 +1,6 @@
 # HyperDrive — `oasis.hyperDrive`
 
-Source controller: [`HyperDriveController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/HyperDriveController.cs)
+Source controller: [`HyperDriveController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/HyperDriveController.cs)
 Route prefix: `api/hyperDrive`
 77 operation(s).
 

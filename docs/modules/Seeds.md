@@ -1,6 +1,6 @@
 # Seeds — `oasis.seeds`
 
-Source controller: [`SeedsController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/SeedsController.cs)
+Source controller: [`SeedsController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/SeedsController.cs)
 Route prefix: `api/seeds`
 3 operation(s).
 

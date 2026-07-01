@@ -9,7 +9,7 @@ Full rewrite (previous release was 1.0.8, from 2022).
   `token` variable references in `avatar.js` that would throw in Node).
 - **Zero dependencies**: uses the global `fetch` instead of `axios`.
 - **Full WEB4 OASIS API coverage**: 485 operations across all 32 active
-  controllers on the OASIS2 ONODE WebAPI (previously: Auth, Avatar, Data,
+  controllers on the OASIS ONODE WebAPI (previously: Auth, Avatar, Data,
   Karma, NFT (partial), Holochain, Solana, Seeds only).
 - **Configurable base URL**: no more hardcoded `api.oasisplatform.world`.
   Defaults to `https://api.oasisweb4.one`, override via `new OASISClient({ baseUrl })`.
@@ -18,7 +18,7 @@ Full rewrite (previous release was 1.0.8, from 2022).
   externally-issued JWT per request.
 - Generated modules are produced by `scripts/generate-modules.js` from the
   real controller source (`endpoints.json`), so coverage can be refreshed as
-  the OASIS2 API grows.
+  the OASIS API grows.
 
 ### Breaking changes
 

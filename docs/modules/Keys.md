@@ -1,6 +1,6 @@
 # Keys — `oasis.keys`
 
-Source controller: [`KeysController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/KeysController.cs)
+Source controller: [`KeysController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/KeysController.cs)
 Route prefix: `api/keys`
 59 operation(s).
 
@@ -509,7 +509,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IKeyPairAndWallet` _(type definition not found in the OASIS2 source - field list unavailable)_
+`result` type: `IKeyPairAndWallet` _(type definition not found in the OASIS source - field list unavailable)_
 
 **Example**
 
@@ -763,7 +763,7 @@ No request body.
 
 Standard `OASISResult` envelope (see top of this page) with:
 
-`result` type: `IKeyPairAndWallet` _(type definition not found in the OASIS2 source - field list unavailable)_
+`result` type: `IKeyPairAndWallet` _(type definition not found in the OASIS source - field list unavailable)_
 
 **Example**
 
@@ -3176,7 +3176,7 @@ Link's a given telosAccount to the given avatar.
 
 **Request**
 
-Body type: `LinkProviderKeyToAvatar` _(type definition not found in the OASIS2 source - field list unavailable)_
+Body type: `LinkProviderKeyToAvatar` _(type definition not found in the OASIS source - field list unavailable)_
 
 **Response**
 

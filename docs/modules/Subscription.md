@@ -1,6 +1,6 @@
 # Subscription — `oasis.subscription`
 
-Source controller: [`SubscriptionController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/SubscriptionController.cs)
+Source controller: [`SubscriptionController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/SubscriptionController.cs)
 Route prefix: `api/subscription`
 10 operation(s).
 

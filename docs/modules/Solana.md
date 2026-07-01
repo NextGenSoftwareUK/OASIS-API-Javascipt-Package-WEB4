@@ -1,6 +1,6 @@
 # Solana — `oasis.solana`
 
-Source controller: [`SolanaController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/SolanaController.cs)
+Source controller: [`SolanaController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/SolanaController.cs)
 Route prefix: `api/solana`
 2 operation(s).
 

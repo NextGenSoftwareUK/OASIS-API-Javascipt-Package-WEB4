@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const OASIS2_ROOT = path.join(__dirname, '..', '..', 'OASIS2');
+const OASIS_ROOT = path.join(__dirname, '..', '..', 'OASIS');
 const skipDirs = new Set(['bin', 'obj', 'node_modules', '.git', '.claude', '.vs']);
 
 let typeIndex = null; // Map<lowercased typeName, { filePath, body }>
@@ -63,7 +63,7 @@ function buildTypeIndex() {
     }
   }
 
-  walk(OASIS2_ROOT);
+  walk(OASIS_ROOT);
   return typeIndex;
 }
 

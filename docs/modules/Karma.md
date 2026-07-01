@@ -1,6 +1,6 @@
 # Karma — `oasis.karma`
 
-Source controller: [`KarmaController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/KarmaController.cs)
+Source controller: [`KarmaController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/KarmaController.cs)
 Route prefix: `api/karma`
 12 operation(s).
 

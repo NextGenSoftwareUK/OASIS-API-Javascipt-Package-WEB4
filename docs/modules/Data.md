@@ -1,6 +1,6 @@
 # Data — `oasis.data`
 
-Source controller: [`DataController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/DataController.cs)
+Source controller: [`DataController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/DataController.cs)
 Route prefix: `api/data`
 10 operation(s).
 

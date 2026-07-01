@@ -1,6 +1,6 @@
 # Avatar — `oasis.avatar`
 
-Source controller: [`AvatarController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/AvatarController.cs)
+Source controller: [`AvatarController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/AvatarController.cs)
 Route prefix: `api/avatar`
 61 operation(s).
 
@@ -2427,7 +2427,7 @@ Link's a given telosAccount to the given avatar.
 
 **Request**
 
-Body type: `LinkProviderKeyToAvatar` _(type definition not found in the OASIS2 source - field list unavailable)_
+Body type: `LinkProviderKeyToAvatar` _(type definition not found in the OASIS source - field list unavailable)_
 
 **Response**
 

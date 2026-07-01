@@ -1,6 +1,6 @@
 # Nft — `oasis.nft`
 
-Source controller: [`NftController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/NftController.cs)
+Source controller: [`NftController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/NftController.cs)
 Route prefix: `api/nft`
 32 operation(s).
 

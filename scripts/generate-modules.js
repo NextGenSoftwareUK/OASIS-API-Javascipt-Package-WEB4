@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * One-time/repeatable codegen: reads endpoints.json (extracted from the OASIS2
+ * One-time/repeatable codegen: reads endpoints.json (extracted from the OASIS
  * WebAPI controller source) and emits one module file per controller under
  * src/modules/. Every generated method is a real HTTP call via routeHelper -
  * there is no mocked data anywhere in the output.

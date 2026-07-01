@@ -1,6 +1,6 @@
 # Bridge — `oasis.bridge`
 
-Source controller: [`BridgeController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/BridgeController.cs)
+Source controller: [`BridgeController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/BridgeController.cs)
 Route prefix: `api/v1/bridge`
 7 operation(s).
 

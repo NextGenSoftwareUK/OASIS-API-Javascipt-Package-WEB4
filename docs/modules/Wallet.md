@@ -1,6 +1,6 @@
 # Wallet — `oasis.wallet`
 
-Source controller: [`WalletController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/WalletController.cs)
+Source controller: [`WalletController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/WalletController.cs)
 Route prefix: `api/wallet`
 32 operation(s).
 

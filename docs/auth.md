@@ -1,7 +1,7 @@
 # Auth & Sessions
 
 `oasis.auth` is the one hand-written module in this SDK (everything else is
-generated straight from the OASIS2 controller source - see
+generated straight from the OASIS controller source - see
 [Module Reference](./README.md#module-reference)). It wraps the generated
 `oasis.avatar.authenticate` / `register` / `revokeToken` calls and manages
 the session/token for you.

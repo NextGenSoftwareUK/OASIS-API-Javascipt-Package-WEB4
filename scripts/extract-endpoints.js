@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Scans the ONODE WebAPI controllers in the sibling OASIS2 checkout and emits
+ * Scans the ONODE WebAPI controllers in the sibling OASIS checkout and emits
  * endpoints.json: { "<Name>Controller.cs": { route_prefix, ops: { OpName: {
  *   verb, route, requestType, responseType, routeParams, summary
  * } } } }
@@ -18,7 +18,7 @@ const controllersDir =
     __dirname,
     '..',
     '..',
-    'OASIS2',
+    'OASIS',
     'ONODE',
     'NextGenSoftware.OASIS.API.ONODE.WebAPI',
     'Controllers'

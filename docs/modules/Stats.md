@@ -1,6 +1,6 @@
 # Stats — `oasis.stats`
 
-Source controller: [`StatsController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/StatsController.cs)
+Source controller: [`StatsController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/StatsController.cs)
 Route prefix: `api/stats`
 8 operation(s).
 

@@ -1,6 +1,6 @@
 # ONET — `oasis.oNET`
 
-Source controller: [`ONETController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/ONETController.cs)
+Source controller: [`ONETController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/ONETController.cs)
 Route prefix: `api/v1/onet`
 11 operation(s).
 

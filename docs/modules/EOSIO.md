@@ -1,6 +1,6 @@
 # EOSIO — `oasis.eOSIO`
 
-Source controller: [`EOSIOController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/EOSIOController.cs)
+Source controller: [`EOSIOController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/EOSIOController.cs)
 Route prefix: `api/eosio`
 9 operation(s).
 

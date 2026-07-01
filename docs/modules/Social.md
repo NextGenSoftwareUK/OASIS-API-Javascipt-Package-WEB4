@@ -1,6 +1,6 @@
 # Social — `oasis.social`
 
-Source controller: [`SocialController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/SocialController.cs)
+Source controller: [`SocialController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/SocialController.cs)
 Route prefix: `api/social`
 4 operation(s).
 

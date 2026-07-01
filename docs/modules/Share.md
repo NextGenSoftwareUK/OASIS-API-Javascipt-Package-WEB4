@@ -1,6 +1,6 @@
 # Share — `oasis.share`
 
-Source controller: [`ShareController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/ShareController.cs)
+Source controller: [`ShareController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/ShareController.cs)
 Route prefix: `api/share`
 1 operation(s).
 

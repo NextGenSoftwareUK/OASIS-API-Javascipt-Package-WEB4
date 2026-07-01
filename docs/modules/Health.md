@@ -1,6 +1,6 @@
 # Health — `oasis.health`
 
-Source controller: [`HealthController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/HealthController.cs)
+Source controller: [`HealthController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/HealthController.cs)
 Route prefix: `api/health`
 2 operation(s).
 

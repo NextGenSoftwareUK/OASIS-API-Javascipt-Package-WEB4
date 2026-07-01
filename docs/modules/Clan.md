@@ -1,6 +1,6 @@
 # Clan — `oasis.clan`
 
-Source controller: [`ClanController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/ClanController.cs)
+Source controller: [`ClanController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/ClanController.cs)
 Route prefix: `api/clan`
 10 operation(s).
 

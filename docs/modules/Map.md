@@ -1,6 +1,6 @@
 # Map — `oasis.map`
 
-Source controller: [`MapController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/MapController.cs)
+Source controller: [`MapController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/MapController.cs)
 Route prefix: `api/map`
 22 operation(s).
 

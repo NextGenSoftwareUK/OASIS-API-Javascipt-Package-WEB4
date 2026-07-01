@@ -1,6 +1,6 @@
 # Eggs — `oasis.eggs`
 
-Source controller: [`EggsController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/EggsController.cs)
+Source controller: [`EggsController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/EggsController.cs)
 Route prefix: `api/eggs`
 6 operation(s).
 

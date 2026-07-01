@@ -1,6 +1,6 @@
 # ONODE — `oasis.oNODE`
 
-Source controller: [`ONODEController.cs`](https://github.com/NextGenSoftwareUK/OASIS2/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/ONODEController.cs)
+Source controller: [`ONODEController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/ONODEController.cs)
 Route prefix: `api/v1/onode`
 13 operation(s).
 
