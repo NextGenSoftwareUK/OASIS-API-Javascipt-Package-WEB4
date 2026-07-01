@@ -78,7 +78,7 @@ This is the foundation of the OASIS Omniverse: a network of unified layers, WEB4
 Check out more info below:<br><br>
 [The Power Of The OASIS API](https://drive.google.com/file/d/1nnhGpXcprr6kota1Y85HDDKsBfJHN6sn/view?usp=sharing) <br>
 [What Is WEB4 & WEB5 Really?](https://www.ourworldthegame.com/single-post/what-is-web4-web5-really) <br>
-[First Production Release Of The WEB4 OASIS API](https://www.ourworldthegame.com/single-post/first-production-ready-release-of-@oasisomniverse/web4-api-more) <br>
+[First Production Release Of The WEB4 OASIS API](https://www.ourworldthegame.com/single-post/first-production-ready-release-of-web4-oasis-api-more) <br>
 [Annoucing WEB5 STAR ODK/HDK/COSMIC](https://www.ourworldthegame.com/single-post/announcing-star-odk-hdk-cosmic)  <br>
 [STAR ODK/HDK/COSMIC/OASIS API/Our World Update](https://www.ourworldthegame.com/single-post/star-odk-hdk-cosmic-oasis-api-our-world-update) <br>
 [Main WEB4 OASIS API & WEB5 STAR Repo](https://github.com/NextGenSoftwareUK/OASIS)
@@ -90,7 +90,7 @@ Check out more info below:<br><br>
 ### Javascript
 
 <https://www.npmjs.com/package/@oasisomniverse/web4-api> \
-<https://github.com/NextGenSoftwareUK/OASIS-API-Javascipt-Package>
+<https://github.com/NextGenSoftwareUK/OASIS-API-Javascipt-Package-WEB4>
 
 ### Unity
 
@@ -98,7 +98,7 @@ Check out more info below:<br><br>
 
 <a name="csharp"></a>
 
-### C #
+### C#
 
 <https://github.com/NextGenSoftwareUK/OASIS>
 
@@ -117,7 +117,7 @@ We also offer FREE training and apprenticeship program with the NextGen Develope
 
 We are looking for Web Devs (with any of these: react, angular, vue, js, html, css), Unity Devs & C# Devs.
 
-If anyone is interested in developing this game/platform, then we would LOVE to hear from you! 😊 There will be opportunities for people to own shares and/or cryptocurrency (as well as other unique perks such as premium locations in both the geolocation and VR versions, personal or business service spotlights, free lifetime access to all premium paid services, massive karma points (allowing your avatar to progress to more advanced stages in the game unlocking new exciting quests, areas to explore & new special abilities/superpowers) plus lots more!) based on the input they are willing to provide.  
+If anyone is interested in developing this game/platform, then we would LOVE to hear from you! 😊 There will be opportunities for people to earn tokens/NFTs (as well as other unique perks such as premium locations in both the geolocation and VR versions, personal or business service spotlights, free lifetime access to all premium paid services, massive karma points (allowing your avatar to progress to more advanced stages in the game unlocking new exciting quests, areas to explore & new special abilities/superpowers) plus lots more!) based on the input they are willing to provide.  
 
 Thank you and we hope we find interest from people to join us on this exciting incredible journey.
 
@@ -133,18 +133,11 @@ If the answer is YES, then please [proceed to here](https://github.com/NextGenSo
 <a href="https://drive.google.com/file/d/12pCk20iLw_uA1yIfojcP6WwvyOT4WRiO/view?usp=sharing">The Our World Mission (Summary)</a><br>
 <http://web4.oasisomniverse.one><br>
 <http://api.web4.oasisomniverse.one><br>
+<http://oportal.oasisomniverse.one><br>
 <https://github.com/NextGenSoftwareUK/OASIS><br>
 <http://oasisomniverse.one><br>
 <http://www.ourworldthegame.com><br>
-<http://www.gofundme.com/ourworldthegame><br>
-
 <http://www.nextgenworld.co.uk><br>
-
-<https://youtu.be/wdYa5wQUfrg><br>
-<https://www.youtube.com/watch?v=2oY4_LZBW4M&t=3s><br>
-<https://www.youtube.com/watch?v=rvNJ6poMduo&t=5s><br>
-<https://www.youtube.com/watch?v=zyVmciqD9rs><br>
-<https://www.youtube.com/watch?v=SB97mvzJiRg&t=3s><br>
 
 **TOGETHER WE CAN CREATE A BETTER WORLD**
 
