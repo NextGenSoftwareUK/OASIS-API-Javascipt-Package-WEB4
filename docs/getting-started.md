@@ -1,22 +1,22 @@
 # Getting Started
 
-`web4-oasis-api` is an isomorphic client for the WEB4 OASIS API - it runs the
+`@oasisomniverse/web4-api` is an isomorphic client for the WEB4 OASIS API - it runs the
 same way in Node.js 18+ and in the browser, has zero dependencies (it uses the
 global `fetch`), and covers every controller on the OASIS2 ONODE WebAPI.
 
 ## Install
 
 ```bash
-npm install web4-oasis-api
+npm install @oasisomniverse/web4-api
 ```
 
 ## Create a client
 
 ```js
 // CommonJS
-const { OASISClient } = require('web4-oasis-api');
+const { OASISClient } = require('@oasisomniverse/web4-api');
 // or ESM
-import { OASISClient } from 'web4-oasis-api';
+import { OASISClient } from '@oasisomniverse/web4-api';
 
 const oasis = new OASISClient({
   baseUrl: 'https://api.oasisweb4.one', // optional, this is the default

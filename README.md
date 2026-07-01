@@ -1,7 +1,7 @@
 # WEB4 OASIS API Javascript Package
 
 - [WEB4 OASIS API Javascript Package](#web4-oasis-api-javascript-package)
-  - [Previous Version](#previous-version)
+  - [Previous Versions](#previous-versions)
   - [Introduction](#introduction)
   - [Overview](#overview)
     - [Best Of All Worlds](#best-of-all-worlds)
@@ -78,15 +78,22 @@
     - [mint](#mint)
     - [exchange](#exchange)
 
-## Previous Version
+## Previous Versions
 
-The previous version (package) can be found here:
-https://www.npmjs.com/package/oasis-api
+npm does not let you rename an existing package in place, so this package has been renamed twice as the OASIS ecosystem evolved, and each rename forced a new package to be created on npm:
 
-This previous version has now been deprecated (unfortunaltey npm will not let you rename an existing package so when we renamed oasis-api to web4-oasis-api it has forced us to create this new version of the package). We are currently keeping the older version to preserve the version history, download stats, etc.
+1. `oasis-api` (original name)
+2. `web4-oasis-api` (renamed as part of the WEB4 branding)
+3. `@oasisomniverse/web4-api` (current — renamed into the `@oasisomniverse` scope alongside the WEB5-WEB10 packages, so the whole OASIS Omniverse API family is grouped under one consistent, professional namespace)
 
-The current version can be found here:
-https://www.npmjs.com/package/web4-oasis-api
+Both older packages have been deprecated on npm and point here. We keep them published (rather than unpublishing) to preserve their version history and download stats:
+- https://www.npmjs.com/package/oasis-api
+- https://www.npmjs.com/package/web4-oasis-api
+
+This package starts at `v2.0.0` rather than `v1.0.0` because it is a continuation of that existing `web4-oasis-api` lineage, not a new package — the version numbering picks up where the previous name left off. The other `@oasisomniverse/web5-api` through `@oasisomniverse/web10-api` packages are brand new (no prior published history under any name), so they correctly start at `v1.0.0`.
+
+The current version of this package can be found here:
+https://www.npmjs.com/package/@oasisomniverse/web4-api
 
 ## Introduction
 
@@ -152,7 +159,7 @@ The extra benefit of this is that everyone is fully accountable for their action
 
 ### Data API
 
-It also features the powerful [Data API](https://www.ourworldthegame.com/single-post/web4-oasis-api-v2-3-1-released-with-new-improved-data-api-and-lots-more) allowing data to be shared between the above providers giving full interoperability. It also has powerful features such as auto-fail over, auto-load balancing and auto-replication across the providers so if one node goes down in your local area it will automatically switch to the next fastest node in your area independent of the network it belongs to, this way the OASIS API never has any downtime and will always be super fast and not reliant on only one network. This also applies for all the other API's such as the Avatar API etc. With unity consciousness the possibilities are limitless!
+It also features the powerful [Data API](https://www.ourworldthegame.com/single-post/@oasisomniverse/web4-api-v2-3-1-released-with-new-improved-data-api-and-lots-more) allowing data to be shared between the above providers giving full interoperability. It also has powerful features such as auto-fail over, auto-load balancing and auto-replication across the providers so if one node goes down in your local area it will automatically switch to the next fastest node in your area independent of the network it belongs to, this way the OASIS API never has any downtime and will always be super fast and not reliant on only one network. This also applies for all the other API's such as the Avatar API etc. With unity consciousness the possibilities are limitless!
 
 ### Future Prove! Never Need To Learn A New Tech Stack/Language Again
 
@@ -340,7 +347,7 @@ To summarize, WEB4 OASIS API aggregates all of the worlds data into a fully unif
 Check out more info below:<br><br>
 [The Power Of The OASIS API](https://drive.google.com/file/d/1nnhGpXcprr6kota1Y85HDDKsBfJHN6sn/view?usp=sharing) <br>
 [What Is WEB4 & WEB5 Really?](https://www.ourworldthegame.com/single-post/what-is-web4-web5-really) <br>
-[First Production Release Of The WEB4 OASIS API](https://www.ourworldthegame.com/single-post/first-production-ready-release-of-web4-oasis-api-more) <br>
+[First Production Release Of The WEB4 OASIS API](https://www.ourworldthegame.com/single-post/first-production-ready-release-of-@oasisomniverse/web4-api-more) <br>
 [Annoucing WEB5 STAR ODK/HDK/COSMIC](https://www.ourworldthegame.com/single-post/announcing-star-odk-hdk-cosmic)  <br>
 [STAR ODK/HDK/COSMIC/OASIS API/Our World Update](https://www.ourworldthegame.com/single-post/star-odk-hdk-cosmic-oasis-api-our-world-update) <br>
 [Main WEB4 OASIS API & WEB5 STAR Repo](https://github.com/NextGenSoftwareUK/Our-World-OASIS-API-HoloNET-HoloUnity-And-.NET-HDK)
@@ -351,7 +358,7 @@ Check out more info below:<br><br>
 
 ### Javascript
 
-<https://www.npmjs.com/package/web4-oasis-api> \
+<https://www.npmjs.com/package/@oasisomniverse/web4-api> \
 <https://github.com/NextGenSoftwareUK/OASIS-API-Javascipt-Package>
 
 ### Unity
@@ -422,13 +429,13 @@ every controller on the OASIS2 ONODE WebAPI - not just Avatar/Karma/Data/NFT
 ### Install
 
 ```bash
-npm install web4-oasis-api
+npm install @oasisomniverse/web4-api
 ```
 
 ### Quickstart
 
 ```js
-const { OASISClient } = require('web4-oasis-api'); // or: import { OASISClient } from 'web4-oasis-api'
+const { OASISClient } = require('@oasisomniverse/web4-api'); // or: import { OASISClient } from '@oasisomniverse/web4-api'
 
 const oasis = new OASISClient({ baseUrl: 'https://api.oasisweb4.one' });
 
