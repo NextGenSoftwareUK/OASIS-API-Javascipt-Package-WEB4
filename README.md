@@ -1,10 +1,10 @@
-# @oasisomniverse/web4-api
+﻿# @oasisomniverse/web4-api
 
 - [@oasisomniverse/web4-api](#oasisomniverseweb4-api)
-  - [About WEB4](#about-web4)
+  - [About WEB 4](#about-web-4)
   - [Previous Versions](#previous-versions)
   - [About The OASIS Omniverse](#about-the-oasis-omniverse)
-  - [Benefits Of Building On The WEB4 OASIS API](#benefits-of-building-on-the-web4-oasis-api)
+  - [Benefits Of Building On The WEB 4 OASIS API](#benefits-of-building-on-the-web-4-oasis-api)
   - [WEB 4 OASIS API Packages](#web-4-oasis-api-packages)
     - [Javascript](#javascript)
     - [Unity](#unity)
@@ -21,28 +21,28 @@
   - [Full documentation](#full-documentation)
 
 Isomorphic (Node 18+ and browser) JavaScript/TypeScript-friendly client for the
-**WEB4 OASIS API** - full coverage of the OASIS ONODE WebAPI: Avatar, Karma,
+**WEB 4 OASIS API** - full coverage of the OASIS ONODE WebAPI: Avatar, Karma,
 Data, Wallet, NFT, Holochain, HyperDrive, Keys, Map, Provider and every other
 controller (32 modules, 483 operations).
 
 Zero dependencies. Wraps the global `fetch`. Works the same in Node and the
 browser.
 
-## About WEB4
+## About WEB 4
 
 > **"One avatar, one karma, every world."**
 
-WEB4 is the universal unification layer of the OASIS Omniverse — one avatar, one SSO login and one karma reputation score that works across 40+ blockchains, databases and Web2/Web3 providers, so every world, app and game you build shares the same identity, reputation and wallet. No more silos, no more walled gardens, no single point of failure.
+WEB 4 is the universal unification layer of the OASIS Omniverse — one avatar, one SSO login and one karma reputation score that works across 40+ blockchains, databases and Web2/Web3 providers, so every world, app and game you build shares the same identity, reputation and wallet. No more silos, no more walled gardens, no single point of failure.
 
-WEB4 is the foundation everything else in the ecosystem is built on top of — see the full **[OASIS Omniverse](https://oasisomniverse.one)** (WEB4 through WEB10) for the bigger picture.
+WEB 4 is the foundation everything else in the ecosystem is built on top of — see the full **[OASIS Omniverse](https://oasisomniverse.one)** (WEB 4 through WEB 10) for the bigger picture.
 
 ## Previous Versions
 
 npm does not let you rename an existing package in place, so this package has been renamed twice as the OASIS ecosystem evolved, and each rename forced a new package to be created on npm:
 
 1. `oasis-api` (original name)
-2. `web4-oasis-api` (renamed as part of the WEB4 branding)
-3. `@oasisomniverse/web4-api` (current — renamed into the `@oasisomniverse` scope alongside the WEB5-WEB10 packages, so the whole OASIS Omniverse API family is grouped under one consistent, professional namespace)
+2. `web4-oasis-api` (renamed as part of the WEB 4 branding)
+3. `@oasisomniverse/web4-api` (current — renamed into the `@oasisomniverse` scope alongside the WEB 5-WEB 10 packages, so the whole OASIS Omniverse API family is grouped under one consistent, professional namespace)
 
 Both older packages have been deprecated on npm and point here. We keep them published (rather than unpublishing) to preserve their version history and download stats:
 - https://www.npmjs.com/package/oasis-api
@@ -59,13 +59,13 @@ The OASIS (Open Advanced Sensory Immersion System) is the universal interoperabi
 
 At its core sits one Avatar with one SSO login and one Karma reputation score that travels with you across every app, game and world built on top of it — full transparency and full control over your own data, right down to the field level.
 
-This is the foundation of the OASIS Omniverse: a network of unified layers, WEB4 (identity & unification) through WEB10 (source), each building on the one below to connect blockchains, metaverses, AI, human consciousness and beyond into a single interoperable whole.
+This is the foundation of the OASIS Omniverse: a network of unified layers, WEB 4 (identity & unification) through WEB 10 (source), each building on the one below to connect blockchains, metaverses, AI, human consciousness and beyond into a single interoperable whole.
 
 👉 See the full ecosystem at **[oasisomniverse.one](https://oasisomniverse.one)**.
 
 <a name="web4-oasisapi-benefits"></a>
 
-## Benefits Of Building On The WEB4 OASIS API
+## Benefits Of Building On The WEB 4 OASIS API
 
 - **Integrate any WEB2 or WEB3 tech into your (web)app without having to learn or worry about new tech stacks/languages.**
 - **The OASIS handles all cross-chain/cross-provider integration for you.**
@@ -81,15 +81,15 @@ This is the foundation of the OASIS Omniverse: a network of unified layers, WEB4
 - **Decentralised distributed P2P networking — works offline and syncs automatically (even over LAN/Bluetooth/Mesh).**
 - **Agent-centric: you own and store your own data.**
 - **Powers WEB/2D/3D/AR/VR/IR/Map/Meta visualization, Our World & One World (Game of Games Engine).**
-- **Smart City ready. Bio-feedback ready. IR (Infinite Reality) ready. WEB5 Omniverse/Metaverse ready.**
+- **Smart City ready. Bio-feedback ready. IR (Infinite Reality) ready. WEB 5 Omniverse/Metaverse ready.**
 
 Check out more info below:<br><br>
 [The Power Of The OASIS API](https://drive.google.com/file/d/1nnhGpXcprr6kota1Y85HDDKsBfJHN6sn/view?usp=sharing) <br>
-[What Is WEB4 & WEB5 Really?](https://www.ourworldthegame.com/single-post/what-is-web4-web5-really) <br>
-[First Production Release Of The WEB4 OASIS API](https://www.ourworldthegame.com/single-post/first-production-ready-release-of-web4-oasis-api-more) <br>
-[Annoucing WEB5 STAR ODK/HDK/COSMIC](https://www.ourworldthegame.com/single-post/announcing-star-odk-hdk-cosmic)  <br>
+[What Is WEB 4 & WEB 5 Really?](https://www.ourworldthegame.com/single-post/what-is-web4-web5-really) <br>
+[First Production Release Of The WEB 4 OASIS API](https://www.ourworldthegame.com/single-post/first-production-ready-release-of-web4-oasis-api-more) <br>
+[Annoucing WEB 5 STAR ODK/HDK/COSMIC](https://www.ourworldthegame.com/single-post/announcing-star-odk-hdk-cosmic)  <br>
 [STAR ODK/HDK/COSMIC/OASIS API/Our World Update](https://www.ourworldthegame.com/single-post/star-odk-hdk-cosmic-oasis-api-our-world-update) <br>
-[Main WEB4 OASIS API & WEB5 STAR Repo](https://github.com/NextGenSoftwareUK/OASIS)
+[Main WEB 4 OASIS API & WEB 5 STAR Repo](https://github.com/NextGenSoftwareUK/OASIS)
 
 <a name="web4-oasisapi-packages"></a>
 
