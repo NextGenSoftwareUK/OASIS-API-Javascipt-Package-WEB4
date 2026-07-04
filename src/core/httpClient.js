@@ -2,6 +2,24 @@
 
 const DEFAULT_BASE_URL = 'https://api.oasisweb4.one';
 
+/**
+ * Recursively converts PascalCase object keys to camelCase so callers always
+ * receive consistent casing regardless of how the server serialises the response.
+ * Primitive values and array contents are passed through unchanged.
+ */
+function normalizeKeys(value) {
+  if (Array.isArray(value)) return value.map(normalizeKeys);
+  if (value !== null && typeof value === 'object') {
+    const out = {};
+    for (const [k, v] of Object.entries(value)) {
+      const camel = k.length > 0 ? k[0].toLowerCase() + k.slice(1) : k;
+      out[camel] = normalizeKeys(v);
+    }
+    return out;
+  }
+  return value;
+}
+
 function buildQueryString(query) {
   const entries = Object.entries(query || {}).filter(([, v]) => v !== undefined && v !== null);
   if (!entries.length) return '';
@@ -84,7 +102,7 @@ class HttpClient {
     return {
       isError: Boolean(inner?.isError || json?.isError),
       message: inner?.message || json?.message || null,
-      result: payload,
+      result: normalizeKeys(payload),
       raw: json,
       statusCode: res.status
     };
