@@ -95,8 +95,8 @@ Every call resolves to:
 {
   isError: boolean,
   message: string | null,
-  result: any,      // the unwrapped payload
-  raw: any,          // the full OASIS response envelope, if you need it
+  result: any,      // the unwrapped payload — keys are camelCase (see below)
+  raw: any,         // the full OASIS response envelope, if you need it
   statusCode: number
 }
 ```
@@ -112,6 +112,27 @@ if (isError) {
   return;
 }
 console.log(result);
+```
+
+### Key casing
+
+The OASIS backend serialises responses in PascalCase (C# default). The SDK
+automatically normalises all keys in `result` to camelCase, so you always use:
+
+```js
+const { result: holon } = await oasis.data.loadHolon({ Id: id });
+// holon.id, holon.name, holon.metaData, holon.parentHolonId  ✓
+// holon.Id, holon.Name, holon.MetaData  — not needed
+```
+
+**Request bodies are still PascalCase** — the server expects C# property names,
+so pass `Holon`, `Id`, `KarmaType`, etc. when calling methods:
+
+```js
+await oasis.data.saveHolon({
+  Holon: { Id: existingId, Name: 'My Trust', MetaData: { foo: 'bar' } },
+  SaveChildren: false
+});
 ```
 
 ## TypeScript
