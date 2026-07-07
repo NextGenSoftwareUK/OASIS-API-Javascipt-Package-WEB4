@@ -38,7 +38,7 @@ export declare class AvatarModule {
   deleteByUsername(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/avatar/forgot-password */
-  forgotPassword(args?: Record<string, any>): Promise<OASISResponse>;
+  forgotPassword(args?: { email: string; returnUrl?: string; [key: string]: any }): Promise<OASISResponse>;
 
   /** GET api/avatar/get-all-avatars */
   getAll(args?: Record<string, any>): Promise<OASISResponse>;
