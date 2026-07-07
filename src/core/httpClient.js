@@ -44,7 +44,9 @@ class HttpClient {
     }
     this.baseUrl = baseUrl.replace(/\/+$/, '');
     this.tokenStore = tokenStore;
-    this.fetchImpl = fetchImpl.bind(globalThis);
+    // Store custom fetchImpl only if explicitly provided; otherwise always use globalThis.fetch
+    // directly at call-time so it retains its window receiver in browsers.
+    this._customFetch = fetchImpl !== globalThis.fetch ? fetchImpl : null;
   }
 
   setBaseUrl(baseUrl) {
@@ -75,7 +77,7 @@ class HttpClient {
 
     let res;
     try {
-      res = await this.fetchImpl(url, init);
+      res = await (this._customFetch ? this._customFetch(url, init) : globalThis.fetch(url, init));
     } catch (err) {
       return { isError: true, message: `Network error calling ${url}: ${err.message}`, exception: err };
     }
