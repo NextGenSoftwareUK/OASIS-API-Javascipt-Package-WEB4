@@ -19,6 +19,7 @@
   - [Regenerating](#regenerating)
   - [Testing](#testing)
   - [Full documentation](#full-documentation)
+  - [Troubleshooting](#troubleshooting)
 
 Isomorphic (Node 18+ and browser) JavaScript/TypeScript-friendly client for the
 **WEB 4 OASIS API** - full coverage of the OASIS ONODE WebAPI: Avatar, Karma,
@@ -348,6 +349,26 @@ npm test
 - **[docs/getting-started.md](./docs/getting-started.md)** - install, client options, the calling convention, response shape.
 - **[docs/auth.md](./docs/auth.md)** - login/register/logout, session handling in the browser vs. serverless/Node.
 - **[docs/README.md](./docs/README.md)** - full module reference: every one of the 32 modules / 483 operations, with HTTP verb, route, route params, and an example call for each.
+- **[docs/troubleshooting.md](./docs/troubleshooting.md)** - common errors and fixes.
 
 Docs are generated from the actual code (`scripts/generate-docs.js` parses
 `src/modules/*.js`), so they can't drift from what's actually implemented.
+
+## Troubleshooting
+
+See **[docs/troubleshooting.md](./docs/troubleshooting.md)** for the full list. Most common issue:
+
+**`Failed to execute 'fetch' on 'Window': Illegal invocation`** when bundling with esbuild, Webpack, Rollup, or Vite — add this one line before your SDK script loads:
+
+```html
+<script>if(window.fetch) window.fetch = window.fetch.bind(window);</script>
+```
+
+Or pass a pre-bound `fetchImpl` when constructing the client:
+
+```js
+const client = new OASISClient({
+  baseUrl: 'https://api.web4.oasisomniverse.one',
+  fetchImpl: window.fetch.bind(window)
+});
+```
