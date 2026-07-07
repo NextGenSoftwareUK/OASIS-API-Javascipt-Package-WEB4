@@ -44,7 +44,7 @@ class HttpClient {
     }
     this.baseUrl = baseUrl.replace(/\/+$/, '');
     this.tokenStore = tokenStore;
-    this.fetchImpl = fetchImpl.bind(globalThis);
+    this.fetchImpl = fetchImpl;
   }
 
   setBaseUrl(baseUrl) {

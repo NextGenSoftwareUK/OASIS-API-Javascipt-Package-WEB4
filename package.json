@@ -1,6 +1,6 @@
 {
   "name": "@oasisomniverse/web4-api",
-  "version": "2.0.5",
+  "version": "2.0.4",
   "publishConfig": { "access": "public" },
   "description": "Isomorphic (Node + browser) JavaScript/TypeScript-friendly client for the WEB4 OASIS API - full coverage of the OASIS ONODE WebAPI (Avatar, Data, Karma, NFT, Wallet, Map, Search, HyperDrive, and more).",
   "main": "index.js",
