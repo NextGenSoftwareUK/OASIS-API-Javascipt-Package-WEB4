@@ -1,6 +1,6 @@
 'use strict';
 
-const DEFAULT_BASE_URL = 'https://api.oasisweb4.one';
+const DEFAULT_BASE_URL = 'https://api.web4.oasisomniverse.one';
 
 /**
  * Recursively converts PascalCase object keys to camelCase so callers always

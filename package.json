@@ -1,7 +1,9 @@
 {
   "name": "@oasisomniverse/web4-api",
-  "version": "2.0.6",
-  "publishConfig": { "access": "public" },
+  "version": "2.0.7",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Isomorphic (Node + browser) JavaScript/TypeScript-friendly client for the WEB4 OASIS API - full coverage of the OASIS ONODE WebAPI (Avatar, Data, Karma, NFT, Wallet, Map, Search, HyperDrive, and more).",
   "main": "index.js",
   "module": "index.mjs",
@@ -68,7 +70,7 @@
     "SSO",
     "Auto-FailOver",
     "Auto-LoadBalancing",
-    "Auto-Replication", 
+    "Auto-Replication",
     "Auto-Sync",
     "Offline-Support",
     "Write-Once-Deploy-Everywhere",
@@ -92,7 +94,7 @@
     "GOD-Protocol/API",
     "Our-World-Geo-Location/AR/IR/Map-UI-(Game-of-Games-Engine)",
     "One-World-Open-World-MMO-(VR)-UI-(Game-of-Games-Engine)",
-    "SEEDS", 
+    "SEEDS",
     "Telos",
     "TRON",
     "Holochain",

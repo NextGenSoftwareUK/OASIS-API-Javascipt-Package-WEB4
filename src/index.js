@@ -9,7 +9,7 @@ const { AuthModule } = require('./modules/Auth');
  * Main SDK entry point. Works in Node 18+ and any modern browser.
  *
  *   const { OASISClient } = require('@oasisomniverse/web4-api');
- *   const oasis = new OASISClient({ baseUrl: 'https://api.oasisweb4.one' });
+ *   const oasis = new OASISClient({ baseUrl: 'https://api.web4.oasisomniverse.one' });
  *   await oasis.auth.login({ username: 'me@example.com', password: '...' });
  *   const karma = await oasis.karma.getKarmaForAvatar({ avatarId: oasis.auth.getSession().avatarId });
  *
