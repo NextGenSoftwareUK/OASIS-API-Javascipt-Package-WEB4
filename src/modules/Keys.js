@@ -15,118 +15,118 @@ class KeysModule {
   constructor(http) {
     this._http = http;
 
-    // POST api/keys/base58_check_decode/{data}
-    this.base58CheckDecode = makeOperation(http, "api/keys", "POST", "base58_check_decode/{data}");
-    // POST api/keys/clear_cache
-    this.clearCache = makeOperation(http, "api/keys", "POST", "clear_cache");
+    // POST api/keys/base58-check-decode/{data}
+    this.base58CheckDecode = makeOperation(http, "api/keys", "POST", "base58-check-decode/{data}");
+    // POST api/keys/clear-cache
+    this.clearCache = makeOperation(http, "api/keys", "POST", "clear-cache");
     // POST api/keys/create
     this.createKey = makeOperation(http, "api/keys", "POST", "create");
-    // POST api/keys/decode_private_wif/{data}
-    this.decodePrivateWif = makeOperation(http, "api/keys", "POST", "decode_private_wif/{data}");
+    // POST api/keys/decode-private-wif/{data}
+    this.decodePrivateWif = makeOperation(http, "api/keys", "POST", "decode-private-wif/{data}");
     // DELETE api/keys/{keyId}
     this.deleteKey = makeOperation(http, "api/keys", "DELETE", "{keyId}");
-    // POST api/keys/encode_signature/{source}
-    this.encodeSignature = makeOperation(http, "api/keys", "POST", "encode_signature/{source}");
-    // POST api/keys/generate_keypair_and_link_provider_keys_to_avatar_by_email
-    this.generateKeyPairAndLinkProviderKeysToAvatarByAvatarEmail = makeOperation(http, "api/keys", "POST", "generate_keypair_and_link_provider_keys_to_avatar_by_email");
-    // POST api/keys/generate_keypair_and_link_provider_keys_to_avatar_by_id
-    this.generateKeyPairAndLinkProviderKeysToAvatarByAvatarId = makeOperation(http, "api/keys", "POST", "generate_keypair_and_link_provider_keys_to_avatar_by_id");
-    // POST api/keys/generate_keypair_and_link_provider_keys_to_avatar_by_username
-    this.generateKeyPairAndLinkProviderKeysToAvatarByAvatarUsername = makeOperation(http, "api/keys", "POST", "generate_keypair_and_link_provider_keys_to_avatar_by_username");
-    // POST api/keys/generate_keypair_for_provider/{providerType}
-    this.generateKeyPairForProvider = makeOperation(http, "api/keys", "POST", "generate_keypair_for_provider/{providerType}");
-    // POST api/keys/generate_keypair_with_wallet_address_and_link_provider_keys_to_avatar_by_email
-    this.generateKeyPairWithWalletAddressAndLinkProviderKeysToAvatarByEmail = makeOperation(http, "api/keys", "POST", "generate_keypair_with_wallet_address_and_link_provider_keys_to_avatar_by_email");
-    // POST api/keys/generate_keypair_with_wallet_address_and_link_provider_keys_to_avatar_by_id
-    this.generateKeyPairWithWalletAddressAndLinkProviderKeysToAvatarById = makeOperation(http, "api/keys", "POST", "generate_keypair_with_wallet_address_and_link_provider_keys_to_avatar_by_id");
-    // POST api/keys/generate_keypair_with_wallet_address_and_link_provider_keys_to_avatar_by_username
-    this.generateKeyPairWithWalletAddressAndLinkProviderKeysToAvatarByUsername = makeOperation(http, "api/keys", "POST", "generate_keypair_with_wallet_address_and_link_provider_keys_to_avatar_by_username");
-    // POST api/keys/generate_keypair_with_wallet_address_for_provider/{providerType}
-    this.generateKeyPairWithWalletAddressForProvider = makeOperation(http, "api/keys", "POST", "generate_keypair_with_wallet_address_for_provider/{providerType}");
+    // POST api/keys/encode-signature/{source}
+    this.encodeSignature = makeOperation(http, "api/keys", "POST", "encode-signature/{source}");
+    // POST api/keys/generate-keypair-and-link-provider-keys-to-avatar-by-email
+    this.generateKeyPairAndLinkProviderKeysToAvatarByAvatarEmail = makeOperation(http, "api/keys", "POST", "generate-keypair-and-link-provider-keys-to-avatar-by-email");
+    // POST api/keys/generate-keypair-and-link-provider-keys-to-avatar-by-id
+    this.generateKeyPairAndLinkProviderKeysToAvatarByAvatarId = makeOperation(http, "api/keys", "POST", "generate-keypair-and-link-provider-keys-to-avatar-by-id");
+    // POST api/keys/generate-keypair-and-link-provider-keys-to-avatar-by-username
+    this.generateKeyPairAndLinkProviderKeysToAvatarByAvatarUsername = makeOperation(http, "api/keys", "POST", "generate-keypair-and-link-provider-keys-to-avatar-by-username");
+    // POST api/keys/generate-keypair-for-provider/{providerType}
+    this.generateKeyPairForProvider = makeOperation(http, "api/keys", "POST", "generate-keypair-for-provider/{providerType}");
+    // POST api/keys/generate-keypair-with-wallet-address-and-link-provider-keys-to-avatar-by-email
+    this.generateKeyPairWithWalletAddressAndLinkProviderKeysToAvatarByEmail = makeOperation(http, "api/keys", "POST", "generate-keypair-with-wallet-address-and-link-provider-keys-to-avatar-by-email");
+    // POST api/keys/generate-keypair-with-wallet-address-and-link-provider-keys-to-avatar-by-id
+    this.generateKeyPairWithWalletAddressAndLinkProviderKeysToAvatarById = makeOperation(http, "api/keys", "POST", "generate-keypair-with-wallet-address-and-link-provider-keys-to-avatar-by-id");
+    // POST api/keys/generate-keypair-with-wallet-address-and-link-provider-keys-to-avatar-by-username
+    this.generateKeyPairWithWalletAddressAndLinkProviderKeysToAvatarByUsername = makeOperation(http, "api/keys", "POST", "generate-keypair-with-wallet-address-and-link-provider-keys-to-avatar-by-username");
+    // POST api/keys/generate-keypair-with-wallet-address-for-provider/{providerType}
+    this.generateKeyPairWithWalletAddressForProvider = makeOperation(http, "api/keys", "POST", "generate-keypair-with-wallet-address-for-provider/{providerType}");
     // GET api/keys/all
     this.getAllKeysForAvatar = makeOperation(http, "api/keys", "GET", "all");
-    // GET api/keys/get_all_provider_private_keys_for_avatar_by_id/{id}
-    this.getAllProviderPrivateKeysForAvatarById = makeOperation(http, "api/keys", "GET", "get_all_provider_private_keys_for_avatar_by_id/{id}");
-    // GET api/keys/get_all_provider_private_keys_for_avatar_by_username/{username}
-    this.getAllProviderPrivateKeysForAvatarByUsername = makeOperation(http, "api/keys", "GET", "get_all_provider_private_keys_for_avatar_by_username/{username}");
-    // GET api/keys/get_all_provider_public_keys_for_avatar_by_email/{email}
-    this.getAllProviderPublicKeysForAvatarByEmail = makeOperation(http, "api/keys", "GET", "get_all_provider_public_keys_for_avatar_by_email/{email}");
-    // GET api/keys/get_all_provider_public_keys_for_avatar_by_id/{id}
-    this.getAllProviderPublicKeysForAvatarById = makeOperation(http, "api/keys", "GET", "get_all_provider_public_keys_for_avatar_by_id/{id}");
-    // GET api/keys/get_all_provider_public_keys_for_avatar_by_username/{username}
-    this.getAllProviderPublicKeysForAvatarByUsername = makeOperation(http, "api/keys", "GET", "get_all_provider_public_keys_for_avatar_by_username/{username}");
-    // GET api/keys/get_all_provider_unique_storage_keys_for_avatar_by_email/{email}
-    this.getAllProviderUniqueStorageKeysForAvatarByEmail = makeOperation(http, "api/keys", "GET", "get_all_provider_unique_storage_keys_for_avatar_by_email/{email}");
-    // GET api/keys/get_all_provider_unique_storage_keys_for_avatar_by_id/{id}
-    this.getAllProviderUniqueStorageKeysForAvatarById = makeOperation(http, "api/keys", "GET", "get_all_provider_unique_storage_keys_for_avatar_by_id/{id}");
-    // GET api/keys/get_all_provider_unique_storage_keys_for_avatar_by_username/{username}
-    this.getAllProviderUniqueStorageKeysForAvatarByUsername = makeOperation(http, "api/keys", "GET", "get_all_provider_unique_storage_keys_for_avatar_by_username/{username}");
-    // GET api/keys/get_avatar_email_for_provider_public_key/{providerKey}
-    this.getAvatarEmailForProviderPublicKey = makeOperation(http, "api/keys", "GET", "get_avatar_email_for_provider_public_key/{providerKey}");
-    // GET api/keys/get_avatar_email_for_provider_unique_storage_key/{providerKey}
-    this.getAvatarEmailForProviderUniqueStorageKey = makeOperation(http, "api/keys", "GET", "get_avatar_email_for_provider_unique_storage_key/{providerKey}");
-    // GET api/keys/get_avatar_for_provider_private_key/{providerKey}
-    this.getAvatarForProviderPrivateKey = makeOperation(http, "api/keys", "GET", "get_avatar_for_provider_private_key/{providerKey}");
-    // GET api/keys/get_avatar_for_provider_public_key/{providerKey}
-    this.getAvatarForProviderPublicKey = makeOperation(http, "api/keys", "GET", "get_avatar_for_provider_public_key/{providerKey}");
-    // GET api/keys/get_avatar_for_provider_unique_storage_key/{providerKey}
-    this.getAvatarForProviderUniqueStorageKey = makeOperation(http, "api/keys", "GET", "get_avatar_for_provider_unique_storage_key/{providerKey}");
-    // GET api/keys/get_avatar_id_for_provider_private_key/{providerKey}
-    this.getAvatarIdForProviderPrivateKey = makeOperation(http, "api/keys", "GET", "get_avatar_id_for_provider_private_key/{providerKey}");
-    // GET api/keys/get_avatar_id_for_provider_public_key/{providerKey}
-    this.getAvatarIdForProviderPublicKey = makeOperation(http, "api/keys", "GET", "get_avatar_id_for_provider_public_key/{providerKey}");
-    // GET api/keys/get_avatar_id_for_provider_unique_storage_key/{providerKey}
-    this.getAvatarIdForProviderUniqueStorageKey = makeOperation(http, "api/keys", "GET", "get_avatar_id_for_provider_unique_storage_key/{providerKey}");
-    // GET api/keys/get_avatar_username_for_provider_private_key/{providerKey}
-    this.getAvatarUsernameForProviderPrivateKey = makeOperation(http, "api/keys", "GET", "get_avatar_username_for_provider_private_key/{providerKey}");
-    // GET api/keys/get_avatar_username_for_provider_public_key/{providerKey}
-    this.getAvatarUsernameForProviderPublicKey = makeOperation(http, "api/keys", "GET", "get_avatar_username_for_provider_public_key/{providerKey}");
-    // GET api/keys/get_avatar_username_for_provider_unique_storage_key/{providerKey}
-    this.getAvatarUsernameForProviderUniqueStorageKey = makeOperation(http, "api/keys", "GET", "get_avatar_username_for_provider_unique_storage_key/{providerKey}");
+    // GET api/keys/get-all-provider-private-keys-for-avatar-by-id/{id}
+    this.getAllProviderPrivateKeysForAvatarById = makeOperation(http, "api/keys", "GET", "get-all-provider-private-keys-for-avatar-by-id/{id}");
+    // GET api/keys/get-all-provider-private-keys-for-avatar-by-username/{username}
+    this.getAllProviderPrivateKeysForAvatarByUsername = makeOperation(http, "api/keys", "GET", "get-all-provider-private-keys-for-avatar-by-username/{username}");
+    // GET api/keys/get-all-provider-public-keys-for-avatar-by-email/{email}
+    this.getAllProviderPublicKeysForAvatarByEmail = makeOperation(http, "api/keys", "GET", "get-all-provider-public-keys-for-avatar-by-email/{email}");
+    // GET api/keys/get-all-provider-public-keys-for-avatar-by-id/{id}
+    this.getAllProviderPublicKeysForAvatarById = makeOperation(http, "api/keys", "GET", "get-all-provider-public-keys-for-avatar-by-id/{id}");
+    // GET api/keys/get-all-provider-public-keys-for-avatar-by-username/{username}
+    this.getAllProviderPublicKeysForAvatarByUsername = makeOperation(http, "api/keys", "GET", "get-all-provider-public-keys-for-avatar-by-username/{username}");
+    // GET api/keys/get-all-provider-unique-storage-keys-for-avatar-by-email/{email}
+    this.getAllProviderUniqueStorageKeysForAvatarByEmail = makeOperation(http, "api/keys", "GET", "get-all-provider-unique-storage-keys-for-avatar-by-email/{email}");
+    // GET api/keys/get-all-provider-unique-storage-keys-for-avatar-by-id/{id}
+    this.getAllProviderUniqueStorageKeysForAvatarById = makeOperation(http, "api/keys", "GET", "get-all-provider-unique-storage-keys-for-avatar-by-id/{id}");
+    // GET api/keys/get-all-provider-unique-storage-keys-for-avatar-by-username/{username}
+    this.getAllProviderUniqueStorageKeysForAvatarByUsername = makeOperation(http, "api/keys", "GET", "get-all-provider-unique-storage-keys-for-avatar-by-username/{username}");
+    // GET api/keys/get-avatar-email-for-provider-public-key/{providerKey}
+    this.getAvatarEmailForProviderPublicKey = makeOperation(http, "api/keys", "GET", "get-avatar-email-for-provider-public-key/{providerKey}");
+    // GET api/keys/get-avatar-email-for-provider-unique-storage-key/{providerKey}
+    this.getAvatarEmailForProviderUniqueStorageKey = makeOperation(http, "api/keys", "GET", "get-avatar-email-for-provider-unique-storage-key/{providerKey}");
+    // GET api/keys/get-avatar-for-provider-private-key/{providerKey}
+    this.getAvatarForProviderPrivateKey = makeOperation(http, "api/keys", "GET", "get-avatar-for-provider-private-key/{providerKey}");
+    // GET api/keys/get-avatar-for-provider-public-key/{providerKey}
+    this.getAvatarForProviderPublicKey = makeOperation(http, "api/keys", "GET", "get-avatar-for-provider-public-key/{providerKey}");
+    // GET api/keys/get-avatar-for-provider-unique-storage-key/{providerKey}
+    this.getAvatarForProviderUniqueStorageKey = makeOperation(http, "api/keys", "GET", "get-avatar-for-provider-unique-storage-key/{providerKey}");
+    // GET api/keys/get-avatar-id-for-provider-private-key/{providerKey}
+    this.getAvatarIdForProviderPrivateKey = makeOperation(http, "api/keys", "GET", "get-avatar-id-for-provider-private-key/{providerKey}");
+    // GET api/keys/get-avatar-id-for-provider-public-key/{providerKey}
+    this.getAvatarIdForProviderPublicKey = makeOperation(http, "api/keys", "GET", "get-avatar-id-for-provider-public-key/{providerKey}");
+    // GET api/keys/get-avatar-id-for-provider-unique-storage-key/{providerKey}
+    this.getAvatarIdForProviderUniqueStorageKey = makeOperation(http, "api/keys", "GET", "get-avatar-id-for-provider-unique-storage-key/{providerKey}");
+    // GET api/keys/get-avatar-username-for-provider-private-key/{providerKey}
+    this.getAvatarUsernameForProviderPrivateKey = makeOperation(http, "api/keys", "GET", "get-avatar-username-for-provider-private-key/{providerKey}");
+    // GET api/keys/get-avatar-username-for-provider-public-key/{providerKey}
+    this.getAvatarUsernameForProviderPublicKey = makeOperation(http, "api/keys", "GET", "get-avatar-username-for-provider-public-key/{providerKey}");
+    // GET api/keys/get-avatar-username-for-provider-unique-storage-key/{providerKey}
+    this.getAvatarUsernameForProviderUniqueStorageKey = makeOperation(http, "api/keys", "GET", "get-avatar-username-for-provider-unique-storage-key/{providerKey}");
     // GET api/keys/stats
     this.getKeyStats = makeOperation(http, "api/keys", "GET", "stats");
-    // POST api/keys/get_private_wifi/{source}
-    this.getPrivateWif = makeOperation(http, "api/keys", "POST", "get_private_wifi/{source}");
-    // GET api/keys/get_provider_private_key_for_avatar_by_id
-    this.getProviderPrivateKeyForAvatarById = makeOperation(http, "api/keys", "GET", "get_provider_private_key_for_avatar_by_id");
-    // GET api/keys/get_provider_private_key_for_avatar_by_username
-    this.getProviderPrivateKeyForAvatarByUsername = makeOperation(http, "api/keys", "GET", "get_provider_private_key_for_avatar_by_username");
-    // GET api/keys/get_provider_public_keys_for_avatar_by_email
-    this.getProviderPublicKeysForAvatarByEmail = makeOperation(http, "api/keys", "GET", "get_provider_public_keys_for_avatar_by_email");
-    // GET api/keys/get_provider_public_keys_for_avatar_by_id
-    this.getProviderPublicKeysForAvatarById = makeOperation(http, "api/keys", "GET", "get_provider_public_keys_for_avatar_by_id");
-    // GET api/keys/get_provider_public_keys_for_avatar_by_username
-    this.getProviderPublicKeysForAvatarByUsername = makeOperation(http, "api/keys", "GET", "get_provider_public_keys_for_avatar_by_username");
-    // GET api/keys/get_provider_unique_storage_key_for_avatar_by_email
-    this.getProviderUniqueStorageKeyForAvatarByEmail = makeOperation(http, "api/keys", "GET", "get_provider_unique_storage_key_for_avatar_by_email");
-    // GET api/keys/get_provider_unique_storage_key_for_avatar_by_id
-    this.getProviderUniqueStorageKeyForAvatarById = makeOperation(http, "api/keys", "GET", "get_provider_unique_storage_key_for_avatar_by_id");
-    // GET api/keys/get_provider_unique_storage_key_for_avatar_by_username
-    this.getProviderUniqueStorageKeyForAvatarByUsername = makeOperation(http, "api/keys", "GET", "get_provider_unique_storage_key_for_avatar_by_username");
-    // POST api/keys/get_public_wifi
-    this.getPublicWif = makeOperation(http, "api/keys", "POST", "get_public_wifi");
+    // POST api/keys/get-private-wifi/{source}
+    this.getPrivateWif = makeOperation(http, "api/keys", "POST", "get-private-wifi/{source}");
+    // GET api/keys/get-provider-private-key-for-avatar-by-id
+    this.getProviderPrivateKeyForAvatarById = makeOperation(http, "api/keys", "GET", "get-provider-private-key-for-avatar-by-id");
+    // GET api/keys/get-provider-private-key-for-avatar-by-username
+    this.getProviderPrivateKeyForAvatarByUsername = makeOperation(http, "api/keys", "GET", "get-provider-private-key-for-avatar-by-username");
+    // GET api/keys/get-provider-public-keys-for-avatar-by-email
+    this.getProviderPublicKeysForAvatarByEmail = makeOperation(http, "api/keys", "GET", "get-provider-public-keys-for-avatar-by-email");
+    // GET api/keys/get-provider-public-keys-for-avatar-by-id
+    this.getProviderPublicKeysForAvatarById = makeOperation(http, "api/keys", "GET", "get-provider-public-keys-for-avatar-by-id");
+    // GET api/keys/get-provider-public-keys-for-avatar-by-username
+    this.getProviderPublicKeysForAvatarByUsername = makeOperation(http, "api/keys", "GET", "get-provider-public-keys-for-avatar-by-username");
+    // GET api/keys/get-provider-unique-storage-key-for-avatar-by-email
+    this.getProviderUniqueStorageKeyForAvatarByEmail = makeOperation(http, "api/keys", "GET", "get-provider-unique-storage-key-for-avatar-by-email");
+    // GET api/keys/get-provider-unique-storage-key-for-avatar-by-id
+    this.getProviderUniqueStorageKeyForAvatarById = makeOperation(http, "api/keys", "GET", "get-provider-unique-storage-key-for-avatar-by-id");
+    // GET api/keys/get-provider-unique-storage-key-for-avatar-by-username
+    this.getProviderUniqueStorageKeyForAvatarByUsername = makeOperation(http, "api/keys", "GET", "get-provider-unique-storage-key-for-avatar-by-username");
+    // POST api/keys/get-public-wifi
+    this.getPublicWif = makeOperation(http, "api/keys", "POST", "get-public-wifi");
     // POST api/keys/{avatarId}/{eosioAccountName}
     this.linkEOSIOAccountToAvatar = makeOperation(http, "api/keys", "POST", "{avatarId}/{eosioAccountName}");
     // POST api/keys/{avatarId}/{holochainAgentID}
     this.linkHolochainAgentIDToAvatar = makeOperation(http, "api/keys", "POST", "{avatarId}/{holochainAgentID}");
-    // POST api/keys/link_provider_private_key_to_avatar_by_id
-    this.linkProviderPrivateKeyToAvatarByAvatarId = makeOperation(http, "api/keys", "POST", "link_provider_private_key_to_avatar_by_id");
-    // POST api/keys/link_provider_private_key_to_avatar_by_email
-    this.linkProviderPrivateKeyToAvatarByEmail = makeOperation(http, "api/keys", "POST", "link_provider_private_key_to_avatar_by_email");
-    // POST api/keys/link_provider_private_key_to_avatar_by_username
-    this.linkProviderPrivateKeyToAvatarByUsername = makeOperation(http, "api/keys", "POST", "link_provider_private_key_to_avatar_by_username");
-    // POST api/keys/link_provider_public_key_to_avatar_by_id
-    this.linkProviderPublicKeyToAvatarByAvatarId = makeOperation(http, "api/keys", "POST", "link_provider_public_key_to_avatar_by_id");
-    // POST api/keys/link_provider_public_key_to_avatar_by_email
-    this.linkProviderPublicKeyToAvatarByEmail = makeOperation(http, "api/keys", "POST", "link_provider_public_key_to_avatar_by_email");
-    // POST api/keys/link_provider_public_key_to_avatar_by_username
-    this.linkProviderPublicKeyToAvatarByUsername = makeOperation(http, "api/keys", "POST", "link_provider_public_key_to_avatar_by_username");
-    // POST api/keys/link_provider_wallet_address_to_avatar_by_email
-    this.linkProviderWalletAddressToAvatarByEmail = makeOperation(http, "api/keys", "POST", "link_provider_wallet_address_to_avatar_by_email");
-    // POST api/keys/link_provider_wallet_address_to_avatar_by_id
-    this.linkProviderWalletAddressToAvatarById = makeOperation(http, "api/keys", "POST", "link_provider_wallet_address_to_avatar_by_id");
-    // POST api/keys/link_provider_wallet_address_to_avatar_by_username
-    this.linkProviderWalletAddressToAvatarByUsername = makeOperation(http, "api/keys", "POST", "link_provider_wallet_address_to_avatar_by_username");
+    // POST api/keys/link-provider-private-key-to-avatar-by-id
+    this.linkProviderPrivateKeyToAvatarByAvatarId = makeOperation(http, "api/keys", "POST", "link-provider-private-key-to-avatar-by-id");
+    // POST api/keys/link-provider-private-key-to-avatar-by-email
+    this.linkProviderPrivateKeyToAvatarByEmail = makeOperation(http, "api/keys", "POST", "link-provider-private-key-to-avatar-by-email");
+    // POST api/keys/link-provider-private-key-to-avatar-by-username
+    this.linkProviderPrivateKeyToAvatarByUsername = makeOperation(http, "api/keys", "POST", "link-provider-private-key-to-avatar-by-username");
+    // POST api/keys/link-provider-public-key-to-avatar-by-id
+    this.linkProviderPublicKeyToAvatarByAvatarId = makeOperation(http, "api/keys", "POST", "link-provider-public-key-to-avatar-by-id");
+    // POST api/keys/link-provider-public-key-to-avatar-by-email
+    this.linkProviderPublicKeyToAvatarByEmail = makeOperation(http, "api/keys", "POST", "link-provider-public-key-to-avatar-by-email");
+    // POST api/keys/link-provider-public-key-to-avatar-by-username
+    this.linkProviderPublicKeyToAvatarByUsername = makeOperation(http, "api/keys", "POST", "link-provider-public-key-to-avatar-by-username");
+    // POST api/keys/link-provider-wallet-address-to-avatar-by-email
+    this.linkProviderWalletAddressToAvatarByEmail = makeOperation(http, "api/keys", "POST", "link-provider-wallet-address-to-avatar-by-email");
+    // POST api/keys/link-provider-wallet-address-to-avatar-by-id
+    this.linkProviderWalletAddressToAvatarById = makeOperation(http, "api/keys", "POST", "link-provider-wallet-address-to-avatar-by-id");
+    // POST api/keys/link-provider-wallet-address-to-avatar-by-username
+    this.linkProviderWalletAddressToAvatarByUsername = makeOperation(http, "api/keys", "POST", "link-provider-wallet-address-to-avatar-by-username");
     // POST api/keys/{id:Guid}/{telosAccountName}
     this.linkTelosAccountToAvatar = makeOperation(http, "api/keys", "POST", "{id:Guid}/{telosAccountName}");
     // POST api/keys/

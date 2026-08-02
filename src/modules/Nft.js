@@ -49,8 +49,8 @@ class NftModule {
     this.loadAllWeb4GeoNFTsForAvatarAsync = makeOperation(http, "api/nft", "GET", "load-all-geo-nfts-for-avatar/{avatarId}");
     // GET api/nft/load-all-nfts
     this.loadAllWeb4NFTsAsync = makeOperation(http, "api/nft", "GET", "load-all-nfts");
-    // GET api/nft/load-all-nfts-for_avatar/{avatarId}
-    this.loadAllWeb4NFTsForAvatarAsync = makeOperation(http, "api/nft", "GET", "load-all-nfts-for_avatar/{avatarId}");
+    // GET api/nft/load-all-nfts-for-avatar/{avatarId}
+    this.loadAllWeb4NFTsForAvatarAsync = makeOperation(http, "api/nft", "GET", "load-all-nfts-for-avatar/{avatarId}");
     // GET api/nft/load-all-nfts-for-mint-wallet-address/{mintWalletAddress}
     this.loadAllWeb4NFTsForMintAddressAsync = makeOperation(http, "api/nft", "GET", "load-all-nfts-for-mint-wallet-address/{mintWalletAddress}");
     // GET api/nft/load-web3-nft-by-hash/{onChainNftHash}
