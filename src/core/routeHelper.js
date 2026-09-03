@@ -40,8 +40,8 @@ function makeOperation(http, routePrefix, verb, route) {
     const fullPath = path ? `${routePrefix}/${path}` : routePrefix;
     const hasBody = Object.keys(rest).length > 0;
 
-    if (verb === 'GET') {
-      return http.get(fullPath, { query: hasBody ? rest : undefined });
+    if (verb === 'GET' || verb === 'DELETE') {
+      return http.request(verb, fullPath, { query: hasBody ? rest : undefined });
     }
     return http.request(verb, fullPath, { body: hasBody ? rest : undefined });
   };
