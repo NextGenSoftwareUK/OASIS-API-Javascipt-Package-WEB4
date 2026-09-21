@@ -33,4 +33,16 @@ export declare class DataModule {
 
   /** POST api/data/save-holon-off-chain */
   saveHolonOffChain(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/save-holons */
+  saveHolons(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/load-holon-by-metadata */
+  loadHolonByMetaData(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/load-holons-by-metadata */
+  loadHolonsByMetaData(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/search-holons */
+  searchHolons(args?: Record<string, any>): Promise<OASISResponse>;
 }

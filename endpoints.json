@@ -1726,6 +1726,54 @@
         },
         "summary": "Save's a holon data object (meta data) to the given off-chain provider and then links its hash to the on-chain provider. Set the showDetailedSettings flag to true to view detailed settings such as the list of providers in the auto-failover, auto-replication &amp; auto-load balance lists."
       },
+      "SaveHolons": {
+        "verb": "POST",
+        "route": "save-holons",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": "SaveHolonsRequest",
+        "responseType": {
+          "wrapper": "OASISHttpResponseMessage",
+          "inner": "IEnumerable<Holon>"
+        },
+        "summary": "Saves a collection of holons in a single bulk call. Pass an array of Holon objects in the Holons field along with SaveChildren and other options."
+      },
+      "LoadHolonByMetaData": {
+        "verb": "POST",
+        "route": "load-holon-by-metadata",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": "LoadHolonByMetaDataRequest",
+        "responseType": {
+          "wrapper": "OASISHttpResponseMessage",
+          "inner": "Holon"
+        },
+        "summary": "Loads a single holon whose metadata contains the given key/value pair. Supply MetaKey and MetaValue for a single-key match, or MetaKeyValuePairs and MetaKeyValuePairMatchMode (All|Any) for a multi-key match. Optionally scope by HolonType."
+      },
+      "LoadHolonsByMetaData": {
+        "verb": "POST",
+        "route": "load-holons-by-metadata",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": "LoadHolonsByMetaDataRequest",
+        "responseType": {
+          "wrapper": "OASISHttpResponseMessage",
+          "inner": "IEnumerable<Holon>"
+        },
+        "summary": "Loads all holons whose metadata contains the given key/value pair. Supply MetaKey and MetaValue for a single-key match, or MetaKeyValuePairs and MetaKeyValuePairMatchMode (All|Any) for a multi-key match. Optionally scope by HolonType."
+      },
+      "SearchHolons": {
+        "verb": "POST",
+        "route": "search-holons",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": "SearchHolonsRequest",
+        "responseType": {
+          "wrapper": "OASISHttpResponseMessage",
+          "inner": "IEnumerable<Holon>"
+        },
+        "summary": "Searches holons by a text term. The avatarId is derived from the authenticated JWT. Optionally filter by HolonType, ParentId, and metadata key/value pairs (FilterByMetaData + MetaKeyValuePairMatchMode). SearchOnlyForCurrentAvatar defaults to true."
+      },
       "DeleteHolon": {
         "verb": "DELETE",
         "route": "delete-holon",

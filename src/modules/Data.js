@@ -35,6 +35,14 @@ class DataModule {
     this.saveHolon = makeOperation(http, "api/data", "POST", "save-holon");
     // POST api/data/save-holon-off-chain
     this.saveHolonOffChain = makeOperation(http, "api/data", "POST", "save-holon-off-chain");
+    // POST api/data/save-holons
+    this.saveHolons = makeOperation(http, "api/data", "POST", "save-holons");
+    // POST api/data/load-holon-by-metadata
+    this.loadHolonByMetaData = makeOperation(http, "api/data", "POST", "load-holon-by-metadata");
+    // POST api/data/load-holons-by-metadata
+    this.loadHolonsByMetaData = makeOperation(http, "api/data", "POST", "load-holons-by-metadata");
+    // POST api/data/search-holons
+    this.searchHolons = makeOperation(http, "api/data", "POST", "search-holons");
   }
 }
 
