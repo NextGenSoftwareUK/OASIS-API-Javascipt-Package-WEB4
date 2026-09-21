@@ -31,6 +31,8 @@ class StatsModule {
     this.getStatsForCurrentLoggedInAvatar = makeOperation(http, "api/stats", "GET", "get-stats-for-current-logged-in-avatar");
     // GET api/stats/system-stats
     this.getSystemStats = makeOperation(http, "api/stats", "GET", "system-stats");
+    // GET api/stats/achievement-stats/{avatarId}
+    this.getAchievementStats = makeOperation(http, "api/stats", "GET", "achievement-stats/{avatarId}");
   }
 }
 

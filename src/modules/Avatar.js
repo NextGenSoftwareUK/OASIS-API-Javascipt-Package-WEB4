@@ -137,6 +137,8 @@ class AvatarModule {
     this.validateResetToken = makeOperation(http, "api/avatar", "POST", "validate-reset-token");
     // GET api/avatar/verify-email
     this.verifyEmail = makeOperation(http, "api/avatar", "GET", "verify-email");
+    // POST api/avatar/validate-account-token
+    this.validateAccountToken = makeOperation(http, "api/avatar", "POST", "validate-account-token");
   }
 }
 

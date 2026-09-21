@@ -45,4 +45,13 @@ export declare class DataModule {
 
   /** POST api/data/search-holons */
   searchHolons(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-holon-by-providerkey/{providerKey} */
+  loadHolonByProviderKey(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-holons-for-parent-by-providerkey/{providerKey} */
+  loadHolonsForParentByProviderKey(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** DELETE api/data/delete-holon-by-providerkey/{providerKey} */
+  deleteHolonByProviderKey(args?: Record<string, any>): Promise<OASISResponse>;
 }

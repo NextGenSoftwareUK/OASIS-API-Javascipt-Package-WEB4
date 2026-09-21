@@ -17,6 +17,8 @@ class SearchModule {
 
     // GET api/search/{searchParams}
     this.get = makeOperation(http, "api/search", "GET", "{searchParams}");
+    // POST api/search
+    this.search = makeOperation(http, "api/search", "POST", "");
   }
 }
 

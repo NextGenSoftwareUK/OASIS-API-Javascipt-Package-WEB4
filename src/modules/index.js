@@ -15,6 +15,7 @@ const { HealthModule } = require('./Health');
 const { HolochainModule } = require('./Holochain');
 const { HyperDriveModule } = require('./HyperDrive');
 const { KarmaModule } = require('./Karma');
+const { LevelModule } = require('./Level');
 const { KeysModule } = require('./Keys');
 const { MapModule } = require('./Map');
 const { MessagingModule } = require('./Messaging');
@@ -55,6 +56,7 @@ function attachGeneratedModules(client, http) {
   client.holochain = client.holochain || new HolochainModule(http);
   client.hyperDrive = client.hyperDrive || new HyperDriveModule(http);
   client.karma = client.karma || new KarmaModule(http);
+  client.level = client.level || new LevelModule(http);
   client.keys = client.keys || new KeysModule(http);
   client.map = client.map || new MapModule(http);
   client.messaging = client.messaging || new MessagingModule(http);

@@ -43,6 +43,12 @@ class DataModule {
     this.loadHolonsByMetaData = makeOperation(http, "api/data", "POST", "load-holons-by-metadata");
     // POST api/data/search-holons
     this.searchHolons = makeOperation(http, "api/data", "POST", "search-holons");
+    // GET api/data/load-holon-by-providerkey/{providerKey}
+    this.loadHolonByProviderKey = makeOperation(http, "api/data", "GET", "load-holon-by-providerkey/{providerKey}");
+    // GET api/data/load-holons-for-parent-by-providerkey/{providerKey}
+    this.loadHolonsForParentByProviderKey = makeOperation(http, "api/data", "GET", "load-holons-for-parent-by-providerkey/{providerKey}");
+    // DELETE api/data/delete-holon-by-providerkey/{providerKey}
+    this.deleteHolonByProviderKey = makeOperation(http, "api/data", "DELETE", "delete-holon-by-providerkey/{providerKey}");
   }
 }
 

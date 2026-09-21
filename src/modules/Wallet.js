@@ -79,6 +79,18 @@ class WalletModule {
     this.updateWalletForAvatarByIdAsync = makeOperation(http, "api/wallet", "PUT", "avatar/{avatarId}/wallet/{walletId}");
     // PUT api/wallet/avatar/username/{username}/wallet/{walletId}
     this.updateWalletForAvatarByUsernameAsync = makeOperation(http, "api/wallet", "PUT", "avatar/username/{username}/wallet/{walletId}");
+    // POST api/wallet/burn-token
+    this.burnToken = makeOperation(http, "api/wallet", "POST", "burn-token");
+    // POST api/wallet/lock-token
+    this.lockToken = makeOperation(http, "api/wallet", "POST", "lock-token");
+    // POST api/wallet/unlock-token
+    this.unlockToken = makeOperation(http, "api/wallet", "POST", "unlock-token");
+    // POST api/wallet/avatar/{avatarId}/import/secret-phrase
+    this.importWalletUsingSecretPhraseById = makeOperation(http, "api/wallet", "POST", "avatar/{avatarId}/import/secret-phrase");
+    // POST api/wallet/avatar/username/{username}/import/secret-phrase
+    this.importWalletUsingSecretPhraseByUsername = makeOperation(http, "api/wallet", "POST", "avatar/username/{username}/import/secret-phrase");
+    // POST api/wallet/avatar/email/{email}/import/secret-phrase
+    this.importWalletUsingSecretPhraseByEmail = makeOperation(http, "api/wallet", "POST", "avatar/email/{email}/import/secret-phrase");
   }
 }
 
