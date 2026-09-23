@@ -139,6 +139,46 @@ class AvatarModule {
     this.verifyEmail = makeOperation(http, "api/avatar", "GET", "verify-email");
     // POST api/avatar/validate-account-token
     this.validateAccountToken = makeOperation(http, "api/avatar", "POST", "validate-account-token");
+
+    // --- AvatarAuth extended endpoints ---
+    // POST api/avatar/authenticate-token/{JWTToken}
+    this.authenticateToken = makeOperation(http, "api/avatar", "POST", "authenticate-token/{JWTToken}");
+    // POST api/avatar/authenticate-token/{JWTToken}/{providerType}/{setGlobally}
+    this.authenticateTokenWithProvider = makeOperation(http, "api/avatar", "POST", "authenticate-token/{JWTToken}/{providerType}/{setGlobally}");
+    // POST api/avatar/authenticate-did
+    this.authenticateDid = makeOperation(http, "api/avatar", "POST", "authenticate-did");
+    // GET api/avatar/did-challenge/{did}
+    this.getDidChallenge = makeOperation(http, "api/avatar", "GET", "did-challenge/{did}");
+    // POST api/avatar/refresh-token
+    this.refreshToken = makeOperation(http, "api/avatar", "POST", "refresh-token");
+    // POST api/avatar/register/{providerType}/{setGlobally}
+    this.registerWithProvider = makeOperation(http, "api/avatar", "POST", "register/{providerType}/{setGlobally}");
+    // POST api/avatar/{avatarId}/verify
+    this.verifyAvatar = makeOperation(http, "api/avatar", "POST", "{avatarId}/verify");
+    // GET api/avatar/verify-email/{providerType}/{setGlobally}
+    this.verifyEmailWithProvider = makeOperation(http, "api/avatar", "GET", "verify-email/{providerType}/{setGlobally}");
+    // POST api/avatar/verify-email (body form)
+    this.verifyEmailPost = makeOperation(http, "api/avatar", "POST", "verify-email");
+
+    // --- AvatarKey endpoints ---
+    // POST api/avatar/link-public-key/by-id
+    this.linkPublicKeyById = makeOperation(http, "api/avatar", "POST", "link-public-key/by-id");
+    // POST api/avatar/link-public-key/by-username
+    this.linkPublicKeyByUsername = makeOperation(http, "api/avatar", "POST", "link-public-key/by-username");
+    // POST api/avatar/generate-key-pair
+    this.generateKeyPair = makeOperation(http, "api/avatar", "POST", "generate-key-pair");
+    // GET api/avatar/provider-storage-key/by-id/{avatarId}/{providerType}
+    this.getProviderStorageKeyById = makeOperation(http, "api/avatar", "GET", "provider-storage-key/by-id/{avatarId}/{providerType}");
+    // GET api/avatar/provider-storage-key/by-username/{username}/{providerType}
+    this.getProviderStorageKeyByUsername = makeOperation(http, "api/avatar", "GET", "provider-storage-key/by-username/{username}/{providerType}");
+    // GET api/avatar/provider-public-keys/by-id/{avatarId}/{providerType}
+    this.getProviderPublicKeysById = makeOperation(http, "api/avatar", "GET", "provider-public-keys/by-id/{avatarId}/{providerType}");
+    // GET api/avatar/provider-public-keys/by-username/{username}/{providerType}
+    this.getProviderPublicKeysByUsername = makeOperation(http, "api/avatar", "GET", "provider-public-keys/by-username/{username}/{providerType}");
+    // GET api/avatar/provider-private-keys/by-id/{avatarId}/{providerType}  (admin only)
+    this.getProviderPrivateKeysById = makeOperation(http, "api/avatar", "GET", "provider-private-keys/by-id/{avatarId}/{providerType}");
+    // GET api/avatar/provider-private-keys/by-username/{username}/{providerType}  (admin only)
+    this.getProviderPrivateKeysByUsername = makeOperation(http, "api/avatar", "GET", "provider-private-keys/by-username/{username}/{providerType}");
   }
 }
 
