@@ -12,6 +12,7 @@ import type { EggsModule } from './src/modules/Eggs';
 import type { FilesModule } from './src/modules/Files';
 import type { GiftsModule } from './src/modules/Gifts';
 import type { HealthModule } from './src/modules/Health';
+import type { HerzIdModule } from './src/modules/HerzId';
 import type { HolochainModule } from './src/modules/Holochain';
 import type { HyperDriveModule } from './src/modules/HyperDrive';
 import type { KarmaModule } from './src/modules/Karma';
@@ -45,7 +46,8 @@ export interface OASISClientOptions {
 export declare class HttpClient {
   constructor(options?: { baseUrl?: string; tokenStore?: unknown; fetchImpl?: typeof fetch });
   setBaseUrl(baseUrl: string): void;
-  request(verb: 'GET' | 'POST' | 'PUT' | 'DELETE', path: string, options?: Record<string, any>): Promise<OASISResponse>;
+  /** Pass `body: formDataInstance` for multipart/form-data endpoints (e.g. biometric voice). */
+  request(verb: 'GET' | 'POST' | 'PUT' | 'DELETE', path: string, options?: { query?: Record<string, any>; body?: Record<string, any> | FormData; auth?: boolean; token?: string }): Promise<OASISResponse>;
   get(path: string, options?: Record<string, any>): Promise<OASISResponse>;
   post(path: string, options?: Record<string, any>): Promise<OASISResponse>;
   put(path: string, options?: Record<string, any>): Promise<OASISResponse>;
@@ -78,6 +80,7 @@ export declare class OASISClient {
   readonly files: FilesModule;
   readonly gifts: GiftsModule;
   readonly health: HealthModule;
+  readonly herzId: HerzIdModule;
   readonly holochain: HolochainModule;
   readonly hyperDrive: HyperDriveModule;
   readonly karma: KarmaModule;

@@ -13,6 +13,7 @@ const { EggsModule } = require('./Eggs');
 const { FilesModule } = require('./Files');
 const { GiftsModule } = require('./Gifts');
 const { HealthModule } = require('./Health');
+const { HerzIdModule } = require('./HerzId');
 const { HolochainModule } = require('./Holochain');
 const { HyperDriveModule } = require('./HyperDrive');
 const { HyperDriveSyncModule } = require('./HyperDriveSync');
@@ -58,6 +59,7 @@ function attachGeneratedModules(client, http) {
   client.files = client.files || new FilesModule(http);
   client.gifts = client.gifts || new GiftsModule(http);
   client.health = client.health || new HealthModule(http);
+  client.herzId = client.herzId || new HerzIdModule(http);
   client.holochain = client.holochain || new HolochainModule(http);
   client.hyperDrive = client.hyperDrive || new HyperDriveModule(http);
   client.hyperDriveSync = client.hyperDriveSync || new HyperDriveSyncModule(http);

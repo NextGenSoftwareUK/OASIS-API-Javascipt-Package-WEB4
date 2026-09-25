@@ -73,7 +73,15 @@ class HttpClient {
     if (bearer) headers.Authorization = `Bearer ${bearer}`;
 
     const init = { method: verb, headers };
-    if (body !== undefined && verb !== 'GET') init.body = JSON.stringify(body);
+    if (body !== undefined && verb !== 'GET') {
+      if (body instanceof FormData) {
+        // Multipart: let fetch set Content-Type with the boundary automatically.
+        delete headers['Content-Type'];
+        init.body = body;
+      } else {
+        init.body = JSON.stringify(body);
+      }
+    }
 
     let res;
     try {
