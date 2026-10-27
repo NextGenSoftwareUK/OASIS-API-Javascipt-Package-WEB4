@@ -93,3 +93,19 @@ test('all 32 generated modules are attached and every method is callable', async
     assert.ok(oasis[name], `expected oasis.${name} to be attached`);
   }
 });
+
+test('writes carry X-COSMIC-Operation-Id (HyperDrive V2), agreeing with a body OperationId', async () => {
+  const fetchImpl = fakeFetch([]);
+  const oasis = new OASISClient({ baseUrl: 'https://example.test', persistSession: false, fetchImpl });
+
+  await oasis.data.saveHolon({ Name: 'x' });
+  await oasis.data.saveHolon({ Name: 'y', OperationId: 'op-fixed' });
+  await oasis.http.request('POST', 'api/data/save-holon', { body: {}, operationId: 'op-retry' });
+  await oasis.http.get('api/data/load-holon/1');
+
+  const h = fetchImpl.calls.map((c) => c.init.headers['X-COSMIC-Operation-Id']);
+  assert.match(h[0], /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/);
+  assert.equal(h[1], 'op-fixed');
+  assert.equal(h[2], 'op-retry');
+  assert.equal(h[3], undefined);
+});

@@ -20,6 +20,38 @@ function normalizeKeys(value) {
   return value;
 }
 
+/**
+ * OASIS HyperDrive V2 requires a stable operation id on every write: without one the
+ * API rejects the call with COSMIC_WRITE_INTENT_INVALID ("Stable operation intent and
+ * bounded valid conditions are required."). The id makes the write idempotent: a retry
+ * that reuses it is not applied twice. Sent as this header; a body OperationId, if the
+ * caller supplied one, must agree with it (see ONODE Helpers/HolonWriteEndpoint.cs).
+ */
+const OPERATION_HEADER = 'X-COSMIC-Operation-Id';
+
+function newOperationId() {
+  const c = globalThis.crypto;
+  if (c && typeof c.randomUUID === 'function') return c.randomUUID();
+  // RFC 4122 v4 fallback for runtimes without crypto.randomUUID.
+  const b = new Uint8Array(16);
+  if (c && typeof c.getRandomValues === 'function') c.getRandomValues(b);
+  else for (let i = 0; i < 16; i++) b[i] = Math.floor(Math.random() * 256);
+  b[6] = (b[6] & 0x0f) | 0x40;
+  b[8] = (b[8] & 0x3f) | 0x80;
+  const h = Array.from(b, (x) => x.toString(16).padStart(2, '0')).join('');
+  return `${h.slice(0, 8)}-${h.slice(8, 12)}-${h.slice(12, 16)}-${h.slice(16, 20)}-${h.slice(20)}`;
+}
+
+/** The operation id for a write: the caller's, else the body's, else a fresh one. */
+function operationIdFor(operationId, body) {
+  if (operationId) return String(operationId);
+  if (body && !(body instanceof FormData)) {
+    const fromBody = body.OperationId || body.operationId;
+    if (fromBody) return String(fromBody);
+  }
+  return newOperationId();
+}
+
 function buildQueryString(query) {
   const entries = Object.entries(query || {}).filter(([, v]) => v !== undefined && v !== null);
   if (!entries.length) return '';
@@ -61,8 +93,11 @@ class HttpClient {
    * @param {object} [options.body] JSON body (POST/PUT/DELETE)
    * @param {boolean} [options.auth] attach Authorization: Bearer <token> (default true)
    * @param {string} [options.token] override token for this single request
+   * @param {string} [options.operationId] write operation id (non-GET). Reuse the same
+   *   id when retrying a write so it is applied once. Default: the body's OperationId,
+   *   else a fresh id per call.
    */
-  async request(verb, path, { query, body, auth = true, token } = {}) {
+  async request(verb, path, { query, body, auth = true, token, operationId } = {}) {
     const url = `${this.baseUrl}/${path.replace(/^\/+/, '')}${buildQueryString(query)}`;
     const headers = {
       'Content-Type': 'application/json',
@@ -71,6 +106,7 @@ class HttpClient {
 
     const bearer = token || (auth ? this.tokenStore?.getToken() : null);
     if (bearer) headers.Authorization = `Bearer ${bearer}`;
+    if (verb !== 'GET') headers[OPERATION_HEADER] = operationIdFor(operationId, body);
 
     const init = { method: verb, headers };
     if (body !== undefined && verb !== 'GET') {
@@ -135,4 +171,4 @@ class HttpClient {
   }
 }
 
-module.exports = { HttpClient, DEFAULT_BASE_URL };
+module.exports = { HttpClient, DEFAULT_BASE_URL, OPERATION_HEADER };

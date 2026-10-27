@@ -47,7 +47,7 @@ export declare class HttpClient {
   constructor(options?: { baseUrl?: string; tokenStore?: unknown; fetchImpl?: typeof fetch });
   setBaseUrl(baseUrl: string): void;
   /** Pass `body: formDataInstance` for multipart/form-data endpoints (e.g. biometric voice). */
-  request(verb: 'GET' | 'POST' | 'PUT' | 'DELETE', path: string, options?: { query?: Record<string, any>; body?: Record<string, any> | FormData; auth?: boolean; token?: string }): Promise<OASISResponse>;
+  request(verb: 'GET' | 'POST' | 'PUT' | 'DELETE', path: string, options?: { query?: Record<string, any>; body?: Record<string, any> | FormData; auth?: boolean; token?: string; /** Write operation id (HyperDrive V2), sent as X-COSMIC-Operation-Id; reuse it to retry a write once. Defaults to the body's OperationId, else a fresh id. */ operationId?: string }): Promise<OASISResponse>;
   get(path: string, options?: Record<string, any>): Promise<OASISResponse>;
   post(path: string, options?: Record<string, any>): Promise<OASISResponse>;
   put(path: string, options?: Record<string, any>): Promise<OASISResponse>;
