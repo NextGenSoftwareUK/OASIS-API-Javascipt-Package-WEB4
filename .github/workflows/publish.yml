@@ -1,0 +1,41 @@
+# Publishes to npm on every push to the default branch, when package.json has a
+# version that is not on npm yet. Bump the version to release; any other push
+# just runs the tests.
+#
+# Uses npm trusted publishing (OIDC): no NPM_TOKEN secret and no 2FA prompt.
+# One-time setup per package on npmjs.com: package → Settings → Trusted
+# publishing → GitHub Actions, this repo, workflow file "publish.yml".
+name: publish
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write   # required for trusted publishing + provenance
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - run: npm test
+      - name: Is this version already on npm?
+        id: check
+        run: |
+          NAME=$(node -p "require('./package.json').name")
+          VERSION=$(node -p "require('./package.json').version")
+          if npm view "$NAME@$VERSION" version >/dev/null 2>&1; then
+            echo "$NAME@$VERSION is already published; nothing to do."
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.check.outputs.publish == 'true'
+        run: npm publish --access public --provenance
