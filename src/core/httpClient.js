@@ -28,6 +28,8 @@ function normalizeKeys(value) {
  * caller supplied one, must agree with it (see ONODE Helpers/HolonWriteEndpoint.cs).
  */
 const OPERATION_HEADER = 'X-COSMIC-Operation-Id';
+/** Billable routes (usage ledger) require exactly one Idempotency-Key, on any verb. */
+const IDEMPOTENCY_HEADER = 'Idempotency-Key';
 
 function newOperationId() {
   const c = globalThis.crypto;
@@ -95,9 +97,10 @@ class HttpClient {
    * @param {string} [options.token] override token for this single request
    * @param {string} [options.operationId] write operation id (non-GET). Reuse the same
    *   id when retrying a write so it is applied once. Default: the body's OperationId,
-   *   else a fresh id per call.
+   *   else a fresh id per call. Also sent as Idempotency-Key, so one id covers both checks.
+   * @param {string} [options.idempotencyKey] alias of operationId (same name as the WEB5-10 SDKs)
    */
-  async request(verb, path, { query, body, auth = true, token, operationId } = {}) {
+  async request(verb, path, { query, body, auth = true, token, operationId, idempotencyKey } = {}) {
     const url = `${this.baseUrl}/${path.replace(/^\/+/, '')}${buildQueryString(query)}`;
     const headers = {
       'Content-Type': 'application/json',
@@ -106,7 +109,10 @@ class HttpClient {
 
     const bearer = token || (auth ? this.tokenStore?.getToken() : null);
     if (bearer) headers.Authorization = `Bearer ${bearer}`;
-    if (verb !== 'GET') headers[OPERATION_HEADER] = operationIdFor(operationId, body);
+    const opId = verb === 'GET' ? (operationId || idempotencyKey || newOperationId())
+      : operationIdFor(operationId || idempotencyKey, body);
+    headers[IDEMPOTENCY_HEADER] = opId;
+    if (verb !== 'GET') headers[OPERATION_HEADER] = opId;
 
     const init = { method: verb, headers };
     if (body !== undefined && verb !== 'GET') {
@@ -171,4 +177,4 @@ class HttpClient {
   }
 }
 
-module.exports = { HttpClient, DEFAULT_BASE_URL, OPERATION_HEADER };
+module.exports = { HttpClient, DEFAULT_BASE_URL, OPERATION_HEADER, IDEMPOTENCY_HEADER };

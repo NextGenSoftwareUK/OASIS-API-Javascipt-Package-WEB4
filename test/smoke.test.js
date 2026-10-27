@@ -108,4 +108,6 @@ test('writes carry X-COSMIC-Operation-Id (HyperDrive V2), agreeing with a body O
   assert.equal(h[1], 'op-fixed');
   assert.equal(h[2], 'op-retry');
   assert.equal(h[3], undefined);
+  for (const c of fetchImpl.calls.slice(0, 3)) assert.equal(c.init.headers['Idempotency-Key'], c.init.headers['X-COSMIC-Operation-Id']);
+  assert.ok(fetchImpl.calls[3].init.headers['Idempotency-Key']);
 });
