@@ -3,9 +3,22 @@
 const DEFAULT_BASE_URL = 'https://api.web4.oasisomniverse.one';
 
 /**
+ * Holon fields whose values are dictionaries keyed by data, not property names
+ * (user metadata keys, provider names, COSMIC.ProviderRevisionId). Their keys are
+ * kept exactly as sent so a loaded holon can be saved back unchanged.
+ */
+const DICTIONARY_FIELDS = new Set([
+  'metaData',
+  'providerMetaData',
+  'providerUniqueStorageKey',
+  'previousVersionProviderUniqueStorageKey'
+]);
+
+/**
  * Recursively converts PascalCase object keys to camelCase so callers always
  * receive consistent casing regardless of how the server serialises the response.
- * Primitive values and array contents are passed through unchanged.
+ * Primitive values and array contents are passed through unchanged, and so are the
+ * keys inside DICTIONARY_FIELDS.
  */
 function normalizeKeys(value) {
   if (Array.isArray(value)) return value.map(normalizeKeys);
@@ -13,7 +26,7 @@ function normalizeKeys(value) {
     const out = {};
     for (const [k, v] of Object.entries(value)) {
       const camel = k.length > 0 ? k[0].toLowerCase() + k.slice(1) : k;
-      out[camel] = normalizeKeys(v);
+      out[camel] = DICTIONARY_FIELDS.has(camel) ? v : normalizeKeys(v);
     }
     return out;
   }

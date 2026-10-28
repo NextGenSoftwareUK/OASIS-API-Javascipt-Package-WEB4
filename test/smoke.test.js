@@ -111,3 +111,23 @@ test('writes carry X-COSMIC-Operation-Id (HyperDrive V2), agreeing with a body O
   for (const c of fetchImpl.calls.slice(0, 3)) assert.equal(c.init.headers['Idempotency-Key'], c.init.headers['X-COSMIC-Operation-Id']);
   assert.ok(fetchImpl.calls[3].init.headers['Idempotency-Key']);
 });
+
+test('dictionary fields keep their keys so a loaded holon saves back unchanged', async () => {
+  const holon = {
+    Id: 'h1', Name: 'District',
+    MetaData: { PiperRole: 'sa', piperName: 'A' },
+    ProviderMetaData: { MongoDBOASIS: { 'COSMIC.ProviderRevisionId': 'rev-1' } },
+    ProviderUniqueStorageKey: { MongoDBOASIS: 'k1' },
+    Children: [{ Id: 'c1', MetaData: { Key: 'v' } }]
+  };
+  const fetchImpl = fakeFetch([{ match: 'load-holon', body: { isError: false, result: { isError: false, result: holon } } }]);
+  const oasis = new OASISClient({ baseUrl: 'https://example.test', persistSession: false, fetchImpl });
+
+  const { result } = await oasis.http.get('api/data/load-holon/h1');
+
+  assert.equal(result.name, 'District');
+  assert.deepEqual(result.metaData, { PiperRole: 'sa', piperName: 'A' });
+  assert.deepEqual(result.providerMetaData, { MongoDBOASIS: { 'COSMIC.ProviderRevisionId': 'rev-1' } });
+  assert.deepEqual(result.providerUniqueStorageKey, { MongoDBOASIS: 'k1' });
+  assert.deepEqual(result.children[0], { id: 'c1', metaData: { Key: 'v' } });
+});
