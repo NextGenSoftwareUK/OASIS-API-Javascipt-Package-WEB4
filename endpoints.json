@@ -7096,6 +7096,35 @@
   "ShareController.cs": {
     "route_prefix": "api/share",
     "ops": {
+      "CreateGroup": {
+        "verb": "POST",
+        "route": "groups",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": "CreateGroupRequest",
+        "responseType": {
+          "wrapper": "OASISResult",
+          "inner": "IHolon"
+        },
+        "summary": "Create a group or role. Grant permissions to its id like an avatar's; changing its members changes everyone's access at once."
+      },
+      "SetGroupMembers": {
+        "verb": "POST",
+        "route": "groups/{groupId:guid}/members",
+        "routeParams": [
+          {
+            "name": "groupId",
+            "type": "Guid"
+          }
+        ],
+        "queryParams": [],
+        "requestType": "GroupMembersRequest",
+        "responseType": {
+          "wrapper": "OASISResult",
+          "inner": "bool"
+        },
+        "summary": "Add and remove members of a group. Needs Manage on the group."
+      },
       "SetPermissions": {
         "verb": "POST",
         "route": "permissions/{holonId:guid}",
@@ -7111,7 +7140,7 @@
           "wrapper": "OASISResult",
           "inner": "bool"
         },
-        "summary": "Set what each avatar may do with a holon (read, write, delete, addChildren, manage). Needs Manage on the holon."
+        "summary": "Set who may do what with a holon, whole or per field: grants, inherit and fields for avatars, groups or public. Needs Manage on the holon."
       },
       "GetPermissions": {
         "verb": "GET",
@@ -7128,7 +7157,7 @@
           "wrapper": "OASISResult",
           "inner": "Dictionary<string, string[]>"
         },
-        "summary": "The stored permission grants for a holon. Needs Manage on the holon."
+        "summary": "The stored grants, inherit and fields for a holon. Needs Manage on the holon."
       },
       "ShareHolon": {
         "verb": "GET",

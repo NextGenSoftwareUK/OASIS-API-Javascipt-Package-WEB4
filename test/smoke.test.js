@@ -145,3 +145,17 @@ test('share.setPermissions posts the grants to api/share/permissions/{holonId}',
   assert.ok(call.url.endsWith('api/share/permissions/' + holonId));
   assert.deepEqual(JSON.parse(call.init.body), { grants: { [avatar]: ['read', 'write'] } });
 });
+
+test('share.createGroup and setGroupMembers post to api/share/groups', async () => {
+  const fetchImpl = fakeFetch([{ match: 'api/share/groups', body: { isError: false, result: { isError: false, result: { id: 'g1' } } } }]);
+  const oasis = new OASISClient({ baseUrl: 'https://example.test', persistSession: false, fetchImpl });
+  const groupId = '33333333-3333-3333-3333-333333333333';
+
+  await oasis.share.createGroup({ name: 'SLPs', members: ['a'] });
+  await oasis.share.setGroupMembers({ groupId, add: ['b'], remove: ['a'] });
+
+  assert.ok(fetchImpl.calls[0].url.endsWith('api/share/groups'));
+  assert.deepEqual(JSON.parse(fetchImpl.calls[0].init.body), { name: 'SLPs', members: ['a'] });
+  assert.ok(fetchImpl.calls[1].url.endsWith('api/share/groups/' + groupId + '/members'));
+  assert.deepEqual(JSON.parse(fetchImpl.calls[1].init.body), { add: ['b'], remove: ['a'] });
+});
