@@ -55,6 +55,12 @@ export declare class AvatarModule {
   /** GET api/avatar/get-avatar-detail-by-id/{id:guid} */
   getAvatarDetail(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/avatar/sharing/{target}: what your avatar ('avatar') or profile details ('detail') share. */
+  getSharing(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/avatar/sharing/{target}: choose what to share and with whom. Body: grants, inherit, fields, inheritFields. */
+  setSharing(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/avatar/get-avatar-detail-by-email/{email} */
   getAvatarDetailByEmail(args?: Record<string, any>): Promise<OASISResponse>;
 

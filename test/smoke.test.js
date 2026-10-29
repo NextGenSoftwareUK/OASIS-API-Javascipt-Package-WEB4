@@ -159,3 +159,15 @@ test('share.createGroup and setGroupMembers post to api/share/groups', async () 
   assert.ok(fetchImpl.calls[1].url.endsWith('api/share/groups/' + groupId + '/members'));
   assert.deepEqual(JSON.parse(fetchImpl.calls[1].init.body), { add: ['b'], remove: ['a'] });
 });
+
+test('avatar.setSharing posts the fields to api/avatar/sharing/{target}', async () => {
+  const fetchImpl = fakeFetch([{ match: 'api/avatar/sharing', body: { isError: false, result: true } }]);
+  const oasis = new OASISClient({ baseUrl: 'https://example.test', persistSession: false, fetchImpl });
+
+  await oasis.avatar.setSharing({ target: 'avatar', fields: { public: { username: ['read'] } } });
+
+  const call = fetchImpl.calls[0];
+  assert.equal(call.init.method, 'POST');
+  assert.ok(call.url.endsWith('api/avatar/sharing/avatar'));
+  assert.deepEqual(JSON.parse(call.init.body), { fields: { public: { username: ['read'] } } });
+});

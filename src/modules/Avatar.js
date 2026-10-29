@@ -47,6 +47,10 @@ class AvatarModule {
     this.getAllAvatarNames = makeOperation(http, "api/avatar", "GET", "get-all-avatar-names/{includeUsernames}/{includeIds}");
     // GET api/avatar/get-all-avatar-names-grouped-by-name/{includeUsernames}/{includeIds}
     this.getAllAvatarNamesGroupedByName = makeOperation(http, "api/avatar", "GET", "get-all-avatar-names-grouped-by-name/{includeUsernames}/{includeIds}");
+    // GET api/avatar/sharing/{target}  (what your avatar or its profile details share)
+    this.getSharing = makeOperation(http, "api/avatar", "GET", "sharing/{target}");
+    // POST api/avatar/sharing/{target}  (choose what to share and with whom; target is "avatar" or "detail")
+    this.setSharing = makeOperation(http, "api/avatar", "POST", "sharing/{target}");
     // GET api/avatar/get-avatar-detail-by-id/{id:guid}
     this.getAvatarDetail = makeOperation(http, "api/avatar", "GET", "get-avatar-detail-by-id/{id:guid}");
     // GET api/avatar/get-avatar-detail-by-email/{email}

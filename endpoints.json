@@ -184,6 +184,52 @@
         },
         "summary": "Upload's the avatar's portrait (2D Image), which is displayed on the web portal or on web OApp's. Only works for logged in users. Use Authenticate endpoint first to obtain a JWT Token."
       },
+      "SetSharing": {
+        "verb": "POST",
+        "route": "sharing/{target}",
+        "routeParams": [
+          {
+            "name": "target",
+            "type": "string"
+          }
+        ],
+        "queryParams": [
+          {
+            "name": "avatarId",
+            "type": "Guid",
+            "optional": true
+          }
+        ],
+        "requestType": "SetPermissionsRequest",
+        "responseType": {
+          "wrapper": "OASISResult",
+          "inner": "bool"
+        },
+        "summary": "Choose what your avatar (target 'avatar') or its profile details (target 'detail') shares, and with whom: grants, inherit, fields and inheritFields for avatars, groups or public. Passwords and tokens are never shared."
+      },
+      "GetSharing": {
+        "verb": "GET",
+        "route": "sharing/{target}",
+        "routeParams": [
+          {
+            "name": "target",
+            "type": "string"
+          }
+        ],
+        "queryParams": [
+          {
+            "name": "avatarId",
+            "type": "Guid",
+            "optional": true
+          }
+        ],
+        "requestType": null,
+        "responseType": {
+          "wrapper": "OASISResult",
+          "inner": "Dictionary<string, object>"
+        },
+        "summary": "What your avatar (target 'avatar') or its profile details (target 'detail') currently shares."
+      },
       "GetAvatarDetail": {
         "verb": "GET",
         "route": "get-avatar-detail-by-id/{id:guid}",
