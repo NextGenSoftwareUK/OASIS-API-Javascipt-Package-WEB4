@@ -15,6 +15,10 @@ class ShareModule {
   constructor(http) {
     this._http = http;
 
+    // GET api/share/permissions/{holonId:guid}
+    this.getPermissions = makeOperation(http, "api/share", "GET", "permissions/{holonId:guid}");
+    // POST api/share/permissions/{holonId:guid}
+    this.setPermissions = makeOperation(http, "api/share", "POST", "permissions/{holonId:guid}");
     // GET api/share/share-holon/{holonId:guid}/{avatarId:guid}
     this.shareHolon = makeOperation(http, "api/share", "GET", "share-holon/{holonId:guid}/{avatarId:guid}");
   }

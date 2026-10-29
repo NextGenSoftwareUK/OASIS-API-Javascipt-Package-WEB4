@@ -4,6 +4,12 @@ import type { OASISResponse } from '../core/types';
 export declare class ShareModule {
   constructor(http: unknown);
 
+  /** GET api/share/permissions/{holonId:guid} */
+  getPermissions(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/share/permissions/{holonId:guid} */
+  setPermissions(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/share/share-holon/{holonId:guid}/{avatarId:guid} */
   shareHolon(args?: Record<string, any>): Promise<OASISResponse>;
 }

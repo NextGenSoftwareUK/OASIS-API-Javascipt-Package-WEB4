@@ -7096,6 +7096,40 @@
   "ShareController.cs": {
     "route_prefix": "api/share",
     "ops": {
+      "SetPermissions": {
+        "verb": "POST",
+        "route": "permissions/{holonId:guid}",
+        "routeParams": [
+          {
+            "name": "holonId",
+            "type": "Guid"
+          }
+        ],
+        "queryParams": [],
+        "requestType": "SetPermissionsRequest",
+        "responseType": {
+          "wrapper": "OASISResult",
+          "inner": "bool"
+        },
+        "summary": "Set what each avatar may do with a holon (read, write, delete, addChildren, manage). Needs Manage on the holon."
+      },
+      "GetPermissions": {
+        "verb": "GET",
+        "route": "permissions/{holonId:guid}",
+        "routeParams": [
+          {
+            "name": "holonId",
+            "type": "Guid"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": {
+          "wrapper": "OASISResult",
+          "inner": "Dictionary<string, string[]>"
+        },
+        "summary": "The stored permission grants for a holon. Needs Manage on the holon."
+      },
       "ShareHolon": {
         "verb": "GET",
         "route": "share-holon/{holonId:guid}/{avatarId:guid}",

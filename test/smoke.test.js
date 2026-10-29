@@ -131,3 +131,17 @@ test('dictionary fields keep their keys so a loaded holon saves back unchanged',
   assert.deepEqual(result.providerUniqueStorageKey, { MongoDBOASIS: 'k1' });
   assert.deepEqual(result.children[0], { id: 'c1', metaData: { Key: 'v' } });
 });
+
+test('share.setPermissions posts the grants to api/share/permissions/{holonId}', async () => {
+  const fetchImpl = fakeFetch([{ match: 'api/share/permissions', body: { isError: false, result: true } }]);
+  const oasis = new OASISClient({ baseUrl: 'https://example.test', persistSession: false, fetchImpl });
+  const holonId = '11111111-1111-1111-1111-111111111111';
+  const avatar = '22222222-2222-2222-2222-222222222222';
+
+  await oasis.share.setPermissions({ holonId, grants: { [avatar]: ['read', 'write'] } });
+
+  const call = fetchImpl.calls[0];
+  assert.equal(call.init.method, 'POST');
+  assert.ok(call.url.endsWith('api/share/permissions/' + holonId));
+  assert.deepEqual(JSON.parse(call.init.body), { grants: { [avatar]: ['read', 'write'] } });
+});
