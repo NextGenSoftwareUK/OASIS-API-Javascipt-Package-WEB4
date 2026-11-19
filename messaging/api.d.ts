@@ -3,9 +3,12 @@ export declare class MessagingApiError extends Error {
     /** True when the request never reached the server (offline, DNS, timeout). Retry later. */
     readonly network: boolean;
     readonly status?: number;
+    /** 401/403: the token is missing or expired. Not a rejection of the request; refresh the session and retry. */
+    readonly auth: boolean;
     constructor(message: string, opts: {
         network: boolean;
         status?: number;
+        auth?: boolean;
     });
 }
 export interface MessagingApiOptions {

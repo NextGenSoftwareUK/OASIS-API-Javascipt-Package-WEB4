@@ -4,11 +4,14 @@ export class MessagingApiError extends Error {
   /** True when the request never reached the server (offline, DNS, timeout). Retry later. */
   readonly network: boolean;
   readonly status?: number;
-  constructor(message: string, opts: { network: boolean; status?: number }) {
+  /** 401/403: the token is missing or expired. Not a rejection of the request; refresh the session and retry. */
+  readonly auth: boolean;
+  constructor(message: string, opts: { network: boolean; status?: number; auth?: boolean }) {
     super(message);
     this.name = 'MessagingApiError';
     this.network = opts.network;
     this.status = opts.status;
+    this.auth = opts.auth === true;
   }
 }
 
@@ -53,6 +56,9 @@ export class MessagingApi {
     // Gateway/availability failures are transient, not a rejection of the request.
     if (response.status === 502 || response.status === 503 || response.status === 504 || response.status === 408) {
       throw new MessagingApiError(`Service unavailable (${response.status})`, { network: true, status: response.status });
+    }
+    if (response.status === 401 || response.status === 403) {
+      throw new MessagingApiError('Your session has expired. Please sign in again.', { network: false, status: response.status, auth: true });
     }
     let envelope: OASISResultEnvelope<T> | null = null;
     try { envelope = (await response.json()) as OASISResultEnvelope<T>; } catch { /* non-JSON error body */ }

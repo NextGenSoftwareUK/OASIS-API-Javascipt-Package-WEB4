@@ -128,11 +128,13 @@ function createMessagingView(container, controller, options = {}) {
             void controller.sendDirect(selected.slice(7), text);
     });
     function render() {
-        banner.hidden = state.connection === 'online' && state.pendingCount === 0;
-        banner.textContent = state.connection === 'online'
-            ? `${state.pendingCount} message(s) sending…`
-            : state.connection === 'connecting' ? 'Connecting…'
-                : `Offline — messages are saved and will send when you reconnect${state.pendingCount ? ` (${state.pendingCount} waiting)` : ''}.`;
+        banner.hidden = state.connection === 'online' && state.pendingCount === 0 && !state.authRequired;
+        banner.textContent = state.authRequired
+            ? `Your session expired — sign in again to send your ${state.pendingCount || ''} waiting message(s). Nothing is lost.`
+            : state.connection === 'online'
+                ? `${state.pendingCount} message(s) sending…`
+                : state.connection === 'connecting' ? 'Connecting…'
+                    : `Offline — messages are saved and will send when you reconnect${state.pendingCount ? ` (${state.pendingCount} waiting)` : ''}.`;
         list.textContent = '';
         if (!state.conversations.length && !selected)
             list.appendChild(el(doc, 'li', 'oasis-chat__empty', 'No conversations yet.'));

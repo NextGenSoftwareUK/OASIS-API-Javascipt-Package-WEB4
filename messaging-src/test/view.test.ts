@@ -90,3 +90,14 @@ test('the oasis theme is applied and themes are scoped by attribute', async () =
   assert.equal(dom.window.document.querySelector('.oasis-chat')!.getAttribute('data-theme'), 'oasis');
   assert.match(dom.window.document.getElementById('oasis-messaging-styles')!.textContent!, /data-theme=oasis/);
 });
+
+test('shows a sign-in-again banner when the session expired', async () => {
+  const { api, c, doc } = mount();
+  await c.start();
+  api.authExpired = true;
+  await c.sendDirect('bob', 'x');
+  await settle();
+  const banner = doc.querySelector('.oasis-chat__banner') as HTMLElement;
+  assert.equal(banner.hidden, false);
+  assert.match(banner.textContent!, /sign in again/i);
+});

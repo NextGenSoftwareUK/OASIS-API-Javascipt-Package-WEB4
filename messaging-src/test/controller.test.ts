@@ -288,3 +288,50 @@ test('watchNetwork flushes the outbox when the browser reports it is online agai
   detach();
   assert.deepEqual(Object.keys(listeners), []);
 });
+
+test('an expired token keeps messages queued (never failed) and flags authRequired', async () => {
+  const { api, make } = setup();
+  const c = make();
+  await c.start();
+  api.authExpired = true;
+  const m = await c.sendDirect(BOB, 'sent after a long offline period');
+  await settle();
+  const state = c.getState();
+  assert.equal(state.messages['direct:bob'][0].state, 'queued');
+  assert.equal(state.authRequired, true);
+  assert.equal(state.pendingCount, 1);
+
+  api.authExpired = false;
+  await c.onNetworkRestored();
+  assert.equal(api.sent.filter(s => s.id === m.id).length, 1);
+  assert.equal(c.getState().authRequired, false);
+  assert.equal(c.getState().messages['direct:bob'][0].state, 'sent');
+});
+
+test('onAuthRequired refreshes the session and the call is retried once', async () => {
+  const api = new FakeApi();
+  let refreshes = 0;
+  const c = new MessagingController({
+    api: asApi(api), avatarId: ME, realtime: false,
+    onAuthRequired: () => { refreshes++; api.authExpired = false; return true; }
+  });
+  await c.start();
+  api.authExpired = true;
+  await c.sendDirect(BOB, 'hello');
+  await settle();
+  assert.equal(refreshes, 1);
+  assert.equal(api.sent.length, 1);
+  assert.equal(c.getState().messages['direct:bob'][0].state, 'sent');
+  assert.equal(c.getState().authRequired, false);
+});
+
+test('a failed refresh leaves the message queued and requires sign-in', async () => {
+  const api = new FakeApi();
+  const c = new MessagingController({ api: asApi(api), avatarId: ME, realtime: false, onAuthRequired: () => false });
+  await c.start();
+  api.authExpired = true;
+  await c.sendDirect(BOB, 'hi');
+  await settle();
+  assert.equal(c.getState().messages['direct:bob'][0].state, 'queued');
+  assert.equal(c.getState().authRequired, true);
+});

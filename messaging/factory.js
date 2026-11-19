@@ -7,11 +7,12 @@ const storage_1 = require("./storage");
 /** Builds a controller with browser storage and online/offline wiring. Call `start()`, and `dispose()` on teardown. */
 function createMessagingController(connection) {
     const controller = new controller_1.MessagingController({
-        api: new api_1.MessagingApi({ baseUrl: connection.baseUrl, getToken: connection.getToken }),
+        api: new api_1.MessagingApi({ baseUrl: connection.baseUrl, getToken: connection.getToken, fetch: connection.fetch }),
         avatarId: connection.avatarId,
         storage: connection.storage ?? new storage_1.BrowserStorage(),
         socketFactory: connection.socketFactory,
-        realtime: connection.realtime
+        realtime: connection.realtime,
+        onAuthRequired: connection.onAuthRequired
     });
     const unwatch = controller.watchNetwork();
     controller.dispose = () => { unwatch(); controller.stop(); };

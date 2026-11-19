@@ -140,8 +140,10 @@ export function createMessagingView(container: HTMLElement, controller: Messagin
   });
 
   function render() {
-    banner.hidden = state.connection === 'online' && state.pendingCount === 0;
-    banner.textContent = state.connection === 'online'
+    banner.hidden = state.connection === 'online' && state.pendingCount === 0 && !state.authRequired;
+    banner.textContent = state.authRequired
+      ? `Your session expired — sign in again to send your ${state.pendingCount || ''} waiting message(s). Nothing is lost.`
+      : state.connection === 'online'
       ? `${state.pendingCount} message(s) sending…`
       : state.connection === 'connecting' ? 'Connecting…'
       : `Offline — messages are saved and will send when you reconnect${state.pendingCount ? ` (${state.pendingCount} waiting)` : ''}.`;

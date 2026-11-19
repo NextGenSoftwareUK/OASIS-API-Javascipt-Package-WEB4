@@ -28,6 +28,11 @@ export interface MessagingControllerOptions {
   realtime?: boolean;
   reconnectMinMs?: number;
   reconnectMaxMs?: number;
+  /**
+   * Called when the server says the token expired (JWTs are short-lived). Refresh the session and return true to
+   * retry at once; return false (or omit) to keep messages queued and flag `authRequired`.
+   */
+  onAuthRequired?: () => Promise<boolean | void> | boolean | void;
   now?: () => number;
   timers?: { setTimeout: (fn: () => void, ms: number) => any; clearTimeout: (h: any) => void };
 }
@@ -71,6 +76,7 @@ export class MessagingController {
   private lastTypingSent = new Map<string, number>();
   private connection: ConnectionStatus = 'offline';
   private lastError: string | undefined;
+  private authRequired = false;
   private socket: SocketLike | null = null;
   private reconnectAttempt = 0;
   private reconnectHandle: any = null;
@@ -116,7 +122,7 @@ export class MessagingController {
     this.cached = {
       connection: this.connection,
       conversations: Array.from(this.conversations.values()).sort((a, b) => b.lastActivity.localeCompare(a.lastActivity)),
-      messages, typing, pendingCount: pending, lastError: this.lastError
+      messages, typing, pendingCount: pending, lastError: this.lastError, authRequired: this.authRequired
     };
     return this.cached;
   }
@@ -215,15 +221,22 @@ export class MessagingController {
           .sort((a, b) => a.createdAt.localeCompare(b.createdAt));
         for (const m of queue) {
           try {
-            const accepted = await this.api.send({
+            const accepted = await this.withAuth(() => this.api.send({
               id: m.id, toAvatarId: m.toAvatarId, conversationId: m.toAvatarId ? undefined : m.conversationId,
               content: m.content, clientTimestamp: m.createdAt
-            });
+            }));
             this.advance(m, 'sent');
             if (accepted?.receivedAt) m.serverReceivedAt = accepted.receivedAt;
             this.lastError = undefined;
           } catch (e) {
             const err = e as MessagingApiError;
+            if (err instanceof MessagingApiError && err.auth) {
+              // An expired session is not a rejection: keep the message queued for when the avatar signs in again.
+              m.state = 'queued';
+              this.lastError = err.message;
+              this.emit();
+              break;
+            }
             if (err instanceof MessagingApiError && err.network) {
               m.state = 'queued';
               this.setConnection('offline');
@@ -250,7 +263,7 @@ export class MessagingController {
   async syncNow(): Promise<void> {
     try {
       for (;;) {
-        const page = await this.api.sync(this.cursor, 200);
+        const page = await this.withAuth(() => this.api.sync(this.cursor, 200));
         for (const sm of page.messages) this.mergeServerMessage(sm);
         if (page.nextCursor) this.cursor = page.nextCursor;
         if (!page.hasMore) break;
@@ -271,8 +284,28 @@ export class MessagingController {
     await this.flushReceipts();
   }
 
+  /**
+   * Runs an API call; on an expired token asks the host to refresh and retries once.
+   * Anything else (including a failed refresh) propagates to the caller.
+   */
+  private async withAuth<T>(call: () => Promise<T>): Promise<T> {
+    try {
+      const value = await call();
+      this.authRequired = false;
+      return value;
+    } catch (e) {
+      if (!(e instanceof MessagingApiError) || !e.auth) throw e;
+      let refreshed = false;
+      try { refreshed = (await this.options.onAuthRequired?.()) === true; } catch { refreshed = false; }
+      if (!refreshed) { this.authRequired = true; throw e; }
+      const value = await call();
+      this.authRequired = false;
+      return value;
+    }
+  }
+
   private async mergeServerConversations() {
-    const list: ServerConversation[] = await this.api.conversations();
+    const list: ServerConversation[] = await this.withAuth(() => this.api.conversations());
     for (const sc of list) {
       const id = sc.isGroup ? sc.conversationId : this.directKey(sc.otherAvatarId as string);
       const existing = this.conversations.get(id);
@@ -322,12 +355,12 @@ export class MessagingController {
     try {
       if (this.pendingDelivered.size) {
         const ids = Array.from(this.pendingDelivered);
-        await this.api.markDelivered(ids);
+        await this.withAuth(() => this.api.markDelivered(ids));
         ids.forEach(id => this.pendingDelivered.delete(id));
       }
       if (this.pendingRead.size) {
         const ids = Array.from(this.pendingRead);
-        await this.api.markRead(ids);
+        await this.withAuth(() => this.api.markRead(ids));
         ids.forEach(id => this.pendingRead.delete(id));
       }
     } catch (e) {
@@ -384,7 +417,7 @@ export class MessagingController {
     this.setConnection('connecting');
     let ticket: string;
     try {
-      ticket = await this.api.realtimeTicket();
+      ticket = await this.withAuth(() => this.api.realtimeTicket());
     } catch (e) {
       this.scheduleReconnect();
       return;

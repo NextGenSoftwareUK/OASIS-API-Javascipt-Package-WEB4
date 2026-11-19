@@ -5,6 +5,7 @@ var MessagingApiError = class extends Error {
     this.name = "MessagingApiError";
     this.network = opts.network;
     this.status = opts.status;
+    this.auth = opts.auth === true;
   }
 };
 var MessagingApi = class {
@@ -34,6 +35,9 @@ var MessagingApi = class {
     }
     if (response.status === 502 || response.status === 503 || response.status === 504 || response.status === 408) {
       throw new MessagingApiError(`Service unavailable (${response.status})`, { network: true, status: response.status });
+    }
+    if (response.status === 401 || response.status === 403) {
+      throw new MessagingApiError("Your session has expired. Please sign in again.", { network: false, status: response.status, auth: true });
     }
     let envelope = null;
     try {
@@ -161,6 +165,7 @@ var MessagingController = class {
     this.typing = /* @__PURE__ */ new Map();
     this.lastTypingSent = /* @__PURE__ */ new Map();
     this.connection = "offline";
+    this.authRequired = false;
     this.socket = null;
     this.reconnectAttempt = 0;
     this.reconnectHandle = null;
@@ -213,7 +218,8 @@ var MessagingController = class {
       messages,
       typing,
       pendingCount: pending,
-      lastError: this.lastError
+      lastError: this.lastError,
+      authRequired: this.authRequired
     };
     return this.cached;
   }
@@ -319,18 +325,24 @@ var MessagingController = class {
         const queue = Array.from(this.messageIndex.values()).filter((m) => m.isOwn && (m.state === "sending" || m.state === "queued")).sort((a, b) => a.createdAt.localeCompare(b.createdAt));
         for (const m of queue) {
           try {
-            const accepted = await this.api.send({
+            const accepted = await this.withAuth(() => this.api.send({
               id: m.id,
               toAvatarId: m.toAvatarId,
               conversationId: m.toAvatarId ? void 0 : m.conversationId,
               content: m.content,
               clientTimestamp: m.createdAt
-            });
+            }));
             this.advance(m, "sent");
             if (accepted?.receivedAt) m.serverReceivedAt = accepted.receivedAt;
             this.lastError = void 0;
           } catch (e) {
             const err = e;
+            if (err instanceof MessagingApiError && err.auth) {
+              m.state = "queued";
+              this.lastError = err.message;
+              this.emit();
+              break;
+            }
             if (err instanceof MessagingApiError && err.network) {
               m.state = "queued";
               this.setConnection("offline");
@@ -355,7 +367,7 @@ var MessagingController = class {
   async syncNow() {
     try {
       for (; ; ) {
-        const page = await this.api.sync(this.cursor, 200);
+        const page = await this.withAuth(() => this.api.sync(this.cursor, 200));
         for (const sm of page.messages) this.mergeServerMessage(sm);
         if (page.nextCursor) this.cursor = page.nextCursor;
         if (!page.hasMore) break;
@@ -375,8 +387,34 @@ var MessagingController = class {
     await this.flushOutbox();
     await this.flushReceipts();
   }
+  /**
+   * Runs an API call; on an expired token asks the host to refresh and retries once.
+   * Anything else (including a failed refresh) propagates to the caller.
+   */
+  async withAuth(call) {
+    try {
+      const value = await call();
+      this.authRequired = false;
+      return value;
+    } catch (e) {
+      if (!(e instanceof MessagingApiError) || !e.auth) throw e;
+      let refreshed = false;
+      try {
+        refreshed = await this.options.onAuthRequired?.() === true;
+      } catch {
+        refreshed = false;
+      }
+      if (!refreshed) {
+        this.authRequired = true;
+        throw e;
+      }
+      const value = await call();
+      this.authRequired = false;
+      return value;
+    }
+  }
   async mergeServerConversations() {
-    const list = await this.api.conversations();
+    const list = await this.withAuth(() => this.api.conversations());
     for (const sc of list) {
       const id = sc.isGroup ? sc.conversationId : this.directKey(sc.otherAvatarId);
       const existing = this.conversations.get(id);
@@ -435,12 +473,12 @@ var MessagingController = class {
     try {
       if (this.pendingDelivered.size) {
         const ids = Array.from(this.pendingDelivered);
-        await this.api.markDelivered(ids);
+        await this.withAuth(() => this.api.markDelivered(ids));
         ids.forEach((id) => this.pendingDelivered.delete(id));
       }
       if (this.pendingRead.size) {
         const ids = Array.from(this.pendingRead);
-        await this.api.markRead(ids);
+        await this.withAuth(() => this.api.markRead(ids));
         ids.forEach((id) => this.pendingRead.delete(id));
       }
     } catch (e) {
@@ -497,7 +535,7 @@ var MessagingController = class {
     this.setConnection("connecting");
     let ticket;
     try {
-      ticket = await this.api.realtimeTicket();
+      ticket = await this.withAuth(() => this.api.realtimeTicket());
     } catch (e) {
       this.scheduleReconnect();
       return;
@@ -832,8 +870,8 @@ function createMessagingView(container, controller, options = {}) {
     else void controller.sendDirect(selected.slice(7), text);
   });
   function render() {
-    banner.hidden = state.connection === "online" && state.pendingCount === 0;
-    banner.textContent = state.connection === "online" ? `${state.pendingCount} message(s) sending\u2026` : state.connection === "connecting" ? "Connecting\u2026" : `Offline \u2014 messages are saved and will send when you reconnect${state.pendingCount ? ` (${state.pendingCount} waiting)` : ""}.`;
+    banner.hidden = state.connection === "online" && state.pendingCount === 0 && !state.authRequired;
+    banner.textContent = state.authRequired ? `Your session expired \u2014 sign in again to send your ${state.pendingCount || ""} waiting message(s). Nothing is lost.` : state.connection === "online" ? `${state.pendingCount} message(s) sending\u2026` : state.connection === "connecting" ? "Connecting\u2026" : `Offline \u2014 messages are saved and will send when you reconnect${state.pendingCount ? ` (${state.pendingCount} waiting)` : ""}.`;
     list.textContent = "";
     if (!state.conversations.length && !selected) list.appendChild(el(doc, "li", "oasis-chat__empty", "No conversations yet."));
     for (const c of state.conversations) {
@@ -903,11 +941,12 @@ function createMessagingView(container, controller, options = {}) {
 // messaging-src/factory.ts
 function createMessagingController(connection) {
   const controller = new MessagingController({
-    api: new MessagingApi({ baseUrl: connection.baseUrl, getToken: connection.getToken }),
+    api: new MessagingApi({ baseUrl: connection.baseUrl, getToken: connection.getToken, fetch: connection.fetch }),
     avatarId: connection.avatarId,
     storage: connection.storage ?? new BrowserStorage(),
     socketFactory: connection.socketFactory,
-    realtime: connection.realtime
+    realtime: connection.realtime,
+    onAuthRequired: connection.onAuthRequired
   });
   const unwatch = controller.watchNetwork();
   controller.dispose = () => {
@@ -922,9 +961,21 @@ function messagingFromClient(client, avatarId, extras = {}) {
   return createMessagingController({
     ...extras,
     baseUrl: client.http.baseUrl,
+    fetch: extras.fetch ?? client.http._customFetch ?? void 0,
     avatarId,
-    getToken: () => client.tokenStore.getToken()
+    getToken: () => client.tokenStore.getToken(),
+    onAuthRequired: extras.onAuthRequired ?? (() => refreshSession(client))
   });
+}
+async function refreshSession(client) {
+  const session = client.tokenStore.getSession?.();
+  const refresh = session?.refreshToken;
+  if (!refresh || !client.avatar?.refreshToken || !client.setToken) return false;
+  const response = await client.avatar.refreshToken({ refreshToken: refresh });
+  const jwt = response?.result?.jwtToken;
+  if (response?.isError || !jwt) return false;
+  client.setToken(jwt, { ...session, refreshToken: response.result?.refreshToken ?? refresh });
+  return true;
 }
 export {
   BrowserStorage,

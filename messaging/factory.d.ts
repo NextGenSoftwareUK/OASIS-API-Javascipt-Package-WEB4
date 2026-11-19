@@ -9,8 +9,12 @@ export interface MessagingConnection {
     /** Returns the avatar's current JWT. */
     getToken: () => string | null | Promise<string | null>;
     storage?: MessagingStorage;
+    /** Custom fetch (SSR, tests). Defaults to the global fetch. */
+    fetch?: typeof fetch;
     socketFactory?: SocketFactory;
     realtime?: boolean;
+    /** Refresh an expired JWT; return true to retry. See MessagingControllerOptions.onAuthRequired. */
+    onAuthRequired?: () => Promise<boolean | void> | boolean | void;
 }
 /** Builds a controller with browser storage and online/offline wiring. Call `start()`, and `dispose()` on teardown. */
 export declare function createMessagingController(connection: MessagingConnection): MessagingController & {

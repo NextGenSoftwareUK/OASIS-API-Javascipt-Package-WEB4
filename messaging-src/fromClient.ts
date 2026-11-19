@@ -2,8 +2,10 @@ import { createMessagingController, type MessagingConnection } from './factory';
 
 /** Structural view of an `OASISClient` from the main package (avoids a hard dependency on it). */
 interface OASISClientLike {
-  http: { baseUrl: string };
-  tokenStore: { getToken(): string | null };
+  http: { baseUrl: string; _customFetch?: typeof fetch | null };
+  tokenStore: { getToken(): string | null; getSession?(): { refreshToken?: string } & Record<string, unknown> | null };
+  setToken?(jwt: string, extras?: Record<string, unknown>): void;
+  avatar?: { refreshToken?(args: { refreshToken: string }): Promise<{ isError?: boolean; result?: { jwtToken?: string; refreshToken?: string } }> };
 }
 
 /**
@@ -20,7 +22,25 @@ export function messagingFromClient(
   return createMessagingController({
     ...extras,
     baseUrl: client.http.baseUrl,
+    fetch: extras.fetch ?? client.http._customFetch ?? undefined,
     avatarId,
-    getToken: () => client.tokenStore.getToken()
+    getToken: () => client.tokenStore.getToken(),
+    onAuthRequired: extras.onAuthRequired ?? (() => refreshSession(client))
   });
+}
+
+/**
+ * JWTs are short-lived (15 minutes by default). After a long offline period the first call returns 401; this
+ * exchanges the stored refresh token for a new JWT so queued messages go out without the user re-signing in.
+ * Returns false when there is no refresh token or the refresh is refused (the host must then sign in again).
+ */
+async function refreshSession(client: OASISClientLike): Promise<boolean> {
+  const session = client.tokenStore.getSession?.();
+  const refresh = session?.refreshToken;
+  if (!refresh || !client.avatar?.refreshToken || !client.setToken) return false;
+  const response = await client.avatar.refreshToken({ refreshToken: refresh });
+  const jwt = response?.result?.jwtToken;
+  if (response?.isError || !jwt) return false;
+  client.setToken(jwt, { ...session, refreshToken: response.result?.refreshToken ?? refresh });
+  return true;
 }

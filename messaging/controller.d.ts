@@ -24,6 +24,11 @@ export interface MessagingControllerOptions {
     realtime?: boolean;
     reconnectMinMs?: number;
     reconnectMaxMs?: number;
+    /**
+     * Called when the server says the token expired (JWTs are short-lived). Refresh the session and return true to
+     * retry at once; return false (or omit) to keep messages queued and flag `authRequired`.
+     */
+    onAuthRequired?: () => Promise<boolean | void> | boolean | void;
     now?: () => number;
     timers?: {
         setTimeout: (fn: () => void, ms: number) => any;
@@ -55,6 +60,7 @@ export declare class MessagingController {
     private lastTypingSent;
     private connection;
     private lastError;
+    private authRequired;
     private socket;
     private reconnectAttempt;
     private reconnectHandle;
@@ -93,6 +99,11 @@ export declare class MessagingController {
     flushOutbox(): Promise<void>;
     /** Pulls everything after the stored cursor, merges it idempotently, then sends pending outbox and receipts. */
     syncNow(): Promise<void>;
+    /**
+     * Runs an API call; on an expired token asks the host to refresh and retries once.
+     * Anything else (including a failed refresh) propagates to the caller.
+     */
+    private withAuth;
     private mergeServerConversations;
     private mergeServerMessage;
     /** Marks everything unread in the conversation as read (locally now, on the server when reachable). */

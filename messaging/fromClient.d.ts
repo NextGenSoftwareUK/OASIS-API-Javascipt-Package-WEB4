@@ -3,9 +3,25 @@ import { type MessagingConnection } from './factory';
 interface OASISClientLike {
     http: {
         baseUrl: string;
+        _customFetch?: typeof fetch | null;
     };
     tokenStore: {
         getToken(): string | null;
+        getSession?(): {
+            refreshToken?: string;
+        } & Record<string, unknown> | null;
+    };
+    setToken?(jwt: string, extras?: Record<string, unknown>): void;
+    avatar?: {
+        refreshToken?(args: {
+            refreshToken: string;
+        }): Promise<{
+            isError?: boolean;
+            result?: {
+                jwtToken?: string;
+                refreshToken?: string;
+            };
+        }>;
     };
 }
 /**

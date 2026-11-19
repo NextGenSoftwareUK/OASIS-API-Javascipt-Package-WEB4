@@ -32,3 +32,31 @@ test('the messaging subpath builds a controller from an OASISClient session', ()
   assert.equal(typeof messaging.createMessagingView, 'function');
   chat.dispose();
 });
+
+test('an expired JWT is refreshed with the stored refresh token and queued messages go out', async () => {
+  const calls = [];
+  const fetchImpl = async (url, init) => {
+    const auth = init.headers?.Authorization;
+    calls.push({ url, auth });
+    const json = (status, body) => ({ ok: status < 400, status, text: async () => JSON.stringify(body), json: async () => body });
+    if (url.endsWith('api/avatar/refresh-token')) return json(200, { isError: false, result: { jwtToken: 'new-jwt', refreshToken: 'r2' } });
+    if (auth === 'Bearer old-jwt') return json(401, { isError: true, message: 'expired' });
+    if (url.includes('api/messaging/sync')) return json(200, { isError: false, result: { messages: [], hasMore: false } });
+    if (url.includes('api/messaging/conversations')) return json(200, { isError: false, result: [] });
+    return json(200, { isError: false, result: { id: 'm', fromAvatarId: 'me', content: 'hi', receivedAt: '2026-01-01T00:00:00Z' } });
+  };
+  const oasis = new OASISClient({ baseUrl: 'https://api.test', fetchImpl, persistSession: false });
+  oasis.setToken('old-jwt', { refreshToken: 'r1', avatarId: 'me' });
+  const chat = messaging.messagingFromClient(oasis, 'me', { realtime: false });
+  await chat.start();
+  await chat.sendDirect('bob', 'after a long offline period');
+  await new Promise((r) => setTimeout(r, 50));
+
+  assert.equal(oasis.tokenStore.getToken(), 'new-jwt');
+  assert.equal(oasis.tokenStore.getSession().refreshToken, 'r2');
+  const sendCalls = calls.filter((c) => c.url.endsWith('api/messaging/send'));
+  assert.ok(sendCalls.length >= 1 && sendCalls[sendCalls.length - 1].auth === 'Bearer new-jwt');
+  assert.equal(chat.getState().authRequired, false);
+  assert.equal(chat.getState().messages['direct:bob'][0].state, 'sent');
+  chat.dispose();
+});

@@ -36,6 +36,8 @@ export interface MessagingState {
     typing: Record<string, string[]>;
     /** Messages not yet accepted by the server (sending or queued). */
     pendingCount: number;
+    /** The session expired and could not be refreshed: the host must sign the avatar in again. Queued messages are kept. */
+    authRequired: boolean;
     lastError?: string;
 }
 /** Wire shapes returned by the hosted `api/messaging` endpoints (camelCase). */

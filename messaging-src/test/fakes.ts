@@ -5,6 +5,7 @@ import type { SocketLike } from '../controller';
 export class FakeApi {
   origin = 'https://api.test';
   online = true;
+  authExpired = false;
   reject: string | null = null;
   sent: SendRequest[] = [];
   serverMessages: ServerMessage[] = [];
@@ -15,7 +16,10 @@ export class FakeApi {
   tickets = 0;
   conversationList: ServerConversation[] = [];
 
-  private guard() { if (!this.online) throw new MessagingApiError('offline', { network: true }); }
+  private guard() {
+    if (!this.online) throw new MessagingApiError('offline', { network: true });
+    if (this.authExpired) throw new MessagingApiError('expired', { network: false, status: 401, auth: true });
+  }
   async send(r: SendRequest): Promise<ServerMessage> {
     this.guard();
     if (this.reject) throw new MessagingApiError(this.reject, { network: false, status: 400 });

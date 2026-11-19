@@ -7,6 +7,7 @@ class MessagingApiError extends Error {
         this.name = 'MessagingApiError';
         this.network = opts.network;
         this.status = opts.status;
+        this.auth = opts.auth === true;
     }
 }
 exports.MessagingApiError = MessagingApiError;
@@ -38,6 +39,9 @@ class MessagingApi {
         // Gateway/availability failures are transient, not a rejection of the request.
         if (response.status === 502 || response.status === 503 || response.status === 504 || response.status === 408) {
             throw new MessagingApiError(`Service unavailable (${response.status})`, { network: true, status: response.status });
+        }
+        if (response.status === 401 || response.status === 403) {
+            throw new MessagingApiError('Your session has expired. Please sign in again.', { network: false, status: response.status, auth: true });
         }
         let envelope = null;
         try {

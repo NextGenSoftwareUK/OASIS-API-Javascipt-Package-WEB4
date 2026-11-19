@@ -39,3 +39,10 @@ test('omits Authorization without a token and handles non-JSON error bodies', as
   await assert.rejects(a.conversations(), (e: MessagingApiError) => !e.network && e.status === 401);
   assert.equal(headers.Authorization, undefined);
 });
+
+test('401 and 403 are auth errors (refresh and retry), not request rejections', async () => {
+  for (const status of [401, 403]) {
+    const a = api(async () => ({ ok: false, status, json: async () => ({ isError: true, message: 'x' }) }));
+    await assert.rejects(a.send({ id: 'x', content: 'y' }), (e: MessagingApiError) => e.auth === true && e.network === false && e.status === status);
+  }
+});
