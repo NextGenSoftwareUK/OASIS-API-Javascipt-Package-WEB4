@@ -674,6 +674,9 @@ var MESSAGING_CSS = `
 .oasis-chat{--oasis-chat-bg:#fff;--oasis-chat-fg:#14213d;--oasis-chat-muted:#6b7280;--oasis-chat-accent:#2563eb;--oasis-chat-bubble-own:#dbeafe;--oasis-chat-bubble-other:#f1f5f9;--oasis-chat-border:#e2e8f0;
 display:flex;height:100%;min-height:320px;background:var(--oasis-chat-bg);color:var(--oasis-chat-fg);font:14px/1.4 system-ui,sans-serif;border:1px solid var(--oasis-chat-border);border-radius:8px;overflow:hidden;position:relative}
 .oasis-chat[data-theme=dark]{--oasis-chat-bg:#0b1020;--oasis-chat-fg:#e5e7eb;--oasis-chat-muted:#94a3b8;--oasis-chat-accent:#60a5fa;--oasis-chat-bubble-own:#1e3a5f;--oasis-chat-bubble-other:#1f2937;--oasis-chat-border:#243049}
+.oasis-chat[data-theme=oasis]{--oasis-chat-bg:#0a1020;--oasis-chat-fg:#e0eeff;--oasis-chat-muted:#7a9bbf;--oasis-chat-accent:#00c8ff;--oasis-chat-bubble-own:rgba(0,200,255,.2);--oasis-chat-bubble-other:rgba(255,255,255,.08);--oasis-chat-border:rgba(0,200,255,.22)}
+.oasis-chat[data-theme=oasis] button{color:#04121f}
+.oasis-chat[data-theme=oasis] .oasis-chat__banner{background:rgba(255,170,0,.14);color:#ffcf70}
 .oasis-chat *{box-sizing:border-box}
 .oasis-chat__side{width:260px;flex:0 0 260px;border-right:1px solid var(--oasis-chat-border);display:flex;flex-direction:column;min-width:0}
 .oasis-chat__main{flex:1;display:flex;flex-direction:column;min-width:0}

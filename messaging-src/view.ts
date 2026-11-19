@@ -3,7 +3,7 @@ import type { ChatMessage, Conversation, MessagingState } from './types';
 import { MESSAGING_CSS } from './styles';
 
 export interface MessagingViewOptions {
-  theme?: 'light' | 'dark';
+  theme?: 'light' | 'dark' | 'oasis';
   /** Display name for an avatar id. Defaults to a shortened id. */
   resolveName?: (avatarId: string) => string;
   /** Pre-select a conversation (conversation id, e.g. `direct:<avatarId>` or a group id). */

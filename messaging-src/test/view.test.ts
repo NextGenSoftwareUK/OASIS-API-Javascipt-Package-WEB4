@@ -82,3 +82,11 @@ test('failed messages offer Retry', async () => {
   await settle();
   assert.equal(api.sent.length, 1);
 });
+
+test('the oasis theme is applied and themes are scoped by attribute', async () => {
+  const dom = new JSDOM('<!doctype html><body><div id="root"></div></body>');
+  const c = new MessagingController({ api: asApi(new FakeApi()), avatarId: 'me', realtime: false });
+  createMessagingView(dom.window.document.getElementById('root') as HTMLElement, c, { theme: 'oasis' });
+  assert.equal(dom.window.document.querySelector('.oasis-chat')!.getAttribute('data-theme'), 'oasis');
+  assert.match(dom.window.document.getElementById('oasis-messaging-styles')!.textContent!, /data-theme=oasis/);
+});
