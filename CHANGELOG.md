@@ -1,5 +1,21 @@
 # Changelog
 
+## 2.1.0
+
+Offline-first messaging.
+
+- New subpath **`@oasisomniverse/web4-api/messaging`**: a framework-agnostic messaging engine (`MessagingController`,
+  `MessagingApi`, `createMessagingController`, `messagingFromClient`) plus a themable, XSS-safe chat view
+  (`createMessagingView`). Messages are saved locally and queued in an outbox; the server accepts sends
+  idempotently by client-generated id; a server cursor (`GET api/messaging/sync`) catches up after any disconnect;
+  real-time push (`/ws/messaging`, single-use ticket) makes delivery immediate. Delivery/read receipts, typing,
+  group conversations and persistence are included. Used by the `@oasisomniverse/*` UI component libraries.
+- `oasis.messaging` now covers the full `api/messaging` surface: idempotent `send`, `sync`, `conversations`,
+  `markMessagesDelivered`, `realtimeTicket`, `presence`, groups (`createGroup`, `groups`, `addGroupMembers`,
+  `leaveGroup`, `groupMessages`) and `getCurrentAvatarMessageSummary`.
+- `scripts/extract-endpoints.js` now parses expression-bodied (`=>`) controller methods; previously they were
+  silently skipped.
+
 ## 2.0.0
 
 Full rewrite (previous release was 1.0.8, from 2022).

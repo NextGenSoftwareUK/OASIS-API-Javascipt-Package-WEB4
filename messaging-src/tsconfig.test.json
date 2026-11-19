@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "outDir": "../.messaging-test", "declaration": false, "types": ["node"], "esModuleInterop": true, "rootDir": "." },
+  "include": ["*.ts", "test/*.ts"], "exclude": []
+}

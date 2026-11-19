@@ -372,3 +372,21 @@ const client = new OASISClient({
   fetchImpl: window.fetch.bind(window)
 });
 ```
+
+## Offline-first messaging
+
+```js
+import { OASISClient } from '@oasisomniverse/web4-api';
+import { messagingFromClient, createMessagingView } from '@oasisomniverse/web4-api/messaging';
+
+const oasis = new OASISClient({ baseUrl: 'https://api.oasisweb4.one' });
+await oasis.auth.login({ username, password });
+
+const chat = messagingFromClient(oasis, oasis.auth.getSession().avatarId);
+await chat.start();                              // loads local state, syncs, opens real-time push
+await chat.sendDirect(friendAvatarId, 'Hello!'); // visible at once, queued if offline, sent exactly once
+createMessagingView(document.getElementById('chat'), chat, { theme: 'dark' });
+```
+
+Sends are idempotent by client-generated id, so retries never duplicate; a server cursor catches up after any
+disconnect. Framework wrappers ship in `@oasisomniverse/react|vue|angular|svelte|nextjs|js`.

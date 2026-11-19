@@ -1,6 +1,6 @@
 {
   "name": "@oasisomniverse/web4-api",
-  "version": "2.0.17",
+  "version": "2.1.0",
   "publishConfig": {
     "access": "public"
   },
@@ -13,6 +13,11 @@
       "types": "./index.d.ts",
       "import": "./index.mjs",
       "require": "./index.js"
+    },
+    "./messaging": {
+      "types": "./messaging/index.d.ts",
+      "import": "./messaging/index.mjs",
+      "require": "./messaging/index.js"
     }
   },
   "engines": {
@@ -23,14 +28,17 @@
     "index.mjs",
     "index.d.ts",
     "src",
-    "docs"
+    "docs",
+    "messaging"
   ],
   "scripts": {
     "generate": "node scripts/generate-modules.js",
     "docs": "node scripts/generate-docs.js",
     "types": "node scripts/generate-types.js",
-    "test": "node --test test/smoke.test.js",
-    "publish-all": "node scripts/publish-all.mjs"
+    "test": "node --test test/",
+    "publish-all": "node scripts/publish-all.mjs",
+    "build:messaging": "node scripts/build-messaging.js",
+    "test:messaging": "tsc -p messaging-src/tsconfig.test.json && node --test .messaging-test/test/"
   },
   "repository": {
     "type": "git",
@@ -119,5 +127,12 @@
     "PLAN",
     "Scuttlebutt",
     "More Coming..."
-  ]
+  ],
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "esbuild": "^0.21.0",
+    "jsdom": "^24.0.0",
+    "@types/node": "^18.19.0",
+    "@types/jsdom": "^21.1.0"
+  }
 }

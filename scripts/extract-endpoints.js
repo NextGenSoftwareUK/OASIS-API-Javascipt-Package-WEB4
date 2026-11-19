@@ -101,7 +101,7 @@ function parseController(filePath) {
   let pendingProduces200 = null;
   const ops = {};
 
-  const methodSig = /public\s+(?:virtual\s+|override\s+)?(?:async\s+Task<([\s\S]+?)>|(\w+<[\s\S]+?>)|(IActionResult|ActionResult))\s+(\w+)\s*\(([^)]*)\)\s*$/;
+  const methodSig = /public\s+(?:virtual\s+|override\s+)?(?:async\s+Task<([\s\S]+?)>|(\w+<[\s\S]+?>)|(IActionResult|ActionResult))\s+(\w+)\s*\(([^)]*)\)\s*(?:=>\s*)?$/;
   const methodStart = /public\s+(?:virtual\s+|override\s+)?(?:async\s+Task<|\w+(?:Result|ResponseMessage)<|(?:IActionResult|ActionResult)\s)/;
   const producesRegex = /\[ProducesResponseType\(typeof\(([\s\S]+?)\),\s*StatusCodes\.Status200OK\)\]/;
 

@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", "module": "commonjs", "lib": ["ES2020", "DOM"], "declaration": true,
+    "outDir": "../messaging", "rootDir": ".", "strict": true, "skipLibCheck": true
+  },
+  "include": ["*.ts"], "exclude": ["test"]
+}

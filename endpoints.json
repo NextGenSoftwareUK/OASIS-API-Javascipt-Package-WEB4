@@ -5236,6 +5236,18 @@
         ],
         "bodyParam": "content"
       },
+      "GetCurrentAvatarMessageSummary": {
+        "verb": "GET",
+        "route": "current-avatar/summary",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": {
+          "wrapper": "Task",
+          "inner": "OASISResult<MessageSummary>"
+        },
+        "summary": "Get total messages and unread received messages for the authenticated avatar."
+      },
       "GetMessages": {
         "verb": "GET",
         "route": "messages",
@@ -5254,8 +5266,8 @@
         ],
         "requestType": null,
         "responseType": {
-          "wrapper": "OASISResult",
-          "inner": "List<Message>"
+          "wrapper": "Task",
+          "inner": "OASISResult<List<Message>>"
         },
         "summary": "Get messages for the current avatar",
         "query": [
@@ -5286,8 +5298,8 @@
         ],
         "requestType": null,
         "responseType": {
-          "wrapper": "OASISResult",
-          "inner": "List<Message>"
+          "wrapper": "Task",
+          "inner": "OASISResult<List<Message>>"
         },
         "summary": "Get conversation between current avatar and another avatar",
         "query": [
@@ -5325,8 +5337,8 @@
         ],
         "requestType": null,
         "responseType": {
-          "wrapper": "OASISResult",
-          "inner": "List<Notification>"
+          "wrapper": "Task",
+          "inner": "OASISResult<List<Notification>>"
         },
         "summary": "Get notifications for the current avatar",
         "query": [
@@ -5345,6 +5357,192 @@
           "inner": "bool"
         },
         "summary": "Mark notifications as read"
+      },
+      "Send": {
+        "verb": "POST",
+        "route": "send",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": "SendMessageRequest",
+        "responseType": {
+          "wrapper": "OASISResult",
+          "inner": "Message"
+        },
+        "summary": "Idempotent send. The client supplies the message id, so an offline outbox can safely retry."
+      },
+      "MarkMessagesDelivered": {
+        "verb": "POST",
+        "route": "mark-messages-delivered",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": "List<Guid>",
+        "responseType": {
+          "wrapper": "OASISResult",
+          "inner": "bool"
+        },
+        "summary": "Marks messages addressed to the current avatar as delivered."
+      },
+      "Sync": {
+        "verb": "GET",
+        "route": "sync",
+        "routeParams": [],
+        "queryParams": [
+          {
+            "name": "since",
+            "type": "DateTime?",
+            "optional": true
+          },
+          {
+            "name": "limit",
+            "type": "int",
+            "optional": true
+          }
+        ],
+        "requestType": null,
+        "responseType": {
+          "wrapper": "OASISResult",
+          "inner": "MessageSyncPage"
+        },
+        "summary": "Cursor sync: messages received after <paramref name=\"since\"/> (UTC), oldest first. Pass the returned nextCursor back as since while hasMore is true.",
+        "query": [
+          "since",
+          "limit"
+        ]
+      },
+      "Conversations": {
+        "verb": "GET",
+        "route": "conversations",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": {
+          "wrapper": "OASISResult",
+          "inner": "List<ConversationSummary>"
+        },
+        "summary": "Conversation list for the current avatar, most recently active first."
+      },
+      "RealtimeTicket": {
+        "verb": "POST",
+        "route": "realtime-ticket",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": {
+          "wrapper": "OASISResult",
+          "inner": "string"
+        },
+        "summary": "Issues a single-use, 30-second ticket for connecting to <c>/ws/messaging?ticket=...</c>."
+      },
+      "Presence": {
+        "verb": "GET",
+        "route": "presence",
+        "routeParams": [],
+        "queryParams": [
+          {
+            "name": "avatarIds",
+            "type": "List<Guid>",
+            "optional": false
+          }
+        ],
+        "requestType": null,
+        "responseType": {
+          "wrapper": "OASISResult",
+          "inner": "Dictionary<Guid, bool>"
+        },
+        "summary": "Which of the given avatars currently have a live connection to this server instance.",
+        "query": [
+          "avatarIds"
+        ]
+      },
+      "CreateGroup": {
+        "verb": "POST",
+        "route": "groups",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": "CreateGroupRequest",
+        "responseType": {
+          "wrapper": "OASISResult",
+          "inner": "ConversationInfo"
+        },
+        "summary": "Creates a group conversation. The caller becomes its creator and a member."
+      },
+      "Groups": {
+        "verb": "GET",
+        "route": "groups",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": {
+          "wrapper": "OASISResult",
+          "inner": "List<ConversationInfo>"
+        },
+        "summary": null
+      },
+      "AddGroupMembers": {
+        "verb": "POST",
+        "route": "groups/{conversationId}/members",
+        "routeParams": [
+          {
+            "name": "conversationId",
+            "type": "Guid"
+          }
+        ],
+        "queryParams": [],
+        "requestType": "List<Guid>",
+        "responseType": {
+          "wrapper": "OASISResult",
+          "inner": "ConversationInfo"
+        },
+        "summary": null
+      },
+      "LeaveGroup": {
+        "verb": "POST",
+        "route": "groups/{conversationId}/leave",
+        "routeParams": [
+          {
+            "name": "conversationId",
+            "type": "Guid"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": {
+          "wrapper": "OASISResult",
+          "inner": "bool"
+        },
+        "summary": null
+      },
+      "GroupMessages": {
+        "verb": "GET",
+        "route": "groups/{conversationId}/messages",
+        "routeParams": [
+          {
+            "name": "conversationId",
+            "type": "Guid"
+          }
+        ],
+        "queryParams": [
+          {
+            "name": "limit",
+            "type": "int",
+            "optional": true
+          },
+          {
+            "name": "offset",
+            "type": "int",
+            "optional": true
+          }
+        ],
+        "requestType": null,
+        "responseType": {
+          "wrapper": "OASISResult",
+          "inner": "List<Message>"
+        },
+        "summary": null,
+        "query": [
+          "limit",
+          "offset"
+        ]
       }
     }
   },
