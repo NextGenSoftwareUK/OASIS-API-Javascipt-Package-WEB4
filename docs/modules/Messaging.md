@@ -635,7 +635,7 @@ Idempotent send. The client supplies the message id, so an offline outbox can sa
 
 **Request**
 
-Body type: `SendMessageRequest` _(type definition not found in the OASIS source - field list unavailable)_
+Body type: `MessageSendRequest` _(type definition not found in the OASIS source - field list unavailable)_
 
 **Response**
 

@@ -5363,7 +5363,7 @@
         "route": "send",
         "routeParams": [],
         "queryParams": [],
-        "requestType": "SendMessageRequest",
+        "requestType": "MessageSendRequest",
         "responseType": {
           "wrapper": "OASISResult",
           "inner": "Message"
