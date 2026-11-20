@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.0.18
+
+- Regenerated the TypeScript declarations from the runtime modules. They had
+  drifted: route comments lost their suffix (`mintNftAsync` showed
+  `POST api/nft/` instead of `POST api/nft/mint-nft`), dozens of runtime
+  methods were missing from the types (e.g. `generateKeyPair`,
+  `getDidChallenge`, `verifyAvatar`, `importWalletUsingSecretPhraseById`,
+  `lockToken`/`unlockToken`/`burnToken`) and two declared methods
+  (`getVersion`, `searchLocations`) did not exist at runtime.
+- README example used `https://api.oasisweb4.one`, which no longer responds;
+  it now uses the default `https://api.web4.oasisomniverse.one`.
+- Export `./package.json` so tooling can read the package version.
+
 ## 2.0.0
 
 Full rewrite (previous release was 1.0.8, from 2022).

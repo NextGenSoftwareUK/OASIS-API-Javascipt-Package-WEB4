@@ -25,9 +25,6 @@ export declare class SettingsModule {
   /** GET api/settings/system-settings */
   getSystemSettings(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/settings/version */
-  getVersion(args?: Record<string, any>): Promise<OASISResponse>;
-
   /** PUT api/settings/hyperdrive-settings */
   updateHyperDriveSettings(args?: Record<string, any>): Promise<OASISResponse>;
 

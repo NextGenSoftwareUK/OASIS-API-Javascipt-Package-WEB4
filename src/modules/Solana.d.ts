@@ -4,9 +4,9 @@ import type { OASISResponse } from '../core/types';
 export declare class SolanaModule {
   constructor(http: unknown);
 
-  /** POST api/solana/ */
+  /** POST api/solana/Mint */
   mintNft(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/solana/ */
+  /** POST api/solana/Send */
   sendTransaction(args?: Record<string, any>): Promise<OASISResponse>;
 }

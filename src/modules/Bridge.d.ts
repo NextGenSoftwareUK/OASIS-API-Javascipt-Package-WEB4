@@ -16,6 +16,9 @@ export declare class BridgeModule {
   /** GET api/v1/bridge/exchange-rate */
   getExchangeRate(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/v1/bridge/networks */
+  getSupportedNetworks(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/v1/bridge/viewing-keys/audit */
   recordViewingKey(args?: Record<string, any>): Promise<OASISResponse>;
 

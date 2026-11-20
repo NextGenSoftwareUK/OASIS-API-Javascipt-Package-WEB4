@@ -4,139 +4,139 @@ import type { OASISResponse } from '../core/types';
 export declare class KeysModule {
   constructor(http: unknown);
 
-  /** POST api/keys/base58_check_decode/{data} */
+  /** POST api/keys/base58-check-decode/{data} */
   base58CheckDecode(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/clear_cache */
+  /** POST api/keys/clear-cache */
   clearCache(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/keys/create */
   createKey(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/decode_private_wif/{data} */
+  /** POST api/keys/decode-private-wif/{data} */
   decodePrivateWif(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** DELETE api/keys/{keyId} */
   deleteKey(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/encode_signature/{source} */
+  /** POST api/keys/encode-signature/{source} */
   encodeSignature(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/generate_keypair_and_link_provider_keys_to_avatar_by_email */
+  /** POST api/keys/generate-keypair-and-link-provider-keys-to-avatar-by-email */
   generateKeyPairAndLinkProviderKeysToAvatarByAvatarEmail(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/generate_keypair_and_link_provider_keys_to_avatar_by_id */
+  /** POST api/keys/generate-keypair-and-link-provider-keys-to-avatar-by-id */
   generateKeyPairAndLinkProviderKeysToAvatarByAvatarId(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/generate_keypair_and_link_provider_keys_to_avatar_by_username */
+  /** POST api/keys/generate-keypair-and-link-provider-keys-to-avatar-by-username */
   generateKeyPairAndLinkProviderKeysToAvatarByAvatarUsername(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/generate_keypair_for_provider/{providerType} */
+  /** POST api/keys/generate-keypair-for-provider/{providerType} */
   generateKeyPairForProvider(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/generate_keypair_with_wallet_address_and_link_provider_keys_to_avatar_by_email */
+  /** POST api/keys/generate-keypair-with-wallet-address-and-link-provider-keys-to-avatar-by-email */
   generateKeyPairWithWalletAddressAndLinkProviderKeysToAvatarByEmail(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/generate_keypair_with_wallet_address_and_link_provider_keys_to_avatar_by_id */
+  /** POST api/keys/generate-keypair-with-wallet-address-and-link-provider-keys-to-avatar-by-id */
   generateKeyPairWithWalletAddressAndLinkProviderKeysToAvatarById(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/generate_keypair_with_wallet_address_and_link_provider_keys_to_avatar_by_username */
+  /** POST api/keys/generate-keypair-with-wallet-address-and-link-provider-keys-to-avatar-by-username */
   generateKeyPairWithWalletAddressAndLinkProviderKeysToAvatarByUsername(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/generate_keypair_with_wallet_address_for_provider/{providerType} */
+  /** POST api/keys/generate-keypair-with-wallet-address-for-provider/{providerType} */
   generateKeyPairWithWalletAddressForProvider(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/keys/all */
   getAllKeysForAvatar(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_all_provider_private_keys_for_avatar_by_id/{id} */
+  /** GET api/keys/get-all-provider-private-keys-for-avatar-by-id/{id} */
   getAllProviderPrivateKeysForAvatarById(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_all_provider_private_keys_for_avatar_by_username/{username} */
+  /** GET api/keys/get-all-provider-private-keys-for-avatar-by-username/{username} */
   getAllProviderPrivateKeysForAvatarByUsername(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_all_provider_public_keys_for_avatar_by_email/{email} */
+  /** GET api/keys/get-all-provider-public-keys-for-avatar-by-email/{email} */
   getAllProviderPublicKeysForAvatarByEmail(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_all_provider_public_keys_for_avatar_by_id/{id} */
+  /** GET api/keys/get-all-provider-public-keys-for-avatar-by-id/{id} */
   getAllProviderPublicKeysForAvatarById(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_all_provider_public_keys_for_avatar_by_username/{username} */
+  /** GET api/keys/get-all-provider-public-keys-for-avatar-by-username/{username} */
   getAllProviderPublicKeysForAvatarByUsername(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_all_provider_unique_storage_keys_for_avatar_by_email/{email} */
+  /** GET api/keys/get-all-provider-unique-storage-keys-for-avatar-by-email/{email} */
   getAllProviderUniqueStorageKeysForAvatarByEmail(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_all_provider_unique_storage_keys_for_avatar_by_id/{id} */
+  /** GET api/keys/get-all-provider-unique-storage-keys-for-avatar-by-id/{id} */
   getAllProviderUniqueStorageKeysForAvatarById(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_all_provider_unique_storage_keys_for_avatar_by_username/{username} */
+  /** GET api/keys/get-all-provider-unique-storage-keys-for-avatar-by-username/{username} */
   getAllProviderUniqueStorageKeysForAvatarByUsername(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_avatar_email_for_provider_public_key/{providerKey} */
+  /** GET api/keys/get-avatar-email-for-provider-public-key/{providerKey} */
   getAvatarEmailForProviderPublicKey(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_avatar_email_for_provider_unique_storage_key/{providerKey} */
+  /** GET api/keys/get-avatar-email-for-provider-unique-storage-key/{providerKey} */
   getAvatarEmailForProviderUniqueStorageKey(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_avatar_for_provider_private_key/{providerKey} */
+  /** GET api/keys/get-avatar-for-provider-private-key/{providerKey} */
   getAvatarForProviderPrivateKey(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_avatar_for_provider_public_key/{providerKey} */
+  /** GET api/keys/get-avatar-for-provider-public-key/{providerKey} */
   getAvatarForProviderPublicKey(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_avatar_for_provider_unique_storage_key/{providerKey} */
+  /** GET api/keys/get-avatar-for-provider-unique-storage-key/{providerKey} */
   getAvatarForProviderUniqueStorageKey(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_avatar_id_for_provider_private_key/{providerKey} */
+  /** GET api/keys/get-avatar-id-for-provider-private-key/{providerKey} */
   getAvatarIdForProviderPrivateKey(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_avatar_id_for_provider_public_key/{providerKey} */
+  /** GET api/keys/get-avatar-id-for-provider-public-key/{providerKey} */
   getAvatarIdForProviderPublicKey(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_avatar_id_for_provider_unique_storage_key/{providerKey} */
+  /** GET api/keys/get-avatar-id-for-provider-unique-storage-key/{providerKey} */
   getAvatarIdForProviderUniqueStorageKey(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_avatar_username_for_provider_private_key/{providerKey} */
+  /** GET api/keys/get-avatar-username-for-provider-private-key/{providerKey} */
   getAvatarUsernameForProviderPrivateKey(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_avatar_username_for_provider_public_key/{providerKey} */
+  /** GET api/keys/get-avatar-username-for-provider-public-key/{providerKey} */
   getAvatarUsernameForProviderPublicKey(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_avatar_username_for_provider_unique_storage_key/{providerKey} */
+  /** GET api/keys/get-avatar-username-for-provider-unique-storage-key/{providerKey} */
   getAvatarUsernameForProviderUniqueStorageKey(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/keys/stats */
   getKeyStats(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/get_private_wifi/{source} */
+  /** POST api/keys/get-private-wifi/{source} */
   getPrivateWif(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_provider_private_key_for_avatar_by_id */
+  /** GET api/keys/get-provider-private-key-for-avatar-by-id */
   getProviderPrivateKeyForAvatarById(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_provider_private_key_for_avatar_by_username */
+  /** GET api/keys/get-provider-private-key-for-avatar-by-username */
   getProviderPrivateKeyForAvatarByUsername(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_provider_public_keys_for_avatar_by_email */
+  /** GET api/keys/get-provider-public-keys-for-avatar-by-email */
   getProviderPublicKeysForAvatarByEmail(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_provider_public_keys_for_avatar_by_id */
+  /** GET api/keys/get-provider-public-keys-for-avatar-by-id */
   getProviderPublicKeysForAvatarById(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_provider_public_keys_for_avatar_by_username */
+  /** GET api/keys/get-provider-public-keys-for-avatar-by-username */
   getProviderPublicKeysForAvatarByUsername(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_provider_unique_storage_key_for_avatar_by_email */
+  /** GET api/keys/get-provider-unique-storage-key-for-avatar-by-email */
   getProviderUniqueStorageKeyForAvatarByEmail(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_provider_unique_storage_key_for_avatar_by_id */
+  /** GET api/keys/get-provider-unique-storage-key-for-avatar-by-id */
   getProviderUniqueStorageKeyForAvatarById(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get_provider_unique_storage_key_for_avatar_by_username */
+  /** GET api/keys/get-provider-unique-storage-key-for-avatar-by-username */
   getProviderUniqueStorageKeyForAvatarByUsername(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/get_public_wifi */
+  /** POST api/keys/get-public-wifi */
   getPublicWif(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/keys/{avatarId}/{eosioAccountName} */
@@ -145,31 +145,31 @@ export declare class KeysModule {
   /** POST api/keys/{avatarId}/{holochainAgentID} */
   linkHolochainAgentIDToAvatar(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/link_provider_private_key_to_avatar_by_id */
+  /** POST api/keys/link-provider-private-key-to-avatar-by-id */
   linkProviderPrivateKeyToAvatarByAvatarId(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/link_provider_private_key_to_avatar_by_email */
+  /** POST api/keys/link-provider-private-key-to-avatar-by-email */
   linkProviderPrivateKeyToAvatarByEmail(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/link_provider_private_key_to_avatar_by_username */
+  /** POST api/keys/link-provider-private-key-to-avatar-by-username */
   linkProviderPrivateKeyToAvatarByUsername(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/link_provider_public_key_to_avatar_by_id */
+  /** POST api/keys/link-provider-public-key-to-avatar-by-id */
   linkProviderPublicKeyToAvatarByAvatarId(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/link_provider_public_key_to_avatar_by_email */
+  /** POST api/keys/link-provider-public-key-to-avatar-by-email */
   linkProviderPublicKeyToAvatarByEmail(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/link_provider_public_key_to_avatar_by_username */
+  /** POST api/keys/link-provider-public-key-to-avatar-by-username */
   linkProviderPublicKeyToAvatarByUsername(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/link_provider_wallet_address_to_avatar_by_email */
+  /** POST api/keys/link-provider-wallet-address-to-avatar-by-email */
   linkProviderWalletAddressToAvatarByEmail(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/link_provider_wallet_address_to_avatar_by_id */
+  /** POST api/keys/link-provider-wallet-address-to-avatar-by-id */
   linkProviderWalletAddressToAvatarById(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/link_provider_wallet_address_to_avatar_by_username */
+  /** POST api/keys/link-provider-wallet-address-to-avatar-by-username */
   linkProviderWalletAddressToAvatarByUsername(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/keys/{id:Guid}/{telosAccountName} */

@@ -4,18 +4,18 @@ import type { OASISResponse } from '../core/types';
 export declare class BiometricModule {
   constructor(http: unknown);
 
-  /** GET api/biometric/status — returns enrollment status of the authenticated avatar */
+  /** GET api/biometric/status */
   status(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/biometric/voice/enroll — enroll voice biometric (multipart/form-data, field: audio) */
-  voiceEnroll(args?: Record<string, any>): Promise<OASISResponse>;
-
-  /** POST api/biometric/voice/verify — verify voice biometric (multipart/form-data, field: audio) */
-  voiceVerify(args?: Record<string, any>): Promise<OASISResponse>;
-
-  /** DELETE api/biometric/voice — remove voice biometric profile */
+  /** DELETE api/biometric/voice */
   voiceDelete(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/biometric/voice/verify/{avatarId} — admin: verify another avatar's voice */
-  voiceVerifyByAvatarId(args: { avatarId: string } & Record<string, any>): Promise<OASISResponse>;
+  /** POST api/biometric/voice/enroll */
+  voiceEnroll(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/biometric/voice/verify */
+  voiceVerify(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/biometric/voice/verify/{avatarId} */
+  voiceVerifyByAvatarId(args?: Record<string, any>): Promise<OASISResponse>;
 }
