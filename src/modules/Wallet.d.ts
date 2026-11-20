@@ -4,6 +4,9 @@ import type { OASISResponse } from '../core/types';
 export declare class WalletModule {
   constructor(http: unknown);
 
+  /** POST api/wallet/burn-token */
+  burnToken(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/wallet/avatar/email/{email}/create-wallet */
   createWalletForAvatarByEmailAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
@@ -58,6 +61,15 @@ export declare class WalletModule {
   /** POST api/wallet/avatar/username/{username}/import/public-key */
   importWalletUsingPublicKeyByUsername(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/wallet/avatar/email/{email}/import/secret-phrase */
+  importWalletUsingSecretPhraseByEmail(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/wallet/avatar/{avatarId}/import/secret-phrase */
+  importWalletUsingSecretPhraseById(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/wallet/avatar/username/{username}/import/secret-phrase */
+  importWalletUsingSecretPhraseByUsername(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/wallet/avatar/email/{email}/wallets */
   loadProviderWalletsForAvatarByEmailAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
@@ -66,6 +78,9 @@ export declare class WalletModule {
 
   /** GET api/wallet/avatar/username/{username}/wallets/{showOnlyDefault}/{decryptPrivateKeys} */
   loadProviderWalletsForAvatarByUsernameAsync(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/wallet/lock-token */
+  lockToken(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/wallet/avatar/email/{email}/wallets */
   saveProviderWalletsForAvatarByEmailAsync(args?: Record<string, any>): Promise<OASISResponse>;
@@ -76,7 +91,7 @@ export declare class WalletModule {
   /** POST api/wallet/avatar/username/{username}/wallets */
   saveProviderWalletsForAvatarByUsernameAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/wallet/send_token */
+  /** POST api/wallet/send-token */
   sendTokenAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/wallet/avatar/email/{email}/default-wallet/{walletId} */
@@ -90,6 +105,9 @@ export declare class WalletModule {
 
   /** POST api/wallet/transfer */
   transferBetweenWalletsAsync(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/wallet/unlock-token */
+  unlockToken(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** PUT api/wallet/avatar/email/{email}/wallet/{walletId} */
   updateWalletForAvatarByEmailAsync(args?: Record<string, any>): Promise<OASISResponse>;

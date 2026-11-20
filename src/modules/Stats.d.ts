@@ -4,6 +4,9 @@ import type { OASISResponse } from '../core/types';
 export declare class StatsModule {
   constructor(http: unknown);
 
+  /** GET api/stats/achievement-stats/{avatarId} */
+  getAchievementStats(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/stats/chat-stats/{avatarId} */
   getChatStats(args?: Record<string, any>): Promise<OASISResponse>;
 

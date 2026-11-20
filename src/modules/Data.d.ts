@@ -7,6 +7,9 @@ export declare class DataModule {
   /** DELETE api/data/delete-holon */
   deleteHolon(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** DELETE api/data/delete-holon-by-providerkey/{providerKey} */
+  deleteHolonByProviderKey(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/data/load-all-holons */
   loadAllHolons(args?: Record<string, any>): Promise<OASISResponse>;
 
@@ -19,8 +22,20 @@ export declare class DataModule {
   /** POST api/data/load-holon */
   loadHolon(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/data/load-holon-by-metadata */
+  loadHolonByMetaData(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-holon-by-providerkey/{providerKey} */
+  loadHolonByProviderKey(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/load-holons-by-metadata */
+  loadHolonsByMetaData(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/data/load-holons-for-parent */
   loadHolonsForParent(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-holons-for-parent-by-providerkey/{providerKey} */
+  loadHolonsForParentByProviderKey(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/data/save-data */
   saveData(args?: Record<string, any>): Promise<OASISResponse>;
@@ -37,21 +52,6 @@ export declare class DataModule {
   /** POST api/data/save-holons */
   saveHolons(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/data/load-holon-by-metadata */
-  loadHolonByMetaData(args?: Record<string, any>): Promise<OASISResponse>;
-
-  /** POST api/data/load-holons-by-metadata */
-  loadHolonsByMetaData(args?: Record<string, any>): Promise<OASISResponse>;
-
   /** POST api/data/search-holons */
   searchHolons(args?: Record<string, any>): Promise<OASISResponse>;
-
-  /** GET api/data/load-holon-by-providerkey/{providerKey} */
-  loadHolonByProviderKey(args?: Record<string, any>): Promise<OASISResponse>;
-
-  /** GET api/data/load-holons-for-parent-by-providerkey/{providerKey} */
-  loadHolonsForParentByProviderKey(args?: Record<string, any>): Promise<OASISResponse>;
-
-  /** DELETE api/data/delete-holon-by-providerkey/{providerKey} */
-  deleteHolonByProviderKey(args?: Record<string, any>): Promise<OASISResponse>;
 }
