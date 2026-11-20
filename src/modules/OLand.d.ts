@@ -4,24 +4,24 @@ import type { OASISResponse } from '../core/types';
 export declare class OLandModule {
   constructor(http: unknown);
 
-  /** POST api/oland/ */
+  /** POST api/oLand/delete-oland/{olandId} */
   deleteOlandAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/oland/ */
+  /** GET api/oLand/get-oland-price */
   getOlandPrice(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/oland/ */
+  /** GET api/oLand/load-all-olands */
   loadAllOlands(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/oland/ */
+  /** GET api/oLand/load-oland/{olandId} */
   loadOlandAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/oland/ */
+  /** POST api/oLand/purchase-oland */
   purchaseOland(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/oland/ */
+  /** POST api/oLand/save-oland */
   saveOlandAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/oland/ */
+  /** POST api/oLand/update-oland */
   updateOlandAsync(args?: Record<string, any>): Promise<OASISResponse>;
 }

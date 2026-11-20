@@ -172,7 +172,7 @@ npm install @oasisomniverse/web4-api
 const { OASISClient } = require('@oasisomniverse/web4-api');
 // or: import { OASISClient } from '@oasisomniverse/web4-api';
 
-const oasis = new OASISClient({ baseUrl: 'https://api.oasisweb4.one' });
+const oasis = new OASISClient({ baseUrl: 'https://api.web4.oasisomniverse.one' });
 
 const { isError, message, session } = await oasis.auth.login({
   username: 'me@example.com', // username or email both work

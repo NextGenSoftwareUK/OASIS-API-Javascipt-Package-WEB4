@@ -46,9 +46,6 @@ export declare class MapModule {
   /** POST api/map/search */
   search(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/map/search-locations */
-  searchLocations(args?: Record<string, any>): Promise<OASISResponse>;
-
   /** POST api/map/SelectBuildingOnMap/{building} */
   selectBuildingOnMap(args?: Record<string, any>): Promise<OASISResponse>;
 

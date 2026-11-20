@@ -4,234 +4,234 @@ import type { OASISResponse } from '../core/types';
 export declare class HyperDriveModule {
   constructor(http: unknown);
 
-  /** GET api/hyperdrive/quota/status */
+  /** GET api/hyperDrive/quota/status */
   checkQuotaStatus(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/hyperdrive/failover/triggers */
+  /** POST api/hyperDrive/failover/triggers */
   createFailoverTrigger(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/hyperdrive/subscription/quota-notifications */
+  /** POST api/hyperDrive/subscription/quota-notifications */
   createQuotaNotification(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/hyperdrive/replication/triggers */
+  /** POST api/hyperDrive/replication/triggers */
   createReplicationTrigger(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/hyperdrive/subscription/usage-alerts */
+  /** POST api/hyperDrive/subscription/usage-alerts */
   createUsageAlert(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** DELETE api/hyperdrive/failover/triggers/{id} */
+  /** DELETE api/hyperDrive/failover/triggers/{id} */
   deleteFailoverTrigger(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** DELETE api/hyperdrive/subscription/quota-notifications/{id} */
+  /** DELETE api/hyperDrive/subscription/quota-notifications/{id} */
   deleteQuotaNotification(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** DELETE api/hyperdrive/replication/triggers/{id} */
+  /** DELETE api/hyperDrive/replication/triggers/{id} */
   deleteReplicationTrigger(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** DELETE api/hyperdrive/subscription/usage-alerts/{id} */
+  /** DELETE api/hyperDrive/subscription/usage-alerts/{id} */
   deleteUsageAlert(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/hyperdrive/intelligent-mode/disable */
+  /** POST api/hyperDrive/intelligent-mode/disable */
   disableIntelligentMode(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/hyperdrive/intelligent-mode/enable */
+  /** POST api/hyperDrive/intelligent-mode/enable */
   enableIntelligentMode(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/ai/recommendations */
+  /** GET api/hyperDrive/ai/recommendations */
   getAIRecommendations(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/analytics/report */
+  /** GET api/hyperDrive/analytics/report */
   getAnalyticsReport(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/best-provider */
+  /** GET api/hyperDrive/best-provider */
   getBestProvider(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/config */
+  /** GET api/hyperDrive/config */
   getConfiguration(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/connections */
+  /** GET api/hyperDrive/connections */
   getConnectionCounts(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/costs/history */
+  /** GET api/hyperDrive/costs/history */
   getCostHistory(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/analytics/cost-optimization */
+  /** GET api/hyperDrive/analytics/cost-optimization */
   getCostOptimizationRecommendations(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/replication/cost-optimization */
+  /** GET api/hyperDrive/replication/cost-optimization */
   getCostOptimizationRule(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/costs/projections */
+  /** GET api/hyperDrive/costs/projections */
   getCostProjections(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/costs/current */
+  /** GET api/hyperDrive/costs/current */
   getCurrentCosts(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/quota/usage */
+  /** GET api/hyperDrive/quota/usage */
   getCurrentUsage(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/dashboard */
+  /** GET api/hyperDrive/dashboard */
   getDashboardData(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/data-permissions */
+  /** GET api/hyperDrive/data-permissions */
   getDataPermissions(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/replication/data-type-rules */
+  /** GET api/hyperDrive/replication/data-type-rules */
   getDataTypeReplicationRules(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/failover/escalation-rules */
+  /** GET api/hyperDrive/failover/escalation-rules */
   getEscalationRules(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/failover/rules */
+  /** GET api/hyperDrive/failover/rules */
   getFailoverRules(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/failover/predictions */
+  /** GET api/hyperDrive/failover/predictions */
   getFailurePredictions(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/providers/free */
+  /** GET api/hyperDrive/providers/free */
   getFreeProviders(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/mode */
+  /** GET api/hyperDrive/mode */
   getHyperDriveMode(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/intelligent-mode */
+  /** GET api/hyperDrive/intelligent-mode */
   getIntelligentMode(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/providers/low-cost */
+  /** GET api/hyperDrive/providers/low-cost */
   getLowCostProviders(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/metrics */
+  /** GET api/hyperDrive/metrics */
   getMetrics(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/analytics/performance-optimization */
+  /** GET api/hyperDrive/analytics/performance-optimization */
   getPerformanceOptimizationRecommendations(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/analytics/predictive/{providerType} */
+  /** GET api/hyperDrive/analytics/predictive/{providerType} */
   getPredictiveAnalytics(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/failover/provider-rules */
+  /** GET api/hyperDrive/failover/provider-rules */
   getProviderFailoverRules(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/metrics/{providerType} */
+  /** GET api/hyperDrive/metrics/{providerType} */
   getProviderMetrics(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/replication/provider-rules */
+  /** GET api/hyperDrive/replication/provider-rules */
   getProviderReplicationRules(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/quota/limits */
+  /** GET api/hyperDrive/quota/limits */
   getQuotaLimits(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/subscription/quota-notifications */
+  /** GET api/hyperDrive/subscription/quota-notifications */
   getQuotaNotifications(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/replication/rules */
+  /** GET api/hyperDrive/replication/rules */
   getReplicationRules(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/replication/schedule-rules */
+  /** GET api/hyperDrive/replication/schedule-rules */
   getScheduleRules(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/recommendations/security */
+  /** GET api/hyperDrive/recommendations/security */
   getSecurityRecommendations(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/recommendations/smart */
+  /** GET api/hyperDrive/recommendations/smart */
   getSmartRecommendations(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/status */
+  /** GET api/hyperDrive/status */
   getStatus(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/subscription/config */
+  /** GET api/hyperDrive/subscription/config */
   getSubscriptionConfig(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/hyperdrive/subscription/usage-alerts */
+  /** GET api/hyperDrive/subscription/usage-alerts */
   getUsageAlerts(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/hyperdrive/failover/preventive */
+  /** POST api/hyperDrive/failover/preventive */
   initiatePreventiveFailover(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/hyperdrive/analytics/record */
+  /** POST api/hyperDrive/analytics/record */
   recordAnalyticsData(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/hyperdrive/record-connection */
+  /** POST api/hyperDrive/record-connection */
   recordConnection(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/hyperdrive/failover/record-failure */
+  /** POST api/hyperDrive/failover/record-failure */
   recordFailureEvent(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/hyperdrive/ai/record-performance */
+  /** POST api/hyperDrive/ai/record-performance */
   recordPerformanceData(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/hyperdrive/record-request */
+  /** POST api/hyperDrive/record-request */
   recordRequest(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/hyperdrive/metrics/reset-all */
+  /** POST api/hyperDrive/metrics/reset-all */
   resetAllMetrics(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/hyperdrive/config/reset */
+  /** POST api/hyperDrive/config/reset */
   resetConfiguration(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/hyperdrive/metrics/{providerType}/reset */
+  /** POST api/hyperDrive/metrics/{providerType}/reset */
   resetProviderMetrics(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/hyperdrive/costs/limits */
+  /** PUT api/hyperDrive/costs/limits */
   setCostLimits(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/hyperdrive/mode */
+  /** PUT api/hyperDrive/mode */
   setHyperDriveMode(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/hyperdrive/config */
+  /** PUT api/hyperDrive/config */
   updateConfiguration(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/hyperdrive/cost/{providerType} */
+  /** PUT api/hyperDrive/cost/{providerType} */
   updateCostAnalysis(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/hyperdrive/replication/cost-optimization */
+  /** PUT api/hyperDrive/replication/cost-optimization */
   updateCostOptimizationRule(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/hyperdrive/data-permissions */
+  /** PUT api/hyperDrive/data-permissions */
   updateDataPermissions(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/hyperdrive/replication/data-type-rules */
+  /** PUT api/hyperDrive/replication/data-type-rules */
   updateDataTypeReplicationRule(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/hyperdrive/failover/escalation-rules */
+  /** PUT api/hyperDrive/failover/escalation-rules */
   updateEscalationRule(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/hyperdrive/failover/rules */
+  /** PUT api/hyperDrive/failover/rules */
   updateFailoverRules(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/hyperdrive/failover/triggers/{id} */
+  /** PUT api/hyperDrive/failover/triggers/{id} */
   updateFailoverTrigger(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/hyperdrive/geographic/{providerType} */
+  /** PUT api/hyperDrive/geographic/{providerType} */
   updateGeographicInfo(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/hyperdrive/intelligent-mode */
+  /** PUT api/hyperDrive/intelligent-mode */
   updateIntelligentMode(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/hyperdrive/failover/provider-rules */
+  /** PUT api/hyperDrive/failover/provider-rules */
   updateProviderFailoverRule(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/hyperdrive/replication/provider-rules */
+  /** PUT api/hyperDrive/replication/provider-rules */
   updateProviderReplicationRule(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/hyperdrive/subscription/quota-notifications/{id} */
+  /** PUT api/hyperDrive/subscription/quota-notifications/{id} */
   updateQuotaNotification(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/hyperdrive/replication/rules */
+  /** PUT api/hyperDrive/replication/rules */
   updateReplicationRules(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/hyperdrive/replication/triggers/{id} */
+  /** PUT api/hyperDrive/replication/triggers/{id} */
   updateReplicationTrigger(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/hyperdrive/replication/schedule-rules */
+  /** PUT api/hyperDrive/replication/schedule-rules */
   updateScheduleRule(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/hyperdrive/subscription/config */
+  /** PUT api/hyperDrive/subscription/config */
   updateSubscriptionConfig(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/hyperdrive/subscription/usage-alerts/{id} */
+  /** PUT api/hyperDrive/subscription/usage-alerts/{id} */
   updateUsageAlert(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/hyperdrive/config/validate */
+  /** POST api/hyperDrive/config/validate */
   validateConfiguration(args?: Record<string, any>): Promise<OASISResponse>;
 }

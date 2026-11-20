@@ -4,99 +4,99 @@ import type { OASISResponse } from '../core/types';
 export declare class NftModule {
   constructor(http: unknown);
 
-  /** POST api/nft/ */
+  /** POST api/nft/collect-geo-nft */
   collectGeoNFTAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/nft/ */
+  /** POST api/nft/collect-nft */
   collectNFTAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/nft/ */
+  /** POST api/nft/create-web4-nft-collection */
   createWeb4NFTCollectionAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/nft/ */
+  /** POST api/nft/export-web4-nft */
   exportWeb4NFTAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/nft/ */
+  /** POST api/nft/export-web4-nft-to-file/{oasisNFTId}/{fullPathToExportTo} */
   exportWeb4NFTToFileAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/nft/ */
+  /** GET api/nft/get-nft-provider-from-provider-type/{providerType} */
   getNFTProviderFromProviderType(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/nft/ */
+  /** POST api/nft/import-web3-nft */
   importWeb3NFTAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/nft/ */
+  /** POST api/nft/import-web4-nft/{importedByAvatarId} */
   importWeb4NFTAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/nft/ */
+  /** POST api/nft/import-web4-nft-from-file/{importedByAvatarId}/{fullPathToOASISNFTJsonFile} */
   importWeb4NFTFromFileAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/nft/ */
+  /** GET api/nft/load-all-geo-nfts */
   loadAllGeoNFTsAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/nft/ */
+  /** GET api/nft/load-all-geo-nfts-for-mint-wallet-address/{mintWalletAddress} */
   loadAllGeoNFTsForMintAddressAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/nft/ */
+  /** GET api/nft/load-all-web3-nfts */
   loadAllWeb3NFTsAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/nft/ */
+  /** GET api/nft/load-all-web3-nfts-for-avatar/{avatarId} */
   loadAllWeb3NFTsForAvatarAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/nft/ */
+  /** GET api/nft/load-all-web3-nfts-for-mint-address/{mintWalletAddress} */
   loadAllWeb3NFTsForMintAddressAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/nft/ */
+  /** GET api/nft/load-all-geo-nfts/{providerType}/{setGlobally} */
   loadAllWeb4GeoNFTsAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/nft/ */
+  /** GET api/nft/load-all-geo-nfts-for-avatar/{avatarId} */
   loadAllWeb4GeoNFTsForAvatarAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/nft/ */
+  /** GET api/nft/load-all-nfts */
   loadAllWeb4NFTsAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/nft/ */
+  /** GET api/nft/load-all-nfts-for-avatar/{avatarId} */
   loadAllWeb4NFTsForAvatarAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/nft/ */
+  /** GET api/nft/load-all-nfts-for-mint-wallet-address/{mintWalletAddress} */
   loadAllWeb4NFTsForMintAddressAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/nft/ */
+  /** GET api/nft/load-web3-nft-by-hash/{onChainNftHash} */
   loadWeb3NftByHashAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/nft/ */
+  /** GET api/nft/load-web3-nft-by-id/{id} */
   loadWeb3NftByIdAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/nft/ */
+  /** GET api/nft/load-nft-by-hash/{hash} */
   loadWeb4NftByHashAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/nft/ */
+  /** GET api/nft/load-nft-by-id/{id} */
   loadWeb4NftByIdAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/nft/ */
+  /** POST api/nft/mint-and-place-geo-nft */
   mintAndPlaceGeoNFTAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/nft/ */
+  /** POST api/nft/mint-nft */
   mintNftAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/nft/ */
+  /** POST api/nft/place-geo-nft */
   placeGeoNFTAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/nft/ */
+  /** POST api/nft/remint-nft */
   remintNftAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/nft/ */
+  /** GET api/nft/search-web4-geo-nfts/{searchTerm}/{avatarId} */
   searchWeb4GeoNFTsAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/nft/ */
+  /** GET api/nft/search-web4-nft-collections/{searchTerm}/{avatarId} */
   searchWeb4NFTCollectionsAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/nft/ */
+  /** GET api/nft/search-web4-nfts/{searchTerm}/{avatarId} */
   searchWeb4NFTsAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/nft/ */
+  /** POST api/nft/send-nft */
   sendNFTAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/nft/ */
+  /** POST api/nft/update-web4-nft */
   updateWeb4NftAsync(args?: Record<string, any>): Promise<OASISResponse>;
 }

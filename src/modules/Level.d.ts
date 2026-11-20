@@ -4,9 +4,9 @@ import type { OASISResponse } from '../core/types';
 export declare class LevelModule {
   constructor(http: unknown);
 
-  /** GET api/level/lookup */
-  getLevelLookup(args?: Record<string, any>): Promise<OASISResponse>;
-
   /** GET api/level/calculate/{karma} */
   calculateLevelFromKarma(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/level/lookup */
+  getLevelLookup(args?: Record<string, any>): Promise<OASISResponse>;
 }
