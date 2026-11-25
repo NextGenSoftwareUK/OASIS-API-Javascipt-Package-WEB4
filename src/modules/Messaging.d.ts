@@ -4,8 +4,20 @@ import type { OASISResponse } from '../core/types';
 export declare class MessagingModule {
   constructor(http: unknown);
 
+  /** POST api/messaging/groups/{conversationId}/members */
+  addGroupMembers(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/messaging/conversations */
+  conversations(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/messaging/groups */
+  createGroup(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/messaging/conversation/{otherAvatarId} */
   getConversation(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/messaging/current-avatar/summary */
+  getCurrentAvatarMessageSummary(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/messaging/messages */
   getMessages(args?: Record<string, any>): Promise<OASISResponse>;
@@ -13,12 +25,36 @@ export declare class MessagingModule {
   /** GET api/messaging/notifications */
   getNotifications(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/messaging/groups/{conversationId}/messages */
+  groupMessages(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/messaging/groups */
+  groups(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/messaging/groups/{conversationId}/leave */
+  leaveGroup(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/messaging/mark-messages-read */
   markMessagesAsRead(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/messaging/mark-messages-delivered */
+  markMessagesDelivered(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/messaging/mark-notifications-read */
   markNotificationsAsRead(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/messaging/presence */
+  presence(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/messaging/realtime-ticket */
+  realtimeTicket(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/messaging/send */
+  send(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/messaging/send-message-to-avatar/{toAvatarId} */
   sendMessageToAvatar(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/messaging/sync */
+  sync(args?: Record<string, any>): Promise<OASISResponse>;
 }

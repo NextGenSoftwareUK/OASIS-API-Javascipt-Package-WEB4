@@ -15,40 +15,186 @@ class DataModule {
   constructor(http) {
     this._http = http;
 
+    // POST api/data/complete-chunked-file
+    this.completeChunkedFile = makeOperation(http, "api/data", "POST", "complete-chunked-file");
+    // POST api/data/query-cql/composition
+    this.composition = makeOperation(http, "api/data", "POST", "query-cql/composition");
+    // POST api/data/copy-holon
+    this.copyHolon = makeOperation(http, "api/data", "POST", "copy-holon");
+    // POST api/data/delete-chunked-file
+    this.deleteChunkedFile = makeOperation(http, "api/data", "POST", "delete-chunked-file");
     // DELETE api/data/delete-holon
     this.deleteHolon = makeOperation(http, "api/data", "DELETE", "delete-holon");
+    // DELETE api/data/delete-holon/{id}
+    this.deleteHolonById = makeOperation(http, "api/data", "DELETE", "delete-holon/{id}");
+    // DELETE api/data/delete-holon/{id}/{softDelete}
+    this.deleteHolonByIdSoftDelete = makeOperation(http, "api/data", "DELETE", "delete-holon/{id}/{softDelete}");
+    // DELETE api/data/delete-holon/{id}/{softDelete}/{providerType}/{setGlobally}
+    this.deleteHolonByIdSoftDelete2 = makeOperation(http, "api/data", "DELETE", "delete-holon/{id}/{softDelete}/{providerType}/{setGlobally}");
+    // DELETE api/data/delete-holon/{id}/{softDelete}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}
+    this.deleteHolonByIdSoftDelete3 = makeOperation(http, "api/data", "DELETE", "delete-holon/{id}/{softDelete}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}");
+    // DELETE api/data/delete-holon-by-providerkey/{providerKey}
+    this.deleteHolonByProviderKey = makeOperation(http, "api/data", "DELETE", "delete-holon-by-providerkey/{providerKey}");
+    // POST api/data/query-cql/demo-identities
+    this.demoIdentities = makeOperation(http, "api/data", "POST", "query-cql/demo-identities");
+    // POST api/data/query-cql/federation
+    this.federation = makeOperation(http, "api/data", "POST", "query-cql/federation");
+    // GET api/data/access-log
+    this.getAccessLog = makeOperation(http, "api/data", "GET", "access-log");
+    // GET api/data/current-avatar/holon-count
+    this.getCurrentAvatarHolonCount = makeOperation(http, "api/data", "GET", "current-avatar/holon-count");
+    // GET api/data/holon-access-log/{id}
+    this.getHolonAccessLog = makeOperation(http, "api/data", "GET", "holon-access-log/{id}");
+    // GET api/data/holon-audit-trail/{id}
+    this.getHolonAuditTrail = makeOperation(http, "api/data", "GET", "holon-audit-trail/{id}");
+    // GET api/data/copy-holon/providers
+    this.getHolonCopyProviders = makeOperation(http, "api/data", "GET", "copy-holon/providers");
+    // GET api/data/holon-purge/status/{id}
+    this.getHolonPurgeStatus = makeOperation(http, "api/data", "GET", "holon-purge/status/{id}");
+    // GET api/data/load-all-holons/{holonType}
+    this.getLoadAllHolonsByHolonType = makeOperation(http, "api/data", "GET", "load-all-holons/{holonType}");
+    // GET api/data/load-all-holons/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}
+    this.getLoadAllHolonsByHolonTypeLoadChildren = makeOperation(http, "api/data", "GET", "load-all-holons/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}");
+    // GET api/data/load-all-holons/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}
+    this.getLoadAllHolonsByHolonTypeLoadChildren2 = makeOperation(http, "api/data", "GET", "load-all-holons/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}");
+    // GET api/data/load-all-holons/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}
+    this.getLoadAllHolonsByHolonTypeLoadChildren3 = makeOperation(http, "api/data", "GET", "load-all-holons/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}");
+    // GET api/data/load-data/{key}/{value}
+    this.getLoadDataByKeyValue = makeOperation(http, "api/data", "GET", "load-data/{key}/{value}");
+    // GET api/data/load-data/{key}/{value}/{providerType}/{setGlobally}
+    this.getLoadDataByKeyValue2 = makeOperation(http, "api/data", "GET", "load-data/{key}/{value}/{providerType}/{setGlobally}");
+    // GET api/data/load-data/{key}/{value}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}
+    this.getLoadDataByKeyValue3 = makeOperation(http, "api/data", "GET", "load-data/{key}/{value}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}");
+    // GET api/data/load-file/{id}
+    this.getLoadFileById = makeOperation(http, "api/data", "GET", "load-file/{id}");
+    // GET api/data/load-file/{id}/{providerType}/{setGlobally}
+    this.getLoadFileByIdProviderType = makeOperation(http, "api/data", "GET", "load-file/{id}/{providerType}/{setGlobally}");
+    // GET api/data/load-file/{id}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}
+    this.getLoadFileByIdProviderType2 = makeOperation(http, "api/data", "GET", "load-file/{id}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}");
+    // GET api/data/load-holon/{id}
+    this.getLoadHolonById = makeOperation(http, "api/data", "GET", "load-holon/{id}");
+    // GET api/data/load-holon/{id}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}
+    this.getLoadHolonByIdLoadChildren = makeOperation(http, "api/data", "GET", "load-holon/{id}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}");
+    // GET api/data/load-holon/{id}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}
+    this.getLoadHolonByIdLoadChildren2 = makeOperation(http, "api/data", "GET", "load-holon/{id}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}");
+    // GET api/data/load-holon/{id}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}
+    this.getLoadHolonByIdLoadChildren3 = makeOperation(http, "api/data", "GET", "load-holon/{id}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}");
+    // GET api/data/load-holon-by-metadata/{metaKey}/{metaValue}
+    this.getLoadHolonByMetadataByMetaKeyMetaValue = makeOperation(http, "api/data", "GET", "load-holon-by-metadata/{metaKey}/{metaValue}");
+    // GET api/data/load-holon-by-metadata/{metaKey}/{metaValue}/{holonType}
+    this.getLoadHolonByMetadataByMetaKeyMetaValue2 = makeOperation(http, "api/data", "GET", "load-holon-by-metadata/{metaKey}/{metaValue}/{holonType}");
+    // GET api/data/load-holon-by-metadata/{metaKey}/{metaValue}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}
+    this.getLoadHolonByMetadataByMetaKeyMetaValue3 = makeOperation(http, "api/data", "GET", "load-holon-by-metadata/{metaKey}/{metaValue}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}");
+    // GET api/data/load-holons-by-metadata/{metaKey}/{metaValue}
+    this.getLoadHolonsByMetadataByMetaKeyMetaValue = makeOperation(http, "api/data", "GET", "load-holons-by-metadata/{metaKey}/{metaValue}");
+    // GET api/data/load-holons-by-metadata/{metaKey}/{metaValue}/{holonType}
+    this.getLoadHolonsByMetadataByMetaKeyMetaValue2 = makeOperation(http, "api/data", "GET", "load-holons-by-metadata/{metaKey}/{metaValue}/{holonType}");
+    // GET api/data/load-holons-by-metadata/{metaKey}/{metaValue}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}
+    this.getLoadHolonsByMetadataByMetaKeyMetaValue3 = makeOperation(http, "api/data", "GET", "load-holons-by-metadata/{metaKey}/{metaValue}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}");
+    // GET api/data/load-holons-for-parent/{id}/{holonType}
+    this.getLoadHolonsForParentByIdHolonType = makeOperation(http, "api/data", "GET", "load-holons-for-parent/{id}/{holonType}");
+    // GET api/data/load-holons-for-parent/{id}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}
+    this.getLoadHolonsForParentByIdHolonType2 = makeOperation(http, "api/data", "GET", "load-holons-for-parent/{id}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}");
+    // GET api/data/load-holons-for-parent/{id}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}
+    this.getLoadHolonsForParentByIdHolonType3 = makeOperation(http, "api/data", "GET", "load-holons-for-parent/{id}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}");
+    // GET api/data/load-holons-for-parent/{id}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}
+    this.getLoadHolonsForParentByIdHolonType4 = makeOperation(http, "api/data", "GET", "load-holons-for-parent/{id}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}");
+    // GET api/data/load-holons-for-parent-by-providerkey/{providerKey}/{holonType}
+    this.getLoadHolonsForParentByProviderkeyByProviderKeyHolonType = makeOperation(http, "api/data", "GET", "load-holons-for-parent-by-providerkey/{providerKey}/{holonType}");
+    // GET api/data/save-data/{key}/{value}
+    this.getSaveDataByKeyValue = makeOperation(http, "api/data", "GET", "save-data/{key}/{value}");
+    // GET api/data/save-data/{key}/{value}/{providerType}/{setGlobally}
+    this.getSaveDataByKeyValue2 = makeOperation(http, "api/data", "GET", "save-data/{key}/{value}/{providerType}/{setGlobally}");
+    // GET api/data/save-data/{key}/{value}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}
+    this.getSaveDataByKeyValue3 = makeOperation(http, "api/data", "GET", "save-data/{key}/{value}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}");
+    // GET api/data/save-file/{data}
+    this.getSaveFileByData = makeOperation(http, "api/data", "GET", "save-file/{data}");
+    // GET api/data/save-file/{data}/{providerType}/{setGlobally}
+    this.getSaveFileByDataProviderType = makeOperation(http, "api/data", "GET", "save-file/{data}/{providerType}/{setGlobally}");
+    // GET api/data/save-file/{data}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}
+    this.getSaveFileByDataProviderType2 = makeOperation(http, "api/data", "GET", "save-file/{data}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}");
+    // GET api/data/search-holons/{searchTerm}
+    this.getSearchHolonsBySearchTerm = makeOperation(http, "api/data", "GET", "search-holons/{searchTerm}");
+    // GET api/data/search-holons/{searchTerm}/{holonType}
+    this.getSearchHolonsBySearchTermHolonType = makeOperation(http, "api/data", "GET", "search-holons/{searchTerm}/{holonType}");
+    // POST api/data/query-cql/grouped
+    this.grouped = makeOperation(http, "api/data", "POST", "query-cql/grouped");
+    // POST api/data/query-cql/indexed
+    this.indexed = makeOperation(http, "api/data", "POST", "query-cql/indexed");
+    // POST api/data/query-cql/indexed/scalar
+    this.indexedScalar = makeOperation(http, "api/data", "POST", "query-cql/indexed/scalar");
+    // POST api/data/query-cql/join
+    this.join = makeOperation(http, "api/data", "POST", "query-cql/join");
     // POST api/data/load-all-holons
     this.loadAllHolons = makeOperation(http, "api/data", "POST", "load-all-holons");
     // POST api/data/load-data
     this.loadData = makeOperation(http, "api/data", "POST", "load-data");
     // POST api/data/load-file
     this.loadFile = makeOperation(http, "api/data", "POST", "load-file");
+    // POST api/data/load-file-chunk
+    this.loadFileChunk = makeOperation(http, "api/data", "POST", "load-file-chunk");
+    // POST api/data/load-file-info
+    this.loadFileInfo = makeOperation(http, "api/data", "POST", "load-file-info");
     // POST api/data/load-holon
     this.loadHolon = makeOperation(http, "api/data", "POST", "load-holon");
+    // POST api/data/load-holon-by-metadata
+    this.loadHolonByMetaData = makeOperation(http, "api/data", "POST", "load-holon-by-metadata");
+    // GET api/data/load-holon-by-providerkey/{providerKey}
+    this.loadHolonByProviderKey = makeOperation(http, "api/data", "GET", "load-holon-by-providerkey/{providerKey}");
+    // POST api/data/load-holons-by-metadata
+    this.loadHolonsByMetaData = makeOperation(http, "api/data", "POST", "load-holons-by-metadata");
     // POST api/data/load-holons-for-parent
     this.loadHolonsForParent = makeOperation(http, "api/data", "POST", "load-holons-for-parent");
+    // GET api/data/load-holons-for-parent-by-providerkey/{providerKey}
+    this.loadHolonsForParentByProviderKey = makeOperation(http, "api/data", "GET", "load-holons-for-parent-by-providerkey/{providerKey}");
+    // POST api/data/query-cql/projection/mixed
+    this.mixedProjection = makeOperation(http, "api/data", "POST", "query-cql/projection/mixed");
+    // POST api/data/holon-audit-trail/{id}
+    this.postHolonAuditTrail = makeOperation(http, "api/data", "POST", "holon-audit-trail/{id}");
+    // POST api/data/query-cql/projection
+    this.projection = makeOperation(http, "api/data", "POST", "query-cql/projection");
+    // GET api/data/query-cql/providers
+    this.providers = makeOperation(http, "api/data", "GET", "query-cql/providers");
+    // DELETE api/data/purge-holon/{id}
+    this.purgeHolon = makeOperation(http, "api/data", "DELETE", "purge-holon/{id}");
+    // POST api/data/purge-holons
+    this.purgeHolons = makeOperation(http, "api/data", "POST", "purge-holons");
+    // POST api/data/query-cql
+    this.query = makeOperation(http, "api/data", "POST", "query-cql");
+    // POST api/data/~
+    this.recoverConditionalOperation = makeOperation(http, "api/data", "POST", "~");
+    // DELETE api/data/holon-purge-hold/{id}
+    this.releaseHolonPurgeHold = makeOperation(http, "api/data", "DELETE", "holon-purge-hold/{id}");
     // POST api/data/save-data
     this.saveData = makeOperation(http, "api/data", "POST", "save-data");
     // POST api/data/save-file
     this.saveFile = makeOperation(http, "api/data", "POST", "save-file");
+    // POST api/data/save-file-chunk
+    this.saveFileChunk = makeOperation(http, "api/data", "POST", "save-file-chunk");
     // POST api/data/save-holon
     this.saveHolon = makeOperation(http, "api/data", "POST", "save-holon");
+    // POST api/data/save-holon/{holon}
+    this.saveHolonByHolon = makeOperation(http, "api/data", "POST", "save-holon/{holon}");
+    // POST api/data/save-holon/{saveChildren}/{recursive}/{maxChildDepth}/{continueOnError}
+    this.saveHolonBySaveChildrenRecursive = makeOperation(http, "api/data", "POST", "save-holon/{saveChildren}/{recursive}/{maxChildDepth}/{continueOnError}");
+    // POST api/data/save-holon/{saveChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{providerType}/{setGlobally}
+    this.saveHolonBySaveChildrenRecursive2 = makeOperation(http, "api/data", "POST", "save-holon/{saveChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{providerType}/{setGlobally}");
+    // POST api/data/save-holon/{saveChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{AutoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}
+    this.saveHolonBySaveChildrenRecursive3 = makeOperation(http, "api/data", "POST", "save-holon/{saveChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{AutoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}");
     // POST api/data/save-holon-off-chain
     this.saveHolonOffChain = makeOperation(http, "api/data", "POST", "save-holon-off-chain");
     // POST api/data/save-holons
     this.saveHolons = makeOperation(http, "api/data", "POST", "save-holons");
-    // POST api/data/load-holon-by-metadata
-    this.loadHolonByMetaData = makeOperation(http, "api/data", "POST", "load-holon-by-metadata");
-    // POST api/data/load-holons-by-metadata
-    this.loadHolonsByMetaData = makeOperation(http, "api/data", "POST", "load-holons-by-metadata");
+    // POST api/data/query-cql/scalar
+    this.scalar = makeOperation(http, "api/data", "POST", "query-cql/scalar");
     // POST api/data/search-holons
     this.searchHolons = makeOperation(http, "api/data", "POST", "search-holons");
-    // GET api/data/load-holon-by-providerkey/{providerKey}
-    this.loadHolonByProviderKey = makeOperation(http, "api/data", "GET", "load-holon-by-providerkey/{providerKey}");
-    // GET api/data/load-holons-for-parent-by-providerkey/{providerKey}
-    this.loadHolonsForParentByProviderKey = makeOperation(http, "api/data", "GET", "load-holons-for-parent-by-providerkey/{providerKey}");
-    // DELETE api/data/delete-holon-by-providerkey/{providerKey}
-    this.deleteHolonByProviderKey = makeOperation(http, "api/data", "DELETE", "delete-holon-by-providerkey/{providerKey}");
+    // POST api/data/query-cql/set
+    this.set = makeOperation(http, "api/data", "POST", "query-cql/set");
+    // POST api/data/holon-purge-hold/{id}
+    this.setHolonPurgeHold = makeOperation(http, "api/data", "POST", "holon-purge-hold/{id}");
+    // GET api/data/holon-seal/verify/{id}
+    this.verifyHolonSeal = makeOperation(http, "api/data", "GET", "holon-seal/verify/{id}");
   }
 }
 

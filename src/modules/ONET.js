@@ -29,14 +29,18 @@ class ONETModule {
     this.getNetworkStatus = makeOperation(http, "api/v1/onet", "GET", "network/status");
     // GET api/v1/onet/network/topology
     this.getNetworkTopology = makeOperation(http, "api/v1/onet", "GET", "network/topology");
-    // GET api/v1/onet/oasisdna
-    this.getOASISDNA = makeOperation(http, "api/v1/onet", "GET", "oasisdna");
+    // GET api/v1/onet/config
+    this.getONETConfig = makeOperation(http, "api/v1/onet", "GET", "config");
+    // GET api/v1/onet/peers
+    this.getPeers = makeOperation(http, "api/v1/onet", "GET", "peers");
+    // POST api/v1/onet/nodes/register
+    this.registerNode = makeOperation(http, "api/v1/onet", "POST", "nodes/register");
     // POST api/v1/onet/network/start
     this.startNetwork = makeOperation(http, "api/v1/onet", "POST", "network/start");
     // POST api/v1/onet/network/stop
     this.stopNetwork = makeOperation(http, "api/v1/onet", "POST", "network/stop");
-    // PUT api/v1/onet/oasisdna
-    this.updateOASISDNA = makeOperation(http, "api/v1/onet", "PUT", "oasisdna");
+    // PUT api/v1/onet/config
+    this.updateONETConfig = makeOperation(http, "api/v1/onet", "PUT", "config");
   }
 }
 

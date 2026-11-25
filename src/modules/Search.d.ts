@@ -7,6 +7,9 @@ export declare class SearchModule {
   /** GET api/search/{searchParams} */
   get(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/search/{searchParams}/{providerType}/{setGlobally} */
+  getRootBySearchParamsProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/search/ */
   search(args?: Record<string, any>): Promise<OASISResponse>;
 }

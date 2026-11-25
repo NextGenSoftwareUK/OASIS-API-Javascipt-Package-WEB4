@@ -13,6 +13,9 @@ export declare class GiftsModule {
   /** GET api/gifts/my-gifts */
   getMyGifts(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/gifts/my-gifts/summary */
+  getMyGiftSummary(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/gifts/open-gift/{giftId} */
   openGift(args?: Record<string, any>): Promise<OASISResponse>;
 

@@ -65,20 +65,14 @@ class KeysModule {
     this.getAvatarEmailForProviderPublicKey = makeOperation(http, "api/keys", "GET", "get-avatar-email-for-provider-public-key/{providerKey}");
     // GET api/keys/get-avatar-email-for-provider-unique-storage-key/{providerKey}
     this.getAvatarEmailForProviderUniqueStorageKey = makeOperation(http, "api/keys", "GET", "get-avatar-email-for-provider-unique-storage-key/{providerKey}");
-    // GET api/keys/get-avatar-for-provider-private-key/{providerKey}
-    this.getAvatarForProviderPrivateKey = makeOperation(http, "api/keys", "GET", "get-avatar-for-provider-private-key/{providerKey}");
     // GET api/keys/get-avatar-for-provider-public-key/{providerKey}
     this.getAvatarForProviderPublicKey = makeOperation(http, "api/keys", "GET", "get-avatar-for-provider-public-key/{providerKey}");
     // GET api/keys/get-avatar-for-provider-unique-storage-key/{providerKey}
     this.getAvatarForProviderUniqueStorageKey = makeOperation(http, "api/keys", "GET", "get-avatar-for-provider-unique-storage-key/{providerKey}");
-    // GET api/keys/get-avatar-id-for-provider-private-key/{providerKey}
-    this.getAvatarIdForProviderPrivateKey = makeOperation(http, "api/keys", "GET", "get-avatar-id-for-provider-private-key/{providerKey}");
     // GET api/keys/get-avatar-id-for-provider-public-key/{providerKey}
     this.getAvatarIdForProviderPublicKey = makeOperation(http, "api/keys", "GET", "get-avatar-id-for-provider-public-key/{providerKey}");
     // GET api/keys/get-avatar-id-for-provider-unique-storage-key/{providerKey}
     this.getAvatarIdForProviderUniqueStorageKey = makeOperation(http, "api/keys", "GET", "get-avatar-id-for-provider-unique-storage-key/{providerKey}");
-    // GET api/keys/get-avatar-username-for-provider-private-key/{providerKey}
-    this.getAvatarUsernameForProviderPrivateKey = makeOperation(http, "api/keys", "GET", "get-avatar-username-for-provider-private-key/{providerKey}");
     // GET api/keys/get-avatar-username-for-provider-public-key/{providerKey}
     this.getAvatarUsernameForProviderPublicKey = makeOperation(http, "api/keys", "GET", "get-avatar-username-for-provider-public-key/{providerKey}");
     // GET api/keys/get-avatar-username-for-provider-unique-storage-key/{providerKey}
@@ -105,14 +99,8 @@ class KeysModule {
     this.getProviderUniqueStorageKeyForAvatarByUsername = makeOperation(http, "api/keys", "GET", "get-provider-unique-storage-key-for-avatar-by-username");
     // POST api/keys/get-public-wifi
     this.getPublicWif = makeOperation(http, "api/keys", "POST", "get-public-wifi");
-    // POST api/keys/{avatarId}/{eosioAccountName}
-    this.linkEOSIOAccountToAvatar = makeOperation(http, "api/keys", "POST", "{avatarId}/{eosioAccountName}");
-    // POST api/keys/{avatarId}/{holochainAgentID}
-    this.linkHolochainAgentIDToAvatar = makeOperation(http, "api/keys", "POST", "{avatarId}/{holochainAgentID}");
     // POST api/keys/link-provider-private-key-to-avatar-by-id
     this.linkProviderPrivateKeyToAvatarByAvatarId = makeOperation(http, "api/keys", "POST", "link-provider-private-key-to-avatar-by-id");
-    // POST api/keys/link-provider-private-key-to-avatar-by-email
-    this.linkProviderPrivateKeyToAvatarByEmail = makeOperation(http, "api/keys", "POST", "link-provider-private-key-to-avatar-by-email");
     // POST api/keys/link-provider-private-key-to-avatar-by-username
     this.linkProviderPrivateKeyToAvatarByUsername = makeOperation(http, "api/keys", "POST", "link-provider-private-key-to-avatar-by-username");
     // POST api/keys/link-provider-public-key-to-avatar-by-id
@@ -127,10 +115,6 @@ class KeysModule {
     this.linkProviderWalletAddressToAvatarById = makeOperation(http, "api/keys", "POST", "link-provider-wallet-address-to-avatar-by-id");
     // POST api/keys/link-provider-wallet-address-to-avatar-by-username
     this.linkProviderWalletAddressToAvatarByUsername = makeOperation(http, "api/keys", "POST", "link-provider-wallet-address-to-avatar-by-username");
-    // POST api/keys/{id:Guid}/{telosAccountName}
-    this.linkTelosAccountToAvatar = makeOperation(http, "api/keys", "POST", "{id:Guid}/{telosAccountName}");
-    // POST api/keys/
-    this.linkTelosAccountToAvatar2 = makeOperation(http, "api/keys", "POST", "");
     // PUT api/keys/{keyId}
     this.updateKey = makeOperation(http, "api/keys", "PUT", "{keyId}");
   }

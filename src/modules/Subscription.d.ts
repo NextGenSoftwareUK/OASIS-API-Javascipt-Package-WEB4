@@ -4,11 +4,68 @@ import type { OASISResponse } from '../core/types';
 export declare class SubscriptionModule {
   constructor(http: unknown);
 
+  /** GET api/subscription/usage/alerts */
+  alerts(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/admin/analytics */
+  analytics(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/admin/app-accounts */
+  appAccounts(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/admin/app-accounts/{appId}/usage */
+  appPoolUsage(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/admin/app-accounts/{appId}/usage/series */
+  appSeriesAdmin(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/admin/app-accounts/{appId}/top-users */
+  appTopUsers(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/admin/usage/audit */
+  audit(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/usage/authorize-delegated */
+  authorizeDelegatedUsage(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/authorize-request */
+  authorizeRequest(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/usage/authorize */
+  authorizeUsage(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/app-owner/{appId}/payg */
+  billing(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/checkout/operations/{operationId}/cancel */
+  cancelPendingCheckout(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/subscription/check-hyperdrive-quota */
   checkHyperDriveQuota(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/subscription/usage/admin/corrections */
+  correctUsage(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/admin/app-accounts */
+  createAppAccount(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/billing/portal */
+  createBillingPortal(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/subscription/checkout/session */
   createCheckoutSession(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/usage/grants */
+  createUsageGrant(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/admin/usage/events */
+  events(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/usage/current */
+  getAuthoritativeUsage(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/checkout/session/{sessionId} */
+  getCheckoutSessionStatus(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/subscription/hyperdrive-usage */
   getHyperDriveUsage(args?: Record<string, any>): Promise<OASISResponse>;
@@ -19,18 +76,141 @@ export declare class SubscriptionModule {
   /** GET api/subscription/subscriptions/me */
   getMySubscriptions(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/subscription/overages/statements */
+  getOverageStatements(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/overages/admin/statements */
+  getOverageStatementsAdmin(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/overages/prices */
+  getPaidOveragePrices(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/checkout/pending */
+  getPendingCheckouts(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/subscription/plans */
   getPlans(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/subscription/usage */
   getUsage(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/subscription/usage/audit */
+  getUsageAudit(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/usage/events */
+  getUsageEvents(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/usage/admin/migration/inventory */
+  getUsageMigrationInventory(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/usage/notifications */
+  getUsageNotifications(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/admin/plan-grant */
+  grantPlan(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/usage/admin/migration/opening-balance */
+  importUsageOpeningBalance(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/admin/invoices */
+  invoices(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/usage/grants */
+  listUsageGrants(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/app-owner/apps */
+  myApps(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/usage/estimate */
+  myEstimate(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/usage/series */
+  mySeries(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/app-owner/{appId}/notifications */
+  notifications(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/admin/outboxes */
+  outboxes(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/app-owner/{appId}/payg/pay-now */
+  payNow(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/overages/pay-now */
+  payOveragesNow(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/usage/admin/reconciliation/provider-receipts */
+  providerReceipt(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/checkout/operations/{operationId}/reconcile */
+  reconcileCheckout(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/usage/admin/reconciliation/reports */
+  reports(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/admin/outboxes/requeue */
+  requeue(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/usage/grants/{grantId}/revoke */
+  revokeUsageGrant(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/admin/app-accounts/{appId}/rotate-key */
+  rotateAppAccountKey(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/usage/admin/reconciliation/run */
+  run(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/usage/notifications */
+  save(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/app-owner/{appId}/payg */
+  saveBilling(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/app-owner/{appId}/notifications */
+  saveNotifications(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/app-owner/{appId}/settings */
+  saveSettings(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/usage/alerts/email */
+  sendWarningEmails(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/admin/app-accounts/{appId}/owners */
+  setAppOwners(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/app-owner/{appId}/settings */
+  settings(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/usage/settle-native-v1 */
+  settleNativeUsage(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/usage/settle */
+  settleUsage(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/usage/start */
+  startUsage(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/subscription/usage/admin/reconciliation/stripe-invoices */
+  stripeInvoice(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/subscription/webhooks/stripe */
   stripeWebhook(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/admin/subscriptions */
+  subscriptions(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/subscription/toggle-pay-as-you-go */
   togglePayAsYouGo(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/subscription/admin/app-accounts/{appId} */
+  updateAppAccount(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/subscription/update-hyperdrive-config */
   updateHyperDriveConfig(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/app-owner/{appId}/usage */
+  usage(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/subscription/admin/users/{userId}/usage/series */
+  userSeriesAdmin(args?: Record<string, any>): Promise<OASISResponse>;
 }

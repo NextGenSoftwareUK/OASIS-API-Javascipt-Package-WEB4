@@ -10,14 +10,29 @@ export declare class AvatarModule {
   /** POST api/avatar/add-karma-to-avatar/{avatarId} */
   addKarmaToAvatar(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/avatar/add-karma-to-avatar/{avatarId}/{providerType}/{setGlobally} */
+  addKarmaToAvatarByAvatarIdProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/avatar/add-xp */
   addXp(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** PATCH api/avatar/profile */
+  applyProfile(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/avatar/account-closure/assessment */
+  assess(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/avatar/authenticate */
   authenticate(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/avatar/authenticate/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{AutoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings} */
+  authenticateByProviderTypeSetGlobally(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/avatar/authenticate-did */
   authenticateDid(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/avatar/authenticate-mfa */
+  authenticateMfa(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/avatar/authenticate-token/{JWTToken} */
   authenticateToken(args?: Record<string, any>): Promise<OASISResponse>;
@@ -31,8 +46,8 @@ export declare class AvatarModule {
   /** GET api/avatar/inventory/has-by-name */
   avatarHasItemByName(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/avatar/create/{model} */
-  create(args?: Record<string, any>): Promise<OASISResponse>;
+  /** POST api/avatar/mfa/confirm */
+  confirm(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/avatar/{avatarId}/sessions */
   createAvatarSession(args?: Record<string, any>): Promise<OASISResponse>;
@@ -43,11 +58,32 @@ export declare class AvatarModule {
   /** DELETE api/avatar/delete-by-email/{email} */
   deleteByEmail(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** DELETE api/avatar/delete-by-email/{email}/{providerType}/{setGlobally} */
+  deleteByEmailByEmailProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** DELETE api/avatar/delete-by-username/{username} */
   deleteByUsername(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** DELETE api/avatar/delete-by-username/{username}/{providerType}/{setGlobally} */
+  deleteByUsernameByUsernameProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** DELETE api/avatar/{id}/{providerType}/{setGlobally} */
+  deleteRootByIdProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/avatar/mfa/disable */
+  disable(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/avatar/mfa/enrol */
+  enrol(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/avatar/mfa/events */
+  events(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/avatar/forgot-password */
   forgotPassword(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/avatar/forgot-password/{providerType}/{setGlobally} */
+  forgotPasswordByProviderTypeSetGlobally(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/avatar/generate-key-pair */
   generateKeyPair(args?: Record<string, any>): Promise<OASISResponse>;
@@ -58,11 +94,23 @@ export declare class AvatarModule {
   /** GET api/avatar/get-all-avatar-details */
   getAllAvatarDetails(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/avatar/get-all-avatar-details/{providerType}/{setGlobally} */
+  getAllAvatarDetailsByProviderTypeSetGlobally(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/avatar/get-all-avatar-names/{includeUsernames}/{includeIds} */
   getAllAvatarNames(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/avatar/get-all-avatar-names/{includeUsernames}/{includeIds}/{providerType}/{setGlobally} */
+  getAllAvatarNamesByIncludeUsernamesIncludeIds(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/avatar/get-all-avatar-names-grouped-by-name/{includeUsernames}/{includeIds} */
   getAllAvatarNamesGroupedByName(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/avatar/get-all-avatar-names-grouped-by-name/{includeUsernames}/{includeIds}/{providerType}/{setGlobally} */
+  getAllAvatarNamesGroupedByNameByIncludeUsernamesIncludeIds(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/avatar/get-all-avatars/{providerType}/{setGlobally} */
+  getAllAvatarsByProviderTypeSetGlobally(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/avatar/get-avatar-detail-by-id/{id:guid} */
   getAvatarDetail(args?: Record<string, any>): Promise<OASISResponse>;
@@ -70,11 +118,23 @@ export declare class AvatarModule {
   /** GET api/avatar/get-avatar-detail-by-email/{email} */
   getAvatarDetailByEmail(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/avatar/get-avatar-detail-by-email/{email}/{providerType}/{setGlobally} */
+  getAvatarDetailByEmailByEmailProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/avatar/get-avatar-detail-by-id/{id}/{providerType}/{setGlobally} */
+  getAvatarDetailByIdByIdProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/avatar/get-avatar-detail-by-username/{username} */
   getAvatarDetailByUsername(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/avatar/get-avatar-detail-by-username/{username}/{providerType}/{setGlobally} */
+  getAvatarDetailByUsernameByUsernameProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/avatar/inventory */
   getAvatarInventory(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/avatar/inventory/count */
+  getAvatarInventoryCount(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/avatar/inventory/{itemId} */
   getAvatarInventoryItem(args?: Record<string, any>): Promise<OASISResponse>;
@@ -82,11 +142,20 @@ export declare class AvatarModule {
   /** GET api/avatar/get-avatar-portrait-by-email/{email} */
   getAvatarPortraitByEmail(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/avatar/get-avatar-portrait-by-email/{email}/{providerType}/{setGlobally} */
+  getAvatarPortraitByEmailByEmailProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/avatar/get-avatar-portrait/{id} */
   getAvatarPortraitById(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/avatar/get-avatar-portrait/{id}/{providerType}/{setGlobally} */
+  getAvatarPortraitByIdProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/avatar/get-avatar-portrait-by-username/{username} */
   getAvatarPortraitByUsername(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/avatar/get-avatar-portrait-by-username/{username}/{providerType}/{setGlobally} */
+  getAvatarPortraitByUsernameByUsernameProviderType(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/avatar/{avatarId}/sessions */
   getAvatarSessions(args?: Record<string, any>): Promise<OASISResponse>;
@@ -97,20 +166,41 @@ export declare class AvatarModule {
   /** GET api/avatar/get-by-email/{email} */
   getByEmail(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/avatar/get-by-email/{email}/{providerType}/{setGlobally} */
+  getByEmailByEmailProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/avatar/get-by-id/{id} */
   getById(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/avatar/get-by-id/{id}/{providerType}/{setGlobally} */
+  getByIdByIdProviderType(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/avatar/get-by-username/{username} */
   getByUsername(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/avatar/get-by-username/{username}/{providerType}/{setGlobally} */
+  getByUsernameByUsernameProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/avatar/did-challenge/{did} */
   getDidChallenge(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/avatar/holon-seal */
+  getHolonSeal(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/avatar/get-level-thresholds */
+  getLevelThresholds(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/avatar/get-logged-in-avatar */
   getLoggedInAvatar(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/avatar/get-logged-in-avatar/{providerType}/{setGlobally} */
+  getLoggedInAvatarByProviderTypeSetGlobally(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/avatar/get-logged-in-avatar-with-xp */
   getLoggedInAvatarWithXp(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/avatar/profile */
+  getProfile(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/avatar/provider-private-keys/by-id/{avatarId}/{providerType} */
   getProviderPrivateKeysById(args?: Record<string, any>): Promise<OASISResponse>;
@@ -139,29 +229,29 @@ export declare class AvatarModule {
   /** GET api/avatar/get-uma-json-by-email/{email} */
   getUmaJsonByEmail(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/avatar/get-uma-json-by-email/{email}/{providerType}/{setGlobally} */
+  getUmaJsonByEmailByEmailProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/avatar/get-uma-json-by-id/{id} */
   getUmaJsonById(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/avatar/get-uma-json-by-id/{id}/{providerType}/{setGlobally} */
+  getUmaJsonByIdByIdProviderType(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/avatar/get-uma-json-by-username/{username} */
   getUmaJsonByUsername(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/avatar/{avatarId}/{eosioAccountName} */
-  linkEOSIOAccountToAvatar(args?: Record<string, any>): Promise<OASISResponse>;
+  /** GET api/avatar/get-uma-json-by-username/{username}/{providerType}/{setGlobally} */
+  getUmaJsonByUsernameByUsernameProviderType(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/avatar/{avatarId}/{holochainAgentID} */
-  linkHolochainAgentIDToAvatar(args?: Record<string, any>): Promise<OASISResponse>;
+  /** GET api/avatar/version-purge */
+  getVersionPurge(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/avatar/link-public-key/by-id */
   linkPublicKeyById(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/avatar/link-public-key/by-username */
   linkPublicKeyByUsername(args?: Record<string, any>): Promise<OASISResponse>;
-
-  /** POST api/avatar/{id:Guid}/{telosAccountName} */
-  linkTelosAccountToAvatar(args?: Record<string, any>): Promise<OASISResponse>;
-
-  /** POST api/avatar/ */
-  linkTelosAccountToAvatar2(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/avatar/{avatarId}/sessions/logout-all */
   logoutAllAvatarSessions(args?: Record<string, any>): Promise<OASISResponse>;
@@ -171,6 +261,12 @@ export declare class AvatarModule {
 
   /** POST api/avatar/refresh-token */
   refreshToken(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/avatar/refresh-token/{providerType}/{setGlobally} */
+  refreshTokenByProviderTypeSetGlobally(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/avatar/mfa/recovery-codes */
+  regenerateRecoveryCodes(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/avatar/register */
   register(args?: Record<string, any>): Promise<OASISResponse>;
@@ -184,11 +280,23 @@ export declare class AvatarModule {
   /** POST api/avatar/remove-karma-from-avatar/{avatarId} */
   removeKarmaFromAvatar(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/avatar/remove-karma-from-avatar/{avatarId}/{providerType}/{setGlobally} */
+  removeKarmaFromAvatarByAvatarIdProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/avatar/mfa/reset/{avatarId} */
+  reset(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/avatar/reset-password */
   resetPassword(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/avatar/reset-password/{providerType}/{setGlobally} */
+  resetPasswordByProviderTypeSetGlobally(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/avatar/revoke-token */
   revokeToken(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/avatar/revoke-token/{providerType}/{setGlobally} */
+  revokeTokenByProviderTypeSetGlobally(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/avatar/search */
   searchAvatar(args?: Record<string, any>): Promise<OASISResponse>;
@@ -196,17 +304,32 @@ export declare class AvatarModule {
   /** GET api/avatar/inventory/search */
   searchAvatarInventory(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/avatar/search/{providerType}/{setGlobally} */
+  searchByProviderTypeSetGlobally(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/avatar/search-directory */
+  searchDirectory(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/avatar/inventory/send-to-avatar */
   sendItemToAvatar(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/avatar/inventory/send-to-clan */
   sendItemToClan(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/avatar/inventory/send-to-clan-atomic */
+  sendItemToClanAtomic(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/avatar/holon-seal */
+  set(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/avatar/set-active-quest */
   setActiveQuest(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/avatar/sharing/{target} */
   setSharing(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/avatar/mfa/status */
+  status(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/avatar/update-by-id/{id} */
   update(args?: Record<string, any>): Promise<OASISResponse>;
@@ -217,8 +340,17 @@ export declare class AvatarModule {
   /** POST api/avatar/update-avatar-detail-by-email/{email} */
   updateAvatarDetailByEmail(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/avatar/update-avatar-detail-by-email/{email}/{providerType}/{setGlobally} */
+  updateAvatarDetailByEmailByEmailProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/avatar/update-avatar-detail-by-id/{id}/{providerType}/{setGlobally} */
+  updateAvatarDetailByIdByIdProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/avatar/update-avatar-detail-by-username/{username} */
   updateAvatarDetailByUsername(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/avatar/update-avatar-detail-by-username/{username}/{providerType}/{setGlobally} */
+  updateAvatarDetailByUsernameByUsernameProviderType(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** PUT api/avatar/{avatarId}/sessions/{sessionId} */
   updateAvatarSession(args?: Record<string, any>): Promise<OASISResponse>;
@@ -226,11 +358,26 @@ export declare class AvatarModule {
   /** POST api/avatar/update-by-email/{email} */
   updateByEmail(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/avatar/update-by-email/{email}/{providerType}/{setGlobally} */
+  updateByEmailByEmailProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/avatar/update-by-id/{id}/{providerType}/{setGlobally} */
+  updateByIdByIdProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/avatar/update-by-username/{username} */
   updateByUsername(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/avatar/update-by-username/{username}/{providerType}/{setGlobally} */
+  updateByUsernameByUsernameProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** PUT api/avatar/inventory/{itemId} */
+  updateItemInAvatarInventory(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/avatar/upload-avatar-portrait */
   uploadAvatarPortrait(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/avatar/upload-avatar-portrait/{providerType}/{setGlobally} */
+  uploadAvatarPortraitByProviderTypeSetGlobally(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/avatar/validate-account-token */
   validateAccountToken(args?: Record<string, any>): Promise<OASISResponse>;
@@ -238,15 +385,24 @@ export declare class AvatarModule {
   /** POST api/avatar/validate-reset-token */
   validateResetToken(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/avatar/validate-reset-token/{providerType}/{setGlobally} */
+  validateResetTokenByProviderTypeSetGlobally(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/avatar/{avatarId}/verify */
   verifyAvatar(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/avatar/verify-email */
   verifyEmail(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/avatar/verify-email/{providerType}/{setGlobally} */
+  verifyEmailByProviderTypeSetGlobally(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/avatar/verify-email */
   verifyEmailPost(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/avatar/verify-email/{providerType}/{setGlobally} */
   verifyEmailWithProvider(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/avatar/version-purge */
+  versionPurge(args?: Record<string, any>): Promise<OASISResponse>;
 }

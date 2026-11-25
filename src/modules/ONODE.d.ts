@@ -4,6 +4,21 @@ import type { OASISResponse } from '../core/types';
 export declare class ONODEModule {
   constructor(http: unknown);
 
+  /** PUT api/v1/onode/providers/{providerType}/disable */
+  disableProvider(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** PUT api/v1/onode/providers/{providerType}/enable */
+  enableProvider(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/v1/onode/active-nodes */
+  getActiveNodes(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/v1/onode/audit */
+  getAuditLog(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/v1/onode/commands/{commandId} */
+  getCommand(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/v1/onode/peers */
   getConnectedPeers(args?: Record<string, any>): Promise<OASISResponse>;
 
@@ -19,17 +34,35 @@ export declare class ONODEModule {
   /** GET api/v1/onode/metrics */
   getNodeMetrics(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/v1/onode/node-state/{nodeId} */
+  getNodeState(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/v1/onode/stats */
   getNodeStats(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/v1/onode/status */
   getNodeStatus(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/v1/onode/oasisdna */
-  getOASISDNA(args?: Record<string, any>): Promise<OASISResponse>;
+  /** GET api/v1/onode/commands/pending/{nodeId} */
+  getPendingCommands(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/v1/onode/providers */
+  getProviders(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/v1/onode/public-config */
+  getPublicNodeConfig(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/v1/onode/commands */
+  postCommand(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** PUT api/v1/onode/node-state/{nodeId} */
+  pushNodeState(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/v1/onode/restart */
   restartNode(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** PUT api/v1/onode/providers/{providerType}/priority */
+  setProviderPriority(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/v1/onode/start */
   startNode(args?: Record<string, any>): Promise<OASISResponse>;
@@ -37,9 +70,9 @@ export declare class ONODEModule {
   /** POST api/v1/onode/stop */
   stopNode(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** PATCH api/v1/onode/commands/{commandId} */
+  updateCommand(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** PUT api/v1/onode/config */
   updateNodeConfig(args?: Record<string, any>): Promise<OASISResponse>;
-
-  /** PUT api/v1/onode/oasisdna */
-  updateOASISDNA(args?: Record<string, any>): Promise<OASISResponse>;
 }

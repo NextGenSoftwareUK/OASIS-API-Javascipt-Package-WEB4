@@ -6,22 +6,18 @@
 const { makeOperation } = require('../core/routeHelper');
 
 /**
- * Generated wrapper for api/core (source: ONODE WebAPI CoreController.cs).
+ * Generated wrapper for api/admin (source: ONODE WebAPI AdminController.cs).
  * Every method takes a single args object: path-template tokens (e.g. {id})
  * are consumed from it automatically; any remaining keys are sent as the
  * query string (GET/DELETE) or JSON body (POST/PUT).
  */
-class CoreModule {
+class AdminModule {
   constructor(http) {
     this._http = http;
 
-    // POST api/core/generate-moon
-    this.generateMoon = makeOperation(http, "api/core", "POST", "generate-moon");
-    // GET api/core/config
-    this.getSystemConfig = makeOperation(http, "api/core", "GET", "config");
-    // GET api/core/health
-    this.getSystemHealth = makeOperation(http, "api/core", "GET", "health");
+    // POST api/admin/cql/sources/{provider}/recover
+    this.recover = makeOperation(http, "api/admin", "POST", "cql/sources/{provider}/recover");
   }
 }
 
-module.exports = { CoreModule };
+module.exports = { AdminModule };

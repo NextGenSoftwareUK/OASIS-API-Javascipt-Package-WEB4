@@ -21,6 +21,8 @@ class FilesModule {
     this.downloadFile = makeOperation(http, "api/files", "GET", "download-file/{fileId}");
     // GET api/files/get-all-files-stored-for-current-logged-in-avatar
     this.getAllFilesStoredForCurrentLoggedInAvatar = makeOperation(http, "api/files", "GET", "get-all-files-stored-for-current-logged-in-avatar");
+    // GET api/files/get-file-count-for-current-logged-in-avatar
+    this.getFileCountForCurrentLoggedInAvatar = makeOperation(http, "api/files", "GET", "get-file-count-for-current-logged-in-avatar");
     // GET api/files/file-metadata/{fileId}
     this.getFileMetadata = makeOperation(http, "api/files", "GET", "file-metadata/{fileId}");
     // PUT api/files/update-file-metadata/{fileId}

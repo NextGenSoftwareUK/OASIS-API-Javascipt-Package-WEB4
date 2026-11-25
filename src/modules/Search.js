@@ -17,7 +17,9 @@ class SearchModule {
 
     // GET api/search/{searchParams}
     this.get = makeOperation(http, "api/search", "GET", "{searchParams}");
-    // POST api/search
+    // GET api/search/{searchParams}/{providerType}/{setGlobally}
+    this.getRootBySearchParamsProviderType = makeOperation(http, "api/search", "GET", "{searchParams}/{providerType}/{setGlobally}");
+    // POST api/search/
     this.search = makeOperation(http, "api/search", "POST", "");
   }
 }

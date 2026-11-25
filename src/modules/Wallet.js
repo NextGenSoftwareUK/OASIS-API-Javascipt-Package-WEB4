@@ -15,6 +15,10 @@ class WalletModule {
   constructor(http) {
     this._http = http;
 
+    // POST api/wallet/burn-token
+    this.burnToken = makeOperation(http, "api/wallet", "POST", "burn-token");
+    // POST api/wallet/create-token
+    this.createToken = makeOperation(http, "api/wallet", "POST", "create-token");
     // POST api/wallet/avatar/email/{email}/create-wallet
     this.createWalletForAvatarByEmailAsync = makeOperation(http, "api/wallet", "POST", "avatar/email/{email}/create-wallet");
     // POST api/wallet/avatar/{avatarId}/create-wallet
@@ -27,6 +31,8 @@ class WalletModule {
     this.getAvatarDefaultWalletByIdAsync = makeOperation(http, "api/wallet", "GET", "avatar/{id}/default-wallet");
     // GET api/wallet/avatar/username/{username}/default-wallet/{showOnlyDefault}/{decryptPrivateKeys}
     this.getAvatarDefaultWalletByUsernameAsync = makeOperation(http, "api/wallet", "GET", "avatar/username/{username}/default-wallet/{showOnlyDefault}/{decryptPrivateKeys}");
+    // GET api/wallet/current-avatar/summary
+    this.getCurrentAvatarWalletSummary = makeOperation(http, "api/wallet", "GET", "current-avatar/summary");
     // GET api/wallet/avatar/{avatarId}/portfolio/value
     this.getPortfolioValueAsync = makeOperation(http, "api/wallet", "GET", "avatar/{avatarId}/portfolio/value");
     // GET api/wallet/supported-chains
@@ -51,12 +57,22 @@ class WalletModule {
     this.importWalletUsingPublicKeyById = makeOperation(http, "api/wallet", "POST", "avatar/{avatarId}/import/public-key");
     // POST api/wallet/avatar/username/{username}/import/public-key
     this.importWalletUsingPublicKeyByUsername = makeOperation(http, "api/wallet", "POST", "avatar/username/{username}/import/public-key");
+    // POST api/wallet/avatar/email/{email}/import/secret-phrase
+    this.importWalletUsingSecretPhraseByEmail = makeOperation(http, "api/wallet", "POST", "avatar/email/{email}/import/secret-phrase");
+    // POST api/wallet/avatar/{avatarId}/import/secret-phrase
+    this.importWalletUsingSecretPhraseById = makeOperation(http, "api/wallet", "POST", "avatar/{avatarId}/import/secret-phrase");
+    // POST api/wallet/avatar/username/{username}/import/secret-phrase
+    this.importWalletUsingSecretPhraseByUsername = makeOperation(http, "api/wallet", "POST", "avatar/username/{username}/import/secret-phrase");
+    // GET api/wallet/avatar/email/{email}/wallets/{showOnlyDefault}/{decryptPrivateKeys}/{providerType}
+    this.loadProviderWalletsForAvatarByEmail = makeOperation(http, "api/wallet", "GET", "avatar/email/{email}/wallets/{showOnlyDefault}/{decryptPrivateKeys}/{providerType}");
     // GET api/wallet/avatar/email/{email}/wallets
     this.loadProviderWalletsForAvatarByEmailAsync = makeOperation(http, "api/wallet", "GET", "avatar/email/{email}/wallets");
     // GET api/wallet/avatar/{id}/wallets/{showOnlyDefault}/{decryptPrivateKeys}
     this.loadProviderWalletsForAvatarByIdAsync = makeOperation(http, "api/wallet", "GET", "avatar/{id}/wallets/{showOnlyDefault}/{decryptPrivateKeys}");
     // GET api/wallet/avatar/username/{username}/wallets/{showOnlyDefault}/{decryptPrivateKeys}
     this.loadProviderWalletsForAvatarByUsernameAsync = makeOperation(http, "api/wallet", "GET", "avatar/username/{username}/wallets/{showOnlyDefault}/{decryptPrivateKeys}");
+    // POST api/wallet/lock-token
+    this.lockToken = makeOperation(http, "api/wallet", "POST", "lock-token");
     // POST api/wallet/avatar/email/{email}/wallets
     this.saveProviderWalletsForAvatarByEmailAsync = makeOperation(http, "api/wallet", "POST", "avatar/email/{email}/wallets");
     // POST api/wallet/avatar/{id}/wallets
@@ -73,24 +89,14 @@ class WalletModule {
     this.setAvatarDefaultWalletByUsernameAsync = makeOperation(http, "api/wallet", "POST", "avatar/username/{username}/default-wallet/{walletId}");
     // POST api/wallet/transfer
     this.transferBetweenWalletsAsync = makeOperation(http, "api/wallet", "POST", "transfer");
+    // POST api/wallet/unlock-token
+    this.unlockToken = makeOperation(http, "api/wallet", "POST", "unlock-token");
     // PUT api/wallet/avatar/email/{email}/wallet/{walletId}
     this.updateWalletForAvatarByEmailAsync = makeOperation(http, "api/wallet", "PUT", "avatar/email/{email}/wallet/{walletId}");
     // PUT api/wallet/avatar/{avatarId}/wallet/{walletId}
     this.updateWalletForAvatarByIdAsync = makeOperation(http, "api/wallet", "PUT", "avatar/{avatarId}/wallet/{walletId}");
     // PUT api/wallet/avatar/username/{username}/wallet/{walletId}
     this.updateWalletForAvatarByUsernameAsync = makeOperation(http, "api/wallet", "PUT", "avatar/username/{username}/wallet/{walletId}");
-    // POST api/wallet/burn-token
-    this.burnToken = makeOperation(http, "api/wallet", "POST", "burn-token");
-    // POST api/wallet/lock-token
-    this.lockToken = makeOperation(http, "api/wallet", "POST", "lock-token");
-    // POST api/wallet/unlock-token
-    this.unlockToken = makeOperation(http, "api/wallet", "POST", "unlock-token");
-    // POST api/wallet/avatar/{avatarId}/import/secret-phrase
-    this.importWalletUsingSecretPhraseById = makeOperation(http, "api/wallet", "POST", "avatar/{avatarId}/import/secret-phrase");
-    // POST api/wallet/avatar/username/{username}/import/secret-phrase
-    this.importWalletUsingSecretPhraseByUsername = makeOperation(http, "api/wallet", "POST", "avatar/username/{username}/import/secret-phrase");
-    // POST api/wallet/avatar/email/{email}/import/secret-phrase
-    this.importWalletUsingSecretPhraseByEmail = makeOperation(http, "api/wallet", "POST", "avatar/email/{email}/import/secret-phrase");
   }
 }
 

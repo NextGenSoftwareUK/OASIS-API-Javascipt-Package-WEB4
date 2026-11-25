@@ -4,6 +4,9 @@ import type { OASISResponse } from '../core/types';
 export declare class HyperDriveModule {
   constructor(http: unknown);
 
+  /** POST api/hyperDrive/sync/onet-peer-binding */
+  bindOnetPeer(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/hyperDrive/quota/status */
   checkQuotaStatus(args?: Record<string, any>): Promise<OASISResponse>;
 
@@ -147,6 +150,12 @@ export declare class HyperDriveModule {
 
   /** POST api/hyperDrive/failover/preventive */
   initiatePreventiveFailover(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/hyperDrive/sync/offline-session-grant */
+  issueOfflineSessionGrant(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/hyperDrive/sync/deliveries */
+  readDeliveries(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/hyperDrive/analytics/record */
   recordAnalyticsData(args?: Record<string, any>): Promise<OASISResponse>;

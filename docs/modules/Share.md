@@ -2,63 +2,36 @@
 
 Source controller: [`ShareController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/ShareController.cs)
 Route prefix: `api/share`
-1 operation(s).
+8 operation(s).
 
-Every method takes a single args object: any key matching a `{token}` in the route is substituted into the URL; everything else becomes the query string (GET/DELETE) or JSON body (POST/PUT). Every call resolves to the standard OASIS envelope:
+All methods are generated 1:1 from the controller's real `[Http*]` routes (see
+[Conventions](../README.md#calling-any-endpoint)). They take a single args
+object: any key matching a `{token}` in the route is substituted into the
+URL; everything else becomes the query string (GET/DELETE) or JSON body
+(POST/PUT).
 
-```ts
-{
-  isError: boolean;
-  isWarning: boolean;
-  message: string;
-  errorCode?: string;
-  result: T; // see each endpoint's Response section below
-}
-```
+## Methods
 
-## Operations
+| Method | HTTP | Route | Route params |
+| --- | --- | --- | --- |
+| `backfillShareIndex` | POST | `api/share/backfill-share-index` | – |
+| `createGroup` | POST | `api/share/groups` | – |
+| `getPermissions` | GET | `api/share/permissions/{holonId:guid}` | `holonId` |
+| `getShareHolonManyByHolonIdAvatarIds` | GET | `api/share/share-holon/{holonId}/many/{avatarIds}` | `holonId`, `avatarIds` |
+| `setGroupMembers` | POST | `api/share/groups/{groupId:guid}/members` | `groupId` |
+| `setPermissions` | POST | `api/share/permissions/{holonId:guid}` | `holonId` |
+| `sharedWithMe` | GET | `api/share/shared-with-me` | – |
+| `shareHolon` | GET | `api/share/share-holon/{holonId:guid}/{avatarId:guid}` | `holonId`, `avatarId` |
 
-### `shareHolon`
-
-Share a given holon with a given avatar. PREVIEW - COMING SOON...
-
-**GET** `api/share/share-holon/{holonId:guid}/{avatarId:guid}`
-
-Route parameters:
-
-| Field | Type |
-| --- | --- |
-| `holonId` | `Guid` |
-| `avatarId` | `Guid` |
-
-**Request**
-
-No request body.
-
-**Response**
-
-Standard `OASISResult` envelope (see top of this page) with:
-
-`result` type: `bool`
-
-**Example**
+## Example
 
 ```js
-const { isError, message, result } = await oasis.share.shareHolon({
-    holonId: '<holonId>',
-    avatarId: '<avatarId>'
+const oasis = new OASISClient({ baseUrl: '...' });
+oasis.setToken(jwtToken); // or: await oasis.auth.login({ username, password })
+
+const { isError, message, result } = await oasis.share.backfillShareIndex({
+    /* ...other fields per the request body */
   });
 if (isError) throw new Error(message);
 console.log(result);
 ```
-
-Example response:
-
-```json
-{
-  "isError": false,
-  "message": "",
-  "result": true
-}
-```
-

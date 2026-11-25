@@ -86,7 +86,7 @@ test('all 32 generated modules are attached and every method is callable', async
     'avatar', 'data', 'karma', 'nft', 'wallet', 'map', 'search', 'hyperDrive',
     'provider', 'holochain', 'solana', 'eOSIO', 'bridge', 'keys', 'files',
     'messaging', 'chat', 'social', 'clan', 'gifts', 'eggs', 'video',
-    'competition', 'subscription', 'settings', 'share', 'seeds', 'stats',
+    'subscription', 'settings', 'share', 'seeds', 'stats',
     'health', 'oLand', 'oNET', 'oNODE'
   ];
   for (const name of expectedModules) {

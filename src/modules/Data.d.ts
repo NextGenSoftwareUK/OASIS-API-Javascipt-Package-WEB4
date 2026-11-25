@@ -4,11 +4,170 @@ import type { OASISResponse } from '../core/types';
 export declare class DataModule {
   constructor(http: unknown);
 
+  /** POST api/data/complete-chunked-file */
+  completeChunkedFile(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/query-cql/composition */
+  composition(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/copy-holon */
+  copyHolon(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/delete-chunked-file */
+  deleteChunkedFile(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** DELETE api/data/delete-holon */
   deleteHolon(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** DELETE api/data/delete-holon/{id} */
+  deleteHolonById(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** DELETE api/data/delete-holon/{id}/{softDelete} */
+  deleteHolonByIdSoftDelete(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** DELETE api/data/delete-holon/{id}/{softDelete}/{providerType}/{setGlobally} */
+  deleteHolonByIdSoftDelete2(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** DELETE api/data/delete-holon/{id}/{softDelete}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings} */
+  deleteHolonByIdSoftDelete3(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** DELETE api/data/delete-holon-by-providerkey/{providerKey} */
   deleteHolonByProviderKey(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/query-cql/demo-identities */
+  demoIdentities(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/query-cql/federation */
+  federation(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/access-log */
+  getAccessLog(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/current-avatar/holon-count */
+  getCurrentAvatarHolonCount(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/holon-access-log/{id} */
+  getHolonAccessLog(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/holon-audit-trail/{id} */
+  getHolonAuditTrail(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/copy-holon/providers */
+  getHolonCopyProviders(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/holon-purge/status/{id} */
+  getHolonPurgeStatus(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-all-holons/{holonType} */
+  getLoadAllHolonsByHolonType(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-all-holons/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version} */
+  getLoadAllHolonsByHolonTypeLoadChildren(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-all-holons/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally} */
+  getLoadAllHolonsByHolonTypeLoadChildren2(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-all-holons/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings} */
+  getLoadAllHolonsByHolonTypeLoadChildren3(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-data/{key}/{value} */
+  getLoadDataByKeyValue(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-data/{key}/{value}/{providerType}/{setGlobally} */
+  getLoadDataByKeyValue2(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-data/{key}/{value}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings} */
+  getLoadDataByKeyValue3(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-file/{id} */
+  getLoadFileById(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-file/{id}/{providerType}/{setGlobally} */
+  getLoadFileByIdProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-file/{id}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings} */
+  getLoadFileByIdProviderType2(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-holon/{id} */
+  getLoadHolonById(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-holon/{id}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version} */
+  getLoadHolonByIdLoadChildren(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-holon/{id}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally} */
+  getLoadHolonByIdLoadChildren2(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-holon/{id}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings} */
+  getLoadHolonByIdLoadChildren3(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-holon-by-metadata/{metaKey}/{metaValue} */
+  getLoadHolonByMetadataByMetaKeyMetaValue(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-holon-by-metadata/{metaKey}/{metaValue}/{holonType} */
+  getLoadHolonByMetadataByMetaKeyMetaValue2(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-holon-by-metadata/{metaKey}/{metaValue}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version} */
+  getLoadHolonByMetadataByMetaKeyMetaValue3(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-holons-by-metadata/{metaKey}/{metaValue} */
+  getLoadHolonsByMetadataByMetaKeyMetaValue(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-holons-by-metadata/{metaKey}/{metaValue}/{holonType} */
+  getLoadHolonsByMetadataByMetaKeyMetaValue2(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-holons-by-metadata/{metaKey}/{metaValue}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version} */
+  getLoadHolonsByMetadataByMetaKeyMetaValue3(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-holons-for-parent/{id}/{holonType} */
+  getLoadHolonsForParentByIdHolonType(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-holons-for-parent/{id}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version} */
+  getLoadHolonsForParentByIdHolonType2(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-holons-for-parent/{id}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally} */
+  getLoadHolonsForParentByIdHolonType3(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-holons-for-parent/{id}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings} */
+  getLoadHolonsForParentByIdHolonType4(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/load-holons-for-parent-by-providerkey/{providerKey}/{holonType} */
+  getLoadHolonsForParentByProviderkeyByProviderKeyHolonType(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/save-data/{key}/{value} */
+  getSaveDataByKeyValue(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/save-data/{key}/{value}/{providerType}/{setGlobally} */
+  getSaveDataByKeyValue2(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/save-data/{key}/{value}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings} */
+  getSaveDataByKeyValue3(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/save-file/{data} */
+  getSaveFileByData(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/save-file/{data}/{providerType}/{setGlobally} */
+  getSaveFileByDataProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/save-file/{data}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings} */
+  getSaveFileByDataProviderType2(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/search-holons/{searchTerm} */
+  getSearchHolonsBySearchTerm(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/search-holons/{searchTerm}/{holonType} */
+  getSearchHolonsBySearchTermHolonType(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/query-cql/grouped */
+  grouped(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/query-cql/indexed */
+  indexed(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/query-cql/indexed/scalar */
+  indexedScalar(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/query-cql/join */
+  join(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/data/load-all-holons */
   loadAllHolons(args?: Record<string, any>): Promise<OASISResponse>;
@@ -18,6 +177,12 @@ export declare class DataModule {
 
   /** POST api/data/load-file */
   loadFile(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/load-file-chunk */
+  loadFileChunk(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/load-file-info */
+  loadFileInfo(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/data/load-holon */
   loadHolon(args?: Record<string, any>): Promise<OASISResponse>;
@@ -37,14 +202,56 @@ export declare class DataModule {
   /** GET api/data/load-holons-for-parent-by-providerkey/{providerKey} */
   loadHolonsForParentByProviderKey(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/data/query-cql/projection/mixed */
+  mixedProjection(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/holon-audit-trail/{id} */
+  postHolonAuditTrail(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/query-cql/projection */
+  projection(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/query-cql/providers */
+  providers(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** DELETE api/data/purge-holon/{id} */
+  purgeHolon(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/purge-holons */
+  purgeHolons(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/query-cql */
+  query(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/~ */
+  recoverConditionalOperation(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** DELETE api/data/holon-purge-hold/{id} */
+  releaseHolonPurgeHold(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/data/save-data */
   saveData(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/data/save-file */
   saveFile(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/data/save-file-chunk */
+  saveFileChunk(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/data/save-holon */
   saveHolon(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/save-holon/{holon} */
+  saveHolonByHolon(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/save-holon/{saveChildren}/{recursive}/{maxChildDepth}/{continueOnError} */
+  saveHolonBySaveChildrenRecursive(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/save-holon/{saveChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{providerType}/{setGlobally} */
+  saveHolonBySaveChildrenRecursive2(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/save-holon/{saveChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{AutoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings} */
+  saveHolonBySaveChildrenRecursive3(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/data/save-holon-off-chain */
   saveHolonOffChain(args?: Record<string, any>): Promise<OASISResponse>;
@@ -52,6 +259,18 @@ export declare class DataModule {
   /** POST api/data/save-holons */
   saveHolons(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/data/query-cql/scalar */
+  scalar(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/data/search-holons */
   searchHolons(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/query-cql/set */
+  set(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/holon-purge-hold/{id} */
+  setHolonPurgeHold(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/data/holon-seal/verify/{id} */
+  verifyHolonSeal(args?: Record<string, any>): Promise<OASISResponse>;
 }

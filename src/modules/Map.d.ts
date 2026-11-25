@@ -4,6 +4,9 @@ import type { OASISResponse } from '../core/types';
 export declare class MapModule {
   constructor(http: unknown);
 
+  /** POST api/map/routes */
+  create(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/map/CreateAndDrawRouteOnMapBetweenHolons/{holonDNA} */
   createAndDrawRouteOnMapBetweenHolons(args?: Record<string, any>): Promise<OASISResponse>;
 
@@ -25,11 +28,17 @@ export declare class MapModule {
   /** GET api/map/nearby */
   getNearbyLocations(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/map/routes/{id} */
+  getRoutesById(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/map/visit-history */
   getVisitHistory(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/map/HighlightBuildingOnMap/{building} */
   highlightBuildingOnMap(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/map/routes */
+  list(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/map/PamMapDown/{value} */
   pamMapDown(args?: Record<string, any>): Promise<OASISResponse>;
@@ -46,6 +55,9 @@ export declare class MapModule {
   /** POST api/map/search */
   search(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/map/search-locations */
+  searchLocations(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/map/SelectBuildingOnMap/{building} */
   selectBuildingOnMap(args?: Record<string, any>): Promise<OASISResponse>;
 
@@ -54,6 +66,9 @@ export declare class MapModule {
 
   /** POST api/map/SelectQuestOnMap/{quest} */
   selectQuestOnMap(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** PUT api/map/routes/{id}/access */
+  updateAccess(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/map/visit/{locationId} */
   visitLocation(args?: Record<string, any>): Promise<OASISResponse>;

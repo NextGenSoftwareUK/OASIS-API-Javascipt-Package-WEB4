@@ -13,6 +13,9 @@ export declare class FilesModule {
   /** GET api/files/get-all-files-stored-for-current-logged-in-avatar */
   getAllFilesStoredForCurrentLoggedInAvatar(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/files/get-file-count-for-current-logged-in-avatar */
+  getFileCountForCurrentLoggedInAvatar(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/files/file-metadata/{fileId} */
   getFileMetadata(args?: Record<string, any>): Promise<OASISResponse>;
 

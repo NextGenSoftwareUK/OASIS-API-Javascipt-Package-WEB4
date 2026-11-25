@@ -15,6 +15,16 @@ class ONODEModule {
   constructor(http) {
     this._http = http;
 
+    // PUT api/v1/onode/providers/{providerType}/disable
+    this.disableProvider = makeOperation(http, "api/v1/onode", "PUT", "providers/{providerType}/disable");
+    // PUT api/v1/onode/providers/{providerType}/enable
+    this.enableProvider = makeOperation(http, "api/v1/onode", "PUT", "providers/{providerType}/enable");
+    // GET api/v1/onode/active-nodes
+    this.getActiveNodes = makeOperation(http, "api/v1/onode", "GET", "active-nodes");
+    // GET api/v1/onode/audit
+    this.getAuditLog = makeOperation(http, "api/v1/onode", "GET", "audit");
+    // GET api/v1/onode/commands/{commandId}
+    this.getCommand = makeOperation(http, "api/v1/onode", "GET", "commands/{commandId}");
     // GET api/v1/onode/peers
     this.getConnectedPeers = makeOperation(http, "api/v1/onode", "GET", "peers");
     // GET api/v1/onode/config
@@ -25,22 +35,34 @@ class ONODEModule {
     this.getNodeLogs = makeOperation(http, "api/v1/onode", "GET", "logs");
     // GET api/v1/onode/metrics
     this.getNodeMetrics = makeOperation(http, "api/v1/onode", "GET", "metrics");
+    // GET api/v1/onode/node-state/{nodeId}
+    this.getNodeState = makeOperation(http, "api/v1/onode", "GET", "node-state/{nodeId}");
     // GET api/v1/onode/stats
     this.getNodeStats = makeOperation(http, "api/v1/onode", "GET", "stats");
     // GET api/v1/onode/status
     this.getNodeStatus = makeOperation(http, "api/v1/onode", "GET", "status");
-    // GET api/v1/onode/oasisdna
-    this.getOASISDNA = makeOperation(http, "api/v1/onode", "GET", "oasisdna");
+    // GET api/v1/onode/commands/pending/{nodeId}
+    this.getPendingCommands = makeOperation(http, "api/v1/onode", "GET", "commands/pending/{nodeId}");
+    // GET api/v1/onode/providers
+    this.getProviders = makeOperation(http, "api/v1/onode", "GET", "providers");
+    // GET api/v1/onode/public-config
+    this.getPublicNodeConfig = makeOperation(http, "api/v1/onode", "GET", "public-config");
+    // POST api/v1/onode/commands
+    this.postCommand = makeOperation(http, "api/v1/onode", "POST", "commands");
+    // PUT api/v1/onode/node-state/{nodeId}
+    this.pushNodeState = makeOperation(http, "api/v1/onode", "PUT", "node-state/{nodeId}");
     // POST api/v1/onode/restart
     this.restartNode = makeOperation(http, "api/v1/onode", "POST", "restart");
+    // PUT api/v1/onode/providers/{providerType}/priority
+    this.setProviderPriority = makeOperation(http, "api/v1/onode", "PUT", "providers/{providerType}/priority");
     // POST api/v1/onode/start
     this.startNode = makeOperation(http, "api/v1/onode", "POST", "start");
     // POST api/v1/onode/stop
     this.stopNode = makeOperation(http, "api/v1/onode", "POST", "stop");
+    // PATCH api/v1/onode/commands/{commandId}
+    this.updateCommand = makeOperation(http, "api/v1/onode", "PATCH", "commands/{commandId}");
     // PUT api/v1/onode/config
     this.updateNodeConfig = makeOperation(http, "api/v1/onode", "PUT", "config");
-    // PUT api/v1/onode/oasisdna
-    this.updateOASISDNA = makeOperation(http, "api/v1/onode", "PUT", "oasisdna");
   }
 }
 

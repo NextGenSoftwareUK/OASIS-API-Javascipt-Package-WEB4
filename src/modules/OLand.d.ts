@@ -4,8 +4,23 @@ import type { OASISResponse } from '../core/types';
 export declare class OLandModule {
   constructor(http: unknown);
 
+  /** DELETE api/oLand/quotes/{orderId} */
+  cancelQuote(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/oLand/orders/{orderId}/checkout */
+  checkout(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/oLand/checkout-return */
+  checkoutReturn(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/oLand/orders/{orderId}/confirm-payment */
+  confirmPayment(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/oLand/delete-oland/{olandId} */
   deleteOlandAsync(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/oLand/orders/{orderId}/fulfil */
+  fulfil(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/oLand/get-oland-price */
   getOlandPrice(args?: Record<string, any>): Promise<OASISResponse>;
@@ -16,8 +31,29 @@ export declare class OLandModule {
   /** GET api/oLand/load-oland/{olandId} */
   loadOlandAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/oLand/nft-metadata/{orderId} */
+  nftMetadata(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/oLand/webhooks/stripe */
+  oLandStripeWebhook(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/oLand/orders */
+  orderHistory(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/oLand/orders/{orderId} */
+  orderStatus(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/oLand/parcel-grid */
+  parcelGrid(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/oLand/purchase-oland */
   purchaseOland(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/oLand/purchase-options */
+  purchaseOptions(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/oLand/quotes */
+  quote(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/oLand/save-oland */
   saveOlandAsync(args?: Record<string, any>): Promise<OASISResponse>;

@@ -7,11 +7,17 @@ export declare class SettingsModule {
   /** GET api/settings/get-all-settings-for-current-logged-in-avatar */
   getAllSettingsForCurrentLoggedInAvatar(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/settings/holon-storage-policy */
+  getHolonStoragePolicy(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/settings/hyperdrive-settings */
   getHyperDriveSettings(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/settings/notification-preferences */
   getNotificationPreferences(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/settings/omniverse-preferences */
+  getOmniversePreferences(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/settings/privacy-settings */
   getPrivacySettings(args?: Record<string, any>): Promise<OASISResponse>;
@@ -25,11 +31,23 @@ export declare class SettingsModule {
   /** GET api/settings/system-settings */
   getSystemSettings(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/settings/version */
+  getVersion(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** DELETE api/settings/holon-storage-policy */
+  resetHolonStoragePolicy(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** PUT api/settings/holon-storage-policy */
+  updateHolonStoragePolicy(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** PUT api/settings/hyperdrive-settings */
   updateHyperDriveSettings(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** PUT api/settings/notification-preferences */
   updateNotificationPreferences(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** PUT api/settings/omniverse-preferences */
+  updateOmniversePreferences(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** PUT api/settings/privacy-settings */
   updatePrivacySettings(args?: Record<string, any>): Promise<OASISResponse>;

@@ -17,28 +17,58 @@ class KarmaModule {
 
     // POST api/karma/add-karma-to-avatar/{avatarId}
     this.addKarmaToAvatar = makeOperation(http, "api/karma", "POST", "add-karma-to-avatar/{avatarId}");
+    // POST api/karma/add-karma-to-avatar/{avatarId}/{providerType}/{setGlobally}
+    this.addKarmaToAvatarByAvatarIdProviderType = makeOperation(http, "api/karma", "POST", "add-karma-to-avatar/{avatarId}/{providerType}/{setGlobally}");
+    // GET api/karma/activity
+    this.getActivityFeed = makeOperation(http, "api/karma", "GET", "activity");
     // GET api/karma/get-karma-akashic-records-for-avatar/{avatarId}
     this.getKarmaAkashicRecordsForAvatar = makeOperation(http, "api/karma", "GET", "get-karma-akashic-records-for-avatar/{avatarId}");
+    // GET api/karma/get-karma-akashic-records-for-avatar/{avatarId}/{providerType}/{setGlobally}
+    this.getKarmaAkashicRecordsForAvatarByAvatarIdProviderType = makeOperation(http, "api/karma", "GET", "get-karma-akashic-records-for-avatar/{avatarId}/{providerType}/{setGlobally}");
     // GET api/karma/get-karma-for-avatar/{avatarId}
     this.getKarmaForAvatar = makeOperation(http, "api/karma", "GET", "get-karma-for-avatar/{avatarId}");
+    // GET api/karma/get-karma-for-avatar/{avatarId}/{providerType}/{setGlobally}
+    this.getKarmaForAvatarByAvatarIdProviderType = makeOperation(http, "api/karma", "GET", "get-karma-for-avatar/{avatarId}/{providerType}/{setGlobally}");
     // GET api/karma/get-karma-history/{avatarId}
     this.getKarmaHistory = makeOperation(http, "api/karma", "GET", "get-karma-history/{avatarId}");
+    // GET api/karma/get-karma-history/{avatarId}/{providerType}/{setGlobally}
+    this.getKarmaHistoryByAvatarIdProviderType = makeOperation(http, "api/karma", "GET", "get-karma-history/{avatarId}/{providerType}/{setGlobally}");
     // GET api/karma/get-karma-stats/{avatarId}
     this.getKarmaStats = makeOperation(http, "api/karma", "GET", "get-karma-stats/{avatarId}");
+    // GET api/karma/get-karma-stats/{avatarId}/{providerType}/{setGlobally}
+    this.getKarmaStatsByAvatarIdProviderType = makeOperation(http, "api/karma", "GET", "get-karma-stats/{avatarId}/{providerType}/{setGlobally}");
+    // GET api/karma/get-level-thresholds
+    this.getLevelThresholds = makeOperation(http, "api/karma", "GET", "get-level-thresholds");
     // GET api/karma/get-negative-karma-weighting/{karmaType}
     this.getNegativeKarmaWeighting = makeOperation(http, "api/karma", "GET", "get-negative-karma-weighting/{karmaType}");
+    // GET api/karma/get-negative-karma-weighting/{karmaType}/{providerType}/{setGlobally}
+    this.getNegativeKarmaWeightingByKarmaTypeProviderType = makeOperation(http, "api/karma", "GET", "get-negative-karma-weighting/{karmaType}/{providerType}/{setGlobally}");
     // GET api/karma/get-positive-karma-weighting/{karmaType}
     this.getPositiveKarmaWeighting = makeOperation(http, "api/karma", "GET", "get-positive-karma-weighting/{karmaType}");
+    // GET api/karma/get-positive-karma-weighting/{karmaType}/{providerType}/{setGlobally}
+    this.getPositiveKarmaWeightingByKarmaTypeProviderType = makeOperation(http, "api/karma", "GET", "get-positive-karma-weighting/{karmaType}/{providerType}/{setGlobally}");
+    // GET api/karma/weightings
+    this.getWeightings = makeOperation(http, "api/karma", "GET", "weightings");
     // POST api/karma/remove-karma-from-avatar/{avatarId}
     this.removeKarmaFromAvatar = makeOperation(http, "api/karma", "POST", "remove-karma-from-avatar/{avatarId}");
+    // POST api/karma/remove-karma-from-avatar/{avatarId}/{providerType}/{setGlobally}
+    this.removeKarmaFromAvatarByAvatarIdProviderType = makeOperation(http, "api/karma", "POST", "remove-karma-from-avatar/{avatarId}/{providerType}/{setGlobally}");
     // POST api/karma/set-negative-karma-weighting/{karmaType}/{weighting}
     this.setNegativeKarmaWeighting = makeOperation(http, "api/karma", "POST", "set-negative-karma-weighting/{karmaType}/{weighting}");
+    // POST api/karma/set-negative-karma-weighting/{karmaType}/{weighting}/{providerType}/{setGlobally}
+    this.setNegativeKarmaWeightingByKarmaTypeWeighting = makeOperation(http, "api/karma", "POST", "set-negative-karma-weighting/{karmaType}/{weighting}/{providerType}/{setGlobally}");
     // POST api/karma/set-positive-karma-weighting/{karmaType}/{weighting}
     this.setPositiveKarmaWeighting = makeOperation(http, "api/karma", "POST", "set-positive-karma-weighting/{karmaType}/{weighting}");
+    // POST api/karma/set-positive-karma-weighting/{karmaType}/{weighting}/{providerType}/{setGlobally}
+    this.setPositiveKarmaWeightingByKarmaTypeWeighting = makeOperation(http, "api/karma", "POST", "set-positive-karma-weighting/{karmaType}/{weighting}/{providerType}/{setGlobally}");
     // POST api/karma/vote-for-negative-karma-weighting/{karmaType}/{weighting}
     this.voteForNegativeKarmaWeighting = makeOperation(http, "api/karma", "POST", "vote-for-negative-karma-weighting/{karmaType}/{weighting}");
+    // POST api/karma/vote-for-negative-karma-weighting/{karmaType}/{weighting}/{providerType}/{setGlobally}
+    this.voteForNegativeKarmaWeightingByKarmaTypeWeighting = makeOperation(http, "api/karma", "POST", "vote-for-negative-karma-weighting/{karmaType}/{weighting}/{providerType}/{setGlobally}");
     // POST api/karma/vote-for-positive-karma-weighting/{karmaType}/{weighting}
     this.voteForPositiveKarmaWeighting = makeOperation(http, "api/karma", "POST", "vote-for-positive-karma-weighting/{karmaType}/{weighting}");
+    // POST api/karma/vote-for-positive-karma-weighting/{karmaType}/{weighting}/{providerType}/{setGlobally}
+    this.voteForPositiveKarmaWeightingByKarmaTypeWeighting = makeOperation(http, "api/karma", "POST", "vote-for-positive-karma-weighting/{karmaType}/{weighting}/{providerType}/{setGlobally}");
   }
 }
 

@@ -15,18 +15,42 @@ class MessagingModule {
   constructor(http) {
     this._http = http;
 
+    // POST api/messaging/groups/{conversationId}/members
+    this.addGroupMembers = makeOperation(http, "api/messaging", "POST", "groups/{conversationId}/members");
+    // GET api/messaging/conversations
+    this.conversations = makeOperation(http, "api/messaging", "GET", "conversations");
+    // POST api/messaging/groups
+    this.createGroup = makeOperation(http, "api/messaging", "POST", "groups");
     // GET api/messaging/conversation/{otherAvatarId}
     this.getConversation = makeOperation(http, "api/messaging", "GET", "conversation/{otherAvatarId}");
+    // GET api/messaging/current-avatar/summary
+    this.getCurrentAvatarMessageSummary = makeOperation(http, "api/messaging", "GET", "current-avatar/summary");
     // GET api/messaging/messages
     this.getMessages = makeOperation(http, "api/messaging", "GET", "messages");
     // GET api/messaging/notifications
     this.getNotifications = makeOperation(http, "api/messaging", "GET", "notifications");
+    // GET api/messaging/groups/{conversationId}/messages
+    this.groupMessages = makeOperation(http, "api/messaging", "GET", "groups/{conversationId}/messages");
+    // GET api/messaging/groups
+    this.groups = makeOperation(http, "api/messaging", "GET", "groups");
+    // POST api/messaging/groups/{conversationId}/leave
+    this.leaveGroup = makeOperation(http, "api/messaging", "POST", "groups/{conversationId}/leave");
     // POST api/messaging/mark-messages-read
     this.markMessagesAsRead = makeOperation(http, "api/messaging", "POST", "mark-messages-read");
+    // POST api/messaging/mark-messages-delivered
+    this.markMessagesDelivered = makeOperation(http, "api/messaging", "POST", "mark-messages-delivered");
     // POST api/messaging/mark-notifications-read
     this.markNotificationsAsRead = makeOperation(http, "api/messaging", "POST", "mark-notifications-read");
+    // GET api/messaging/presence
+    this.presence = makeOperation(http, "api/messaging", "GET", "presence");
+    // POST api/messaging/realtime-ticket
+    this.realtimeTicket = makeOperation(http, "api/messaging", "POST", "realtime-ticket");
+    // POST api/messaging/send
+    this.send = makeOperation(http, "api/messaging", "POST", "send");
     // POST api/messaging/send-message-to-avatar/{toAvatarId}
     this.sendMessageToAvatar = makeOperation(http, "api/messaging", "POST", "send-message-to-avatar/{toAvatarId}");
+    // GET api/messaging/sync
+    this.sync = makeOperation(http, "api/messaging", "GET", "sync");
   }
 }
 

@@ -15,6 +15,8 @@ class MapModule {
   constructor(http) {
     this._http = http;
 
+    // POST api/map/routes
+    this.create = makeOperation(http, "api/map", "POST", "routes");
     // POST api/map/CreateAndDrawRouteOnMapBetweenHolons/{holonDNA}
     this.createAndDrawRouteOnMapBetweenHolons = makeOperation(http, "api/map", "POST", "CreateAndDrawRouteOnMapBetweenHolons/{holonDNA}");
     // POST api/map/CreateAndDrawRouteOnMapBeweenPoints/{points}
@@ -29,10 +31,14 @@ class MapModule {
     this.getMapStats = makeOperation(http, "api/map", "GET", "stats");
     // GET api/map/nearby
     this.getNearbyLocations = makeOperation(http, "api/map", "GET", "nearby");
+    // GET api/map/routes/{id}
+    this.getRoutesById = makeOperation(http, "api/map", "GET", "routes/{id}");
     // GET api/map/visit-history
     this.getVisitHistory = makeOperation(http, "api/map", "GET", "visit-history");
     // POST api/map/HighlightBuildingOnMap/{building}
     this.highlightBuildingOnMap = makeOperation(http, "api/map", "POST", "HighlightBuildingOnMap/{building}");
+    // GET api/map/routes
+    this.list = makeOperation(http, "api/map", "GET", "routes");
     // POST api/map/PamMapDown/{value}
     this.pamMapDown = makeOperation(http, "api/map", "POST", "PamMapDown/{value}");
     // POST api/map/PamMapLeft/{value}
@@ -43,12 +49,16 @@ class MapModule {
     this.pamMapUp = makeOperation(http, "api/map", "POST", "PamMapUp/{value}");
     // POST api/map/search
     this.search = makeOperation(http, "api/map", "POST", "search");
+    // GET api/map/search-locations
+    this.searchLocations = makeOperation(http, "api/map", "GET", "search-locations");
     // POST api/map/SelectBuildingOnMap/{building}
     this.selectBuildingOnMap = makeOperation(http, "api/map", "POST", "SelectBuildingOnMap/{building}");
     // POST api/map/SelectHolonOnMap/{holon}
     this.selectHolonOnMap = makeOperation(http, "api/map", "POST", "SelectHolonOnMap/{holon}");
     // POST api/map/SelectQuestOnMap/{quest}
     this.selectQuestOnMap = makeOperation(http, "api/map", "POST", "SelectQuestOnMap/{quest}");
+    // PUT api/map/routes/{id}/access
+    this.updateAccess = makeOperation(http, "api/map", "PUT", "routes/{id}/access");
     // POST api/map/visit/{locationId}
     this.visitLocation = makeOperation(http, "api/map", "POST", "visit/{locationId}");
     // POST api/map/ZoomMapIn/{value}

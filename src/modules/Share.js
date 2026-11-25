@@ -15,16 +15,22 @@ class ShareModule {
   constructor(http) {
     this._http = http;
 
+    // POST api/share/backfill-share-index
+    this.backfillShareIndex = makeOperation(http, "api/share", "POST", "backfill-share-index");
     // POST api/share/groups
     this.createGroup = makeOperation(http, "api/share", "POST", "groups");
     // GET api/share/permissions/{holonId:guid}
     this.getPermissions = makeOperation(http, "api/share", "GET", "permissions/{holonId:guid}");
+    // GET api/share/share-holon/{holonId}/many/{avatarIds}
+    this.getShareHolonManyByHolonIdAvatarIds = makeOperation(http, "api/share", "GET", "share-holon/{holonId}/many/{avatarIds}");
     // POST api/share/groups/{groupId:guid}/members
     this.setGroupMembers = makeOperation(http, "api/share", "POST", "groups/{groupId:guid}/members");
     // POST api/share/permissions/{holonId:guid}
     this.setPermissions = makeOperation(http, "api/share", "POST", "permissions/{holonId:guid}");
     // GET api/share/share-holon/{holonId:guid}/{avatarId:guid}
     this.shareHolon = makeOperation(http, "api/share", "GET", "share-holon/{holonId:guid}/{avatarId:guid}");
+    // GET api/share/shared-with-me
+    this.sharedWithMe = makeOperation(http, "api/share", "GET", "shared-with-me");
   }
 }
 

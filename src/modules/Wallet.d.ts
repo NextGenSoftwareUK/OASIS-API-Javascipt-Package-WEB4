@@ -7,6 +7,9 @@ export declare class WalletModule {
   /** POST api/wallet/burn-token */
   burnToken(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/wallet/create-token */
+  createToken(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/wallet/avatar/email/{email}/create-wallet */
   createWalletForAvatarByEmailAsync(args?: Record<string, any>): Promise<OASISResponse>;
 
@@ -24,6 +27,9 @@ export declare class WalletModule {
 
   /** GET api/wallet/avatar/username/{username}/default-wallet/{showOnlyDefault}/{decryptPrivateKeys} */
   getAvatarDefaultWalletByUsernameAsync(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/wallet/current-avatar/summary */
+  getCurrentAvatarWalletSummary(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/wallet/avatar/{avatarId}/portfolio/value */
   getPortfolioValueAsync(args?: Record<string, any>): Promise<OASISResponse>;
@@ -69,6 +75,9 @@ export declare class WalletModule {
 
   /** POST api/wallet/avatar/username/{username}/import/secret-phrase */
   importWalletUsingSecretPhraseByUsername(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/wallet/avatar/email/{email}/wallets/{showOnlyDefault}/{decryptPrivateKeys}/{providerType} */
+  loadProviderWalletsForAvatarByEmail(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/wallet/avatar/email/{email}/wallets */
   loadProviderWalletsForAvatarByEmailAsync(args?: Record<string, any>): Promise<OASISResponse>;

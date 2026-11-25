@@ -15,16 +15,40 @@ class OLandModule {
   constructor(http) {
     this._http = http;
 
+    // DELETE api/oLand/quotes/{orderId}
+    this.cancelQuote = makeOperation(http, "api/oLand", "DELETE", "quotes/{orderId}");
+    // POST api/oLand/orders/{orderId}/checkout
+    this.checkout = makeOperation(http, "api/oLand", "POST", "orders/{orderId}/checkout");
+    // GET api/oLand/checkout-return
+    this.checkoutReturn = makeOperation(http, "api/oLand", "GET", "checkout-return");
+    // POST api/oLand/orders/{orderId}/confirm-payment
+    this.confirmPayment = makeOperation(http, "api/oLand", "POST", "orders/{orderId}/confirm-payment");
     // POST api/oLand/delete-oland/{olandId}
     this.deleteOlandAsync = makeOperation(http, "api/oLand", "POST", "delete-oland/{olandId}");
+    // POST api/oLand/orders/{orderId}/fulfil
+    this.fulfil = makeOperation(http, "api/oLand", "POST", "orders/{orderId}/fulfil");
     // GET api/oLand/get-oland-price
     this.getOlandPrice = makeOperation(http, "api/oLand", "GET", "get-oland-price");
     // GET api/oLand/load-all-olands
     this.loadAllOlands = makeOperation(http, "api/oLand", "GET", "load-all-olands");
     // GET api/oLand/load-oland/{olandId}
     this.loadOlandAsync = makeOperation(http, "api/oLand", "GET", "load-oland/{olandId}");
+    // GET api/oLand/nft-metadata/{orderId}
+    this.nftMetadata = makeOperation(http, "api/oLand", "GET", "nft-metadata/{orderId}");
+    // POST api/oLand/webhooks/stripe
+    this.oLandStripeWebhook = makeOperation(http, "api/oLand", "POST", "webhooks/stripe");
+    // GET api/oLand/orders
+    this.orderHistory = makeOperation(http, "api/oLand", "GET", "orders");
+    // GET api/oLand/orders/{orderId}
+    this.orderStatus = makeOperation(http, "api/oLand", "GET", "orders/{orderId}");
+    // GET api/oLand/parcel-grid
+    this.parcelGrid = makeOperation(http, "api/oLand", "GET", "parcel-grid");
     // POST api/oLand/purchase-oland
     this.purchaseOland = makeOperation(http, "api/oLand", "POST", "purchase-oland");
+    // GET api/oLand/purchase-options
+    this.purchaseOptions = makeOperation(http, "api/oLand", "GET", "purchase-options");
+    // POST api/oLand/quotes
+    this.quote = makeOperation(http, "api/oLand", "POST", "quotes");
     // POST api/oLand/save-oland
     this.saveOlandAsync = makeOperation(http, "api/oLand", "POST", "save-oland");
     // POST api/oLand/update-oland

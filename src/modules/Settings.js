@@ -17,10 +17,14 @@ class SettingsModule {
 
     // GET api/settings/get-all-settings-for-current-logged-in-avatar
     this.getAllSettingsForCurrentLoggedInAvatar = makeOperation(http, "api/settings", "GET", "get-all-settings-for-current-logged-in-avatar");
+    // GET api/settings/holon-storage-policy
+    this.getHolonStoragePolicy = makeOperation(http, "api/settings", "GET", "holon-storage-policy");
     // GET api/settings/hyperdrive-settings
     this.getHyperDriveSettings = makeOperation(http, "api/settings", "GET", "hyperdrive-settings");
     // GET api/settings/notification-preferences
     this.getNotificationPreferences = makeOperation(http, "api/settings", "GET", "notification-preferences");
+    // GET api/settings/omniverse-preferences
+    this.getOmniversePreferences = makeOperation(http, "api/settings", "GET", "omniverse-preferences");
     // GET api/settings/privacy-settings
     this.getPrivacySettings = makeOperation(http, "api/settings", "GET", "privacy-settings");
     // GET api/settings/subscription-settings
@@ -29,10 +33,18 @@ class SettingsModule {
     this.getSystemConfig = makeOperation(http, "api/settings", "GET", "system-config");
     // GET api/settings/system-settings
     this.getSystemSettings = makeOperation(http, "api/settings", "GET", "system-settings");
+    // GET api/settings/version
+    this.getVersion = makeOperation(http, "api/settings", "GET", "version");
+    // DELETE api/settings/holon-storage-policy
+    this.resetHolonStoragePolicy = makeOperation(http, "api/settings", "DELETE", "holon-storage-policy");
+    // PUT api/settings/holon-storage-policy
+    this.updateHolonStoragePolicy = makeOperation(http, "api/settings", "PUT", "holon-storage-policy");
     // PUT api/settings/hyperdrive-settings
     this.updateHyperDriveSettings = makeOperation(http, "api/settings", "PUT", "hyperdrive-settings");
     // PUT api/settings/notification-preferences
     this.updateNotificationPreferences = makeOperation(http, "api/settings", "PUT", "notification-preferences");
+    // PUT api/settings/omniverse-preferences
+    this.updateOmniversePreferences = makeOperation(http, "api/settings", "PUT", "omniverse-preferences");
     // PUT api/settings/privacy-settings
     this.updatePrivacySettings = makeOperation(http, "api/settings", "PUT", "privacy-settings");
     // PUT api/settings/update-settings

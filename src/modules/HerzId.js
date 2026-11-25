@@ -10,31 +10,27 @@ const { makeOperation } = require('../core/routeHelper');
  * Every method takes a single args object: path-template tokens (e.g. {id})
  * are consumed from it automatically; any remaining keys are sent as the
  * query string (GET/DELETE) or JSON body (POST/PUT).
- *
- * HerzID is a sovereign identity issued on top of the OASIS Avatar SSO system.
- * All endpoints return 404 when HerzId.Enabled = false in OASISDNA.
- * Most endpoints require OASIS JWT authentication; verify and vouch-chain are public.
  */
 class HerzIdModule {
   constructor(http) {
     this._http = http;
 
-    // POST api/herzid/register — assign a HerzID to the authenticated avatar
-    this.register = makeOperation(http, "api/herzid", "POST", "register");
-    // POST api/herzid/vouch — gift a vouch to a new member
-    this.vouch = makeOperation(http, "api/herzid", "POST", "vouch");
-    // GET api/herzid/verify/{herzId} — public: verify a HerzID QEA seal [AllowAnonymous]
-    this.verify = makeOperation(http, "api/herzid", "GET", "verify/{herzId}");
-    // GET api/herzid/profile — return HerzID profile for authenticated avatar
-    this.profile = makeOperation(http, "api/herzid", "GET", "profile");
-    // POST api/herzid/set-clearance — admin: update clearance level (requires clearance >= 8)
-    this.setClearance = makeOperation(http, "api/herzid", "POST", "set-clearance");
-    // GET api/herzid/vouch-chain/{herzId} — public: walk vouching chain upward [AllowAnonymous]
-    this.vouchChain = makeOperation(http, "api/herzid", "GET", "vouch-chain/{herzId}");
-    // GET api/herzid/vouches-issued — all members vouched for by authenticated avatar
-    this.vouchesIssued = makeOperation(http, "api/herzid", "GET", "vouches-issued");
-    // POST api/herzid/ghost-check/{herzId} — admin: ghost-account detection (requires clearance >= 8)
+    // POST api/herzid/ghost-check/{herzId}
     this.ghostCheck = makeOperation(http, "api/herzid", "POST", "ghost-check/{herzId}");
+    // GET api/herzid/profile
+    this.profile = makeOperation(http, "api/herzid", "GET", "profile");
+    // POST api/herzid/register
+    this.register = makeOperation(http, "api/herzid", "POST", "register");
+    // POST api/herzid/set-clearance
+    this.setClearance = makeOperation(http, "api/herzid", "POST", "set-clearance");
+    // GET api/herzid/verify/{herzId}
+    this.verify = makeOperation(http, "api/herzid", "GET", "verify/{herzId}");
+    // POST api/herzid/vouch
+    this.vouch = makeOperation(http, "api/herzid", "POST", "vouch");
+    // GET api/herzid/vouch-chain/{herzId}
+    this.vouchChain = makeOperation(http, "api/herzid", "GET", "vouch-chain/{herzId}");
+    // GET api/herzid/vouches-issued
+    this.vouchesIssued = makeOperation(http, "api/herzid", "GET", "vouches-issued");
   }
 }
 

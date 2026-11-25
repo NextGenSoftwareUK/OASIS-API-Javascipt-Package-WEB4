@@ -79,26 +79,17 @@ export declare class KeysModule {
   /** GET api/keys/get-avatar-email-for-provider-unique-storage-key/{providerKey} */
   getAvatarEmailForProviderUniqueStorageKey(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get-avatar-for-provider-private-key/{providerKey} */
-  getAvatarForProviderPrivateKey(args?: Record<string, any>): Promise<OASISResponse>;
-
   /** GET api/keys/get-avatar-for-provider-public-key/{providerKey} */
   getAvatarForProviderPublicKey(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/keys/get-avatar-for-provider-unique-storage-key/{providerKey} */
   getAvatarForProviderUniqueStorageKey(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/keys/get-avatar-id-for-provider-private-key/{providerKey} */
-  getAvatarIdForProviderPrivateKey(args?: Record<string, any>): Promise<OASISResponse>;
-
   /** GET api/keys/get-avatar-id-for-provider-public-key/{providerKey} */
   getAvatarIdForProviderPublicKey(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/keys/get-avatar-id-for-provider-unique-storage-key/{providerKey} */
   getAvatarIdForProviderUniqueStorageKey(args?: Record<string, any>): Promise<OASISResponse>;
-
-  /** GET api/keys/get-avatar-username-for-provider-private-key/{providerKey} */
-  getAvatarUsernameForProviderPrivateKey(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/keys/get-avatar-username-for-provider-public-key/{providerKey} */
   getAvatarUsernameForProviderPublicKey(args?: Record<string, any>): Promise<OASISResponse>;
@@ -139,17 +130,8 @@ export declare class KeysModule {
   /** POST api/keys/get-public-wifi */
   getPublicWif(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/keys/{avatarId}/{eosioAccountName} */
-  linkEOSIOAccountToAvatar(args?: Record<string, any>): Promise<OASISResponse>;
-
-  /** POST api/keys/{avatarId}/{holochainAgentID} */
-  linkHolochainAgentIDToAvatar(args?: Record<string, any>): Promise<OASISResponse>;
-
   /** POST api/keys/link-provider-private-key-to-avatar-by-id */
   linkProviderPrivateKeyToAvatarByAvatarId(args?: Record<string, any>): Promise<OASISResponse>;
-
-  /** POST api/keys/link-provider-private-key-to-avatar-by-email */
-  linkProviderPrivateKeyToAvatarByEmail(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/keys/link-provider-private-key-to-avatar-by-username */
   linkProviderPrivateKeyToAvatarByUsername(args?: Record<string, any>): Promise<OASISResponse>;
@@ -171,12 +153,6 @@ export declare class KeysModule {
 
   /** POST api/keys/link-provider-wallet-address-to-avatar-by-username */
   linkProviderWalletAddressToAvatarByUsername(args?: Record<string, any>): Promise<OASISResponse>;
-
-  /** POST api/keys/{id:Guid}/{telosAccountName} */
-  linkTelosAccountToAvatar(args?: Record<string, any>): Promise<OASISResponse>;
-
-  /** POST api/keys/ */
-  linkTelosAccountToAvatar2(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** PUT api/keys/{keyId} */
   updateKey(args?: Record<string, any>): Promise<OASISResponse>;

@@ -7,7 +7,7 @@ const { makeOperation } = require('../core/routeHelper');
 
 /**
  * Generated wrapper for api/level (source: ONODE WebAPI LevelController.cs).
- * Every method takes a single args object: path-template tokens (e.g. {karma})
+ * Every method takes a single args object: path-template tokens (e.g. {id})
  * are consumed from it automatically; any remaining keys are sent as the
  * query string (GET/DELETE) or JSON body (POST/PUT).
  */
@@ -15,10 +15,10 @@ class LevelModule {
   constructor(http) {
     this._http = http;
 
-    // GET api/level/lookup
-    this.getLevelLookup = makeOperation(http, "api/level", "GET", "lookup");
     // GET api/level/calculate/{karma}
     this.calculateLevelFromKarma = makeOperation(http, "api/level", "GET", "calculate/{karma}");
+    // GET api/level/lookup
+    this.getLevelLookup = makeOperation(http, "api/level", "GET", "lookup");
   }
 }
 

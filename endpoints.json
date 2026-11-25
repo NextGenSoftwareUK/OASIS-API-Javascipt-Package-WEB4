@@ -92,23 +92,6 @@
         },
         "summary": "Call this method passing in the reset token received in the forgotten password email after first calling the avatar/forgot-password method."
       },
-      "Create": {
-        "verb": "POST",
-        "route": "create/{model}",
-        "routeParams": [
-          {
-            "name": "model",
-            "type": "CreateRequest"
-          }
-        ],
-        "queryParams": [],
-        "requestType": null,
-        "responseType": {
-          "wrapper": "OASISHttpResponseMessage",
-          "inner": "IAvatar"
-        },
-        "summary": "Allows a Wizard(Admin) to create new avatars including other wizards. Only works for logged in &amp; authenticated Wizards (Admins) or your own avatar. Use Authenticate endpoint first to obtain a JWT Token."
-      },
       "GetTerms": {
         "verb": "GET",
         "route": "get-terms",
@@ -696,81 +679,6 @@
         },
         "summary": "Sets the active quest and objective for the logged-in avatar (tracker state). Persisted on AvatarDetail so they are restored after beam-in."
       },
-      "LinkTelosAccountToAvatar": {
-        "verb": "POST",
-        "route": "{id:Guid}/{telosAccountName}",
-        "routeParams": [
-          {
-            "name": "id",
-            "type": "Guid"
-          },
-          {
-            "name": "telosAccountName",
-            "type": "string"
-          }
-        ],
-        "queryParams": [],
-        "requestType": null,
-        "responseType": {
-          "wrapper": "OASISHttpResponseMessage",
-          "inner": "IAvatarDetail"
-        },
-        "summary": "Link's a given telosAccount to the given avatar."
-      },
-      "LinkTelosAccountToAvatar2": {
-        "verb": "POST",
-        "route": "",
-        "routeParams": [],
-        "queryParams": [],
-        "requestType": "LinkProviderKeyToAvatar",
-        "responseType": {
-          "wrapper": "OASISHttpResponseMessage",
-          "inner": "IAvatarDetail"
-        },
-        "summary": "Link's a given telosAccount to the given avatar."
-      },
-      "LinkEOSIOAccountToAvatar": {
-        "verb": "POST",
-        "route": "{avatarId}/{eosioAccountName}",
-        "routeParams": [
-          {
-            "name": "avatarId",
-            "type": "Guid"
-          },
-          {
-            "name": "eosioAccountName",
-            "type": "string"
-          }
-        ],
-        "queryParams": [],
-        "requestType": null,
-        "responseType": {
-          "wrapper": "OASISHttpResponseMessage",
-          "inner": "IAvatarDetail"
-        },
-        "summary": "Link's a given eosioAccountName to the given avatar."
-      },
-      "LinkHolochainAgentIDToAvatar": {
-        "verb": "POST",
-        "route": "{avatarId}/{holochainAgentID}",
-        "routeParams": [
-          {
-            "name": "avatarId",
-            "type": "Guid"
-          },
-          {
-            "name": "holochainAgentID",
-            "type": "string"
-          }
-        ],
-        "queryParams": [],
-        "requestType": null,
-        "responseType": {
-          "wrapper": "OASISHttpResponseMessage",
-          "inner": "IAvatarDetail"
-        },
-        "summary": "Link's a given holochain AgentID to the given avatar."
-      },
       "GetAvatarSessions": {
         "verb": "GET",
         "route": "{avatarId}/sessions",
@@ -1026,6 +934,1273 @@
           "inner": "bool"
         },
         "summary": "Sends an item from the authenticated avatar's inventory to a clan. Target is the clan name (or username when clan resolution is not yet implemented). Works for all items (STAR and local)."
+      },
+      "Assess": {
+        "verb": "GET",
+        "route": "account-closure/assessment",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/account-closure/assessment"
+      },
+      "AddKarmaToAvatarByAvatarIdProviderType": {
+        "verb": "POST",
+        "route": "add-karma-to-avatar/{avatarId}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "avatarId",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/add-karma-to-avatar/{avatarId}/{providerType}/{setGlobally}"
+      },
+      "AuthenticateMfa": {
+        "verb": "POST",
+        "route": "authenticate-mfa",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/authenticate-mfa"
+      },
+      "AuthenticateByProviderTypeSetGlobally": {
+        "verb": "POST",
+        "route": "authenticate/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{AutoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          },
+          {
+            "name": "autoReplicationMode",
+            "type": "string"
+          },
+          {
+            "name": "autoFailOverMode",
+            "type": "string"
+          },
+          {
+            "name": "autoLoadBalanceMode",
+            "type": "string"
+          },
+          {
+            "name": "autoReplicationProviders",
+            "type": "string"
+          },
+          {
+            "name": "autoFailOverProviders",
+            "type": "string"
+          },
+          {
+            "name": "AutoLoadBalanceProviders",
+            "type": "string"
+          },
+          {
+            "name": "waitForAutoReplicationResult",
+            "type": "string"
+          },
+          {
+            "name": "showDetailedSettings",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/authenticate/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{AutoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}"
+      },
+      "DeleteByEmailByEmailProviderType": {
+        "verb": "DELETE",
+        "route": "delete-by-email/{email}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "DELETE /api/avatar/delete-by-email/{email}/{providerType}/{setGlobally}"
+      },
+      "DeleteByUsernameByUsernameProviderType": {
+        "verb": "DELETE",
+        "route": "delete-by-username/{username}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "DELETE /api/avatar/delete-by-username/{username}/{providerType}/{setGlobally}"
+      },
+      "ForgotPasswordByProviderTypeSetGlobally": {
+        "verb": "POST",
+        "route": "forgot-password/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/forgot-password/{providerType}/{setGlobally}"
+      },
+      "GetAllAvatarDetailsByProviderTypeSetGlobally": {
+        "verb": "GET",
+        "route": "get-all-avatar-details/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/get-all-avatar-details/{providerType}/{setGlobally}"
+      },
+      "GetAllAvatarNamesGroupedByNameByIncludeUsernamesIncludeIds": {
+        "verb": "GET",
+        "route": "get-all-avatar-names-grouped-by-name/{includeUsernames}/{includeIds}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "includeUsernames",
+            "type": "string"
+          },
+          {
+            "name": "includeIds",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/get-all-avatar-names-grouped-by-name/{includeUsernames}/{includeIds}/{providerType}/{setGlobally}"
+      },
+      "GetAllAvatarNamesByIncludeUsernamesIncludeIds": {
+        "verb": "GET",
+        "route": "get-all-avatar-names/{includeUsernames}/{includeIds}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "includeUsernames",
+            "type": "string"
+          },
+          {
+            "name": "includeIds",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/get-all-avatar-names/{includeUsernames}/{includeIds}/{providerType}/{setGlobally}"
+      },
+      "GetAllAvatarsByProviderTypeSetGlobally": {
+        "verb": "GET",
+        "route": "get-all-avatars/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/get-all-avatars/{providerType}/{setGlobally}"
+      },
+      "GetAvatarDetailByEmailByEmailProviderType": {
+        "verb": "GET",
+        "route": "get-avatar-detail-by-email/{email}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/get-avatar-detail-by-email/{email}/{providerType}/{setGlobally}"
+      },
+      "GetAvatarDetailByIdByIdProviderType": {
+        "verb": "GET",
+        "route": "get-avatar-detail-by-id/{id}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/get-avatar-detail-by-id/{id}/{providerType}/{setGlobally}"
+      },
+      "GetAvatarDetailByUsernameByUsernameProviderType": {
+        "verb": "GET",
+        "route": "get-avatar-detail-by-username/{username}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/get-avatar-detail-by-username/{username}/{providerType}/{setGlobally}"
+      },
+      "GetAvatarPortraitByEmailByEmailProviderType": {
+        "verb": "GET",
+        "route": "get-avatar-portrait-by-email/{email}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/get-avatar-portrait-by-email/{email}/{providerType}/{setGlobally}"
+      },
+      "GetAvatarPortraitByUsernameByUsernameProviderType": {
+        "verb": "GET",
+        "route": "get-avatar-portrait-by-username/{username}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/get-avatar-portrait-by-username/{username}/{providerType}/{setGlobally}"
+      },
+      "GetAvatarPortraitByIdProviderType": {
+        "verb": "GET",
+        "route": "get-avatar-portrait/{id}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/get-avatar-portrait/{id}/{providerType}/{setGlobally}"
+      },
+      "GetByEmailByEmailProviderType": {
+        "verb": "GET",
+        "route": "get-by-email/{email}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/get-by-email/{email}/{providerType}/{setGlobally}"
+      },
+      "GetByIdByIdProviderType": {
+        "verb": "GET",
+        "route": "get-by-id/{id}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/get-by-id/{id}/{providerType}/{setGlobally}"
+      },
+      "GetByUsernameByUsernameProviderType": {
+        "verb": "GET",
+        "route": "get-by-username/{username}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/get-by-username/{username}/{providerType}/{setGlobally}"
+      },
+      "GetLevelThresholds": {
+        "verb": "GET",
+        "route": "get-level-thresholds",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/get-level-thresholds"
+      },
+      "GetLoggedInAvatarByProviderTypeSetGlobally": {
+        "verb": "GET",
+        "route": "get-logged-in-avatar/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/get-logged-in-avatar/{providerType}/{setGlobally}"
+      },
+      "GetUmaJsonByEmailByEmailProviderType": {
+        "verb": "GET",
+        "route": "get-uma-json-by-email/{email}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/get-uma-json-by-email/{email}/{providerType}/{setGlobally}"
+      },
+      "GetUmaJsonByIdByIdProviderType": {
+        "verb": "GET",
+        "route": "get-uma-json-by-id/{id}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/get-uma-json-by-id/{id}/{providerType}/{setGlobally}"
+      },
+      "GetUmaJsonByUsernameByUsernameProviderType": {
+        "verb": "GET",
+        "route": "get-uma-json-by-username/{username}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/get-uma-json-by-username/{username}/{providerType}/{setGlobally}"
+      },
+      "GetHolonSeal": {
+        "verb": "GET",
+        "route": "holon-seal",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/holon-seal"
+      },
+      "Set": {
+        "verb": "POST",
+        "route": "holon-seal",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/holon-seal"
+      },
+      "GetAvatarInventoryCount": {
+        "verb": "GET",
+        "route": "inventory/count",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/inventory/count"
+      },
+      "SendItemToClanAtomic": {
+        "verb": "POST",
+        "route": "inventory/send-to-clan-atomic",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/inventory/send-to-clan-atomic"
+      },
+      "UpdateItemInAvatarInventory": {
+        "verb": "PUT",
+        "route": "inventory/{itemId}",
+        "routeParams": [
+          {
+            "name": "itemId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "PUT /api/avatar/inventory/{itemId}"
+      },
+      "Confirm": {
+        "verb": "POST",
+        "route": "mfa/confirm",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/mfa/confirm"
+      },
+      "Disable": {
+        "verb": "POST",
+        "route": "mfa/disable",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/mfa/disable"
+      },
+      "Enrol": {
+        "verb": "POST",
+        "route": "mfa/enrol",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/mfa/enrol"
+      },
+      "Events": {
+        "verb": "GET",
+        "route": "mfa/events",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/mfa/events"
+      },
+      "RegenerateRecoveryCodes": {
+        "verb": "POST",
+        "route": "mfa/recovery-codes",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/mfa/recovery-codes"
+      },
+      "Reset": {
+        "verb": "POST",
+        "route": "mfa/reset/{avatarId}",
+        "routeParams": [
+          {
+            "name": "avatarId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/mfa/reset/{avatarId}"
+      },
+      "Status": {
+        "verb": "GET",
+        "route": "mfa/status",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/mfa/status"
+      },
+      "GetProfile": {
+        "verb": "GET",
+        "route": "profile",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/profile"
+      },
+      "ApplyProfile": {
+        "verb": "PATCH",
+        "route": "profile",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "PATCH /api/avatar/profile"
+      },
+      "GetProviderPrivateKeysById": {
+        "verb": "GET",
+        "route": "provider-private-keys/by-id/{avatarId}/{providerType}",
+        "routeParams": [
+          {
+            "name": "avatarId",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/provider-private-keys/by-id/{avatarId}/{providerType}"
+      },
+      "GetProviderPrivateKeysByUsername": {
+        "verb": "GET",
+        "route": "provider-private-keys/by-username/{username}/{providerType}",
+        "routeParams": [
+          {
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/provider-private-keys/by-username/{username}/{providerType}"
+      },
+      "GetProviderPublicKeysById": {
+        "verb": "GET",
+        "route": "provider-public-keys/by-id/{avatarId}/{providerType}",
+        "routeParams": [
+          {
+            "name": "avatarId",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/provider-public-keys/by-id/{avatarId}/{providerType}"
+      },
+      "GetProviderPublicKeysByUsername": {
+        "verb": "GET",
+        "route": "provider-public-keys/by-username/{username}/{providerType}",
+        "routeParams": [
+          {
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/provider-public-keys/by-username/{username}/{providerType}"
+      },
+      "GetProviderStorageKeyById": {
+        "verb": "GET",
+        "route": "provider-storage-key/by-id/{avatarId}/{providerType}",
+        "routeParams": [
+          {
+            "name": "avatarId",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/provider-storage-key/by-id/{avatarId}/{providerType}"
+      },
+      "GetProviderStorageKeyByUsername": {
+        "verb": "GET",
+        "route": "provider-storage-key/by-username/{username}/{providerType}",
+        "routeParams": [
+          {
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/provider-storage-key/by-username/{username}/{providerType}"
+      },
+      "RefreshToken": {
+        "verb": "POST",
+        "route": "refresh-token",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/refresh-token"
+      },
+      "RefreshTokenByProviderTypeSetGlobally": {
+        "verb": "POST",
+        "route": "refresh-token/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/refresh-token/{providerType}/{setGlobally}"
+      },
+      "RemoveKarmaFromAvatarByAvatarIdProviderType": {
+        "verb": "POST",
+        "route": "remove-karma-from-avatar/{avatarId}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "avatarId",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/remove-karma-from-avatar/{avatarId}/{providerType}/{setGlobally}"
+      },
+      "ResetPasswordByProviderTypeSetGlobally": {
+        "verb": "POST",
+        "route": "reset-password/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/reset-password/{providerType}/{setGlobally}"
+      },
+      "RevokeTokenByProviderTypeSetGlobally": {
+        "verb": "POST",
+        "route": "revoke-token/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/revoke-token/{providerType}/{setGlobally}"
+      },
+      "SearchDirectory": {
+        "verb": "GET",
+        "route": "search-directory",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/search-directory"
+      },
+      "SearchByProviderTypeSetGlobally": {
+        "verb": "POST",
+        "route": "search/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/search/{providerType}/{setGlobally}"
+      },
+      "UpdateAvatarDetailByEmailByEmailProviderType": {
+        "verb": "POST",
+        "route": "update-avatar-detail-by-email/{email}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/update-avatar-detail-by-email/{email}/{providerType}/{setGlobally}"
+      },
+      "UpdateAvatarDetailByIdByIdProviderType": {
+        "verb": "POST",
+        "route": "update-avatar-detail-by-id/{id}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/update-avatar-detail-by-id/{id}/{providerType}/{setGlobally}"
+      },
+      "UpdateAvatarDetailByUsernameByUsernameProviderType": {
+        "verb": "POST",
+        "route": "update-avatar-detail-by-username/{username}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/update-avatar-detail-by-username/{username}/{providerType}/{setGlobally}"
+      },
+      "UpdateByEmailByEmailProviderType": {
+        "verb": "POST",
+        "route": "update-by-email/{email}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/update-by-email/{email}/{providerType}/{setGlobally}"
+      },
+      "UpdateByIdByIdProviderType": {
+        "verb": "POST",
+        "route": "update-by-id/{id}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/update-by-id/{id}/{providerType}/{setGlobally}"
+      },
+      "UpdateByUsernameByUsernameProviderType": {
+        "verb": "POST",
+        "route": "update-by-username/{username}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/update-by-username/{username}/{providerType}/{setGlobally}"
+      },
+      "UploadAvatarPortraitByProviderTypeSetGlobally": {
+        "verb": "POST",
+        "route": "upload-avatar-portrait/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/upload-avatar-portrait/{providerType}/{setGlobally}"
+      },
+      "ValidateAccountToken": {
+        "verb": "POST",
+        "route": "validate-account-token",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/validate-account-token"
+      },
+      "ValidateResetTokenByProviderTypeSetGlobally": {
+        "verb": "POST",
+        "route": "validate-reset-token/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/validate-reset-token/{providerType}/{setGlobally}"
+      },
+      "VerifyEmailByProviderTypeSetGlobally": {
+        "verb": "POST",
+        "route": "verify-email/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/verify-email/{providerType}/{setGlobally}"
+      },
+      "GetVersionPurge": {
+        "verb": "GET",
+        "route": "version-purge",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/version-purge"
+      },
+      "VersionPurge": {
+        "verb": "POST",
+        "route": "version-purge",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/version-purge"
+      },
+      "VerifyAvatar": {
+        "verb": "POST",
+        "route": "{avatarId}/verify",
+        "routeParams": [
+          {
+            "name": "avatarId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/{avatarId}/verify"
+      },
+      "DeleteRootByIdProviderType": {
+        "verb": "DELETE",
+        "route": "{id}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "DELETE /api/avatar/{id}/{providerType}/{setGlobally}"
+      },
+      "AuthenticateDid": {
+        "verb": "POST",
+        "route": "authenticate-did",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/authenticate-did"
+      },
+      "AuthenticateToken": {
+        "verb": "POST",
+        "route": "authenticate-token/{JWTToken}",
+        "routeParams": [
+          {
+            "name": "JWTToken",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/authenticate-token/{JWTToken}"
+      },
+      "AuthenticateTokenWithProvider": {
+        "verb": "POST",
+        "route": "authenticate-token/{JWTToken}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "JWTToken",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/authenticate-token/{JWTToken}/{providerType}/{setGlobally}"
+      },
+      "GetDidChallenge": {
+        "verb": "GET",
+        "route": "did-challenge/{did}",
+        "routeParams": [
+          {
+            "name": "did",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/did-challenge/{did}"
+      },
+      "GenerateKeyPair": {
+        "verb": "POST",
+        "route": "generate-key-pair",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/generate-key-pair"
+      },
+      "LinkPublicKeyById": {
+        "verb": "POST",
+        "route": "link-public-key/by-id",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/link-public-key/by-id"
+      },
+      "LinkPublicKeyByUsername": {
+        "verb": "POST",
+        "route": "link-public-key/by-username",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/link-public-key/by-username"
+      },
+      "RegisterWithProvider": {
+        "verb": "POST",
+        "route": "register/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/register/{providerType}/{setGlobally}"
+      },
+      "VerifyEmailPost": {
+        "verb": "POST",
+        "route": "verify-email",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/avatar/verify-email"
+      },
+      "VerifyEmailWithProvider": {
+        "verb": "GET",
+        "route": "verify-email/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/avatar/verify-email/{providerType}/{setGlobally}"
       }
     }
   },
@@ -1241,6 +2416,29 @@
           "limit",
           "offset"
         ]
+      },
+      "GetActiveSessions": {
+        "verb": "GET",
+        "route": "active-sessions",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/chat/active-sessions"
+      },
+      "EndChatSession": {
+        "verb": "POST",
+        "route": "end-chat-session/{sessionId}",
+        "routeParams": [
+          {
+            "name": "sessionId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/chat/end-chat-session/{sessionId}"
       }
     }
   },
@@ -1496,219 +2694,6 @@
       }
     }
   },
-  "CompetitionController.cs": {
-    "route_prefix": "api/competition",
-    "ops": {
-      "GetLeaderboard": {
-        "verb": "GET",
-        "route": "leaderboard/{competitionType}/{seasonType}",
-        "routeParams": [
-          {
-            "name": "competitionType",
-            "type": "CompetitionType"
-          },
-          {
-            "name": "seasonType",
-            "type": "SeasonType"
-          }
-        ],
-        "queryParams": [
-          {
-            "name": "limit",
-            "type": "int",
-            "optional": true
-          },
-          {
-            "name": "offset",
-            "type": "int",
-            "optional": true
-          }
-        ],
-        "requestType": null,
-        "responseType": {
-          "wrapper": "OASISResult",
-          "inner": "List<LeaderboardEntry>"
-        },
-        "summary": "Get leaderboard for a specific competition type and season",
-        "query": [
-          "limit",
-          "offset"
-        ]
-      },
-      "GetMyRank": {
-        "verb": "GET",
-        "route": "my-rank/{competitionType}/{seasonType}",
-        "routeParams": [
-          {
-            "name": "competitionType",
-            "type": "CompetitionType"
-          },
-          {
-            "name": "seasonType",
-            "type": "SeasonType"
-          }
-        ],
-        "queryParams": [],
-        "requestType": null,
-        "responseType": {
-          "wrapper": "OASISResult",
-          "inner": "LeaderboardEntry"
-        },
-        "summary": "Get current avatar's rank in a specific competition"
-      },
-      "GetAvatarRank": {
-        "verb": "GET",
-        "route": "rank/{avatarId}/{competitionType}/{seasonType}",
-        "routeParams": [
-          {
-            "name": "avatarId",
-            "type": "Guid"
-          },
-          {
-            "name": "competitionType",
-            "type": "CompetitionType"
-          },
-          {
-            "name": "seasonType",
-            "type": "SeasonType"
-          }
-        ],
-        "queryParams": [],
-        "requestType": null,
-        "responseType": {
-          "wrapper": "OASISResult",
-          "inner": "LeaderboardEntry"
-        },
-        "summary": "Get avatar's rank by ID in a specific competition"
-      },
-      "GetAvailableLeagues": {
-        "verb": "GET",
-        "route": "leagues/{competitionType}/{seasonType}",
-        "routeParams": [
-          {
-            "name": "competitionType",
-            "type": "CompetitionType"
-          },
-          {
-            "name": "seasonType",
-            "type": "SeasonType"
-          }
-        ],
-        "queryParams": [],
-        "requestType": null,
-        "responseType": {
-          "wrapper": "OASISResult",
-          "inner": "List<League>"
-        },
-        "summary": "Get available leagues for a competition type and season"
-      },
-      "GetMyLeague": {
-        "verb": "GET",
-        "route": "my-league/{competitionType}/{seasonType}",
-        "routeParams": [
-          {
-            "name": "competitionType",
-            "type": "CompetitionType"
-          },
-          {
-            "name": "seasonType",
-            "type": "SeasonType"
-          }
-        ],
-        "queryParams": [],
-        "requestType": null,
-        "responseType": {
-          "wrapper": "OASISResult",
-          "inner": "League"
-        },
-        "summary": "Get current avatar's league"
-      },
-      "GetAvatarLeague": {
-        "verb": "GET",
-        "route": "league/{avatarId}/{competitionType}/{seasonType}",
-        "routeParams": [
-          {
-            "name": "avatarId",
-            "type": "Guid"
-          },
-          {
-            "name": "competitionType",
-            "type": "CompetitionType"
-          },
-          {
-            "name": "seasonType",
-            "type": "SeasonType"
-          }
-        ],
-        "queryParams": [],
-        "requestType": null,
-        "responseType": {
-          "wrapper": "OASISResult",
-          "inner": "League"
-        },
-        "summary": "Get avatar's league by ID"
-      },
-      "GetActiveTournaments": {
-        "verb": "GET",
-        "route": "tournaments",
-        "routeParams": [],
-        "queryParams": [
-          {
-            "name": "competitionType",
-            "type": "CompetitionType",
-            "optional": true
-          }
-        ],
-        "requestType": null,
-        "responseType": {
-          "wrapper": "OASISResult",
-          "inner": "List<Tournament>"
-        },
-        "summary": "Get active tournaments",
-        "query": [
-          "competitionType"
-        ]
-      },
-      "JoinTournament": {
-        "verb": "POST",
-        "route": "tournaments/{tournamentId}/join",
-        "routeParams": [
-          {
-            "name": "tournamentId",
-            "type": "Guid"
-          }
-        ],
-        "queryParams": [],
-        "requestType": null,
-        "responseType": {
-          "wrapper": "OASISResult",
-          "inner": "bool"
-        },
-        "summary": "Join a tournament"
-      },
-      "GetMyStats": {
-        "verb": "GET",
-        "route": "stats/{competitionType}/{seasonType}",
-        "routeParams": [
-          {
-            "name": "competitionType",
-            "type": "CompetitionType"
-          },
-          {
-            "name": "seasonType",
-            "type": "SeasonType"
-          }
-        ],
-        "queryParams": [],
-        "requestType": null,
-        "responseType": {
-          "wrapper": "OASISResult",
-          "inner": "Dictionary<string, object>"
-        },
-        "summary": "Get competition statistics for the current avatar"
-      }
-    }
-  },
   "DataController.cs": {
     "route_prefix": "api/data",
     "ops": {
@@ -1879,6 +2864,1738 @@
           "inner": "OASISHttpResponseMessage<string>"
         },
         "summary": "Loads custom data with the given key from the current logged in avatar."
+      },
+      "GetAccessLog": {
+        "verb": "GET",
+        "route": "access-log",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/access-log"
+      },
+      "CompleteChunkedFile": {
+        "verb": "POST",
+        "route": "complete-chunked-file",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/complete-chunked-file"
+      },
+      "CopyHolon": {
+        "verb": "POST",
+        "route": "copy-holon",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/copy-holon"
+      },
+      "GetHolonCopyProviders": {
+        "verb": "GET",
+        "route": "copy-holon/providers",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/copy-holon/providers"
+      },
+      "GetCurrentAvatarHolonCount": {
+        "verb": "GET",
+        "route": "current-avatar/holon-count",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/current-avatar/holon-count"
+      },
+      "DeleteChunkedFile": {
+        "verb": "POST",
+        "route": "delete-chunked-file",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/delete-chunked-file"
+      },
+      "DeleteHolonByProviderKey": {
+        "verb": "DELETE",
+        "route": "delete-holon-by-providerkey/{providerKey}",
+        "routeParams": [
+          {
+            "name": "providerKey",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "DELETE /api/data/delete-holon-by-providerkey/{providerKey}"
+      },
+      "DeleteHolonById": {
+        "verb": "DELETE",
+        "route": "delete-holon/{id}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "DELETE /api/data/delete-holon/{id}"
+      },
+      "DeleteHolonByIdSoftDelete": {
+        "verb": "DELETE",
+        "route": "delete-holon/{id}/{softDelete}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "softDelete",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "DELETE /api/data/delete-holon/{id}/{softDelete}"
+      },
+      "DeleteHolonByIdSoftDelete2": {
+        "verb": "DELETE",
+        "route": "delete-holon/{id}/{softDelete}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "softDelete",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "DELETE /api/data/delete-holon/{id}/{softDelete}/{providerType}/{setGlobally}"
+      },
+      "DeleteHolonByIdSoftDelete3": {
+        "verb": "DELETE",
+        "route": "delete-holon/{id}/{softDelete}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "softDelete",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          },
+          {
+            "name": "autoReplicationMode",
+            "type": "string"
+          },
+          {
+            "name": "autoFailOverMode",
+            "type": "string"
+          },
+          {
+            "name": "autoLoadBalanceMode",
+            "type": "string"
+          },
+          {
+            "name": "autoReplicationProviders",
+            "type": "string"
+          },
+          {
+            "name": "autoFailOverProviders",
+            "type": "string"
+          },
+          {
+            "name": "autoLoadBalanceProviders",
+            "type": "string"
+          },
+          {
+            "name": "waitForAutoReplicationResult",
+            "type": "string"
+          },
+          {
+            "name": "showDetailedSettings",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "DELETE /api/data/delete-holon/{id}/{softDelete}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}"
+      },
+      "GetHolonAccessLog": {
+        "verb": "GET",
+        "route": "holon-access-log/{id}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/holon-access-log/{id}"
+      },
+      "GetHolonAuditTrail": {
+        "verb": "GET",
+        "route": "holon-audit-trail/{id}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/holon-audit-trail/{id}"
+      },
+      "PostHolonAuditTrail": {
+        "verb": "POST",
+        "route": "holon-audit-trail/{id}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/holon-audit-trail/{id}"
+      },
+      "SetHolonPurgeHold": {
+        "verb": "POST",
+        "route": "holon-purge-hold/{id}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/holon-purge-hold/{id}"
+      },
+      "ReleaseHolonPurgeHold": {
+        "verb": "DELETE",
+        "route": "holon-purge-hold/{id}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "DELETE /api/data/holon-purge-hold/{id}"
+      },
+      "GetHolonPurgeStatus": {
+        "verb": "GET",
+        "route": "holon-purge/status/{id}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/holon-purge/status/{id}"
+      },
+      "VerifyHolonSeal": {
+        "verb": "GET",
+        "route": "holon-seal/verify/{id}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/holon-seal/verify/{id}"
+      },
+      "GetLoadAllHolonsByHolonType": {
+        "verb": "GET",
+        "route": "load-all-holons/{holonType}",
+        "routeParams": [
+          {
+            "name": "holonType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-all-holons/{holonType}"
+      },
+      "GetLoadAllHolonsByHolonTypeLoadChildren": {
+        "verb": "GET",
+        "route": "load-all-holons/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}",
+        "routeParams": [
+          {
+            "name": "holonType",
+            "type": "string"
+          },
+          {
+            "name": "loadChildren",
+            "type": "string"
+          },
+          {
+            "name": "recursive",
+            "type": "string"
+          },
+          {
+            "name": "maxChildDepth",
+            "type": "string"
+          },
+          {
+            "name": "continueOnError",
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-all-holons/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}"
+      },
+      "GetLoadAllHolonsByHolonTypeLoadChildren2": {
+        "verb": "GET",
+        "route": "load-all-holons/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "holonType",
+            "type": "string"
+          },
+          {
+            "name": "loadChildren",
+            "type": "string"
+          },
+          {
+            "name": "recursive",
+            "type": "string"
+          },
+          {
+            "name": "maxChildDepth",
+            "type": "string"
+          },
+          {
+            "name": "continueOnError",
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-all-holons/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}"
+      },
+      "GetLoadAllHolonsByHolonTypeLoadChildren3": {
+        "verb": "GET",
+        "route": "load-all-holons/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}",
+        "routeParams": [
+          {
+            "name": "holonType",
+            "type": "string"
+          },
+          {
+            "name": "loadChildren",
+            "type": "string"
+          },
+          {
+            "name": "recursive",
+            "type": "string"
+          },
+          {
+            "name": "maxChildDepth",
+            "type": "string"
+          },
+          {
+            "name": "continueOnError",
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          },
+          {
+            "name": "autoReplicationMode",
+            "type": "string"
+          },
+          {
+            "name": "autoFailOverMode",
+            "type": "string"
+          },
+          {
+            "name": "autoLoadBalanceMode",
+            "type": "string"
+          },
+          {
+            "name": "autoReplicationProviders",
+            "type": "string"
+          },
+          {
+            "name": "autoFailOverProviders",
+            "type": "string"
+          },
+          {
+            "name": "autoLoadBalanceProviders",
+            "type": "string"
+          },
+          {
+            "name": "waitForAutoReplicationResult",
+            "type": "string"
+          },
+          {
+            "name": "showDetailedSettings",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-all-holons/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}"
+      },
+      "GetLoadDataByKeyValue": {
+        "verb": "GET",
+        "route": "load-data/{key}/{value}",
+        "routeParams": [
+          {
+            "name": "key",
+            "type": "string"
+          },
+          {
+            "name": "value",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-data/{key}/{value}"
+      },
+      "GetLoadDataByKeyValue2": {
+        "verb": "GET",
+        "route": "load-data/{key}/{value}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "key",
+            "type": "string"
+          },
+          {
+            "name": "value",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-data/{key}/{value}/{providerType}/{setGlobally}"
+      },
+      "GetLoadDataByKeyValue3": {
+        "verb": "GET",
+        "route": "load-data/{key}/{value}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}",
+        "routeParams": [
+          {
+            "name": "key",
+            "type": "string"
+          },
+          {
+            "name": "value",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          },
+          {
+            "name": "autoReplicationMode",
+            "type": "string"
+          },
+          {
+            "name": "autoFailOverMode",
+            "type": "string"
+          },
+          {
+            "name": "autoLoadBalanceMode",
+            "type": "string"
+          },
+          {
+            "name": "autoReplicationProviders",
+            "type": "string"
+          },
+          {
+            "name": "autoFailOverProviders",
+            "type": "string"
+          },
+          {
+            "name": "autoLoadBalanceProviders",
+            "type": "string"
+          },
+          {
+            "name": "waitForAutoReplicationResult",
+            "type": "string"
+          },
+          {
+            "name": "showDetailedSettings",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-data/{key}/{value}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}"
+      },
+      "LoadFileChunk": {
+        "verb": "POST",
+        "route": "load-file-chunk",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/load-file-chunk"
+      },
+      "LoadFileInfo": {
+        "verb": "POST",
+        "route": "load-file-info",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/load-file-info"
+      },
+      "GetLoadFileById": {
+        "verb": "GET",
+        "route": "load-file/{id}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-file/{id}"
+      },
+      "GetLoadFileByIdProviderType": {
+        "verb": "GET",
+        "route": "load-file/{id}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-file/{id}/{providerType}/{setGlobally}"
+      },
+      "GetLoadFileByIdProviderType2": {
+        "verb": "GET",
+        "route": "load-file/{id}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          },
+          {
+            "name": "autoReplicationMode",
+            "type": "string"
+          },
+          {
+            "name": "autoFailOverMode",
+            "type": "string"
+          },
+          {
+            "name": "autoLoadBalanceMode",
+            "type": "string"
+          },
+          {
+            "name": "autoReplicationProviders",
+            "type": "string"
+          },
+          {
+            "name": "autoFailOverProviders",
+            "type": "string"
+          },
+          {
+            "name": "autoLoadBalanceProviders",
+            "type": "string"
+          },
+          {
+            "name": "waitForAutoReplicationResult",
+            "type": "string"
+          },
+          {
+            "name": "showDetailedSettings",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-file/{id}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}"
+      },
+      "GetLoadHolonByMetadataByMetaKeyMetaValue": {
+        "verb": "GET",
+        "route": "load-holon-by-metadata/{metaKey}/{metaValue}",
+        "routeParams": [
+          {
+            "name": "metaKey",
+            "type": "string"
+          },
+          {
+            "name": "metaValue",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-holon-by-metadata/{metaKey}/{metaValue}"
+      },
+      "GetLoadHolonByMetadataByMetaKeyMetaValue2": {
+        "verb": "GET",
+        "route": "load-holon-by-metadata/{metaKey}/{metaValue}/{holonType}",
+        "routeParams": [
+          {
+            "name": "metaKey",
+            "type": "string"
+          },
+          {
+            "name": "metaValue",
+            "type": "string"
+          },
+          {
+            "name": "holonType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-holon-by-metadata/{metaKey}/{metaValue}/{holonType}"
+      },
+      "GetLoadHolonByMetadataByMetaKeyMetaValue3": {
+        "verb": "GET",
+        "route": "load-holon-by-metadata/{metaKey}/{metaValue}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}",
+        "routeParams": [
+          {
+            "name": "metaKey",
+            "type": "string"
+          },
+          {
+            "name": "metaValue",
+            "type": "string"
+          },
+          {
+            "name": "holonType",
+            "type": "string"
+          },
+          {
+            "name": "loadChildren",
+            "type": "string"
+          },
+          {
+            "name": "recursive",
+            "type": "string"
+          },
+          {
+            "name": "maxChildDepth",
+            "type": "string"
+          },
+          {
+            "name": "continueOnError",
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-holon-by-metadata/{metaKey}/{metaValue}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}"
+      },
+      "LoadHolonByProviderKey": {
+        "verb": "GET",
+        "route": "load-holon-by-providerkey/{providerKey}",
+        "routeParams": [
+          {
+            "name": "providerKey",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-holon-by-providerkey/{providerKey}"
+      },
+      "GetLoadHolonById": {
+        "verb": "GET",
+        "route": "load-holon/{id}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-holon/{id}"
+      },
+      "GetLoadHolonByIdLoadChildren": {
+        "verb": "GET",
+        "route": "load-holon/{id}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "loadChildren",
+            "type": "string"
+          },
+          {
+            "name": "recursive",
+            "type": "string"
+          },
+          {
+            "name": "maxChildDepth",
+            "type": "string"
+          },
+          {
+            "name": "continueOnError",
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-holon/{id}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}"
+      },
+      "GetLoadHolonByIdLoadChildren2": {
+        "verb": "GET",
+        "route": "load-holon/{id}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "loadChildren",
+            "type": "string"
+          },
+          {
+            "name": "recursive",
+            "type": "string"
+          },
+          {
+            "name": "maxChildDepth",
+            "type": "string"
+          },
+          {
+            "name": "continueOnError",
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-holon/{id}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}"
+      },
+      "GetLoadHolonByIdLoadChildren3": {
+        "verb": "GET",
+        "route": "load-holon/{id}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "loadChildren",
+            "type": "string"
+          },
+          {
+            "name": "recursive",
+            "type": "string"
+          },
+          {
+            "name": "maxChildDepth",
+            "type": "string"
+          },
+          {
+            "name": "continueOnError",
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          },
+          {
+            "name": "autoReplicationMode",
+            "type": "string"
+          },
+          {
+            "name": "autoFailOverMode",
+            "type": "string"
+          },
+          {
+            "name": "autoLoadBalanceMode",
+            "type": "string"
+          },
+          {
+            "name": "autoReplicationProviders",
+            "type": "string"
+          },
+          {
+            "name": "autoFailOverProviders",
+            "type": "string"
+          },
+          {
+            "name": "autoLoadBalanceProviders",
+            "type": "string"
+          },
+          {
+            "name": "waitForAutoReplicationResult",
+            "type": "string"
+          },
+          {
+            "name": "showDetailedSettings",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-holon/{id}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}"
+      },
+      "GetLoadHolonsByMetadataByMetaKeyMetaValue": {
+        "verb": "GET",
+        "route": "load-holons-by-metadata/{metaKey}/{metaValue}",
+        "routeParams": [
+          {
+            "name": "metaKey",
+            "type": "string"
+          },
+          {
+            "name": "metaValue",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-holons-by-metadata/{metaKey}/{metaValue}"
+      },
+      "GetLoadHolonsByMetadataByMetaKeyMetaValue2": {
+        "verb": "GET",
+        "route": "load-holons-by-metadata/{metaKey}/{metaValue}/{holonType}",
+        "routeParams": [
+          {
+            "name": "metaKey",
+            "type": "string"
+          },
+          {
+            "name": "metaValue",
+            "type": "string"
+          },
+          {
+            "name": "holonType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-holons-by-metadata/{metaKey}/{metaValue}/{holonType}"
+      },
+      "GetLoadHolonsByMetadataByMetaKeyMetaValue3": {
+        "verb": "GET",
+        "route": "load-holons-by-metadata/{metaKey}/{metaValue}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}",
+        "routeParams": [
+          {
+            "name": "metaKey",
+            "type": "string"
+          },
+          {
+            "name": "metaValue",
+            "type": "string"
+          },
+          {
+            "name": "holonType",
+            "type": "string"
+          },
+          {
+            "name": "loadChildren",
+            "type": "string"
+          },
+          {
+            "name": "recursive",
+            "type": "string"
+          },
+          {
+            "name": "maxChildDepth",
+            "type": "string"
+          },
+          {
+            "name": "continueOnError",
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-holons-by-metadata/{metaKey}/{metaValue}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}"
+      },
+      "LoadHolonsForParentByProviderKey": {
+        "verb": "GET",
+        "route": "load-holons-for-parent-by-providerkey/{providerKey}",
+        "routeParams": [
+          {
+            "name": "providerKey",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-holons-for-parent-by-providerkey/{providerKey}"
+      },
+      "GetLoadHolonsForParentByProviderkeyByProviderKeyHolonType": {
+        "verb": "GET",
+        "route": "load-holons-for-parent-by-providerkey/{providerKey}/{holonType}",
+        "routeParams": [
+          {
+            "name": "providerKey",
+            "type": "string"
+          },
+          {
+            "name": "holonType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-holons-for-parent-by-providerkey/{providerKey}/{holonType}"
+      },
+      "GetLoadHolonsForParentByIdHolonType": {
+        "verb": "GET",
+        "route": "load-holons-for-parent/{id}/{holonType}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "holonType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-holons-for-parent/{id}/{holonType}"
+      },
+      "GetLoadHolonsForParentByIdHolonType2": {
+        "verb": "GET",
+        "route": "load-holons-for-parent/{id}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "holonType",
+            "type": "string"
+          },
+          {
+            "name": "loadChildren",
+            "type": "string"
+          },
+          {
+            "name": "recursive",
+            "type": "string"
+          },
+          {
+            "name": "maxChildDepth",
+            "type": "string"
+          },
+          {
+            "name": "continueOnError",
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-holons-for-parent/{id}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}"
+      },
+      "GetLoadHolonsForParentByIdHolonType3": {
+        "verb": "GET",
+        "route": "load-holons-for-parent/{id}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "holonType",
+            "type": "string"
+          },
+          {
+            "name": "loadChildren",
+            "type": "string"
+          },
+          {
+            "name": "recursive",
+            "type": "string"
+          },
+          {
+            "name": "maxChildDepth",
+            "type": "string"
+          },
+          {
+            "name": "continueOnError",
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-holons-for-parent/{id}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}"
+      },
+      "GetLoadHolonsForParentByIdHolonType4": {
+        "verb": "GET",
+        "route": "load-holons-for-parent/{id}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "holonType",
+            "type": "string"
+          },
+          {
+            "name": "loadChildren",
+            "type": "string"
+          },
+          {
+            "name": "recursive",
+            "type": "string"
+          },
+          {
+            "name": "maxChildDepth",
+            "type": "string"
+          },
+          {
+            "name": "continueOnError",
+            "type": "string"
+          },
+          {
+            "name": "version",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          },
+          {
+            "name": "autoReplicationMode",
+            "type": "string"
+          },
+          {
+            "name": "autoFailOverMode",
+            "type": "string"
+          },
+          {
+            "name": "autoLoadBalanceMode",
+            "type": "string"
+          },
+          {
+            "name": "autoReplicationProviders",
+            "type": "string"
+          },
+          {
+            "name": "autoFailOverProviders",
+            "type": "string"
+          },
+          {
+            "name": "autoLoadBalanceProviders",
+            "type": "string"
+          },
+          {
+            "name": "waitForAutoReplicationResult",
+            "type": "string"
+          },
+          {
+            "name": "showDetailedSettings",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/load-holons-for-parent/{id}/{holonType}/{loadChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{version}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}"
+      },
+      "PurgeHolon": {
+        "verb": "DELETE",
+        "route": "purge-holon/{id}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "DELETE /api/data/purge-holon/{id}"
+      },
+      "PurgeHolons": {
+        "verb": "POST",
+        "route": "purge-holons",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/purge-holons"
+      },
+      "Query": {
+        "verb": "POST",
+        "route": "query-cql",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/query-cql"
+      },
+      "Composition": {
+        "verb": "POST",
+        "route": "query-cql/composition",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/query-cql/composition"
+      },
+      "DemoIdentities": {
+        "verb": "POST",
+        "route": "query-cql/demo-identities",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/query-cql/demo-identities"
+      },
+      "Federation": {
+        "verb": "POST",
+        "route": "query-cql/federation",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/query-cql/federation"
+      },
+      "Grouped": {
+        "verb": "POST",
+        "route": "query-cql/grouped",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/query-cql/grouped"
+      },
+      "Indexed": {
+        "verb": "POST",
+        "route": "query-cql/indexed",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/query-cql/indexed"
+      },
+      "IndexedScalar": {
+        "verb": "POST",
+        "route": "query-cql/indexed/scalar",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/query-cql/indexed/scalar"
+      },
+      "Join": {
+        "verb": "POST",
+        "route": "query-cql/join",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/query-cql/join"
+      },
+      "Projection": {
+        "verb": "POST",
+        "route": "query-cql/projection",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/query-cql/projection"
+      },
+      "MixedProjection": {
+        "verb": "POST",
+        "route": "query-cql/projection/mixed",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/query-cql/projection/mixed"
+      },
+      "Providers": {
+        "verb": "GET",
+        "route": "query-cql/providers",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/query-cql/providers"
+      },
+      "Scalar": {
+        "verb": "POST",
+        "route": "query-cql/scalar",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/query-cql/scalar"
+      },
+      "Set": {
+        "verb": "POST",
+        "route": "query-cql/set",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/query-cql/set"
+      },
+      "GetSaveDataByKeyValue": {
+        "verb": "GET",
+        "route": "save-data/{key}/{value}",
+        "routeParams": [
+          {
+            "name": "key",
+            "type": "string"
+          },
+          {
+            "name": "value",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/save-data/{key}/{value}"
+      },
+      "GetSaveDataByKeyValue2": {
+        "verb": "GET",
+        "route": "save-data/{key}/{value}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "key",
+            "type": "string"
+          },
+          {
+            "name": "value",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/save-data/{key}/{value}/{providerType}/{setGlobally}"
+      },
+      "GetSaveDataByKeyValue3": {
+        "verb": "GET",
+        "route": "save-data/{key}/{value}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}",
+        "routeParams": [
+          {
+            "name": "key",
+            "type": "string"
+          },
+          {
+            "name": "value",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          },
+          {
+            "name": "autoReplicationMode",
+            "type": "string"
+          },
+          {
+            "name": "autoFailOverMode",
+            "type": "string"
+          },
+          {
+            "name": "autoLoadBalanceMode",
+            "type": "string"
+          },
+          {
+            "name": "autoReplicationProviders",
+            "type": "string"
+          },
+          {
+            "name": "autoFailOverProviders",
+            "type": "string"
+          },
+          {
+            "name": "autoLoadBalanceProviders",
+            "type": "string"
+          },
+          {
+            "name": "waitForAutoReplicationResult",
+            "type": "string"
+          },
+          {
+            "name": "showDetailedSettings",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/save-data/{key}/{value}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}"
+      },
+      "SaveFileChunk": {
+        "verb": "POST",
+        "route": "save-file-chunk",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/save-file-chunk"
+      },
+      "GetSaveFileByData": {
+        "verb": "GET",
+        "route": "save-file/{data}",
+        "routeParams": [
+          {
+            "name": "data",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/save-file/{data}"
+      },
+      "GetSaveFileByDataProviderType": {
+        "verb": "GET",
+        "route": "save-file/{data}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "data",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/save-file/{data}/{providerType}/{setGlobally}"
+      },
+      "GetSaveFileByDataProviderType2": {
+        "verb": "GET",
+        "route": "save-file/{data}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}",
+        "routeParams": [
+          {
+            "name": "data",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          },
+          {
+            "name": "autoReplicationMode",
+            "type": "string"
+          },
+          {
+            "name": "autoFailOverMode",
+            "type": "string"
+          },
+          {
+            "name": "autoLoadBalanceMode",
+            "type": "string"
+          },
+          {
+            "name": "autoReplicationProviders",
+            "type": "string"
+          },
+          {
+            "name": "autoFailOverProviders",
+            "type": "string"
+          },
+          {
+            "name": "autoLoadBalanceProviders",
+            "type": "string"
+          },
+          {
+            "name": "waitForAutoReplicationResult",
+            "type": "string"
+          },
+          {
+            "name": "showDetailedSettings",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/save-file/{data}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{autoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}"
+      },
+      "SaveHolonByHolon": {
+        "verb": "POST",
+        "route": "save-holon/{holon}",
+        "routeParams": [
+          {
+            "name": "holon",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/save-holon/{holon}"
+      },
+      "SaveHolonBySaveChildrenRecursive": {
+        "verb": "POST",
+        "route": "save-holon/{saveChildren}/{recursive}/{maxChildDepth}/{continueOnError}",
+        "routeParams": [
+          {
+            "name": "saveChildren",
+            "type": "string"
+          },
+          {
+            "name": "recursive",
+            "type": "string"
+          },
+          {
+            "name": "maxChildDepth",
+            "type": "string"
+          },
+          {
+            "name": "continueOnError",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/save-holon/{saveChildren}/{recursive}/{maxChildDepth}/{continueOnError}"
+      },
+      "SaveHolonBySaveChildrenRecursive2": {
+        "verb": "POST",
+        "route": "save-holon/{saveChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "saveChildren",
+            "type": "string"
+          },
+          {
+            "name": "recursive",
+            "type": "string"
+          },
+          {
+            "name": "maxChildDepth",
+            "type": "string"
+          },
+          {
+            "name": "continueOnError",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/save-holon/{saveChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{providerType}/{setGlobally}"
+      },
+      "SaveHolonBySaveChildrenRecursive3": {
+        "verb": "POST",
+        "route": "save-holon/{saveChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{AutoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}",
+        "routeParams": [
+          {
+            "name": "saveChildren",
+            "type": "string"
+          },
+          {
+            "name": "recursive",
+            "type": "string"
+          },
+          {
+            "name": "maxChildDepth",
+            "type": "string"
+          },
+          {
+            "name": "continueOnError",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          },
+          {
+            "name": "autoReplicationMode",
+            "type": "string"
+          },
+          {
+            "name": "autoFailOverMode",
+            "type": "string"
+          },
+          {
+            "name": "autoLoadBalanceMode",
+            "type": "string"
+          },
+          {
+            "name": "autoReplicationProviders",
+            "type": "string"
+          },
+          {
+            "name": "autoFailOverProviders",
+            "type": "string"
+          },
+          {
+            "name": "AutoLoadBalanceProviders",
+            "type": "string"
+          },
+          {
+            "name": "waitForAutoReplicationResult",
+            "type": "string"
+          },
+          {
+            "name": "showDetailedSettings",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/save-holon/{saveChildren}/{recursive}/{maxChildDepth}/{continueOnError}/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{AutoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}"
+      },
+      "GetSearchHolonsBySearchTerm": {
+        "verb": "GET",
+        "route": "search-holons/{searchTerm}",
+        "routeParams": [
+          {
+            "name": "searchTerm",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/search-holons/{searchTerm}"
+      },
+      "GetSearchHolonsBySearchTermHolonType": {
+        "verb": "GET",
+        "route": "search-holons/{searchTerm}/{holonType}",
+        "routeParams": [
+          {
+            "name": "searchTerm",
+            "type": "string"
+          },
+          {
+            "name": "holonType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/data/search-holons/{searchTerm}/{holonType}"
+      },
+      "RecoverConditionalOperation": {
+        "verb": "POST",
+        "route": "~",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/data/~"
       }
     }
   },
@@ -2305,6 +5022,15 @@
           "inner": "bool"
         },
         "summary": "Update file metadata."
+      },
+      "GetFileCountForCurrentLoggedInAvatar": {
+        "verb": "GET",
+        "route": "get-file-count-for-current-logged-in-avatar",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/files/get-file-count-for-current-logged-in-avatar"
       }
     }
   },
@@ -2423,6 +5149,15 @@
           "inner": "Dictionary<string, object>"
         },
         "summary": "Get gift statistics for the current avatar"
+      },
+      "GetMyGiftSummary": {
+        "verb": "GET",
+        "route": "my-gifts/summary",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/gifts/my-gifts/summary"
       }
     }
   },
@@ -3640,6 +6375,33 @@
           "inner": "OASISResult<List<string>>"
         },
         "summary": "Gets low-cost providers list"
+      },
+      "ReadDeliveries": {
+        "verb": "GET",
+        "route": "sync/deliveries",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/hyperdrive/sync/deliveries"
+      },
+      "IssueOfflineSessionGrant": {
+        "verb": "POST",
+        "route": "sync/offline-session-grant",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/hyperdrive/sync/offline-session-grant"
+      },
+      "BindOnetPeer": {
+        "verb": "POST",
+        "route": "sync/onet-peer-binding",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/hyperdrive/sync/onet-peer-binding"
       }
     }
   },
@@ -3876,6 +6638,313 @@
           "inner": "List<KarmaTransaction>"
         },
         "summary": "Gets karma history (paged) for a given avatar."
+      },
+      "GetActivityFeed": {
+        "verb": "GET",
+        "route": "activity",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/karma/activity"
+      },
+      "AddKarmaToAvatarByAvatarIdProviderType": {
+        "verb": "POST",
+        "route": "add-karma-to-avatar/{avatarId}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "avatarId",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/karma/add-karma-to-avatar/{avatarId}/{providerType}/{setGlobally}"
+      },
+      "GetKarmaAkashicRecordsForAvatarByAvatarIdProviderType": {
+        "verb": "GET",
+        "route": "get-karma-akashic-records-for-avatar/{avatarId}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "avatarId",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/karma/get-karma-akashic-records-for-avatar/{avatarId}/{providerType}/{setGlobally}"
+      },
+      "GetKarmaForAvatarByAvatarIdProviderType": {
+        "verb": "GET",
+        "route": "get-karma-for-avatar/{avatarId}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "avatarId",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/karma/get-karma-for-avatar/{avatarId}/{providerType}/{setGlobally}"
+      },
+      "GetKarmaHistoryByAvatarIdProviderType": {
+        "verb": "GET",
+        "route": "get-karma-history/{avatarId}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "avatarId",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/karma/get-karma-history/{avatarId}/{providerType}/{setGlobally}"
+      },
+      "GetKarmaStatsByAvatarIdProviderType": {
+        "verb": "GET",
+        "route": "get-karma-stats/{avatarId}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "avatarId",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/karma/get-karma-stats/{avatarId}/{providerType}/{setGlobally}"
+      },
+      "GetLevelThresholds": {
+        "verb": "GET",
+        "route": "get-level-thresholds",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/karma/get-level-thresholds"
+      },
+      "GetNegativeKarmaWeightingByKarmaTypeProviderType": {
+        "verb": "GET",
+        "route": "get-negative-karma-weighting/{karmaType}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "karmaType",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/karma/get-negative-karma-weighting/{karmaType}/{providerType}/{setGlobally}"
+      },
+      "GetPositiveKarmaWeightingByKarmaTypeProviderType": {
+        "verb": "GET",
+        "route": "get-positive-karma-weighting/{karmaType}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "karmaType",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/karma/get-positive-karma-weighting/{karmaType}/{providerType}/{setGlobally}"
+      },
+      "RemoveKarmaFromAvatarByAvatarIdProviderType": {
+        "verb": "POST",
+        "route": "remove-karma-from-avatar/{avatarId}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "avatarId",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/karma/remove-karma-from-avatar/{avatarId}/{providerType}/{setGlobally}"
+      },
+      "SetNegativeKarmaWeightingByKarmaTypeWeighting": {
+        "verb": "POST",
+        "route": "set-negative-karma-weighting/{karmaType}/{weighting}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "karmaType",
+            "type": "string"
+          },
+          {
+            "name": "weighting",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/karma/set-negative-karma-weighting/{karmaType}/{weighting}/{providerType}/{setGlobally}"
+      },
+      "SetPositiveKarmaWeightingByKarmaTypeWeighting": {
+        "verb": "POST",
+        "route": "set-positive-karma-weighting/{karmaType}/{weighting}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "karmaType",
+            "type": "string"
+          },
+          {
+            "name": "weighting",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/karma/set-positive-karma-weighting/{karmaType}/{weighting}/{providerType}/{setGlobally}"
+      },
+      "VoteForNegativeKarmaWeightingByKarmaTypeWeighting": {
+        "verb": "POST",
+        "route": "vote-for-negative-karma-weighting/{karmaType}/{weighting}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "karmaType",
+            "type": "string"
+          },
+          {
+            "name": "weighting",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/karma/vote-for-negative-karma-weighting/{karmaType}/{weighting}/{providerType}/{setGlobally}"
+      },
+      "VoteForPositiveKarmaWeightingByKarmaTypeWeighting": {
+        "verb": "POST",
+        "route": "vote-for-positive-karma-weighting/{karmaType}/{weighting}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "karmaType",
+            "type": "string"
+          },
+          {
+            "name": "weighting",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/karma/vote-for-positive-karma-weighting/{karmaType}/{weighting}/{providerType}/{setGlobally}"
+      },
+      "GetWeightings": {
+        "verb": "GET",
+        "route": "weightings",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/karma/weightings"
       }
     }
   },
@@ -3951,18 +7020,6 @@
         "responseType": {
           "wrapper": "OASISResult",
           "inner": "IProviderWallet"
-        },
-        "summary": "Link's a given Avatar to a Providers Private Key (password, crypto private key, etc)."
-      },
-      "LinkProviderPrivateKeyToAvatarByEmail": {
-        "verb": "POST",
-        "route": "link-provider-private-key-to-avatar-by-email",
-        "routeParams": [],
-        "queryParams": [],
-        "requestType": "LinkProviderKeyToAvatarParams",
-        "responseType": {
-          "wrapper": "OASISResult",
-          "inner": "bool"
         },
         "summary": "Link's a given Avatar to a Providers Private Key (password, crypto private key, etc)."
       },
@@ -4370,57 +7427,6 @@
         },
         "summary": "Get's the avatar for a given public key."
       },
-      "GetAvatarIdForProviderPrivateKey": {
-        "verb": "GET",
-        "route": "get-avatar-id-for-provider-private-key/{providerKey}",
-        "routeParams": [
-          {
-            "name": "providerKey",
-            "type": "string"
-          }
-        ],
-        "queryParams": [],
-        "requestType": null,
-        "responseType": {
-          "wrapper": "OASISResult",
-          "inner": "Guid"
-        },
-        "summary": "Get's the avatar id for a given private key."
-      },
-      "GetAvatarUsernameForProviderPrivateKey": {
-        "verb": "GET",
-        "route": "get-avatar-username-for-provider-private-key/{providerKey}",
-        "routeParams": [
-          {
-            "name": "providerKey",
-            "type": "string"
-          }
-        ],
-        "queryParams": [],
-        "requestType": null,
-        "responseType": {
-          "wrapper": "OASISResult",
-          "inner": "string"
-        },
-        "summary": "Get's the avatar username for a given private key."
-      },
-      "GetAvatarForProviderPrivateKey": {
-        "verb": "GET",
-        "route": "get-avatar-for-provider-private-key/{providerKey}",
-        "routeParams": [
-          {
-            "name": "providerKey",
-            "type": "string"
-          }
-        ],
-        "queryParams": [],
-        "requestType": null,
-        "responseType": {
-          "wrapper": "OASISResult",
-          "inner": "IAvatar"
-        },
-        "summary": "Get's the avatar for a given private key."
-      },
       "GenerateKeyPairForProvider": {
         "verb": "POST",
         "route": "generate-keypair-for-provider/{providerType}",
@@ -4517,81 +7523,6 @@
           "inner": "string"
         },
         "summary": "Encode's the signature."
-      },
-      "LinkTelosAccountToAvatar": {
-        "verb": "POST",
-        "route": "{id:Guid}/{telosAccountName}",
-        "routeParams": [
-          {
-            "name": "id",
-            "type": "Guid"
-          },
-          {
-            "name": "telosAccountName",
-            "type": "string"
-          }
-        ],
-        "queryParams": [],
-        "requestType": null,
-        "responseType": {
-          "wrapper": "OASISResult",
-          "inner": "IAvatarDetail"
-        },
-        "summary": "Link's a given telosAccount to the given avatar."
-      },
-      "LinkTelosAccountToAvatar2": {
-        "verb": "POST",
-        "route": "",
-        "routeParams": [],
-        "queryParams": [],
-        "requestType": "LinkProviderKeyToAvatar",
-        "responseType": {
-          "wrapper": "OASISResult",
-          "inner": "IAvatarDetail"
-        },
-        "summary": "Link's a given telosAccount to the given avatar."
-      },
-      "LinkEOSIOAccountToAvatar": {
-        "verb": "POST",
-        "route": "{avatarId}/{eosioAccountName}",
-        "routeParams": [
-          {
-            "name": "avatarId",
-            "type": "Guid"
-          },
-          {
-            "name": "eosioAccountName",
-            "type": "string"
-          }
-        ],
-        "queryParams": [],
-        "requestType": null,
-        "responseType": {
-          "wrapper": "OASISResult",
-          "inner": "IAvatarDetail"
-        },
-        "summary": "Link's a given eosioAccountName to the given avatar."
-      },
-      "LinkHolochainAgentIDToAvatar": {
-        "verb": "POST",
-        "route": "{avatarId}/{holochainAgentID}",
-        "routeParams": [
-          {
-            "name": "avatarId",
-            "type": "Guid"
-          },
-          {
-            "name": "holochainAgentID",
-            "type": "string"
-          }
-        ],
-        "queryParams": [],
-        "requestType": null,
-        "responseType": {
-          "wrapper": "OASISResult",
-          "inner": "IAvatarDetail"
-        },
-        "summary": "Link's a given holochain AgentID to the given avatar."
       },
       "GetAllKeysForAvatar": {
         "verb": "GET",
@@ -5198,6 +8129,61 @@
           "inner": "Dictionary<string, object>"
         },
         "summary": "Get map statistics for the current avatar"
+      },
+      "SearchLocations": {
+        "verb": "GET",
+        "route": "search-locations",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/map/search-locations"
+      },
+      "Create": {
+        "verb": "POST",
+        "route": "routes",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/map/routes"
+      },
+      "List": {
+        "verb": "GET",
+        "route": "routes",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/map/routes"
+      },
+      "GetRoutesById": {
+        "verb": "GET",
+        "route": "routes/{id}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/map/routes/{id}"
+      },
+      "UpdateAccess": {
+        "verb": "PUT",
+        "route": "routes/{id}/access",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "PUT /api/map/routes/{id}/access"
       }
     }
   },
@@ -5345,6 +8331,129 @@
           "inner": "bool"
         },
         "summary": "Mark notifications as read"
+      },
+      "Conversations": {
+        "verb": "GET",
+        "route": "conversations",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/messaging/conversations"
+      },
+      "GetCurrentAvatarMessageSummary": {
+        "verb": "GET",
+        "route": "current-avatar/summary",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/messaging/current-avatar/summary"
+      },
+      "CreateGroup": {
+        "verb": "POST",
+        "route": "groups",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/messaging/groups"
+      },
+      "Groups": {
+        "verb": "GET",
+        "route": "groups",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/messaging/groups"
+      },
+      "LeaveGroup": {
+        "verb": "POST",
+        "route": "groups/{conversationId}/leave",
+        "routeParams": [
+          {
+            "name": "conversationId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/messaging/groups/{conversationId}/leave"
+      },
+      "AddGroupMembers": {
+        "verb": "POST",
+        "route": "groups/{conversationId}/members",
+        "routeParams": [
+          {
+            "name": "conversationId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/messaging/groups/{conversationId}/members"
+      },
+      "GroupMessages": {
+        "verb": "GET",
+        "route": "groups/{conversationId}/messages",
+        "routeParams": [
+          {
+            "name": "conversationId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/messaging/groups/{conversationId}/messages"
+      },
+      "MarkMessagesDelivered": {
+        "verb": "POST",
+        "route": "mark-messages-delivered",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/messaging/mark-messages-delivered"
+      },
+      "Presence": {
+        "verb": "GET",
+        "route": "presence",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/messaging/presence"
+      },
+      "RealtimeTicket": {
+        "verb": "POST",
+        "route": "realtime-ticket",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/messaging/realtime-ticket"
+      },
+      "Send": {
+        "verb": "POST",
+        "route": "send",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/messaging/send"
+      },
+      "Sync": {
+        "verb": "GET",
+        "route": "sync",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/messaging/sync"
       }
     }
   },
@@ -5982,6 +9091,315 @@
           "inner": "IEnumerable<IWeb4NFTCollection>"
         },
         "summary": "Searches for Web4 NFT collections."
+      },
+      "CollectGeoNFT": {
+        "verb": "POST",
+        "route": "collect-geo-nft/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Nft/collect-geo-nft/{providerType}/{setGlobally}"
+      },
+      "CollectNFT": {
+        "verb": "POST",
+        "route": "collect-nft/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Nft/collect-nft/{providerType}/{setGlobally}"
+      },
+      "GeoNFTCollectionStatus": {
+        "verb": "POST",
+        "route": "geo-nft-collection-status",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Nft/geo-nft-collection-status"
+      },
+      "UpdateGeoNFT": {
+        "verb": "PUT",
+        "route": "geo-nft/{id}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "PUT /api/Nft/geo-nft/{id}"
+      },
+      "LoadAllWeb4GeoNFTsForAvatar": {
+        "verb": "GET",
+        "route": "load-all-geo-nfts-for-avatar/{avatarId}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "avatarId",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Nft/load-all-geo-nfts-for-avatar/{avatarId}/{providerType}/{setGlobally}"
+      },
+      "LoadAllGeoNFTsForMintAddress": {
+        "verb": "GET",
+        "route": "load-all-geo-nfts-for-mint-wallet-address/{mintWalletAddress}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "mintWalletAddress",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Nft/load-all-geo-nfts-for-mint-wallet-address/{mintWalletAddress}/{providerType}/{setGlobally}"
+      },
+      "LoadAllWeb4NFTsForAvatar": {
+        "verb": "GET",
+        "route": "load-all-nfts-for-avatar/{avatarId}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "avatarId",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Nft/load-all-nfts-for-avatar/{avatarId}/{providerType}/{setGlobally}"
+      },
+      "LoadAllWeb4NFTsForMintAddress": {
+        "verb": "GET",
+        "route": "load-all-nfts-for-mint-wallet-address/{mintWalletAddress}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "mintWalletAddress",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Nft/load-all-nfts-for-mint-wallet-address/{mintWalletAddress}/{providerType}/{setGlobally}"
+      },
+      "LoadAllWeb4NFTs": {
+        "verb": "GET",
+        "route": "load-all-nfts/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Nft/load-all-nfts/{providerType}/{setGlobally}"
+      },
+      "LoadWeb4GeoNftById": {
+        "verb": "GET",
+        "route": "load-geo-nft-by-id/{id}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Nft/load-geo-nft-by-id/{id}"
+      },
+      "GetLoadGeoNftByIdByIdProviderType": {
+        "verb": "GET",
+        "route": "load-geo-nft-by-id/{id}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Nft/load-geo-nft-by-id/{id}/{providerType}/{setGlobally}"
+      },
+      "LoadWeb4NftByHash": {
+        "verb": "GET",
+        "route": "load-nft-by-hash/{hash}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "hash",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Nft/load-nft-by-hash/{hash}/{providerType}/{setGlobally}"
+      },
+      "LoadWeb4NftById": {
+        "verb": "GET",
+        "route": "load-nft-by-id/{id}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Nft/load-nft-by-id/{id}/{providerType}/{setGlobally}"
+      },
+      "LoadWeb4GeoNFTCollection": {
+        "verb": "GET",
+        "route": "load-web4-geo-nft-collection/{id}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Nft/load-web4-geo-nft-collection/{id}"
+      },
+      "LoadWeb4NFTCollection": {
+        "verb": "GET",
+        "route": "load-web4-nft-collection/{id}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Nft/load-web4-nft-collection/{id}"
+      },
+      "MintOnChainCollectionNFT": {
+        "verb": "POST",
+        "route": "mint-on-chain-collection-nft",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Nft/mint-on-chain-collection-nft"
+      },
+      "SetCollectionSize": {
+        "verb": "POST",
+        "route": "set-collection-size",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Nft/set-collection-size"
+      },
+      "UpdateWeb4Nft": {
+        "verb": "POST",
+        "route": "update-web4-nft/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Nft/update-web4-nft/{providerType}/{setGlobally}"
       }
     }
   },
@@ -6098,36 +9516,150 @@
           "inner": "string"
         },
         "summary": null
+      },
+      "CheckoutReturn": {
+        "verb": "GET",
+        "route": "checkout-return",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/OLand/checkout-return"
+      },
+      "NftMetadata": {
+        "verb": "GET",
+        "route": "nft-metadata/{orderId}",
+        "routeParams": [
+          {
+            "name": "orderId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/OLand/nft-metadata/{orderId}"
+      },
+      "OrderHistory": {
+        "verb": "GET",
+        "route": "orders",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/OLand/orders"
+      },
+      "OrderStatus": {
+        "verb": "GET",
+        "route": "orders/{orderId}",
+        "routeParams": [
+          {
+            "name": "orderId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/OLand/orders/{orderId}"
+      },
+      "Checkout": {
+        "verb": "POST",
+        "route": "orders/{orderId}/checkout",
+        "routeParams": [
+          {
+            "name": "orderId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/OLand/orders/{orderId}/checkout"
+      },
+      "ConfirmPayment": {
+        "verb": "POST",
+        "route": "orders/{orderId}/confirm-payment",
+        "routeParams": [
+          {
+            "name": "orderId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/OLand/orders/{orderId}/confirm-payment"
+      },
+      "Fulfil": {
+        "verb": "POST",
+        "route": "orders/{orderId}/fulfil",
+        "routeParams": [
+          {
+            "name": "orderId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/OLand/orders/{orderId}/fulfil"
+      },
+      "ParcelGrid": {
+        "verb": "GET",
+        "route": "parcel-grid",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/OLand/parcel-grid"
+      },
+      "PurchaseOptions": {
+        "verb": "GET",
+        "route": "purchase-options",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/OLand/purchase-options"
+      },
+      "Quote": {
+        "verb": "POST",
+        "route": "quotes",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/OLand/quotes"
+      },
+      "CancelQuote": {
+        "verb": "DELETE",
+        "route": "quotes/{orderId}",
+        "routeParams": [
+          {
+            "name": "orderId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "DELETE /api/OLand/quotes/{orderId}"
+      },
+      "OLandStripeWebhook": {
+        "verb": "POST",
+        "route": "webhooks/stripe",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/OLand/webhooks/stripe"
       }
     }
   },
   "ONETController.cs": {
     "route_prefix": "api/v1/onet",
     "ops": {
-      "GetOASISDNA": {
-        "verb": "GET",
-        "route": "oasisdna",
-        "routeParams": [],
-        "queryParams": [],
-        "requestType": null,
-        "responseType": {
-          "wrapper": null,
-          "inner": "IActionResult"
-        },
-        "summary": "Get OASISDNA configuration for ONET"
-      },
-      "UpdateOASISDNA": {
-        "verb": "PUT",
-        "route": "oasisdna",
-        "routeParams": [],
-        "queryParams": [],
-        "requestType": "OASISDNA",
-        "responseType": {
-          "wrapper": null,
-          "inner": "IActionResult"
-        },
-        "summary": "Update OASISDNA configuration for ONET"
-      },
       "GetNetworkStatus": {
         "verb": "GET",
         "route": "network/status",
@@ -6235,36 +9767,48 @@
           "inner": "IActionResult"
         },
         "summary": "Broadcast message to network"
+      },
+      "GetONETConfig": {
+        "verb": "GET",
+        "route": "config",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/v1/onet/config"
+      },
+      "UpdateONETConfig": {
+        "verb": "PUT",
+        "route": "config",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "PUT /api/v1/onet/config"
+      },
+      "RegisterNode": {
+        "verb": "POST",
+        "route": "nodes/register",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/v1/onet/nodes/register"
+      },
+      "GetPeers": {
+        "verb": "GET",
+        "route": "peers",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/v1/onet/peers"
       }
     }
   },
   "ONODEController.cs": {
     "route_prefix": "api/v1/onode",
     "ops": {
-      "GetOASISDNA": {
-        "verb": "GET",
-        "route": "oasisdna",
-        "routeParams": [],
-        "queryParams": [],
-        "requestType": null,
-        "responseType": {
-          "wrapper": null,
-          "inner": "IActionResult"
-        },
-        "summary": "Get OASISDNA configuration for ONODE"
-      },
-      "UpdateOASISDNA": {
-        "verb": "PUT",
-        "route": "oasisdna",
-        "routeParams": [],
-        "queryParams": [],
-        "requestType": "OASISDNA",
-        "responseType": {
-          "wrapper": null,
-          "inner": "IActionResult"
-        },
-        "summary": "Update OASISDNA configuration for ONODE"
-      },
       "GetNodeStatus": {
         "verb": "GET",
         "route": "status",
@@ -6405,6 +9949,163 @@
           "inner": "IActionResult"
         },
         "summary": "Get node statistics"
+      },
+      "GetActiveNodes": {
+        "verb": "GET",
+        "route": "active-nodes",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/v1/onode/active-nodes"
+      },
+      "GetAuditLog": {
+        "verb": "GET",
+        "route": "audit",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/v1/onode/audit"
+      },
+      "PostCommand": {
+        "verb": "POST",
+        "route": "commands",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/v1/onode/commands"
+      },
+      "GetPendingCommands": {
+        "verb": "GET",
+        "route": "commands/pending/{nodeId}",
+        "routeParams": [
+          {
+            "name": "nodeId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/v1/onode/commands/pending/{nodeId}"
+      },
+      "UpdateCommand": {
+        "verb": "PATCH",
+        "route": "commands/{commandId}",
+        "routeParams": [
+          {
+            "name": "commandId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "PATCH /api/v1/onode/commands/{commandId}"
+      },
+      "GetCommand": {
+        "verb": "GET",
+        "route": "commands/{commandId}",
+        "routeParams": [
+          {
+            "name": "commandId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/v1/onode/commands/{commandId}"
+      },
+      "PushNodeState": {
+        "verb": "PUT",
+        "route": "node-state/{nodeId}",
+        "routeParams": [
+          {
+            "name": "nodeId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "PUT /api/v1/onode/node-state/{nodeId}"
+      },
+      "GetNodeState": {
+        "verb": "GET",
+        "route": "node-state/{nodeId}",
+        "routeParams": [
+          {
+            "name": "nodeId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/v1/onode/node-state/{nodeId}"
+      },
+      "GetProviders": {
+        "verb": "GET",
+        "route": "providers",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/v1/onode/providers"
+      },
+      "DisableProvider": {
+        "verb": "PUT",
+        "route": "providers/{providerType}/disable",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "PUT /api/v1/onode/providers/{providerType}/disable"
+      },
+      "EnableProvider": {
+        "verb": "PUT",
+        "route": "providers/{providerType}/enable",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "PUT /api/v1/onode/providers/{providerType}/enable"
+      },
+      "SetProviderPriority": {
+        "verb": "PUT",
+        "route": "providers/{providerType}/priority",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "PUT /api/v1/onode/providers/{providerType}/priority"
+      },
+      "GetPublicNodeConfig": {
+        "verb": "GET",
+        "route": "public-config",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/v1/onode/public-config"
       }
     }
   },
@@ -6929,6 +10630,37 @@
           "inner": "ISearchResults"
         },
         "summary": "Performs a search across all OASIS data using the specified search parameters."
+      },
+      "Search": {
+        "verb": "POST",
+        "route": "",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Search"
+      },
+      "GetRootBySearchParamsProviderType": {
+        "verb": "GET",
+        "route": "{searchParams}/{providerType}/{setGlobally}",
+        "routeParams": [
+          {
+            "name": "searchParams",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "setGlobally",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Search/{searchParams}/{providerType}/{setGlobally}"
       }
     }
   },
@@ -7136,6 +10868,60 @@
           "inner": "Dictionary<string, object>"
         },
         "summary": "Get system configuration"
+      },
+      "GetHolonStoragePolicy": {
+        "verb": "GET",
+        "route": "holon-storage-policy",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/settings/holon-storage-policy"
+      },
+      "UpdateHolonStoragePolicy": {
+        "verb": "PUT",
+        "route": "holon-storage-policy",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "PUT /api/settings/holon-storage-policy"
+      },
+      "ResetHolonStoragePolicy": {
+        "verb": "DELETE",
+        "route": "holon-storage-policy",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "DELETE /api/settings/holon-storage-policy"
+      },
+      "GetOmniversePreferences": {
+        "verb": "GET",
+        "route": "omniverse-preferences",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/settings/omniverse-preferences"
+      },
+      "UpdateOmniversePreferences": {
+        "verb": "PUT",
+        "route": "omniverse-preferences",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "PUT /api/settings/omniverse-preferences"
+      },
+      "GetVersion": {
+        "verb": "GET",
+        "route": "version",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/settings/version"
       }
     }
   },
@@ -7225,6 +11011,42 @@
           "inner": "bool"
         },
         "summary": "Share a given holon with a given avatar. PREVIEW - COMING SOON..."
+      },
+      "BackfillShareIndex": {
+        "verb": "POST",
+        "route": "backfill-share-index",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/share/backfill-share-index"
+      },
+      "GetShareHolonManyByHolonIdAvatarIds": {
+        "verb": "GET",
+        "route": "share-holon/{holonId}/many/{avatarIds}",
+        "routeParams": [
+          {
+            "name": "holonId",
+            "type": "string"
+          },
+          {
+            "name": "avatarIds",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/share/share-holon/{holonId}/many/{avatarIds}"
+      },
+      "SharedWithMe": {
+        "verb": "GET",
+        "route": "shared-with-me",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/share/shared-with-me"
       }
     }
   },
@@ -7466,6 +11288,20 @@
           "inner": "Dictionary<string, object>"
         },
         "summary": "Get system-wide statistics"
+      },
+      "GetAchievementStats": {
+        "verb": "GET",
+        "route": "achievement-stats/{avatarId}",
+        "routeParams": [
+          {
+            "name": "avatarId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/stats/achievement-stats/{avatarId}"
       }
     }
   },
@@ -7591,6 +11427,641 @@
           "inner": "OASISResult<QuotaCheckResult>"
         },
         "summary": "Checks if user can perform HyperDrive operation based on quota"
+      },
+      "Analytics": {
+        "verb": "GET",
+        "route": "admin/analytics",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/admin/analytics"
+      },
+      "AppAccounts": {
+        "verb": "GET",
+        "route": "admin/app-accounts",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/admin/app-accounts"
+      },
+      "CreateAppAccount": {
+        "verb": "POST",
+        "route": "admin/app-accounts",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/subscription/admin/app-accounts"
+      },
+      "UpdateAppAccount": {
+        "verb": "POST",
+        "route": "admin/app-accounts/{appId}",
+        "routeParams": [
+          {
+            "name": "appId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/subscription/admin/app-accounts/{appId}"
+      },
+      "SetAppOwners": {
+        "verb": "POST",
+        "route": "admin/app-accounts/{appId}/owners",
+        "routeParams": [
+          {
+            "name": "appId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/subscription/admin/app-accounts/{appId}/owners"
+      },
+      "RotateAppAccountKey": {
+        "verb": "POST",
+        "route": "admin/app-accounts/{appId}/rotate-key",
+        "routeParams": [
+          {
+            "name": "appId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/subscription/admin/app-accounts/{appId}/rotate-key"
+      },
+      "AppTopUsers": {
+        "verb": "GET",
+        "route": "admin/app-accounts/{appId}/top-users",
+        "routeParams": [
+          {
+            "name": "appId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/admin/app-accounts/{appId}/top-users"
+      },
+      "AppPoolUsage": {
+        "verb": "GET",
+        "route": "admin/app-accounts/{appId}/usage",
+        "routeParams": [
+          {
+            "name": "appId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/admin/app-accounts/{appId}/usage"
+      },
+      "AppSeriesAdmin": {
+        "verb": "GET",
+        "route": "admin/app-accounts/{appId}/usage/series",
+        "routeParams": [
+          {
+            "name": "appId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/admin/app-accounts/{appId}/usage/series"
+      },
+      "Invoices": {
+        "verb": "GET",
+        "route": "admin/invoices",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/admin/invoices"
+      },
+      "Outboxes": {
+        "verb": "GET",
+        "route": "admin/outboxes",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/admin/outboxes"
+      },
+      "Requeue": {
+        "verb": "POST",
+        "route": "admin/outboxes/requeue",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/subscription/admin/outboxes/requeue"
+      },
+      "GrantPlan": {
+        "verb": "POST",
+        "route": "admin/plan-grant",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/subscription/admin/plan-grant"
+      },
+      "Subscriptions": {
+        "verb": "GET",
+        "route": "admin/subscriptions",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/admin/subscriptions"
+      },
+      "Audit": {
+        "verb": "GET",
+        "route": "admin/usage/audit",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/admin/usage/audit"
+      },
+      "Events": {
+        "verb": "GET",
+        "route": "admin/usage/events",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/admin/usage/events"
+      },
+      "UserSeriesAdmin": {
+        "verb": "GET",
+        "route": "admin/users/{userId}/usage/series",
+        "routeParams": [
+          {
+            "name": "userId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/admin/users/{userId}/usage/series"
+      },
+      "MyApps": {
+        "verb": "GET",
+        "route": "app-owner/apps",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/app-owner/apps"
+      },
+      "Notifications": {
+        "verb": "GET",
+        "route": "app-owner/{appId}/notifications",
+        "routeParams": [
+          {
+            "name": "appId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/app-owner/{appId}/notifications"
+      },
+      "SaveNotifications": {
+        "verb": "POST",
+        "route": "app-owner/{appId}/notifications",
+        "routeParams": [
+          {
+            "name": "appId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/subscription/app-owner/{appId}/notifications"
+      },
+      "Billing": {
+        "verb": "GET",
+        "route": "app-owner/{appId}/payg",
+        "routeParams": [
+          {
+            "name": "appId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/app-owner/{appId}/payg"
+      },
+      "SaveBilling": {
+        "verb": "POST",
+        "route": "app-owner/{appId}/payg",
+        "routeParams": [
+          {
+            "name": "appId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/subscription/app-owner/{appId}/payg"
+      },
+      "PayNow": {
+        "verb": "POST",
+        "route": "app-owner/{appId}/payg/pay-now",
+        "routeParams": [
+          {
+            "name": "appId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/subscription/app-owner/{appId}/payg/pay-now"
+      },
+      "Settings": {
+        "verb": "GET",
+        "route": "app-owner/{appId}/settings",
+        "routeParams": [
+          {
+            "name": "appId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/app-owner/{appId}/settings"
+      },
+      "SaveSettings": {
+        "verb": "POST",
+        "route": "app-owner/{appId}/settings",
+        "routeParams": [
+          {
+            "name": "appId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/subscription/app-owner/{appId}/settings"
+      },
+      "Usage": {
+        "verb": "GET",
+        "route": "app-owner/{appId}/usage",
+        "routeParams": [
+          {
+            "name": "appId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/app-owner/{appId}/usage"
+      },
+      "AuthorizeRequest": {
+        "verb": "POST",
+        "route": "authorize-request",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Subscription/authorize-request"
+      },
+      "CreateBillingPortal": {
+        "verb": "POST",
+        "route": "billing/portal",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Subscription/billing/portal"
+      },
+      "CancelPendingCheckout": {
+        "verb": "POST",
+        "route": "checkout/operations/{operationId}/cancel",
+        "routeParams": [
+          {
+            "name": "operationId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Subscription/checkout/operations/{operationId}/cancel"
+      },
+      "ReconcileCheckout": {
+        "verb": "POST",
+        "route": "checkout/operations/{operationId}/reconcile",
+        "routeParams": [
+          {
+            "name": "operationId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Subscription/checkout/operations/{operationId}/reconcile"
+      },
+      "GetPendingCheckouts": {
+        "verb": "GET",
+        "route": "checkout/pending",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Subscription/checkout/pending"
+      },
+      "GetCheckoutSessionStatus": {
+        "verb": "GET",
+        "route": "checkout/session/{sessionId}",
+        "routeParams": [
+          {
+            "name": "sessionId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Subscription/checkout/session/{sessionId}"
+      },
+      "GetOverageStatementsAdmin": {
+        "verb": "GET",
+        "route": "overages/admin/statements",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Subscription/overages/admin/statements"
+      },
+      "PayOveragesNow": {
+        "verb": "POST",
+        "route": "overages/pay-now",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Subscription/overages/pay-now"
+      },
+      "GetPaidOveragePrices": {
+        "verb": "GET",
+        "route": "overages/prices",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Subscription/overages/prices"
+      },
+      "GetOverageStatements": {
+        "verb": "GET",
+        "route": "overages/statements",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Subscription/overages/statements"
+      },
+      "CorrectUsage": {
+        "verb": "POST",
+        "route": "usage/admin/corrections",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Subscription/usage/admin/corrections"
+      },
+      "GetUsageMigrationInventory": {
+        "verb": "GET",
+        "route": "usage/admin/migration/inventory",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Subscription/usage/admin/migration/inventory"
+      },
+      "ImportUsageOpeningBalance": {
+        "verb": "POST",
+        "route": "usage/admin/migration/opening-balance",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Subscription/usage/admin/migration/opening-balance"
+      },
+      "ProviderReceipt": {
+        "verb": "POST",
+        "route": "usage/admin/reconciliation/provider-receipts",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/subscription/usage/admin/reconciliation/provider-receipts"
+      },
+      "Reports": {
+        "verb": "GET",
+        "route": "usage/admin/reconciliation/reports",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/usage/admin/reconciliation/reports"
+      },
+      "Run": {
+        "verb": "POST",
+        "route": "usage/admin/reconciliation/run",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/subscription/usage/admin/reconciliation/run"
+      },
+      "StripeInvoice": {
+        "verb": "POST",
+        "route": "usage/admin/reconciliation/stripe-invoices",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/subscription/usage/admin/reconciliation/stripe-invoices"
+      },
+      "Alerts": {
+        "verb": "GET",
+        "route": "usage/alerts",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/usage/alerts"
+      },
+      "SendWarningEmails": {
+        "verb": "POST",
+        "route": "usage/alerts/email",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/subscription/usage/alerts/email"
+      },
+      "GetUsageAudit": {
+        "verb": "GET",
+        "route": "usage/audit",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Subscription/usage/audit"
+      },
+      "AuthorizeUsage": {
+        "verb": "POST",
+        "route": "usage/authorize",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Subscription/usage/authorize"
+      },
+      "AuthorizeDelegatedUsage": {
+        "verb": "POST",
+        "route": "usage/authorize-delegated",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Subscription/usage/authorize-delegated"
+      },
+      "GetAuthoritativeUsage": {
+        "verb": "GET",
+        "route": "usage/current",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Subscription/usage/current"
+      },
+      "MyEstimate": {
+        "verb": "GET",
+        "route": "usage/estimate",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/usage/estimate"
+      },
+      "GetUsageEvents": {
+        "verb": "GET",
+        "route": "usage/events",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Subscription/usage/events"
+      },
+      "CreateUsageGrant": {
+        "verb": "POST",
+        "route": "usage/grants",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Subscription/usage/grants"
+      },
+      "ListUsageGrants": {
+        "verb": "GET",
+        "route": "usage/grants",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Subscription/usage/grants"
+      },
+      "RevokeUsageGrant": {
+        "verb": "POST",
+        "route": "usage/grants/{grantId}/revoke",
+        "routeParams": [
+          {
+            "name": "grantId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Subscription/usage/grants/{grantId}/revoke"
+      },
+      "GetUsageNotifications": {
+        "verb": "GET",
+        "route": "usage/notifications",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/usage/notifications"
+      },
+      "Save": {
+        "verb": "POST",
+        "route": "usage/notifications",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/subscription/usage/notifications"
+      },
+      "MySeries": {
+        "verb": "GET",
+        "route": "usage/series",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/subscription/usage/series"
+      },
+      "SettleUsage": {
+        "verb": "POST",
+        "route": "usage/settle",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Subscription/usage/settle"
+      },
+      "SettleNativeUsage": {
+        "verb": "POST",
+        "route": "usage/settle-native-v1",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Subscription/usage/settle-native-v1"
+      },
+      "StartUsage": {
+        "verb": "POST",
+        "route": "usage/start",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/Subscription/usage/start"
       }
     }
   },
@@ -8454,6 +12925,918 @@
           "inner": "IProviderWallet"
         },
         "summary": "Update a wallet for an avatar by email."
+      },
+      "ImportWalletUsingSecretPhraseByEmail": {
+        "verb": "POST",
+        "route": "avatar/email/{email}/import/secret-phrase",
+        "routeParams": [
+          {
+            "name": "email",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/wallet/avatar/email/{email}/import/secret-phrase"
+      },
+      "LoadProviderWalletsForAvatarByEmail": {
+        "verb": "GET",
+        "route": "avatar/email/{email}/wallets/{showOnlyDefault}/{decryptPrivateKeys}/{providerType}",
+        "routeParams": [
+          {
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "name": "showOnlyDefault",
+            "type": "string"
+          },
+          {
+            "name": "decryptPrivateKeys",
+            "type": "string"
+          },
+          {
+            "name": "providerType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Wallet/avatar/email/{email}/wallets/{showOnlyDefault}/{decryptPrivateKeys}/{providerType}"
+      },
+      "ImportWalletUsingSecretPhraseByUsername": {
+        "verb": "POST",
+        "route": "avatar/username/{username}/import/secret-phrase",
+        "routeParams": [
+          {
+            "name": "username",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/wallet/avatar/username/{username}/import/secret-phrase"
+      },
+      "ImportWalletUsingSecretPhraseById": {
+        "verb": "POST",
+        "route": "avatar/{avatarId}/import/secret-phrase",
+        "routeParams": [
+          {
+            "name": "avatarId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/wallet/avatar/{avatarId}/import/secret-phrase"
+      },
+      "BurnToken": {
+        "verb": "POST",
+        "route": "burn-token",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/wallet/burn-token"
+      },
+      "CreateToken": {
+        "verb": "POST",
+        "route": "create-token",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/wallet/create-token"
+      },
+      "GetCurrentAvatarWalletSummary": {
+        "verb": "GET",
+        "route": "current-avatar/summary",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/Wallet/current-avatar/summary"
+      },
+      "LockToken": {
+        "verb": "POST",
+        "route": "lock-token",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/wallet/lock-token"
+      },
+      "UnlockToken": {
+        "verb": "POST",
+        "route": "unlock-token",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/wallet/unlock-token"
+      }
+    }
+  },
+  "AdminController.cs": {
+    "route_prefix": "api/admin",
+    "ops": {
+      "Recover": {
+        "verb": "POST",
+        "route": "cql/sources/{provider}/recover",
+        "routeParams": [
+          {
+            "name": "provider",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/admin/cql/sources/{provider}/recover"
+      }
+    }
+  },
+  "BiometricController.cs": {
+    "route_prefix": "api/biometric",
+    "ops": {
+      "Status": {
+        "verb": "GET",
+        "route": "status",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/biometric/status"
+      },
+      "VoiceDelete": {
+        "verb": "DELETE",
+        "route": "voice",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "DELETE /api/biometric/voice"
+      },
+      "VoiceEnroll": {
+        "verb": "POST",
+        "route": "voice/enroll",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/biometric/voice/enroll"
+      },
+      "VoiceVerify": {
+        "verb": "POST",
+        "route": "voice/verify",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/biometric/voice/verify"
+      },
+      "VoiceVerifyByAvatarId": {
+        "verb": "POST",
+        "route": "voice/verify/{avatarId}",
+        "routeParams": [
+          {
+            "name": "avatarId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/biometric/voice/verify/{avatarId}"
+      }
+    }
+  },
+  "LevelController.cs": {
+    "route_prefix": "api/level",
+    "ops": {
+      "CalculateLevelFromKarma": {
+        "verb": "GET",
+        "route": "calculate/{karma}",
+        "routeParams": [
+          {
+            "name": "karma",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/level/calculate/{karma}"
+      },
+      "GetLevelLookup": {
+        "verb": "GET",
+        "route": "lookup",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/level/lookup"
+      }
+    }
+  },
+  "NativeDataController.cs": {
+    "route_prefix": "api/native-data",
+    "ops": {
+      "GetProviders": {
+        "verb": "GET",
+        "route": "providers",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/native-data/providers"
+      },
+      "GetConnections": {
+        "verb": "GET",
+        "route": "{providerType}/connections",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/native-data/{providerType}/connections"
+      },
+      "SaveConnection": {
+        "verb": "PUT",
+        "route": "{providerType}/connections/{name}",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "PUT /api/native-data/{providerType}/connections/{name}"
+      },
+      "DeleteConnection": {
+        "verb": "DELETE",
+        "route": "{providerType}/connections/{name}",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "DELETE /api/native-data/{providerType}/connections/{name}"
+      },
+      "ImportAll": {
+        "verb": "POST",
+        "route": "{providerType}/import-all",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/native-data/{providerType}/import-all"
+      },
+      "GetMappings": {
+        "verb": "GET",
+        "route": "{providerType}/mappings",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/native-data/{providerType}/mappings"
+      },
+      "GetSources": {
+        "verb": "GET",
+        "route": "{providerType}/sources",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/native-data/{providerType}/sources"
+      },
+      "PostSources": {
+        "verb": "POST",
+        "route": "{providerType}/sources",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/native-data/{providerType}/sources"
+      },
+      "Import": {
+        "verb": "POST",
+        "route": "{providerType}/sources/{sourceName}/import",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "sourceName",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/native-data/{providerType}/sources/{sourceName}/import"
+      },
+      "SaveMapping": {
+        "verb": "PUT",
+        "route": "{providerType}/sources/{sourceName}/mapping",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "sourceName",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "PUT /api/native-data/{providerType}/sources/{sourceName}/mapping"
+      },
+      "DeleteMapping": {
+        "verb": "DELETE",
+        "route": "{providerType}/sources/{sourceName}/mapping",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "sourceName",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "DELETE /api/native-data/{providerType}/sources/{sourceName}/mapping"
+      },
+      "Preview": {
+        "verb": "POST",
+        "route": "{providerType}/sources/{sourceName}/preview",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "sourceName",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/native-data/{providerType}/sources/{sourceName}/preview"
+      },
+      "PrepareVirtualMapping": {
+        "verb": "POST",
+        "route": "{providerType}/virtual-mappings/prepare",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/native-data/{providerType}/virtual-mappings/prepare"
+      },
+      "QueryVirtualMapping": {
+        "verb": "POST",
+        "route": "{providerType}/virtual-mappings/{id}/query",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/native-data/{providerType}/virtual-mappings/{id}/query"
+      },
+      "PrepareVirtualSnapshot": {
+        "verb": "POST",
+        "route": "{providerType}/virtual-mappings/{id}/snapshot/prepare",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/native-data/{providerType}/virtual-mappings/{id}/snapshot/prepare"
+      }
+    }
+  },
+  "SandboxController.cs": {
+    "route_prefix": "api/sandbox",
+    "ops": {
+      "GetFaults": {
+        "verb": "GET",
+        "route": "faults",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/sandbox/faults"
+      },
+      "SeedNativeDemo": {
+        "verb": "POST",
+        "route": "native-demo",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/sandbox/native-demo"
+      },
+      "TakeOffline": {
+        "verb": "POST",
+        "route": "providers/{providerType}/offline",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/sandbox/providers/{providerType}/offline"
+      },
+      "BringOnline": {
+        "verb": "POST",
+        "route": "providers/{providerType}/online",
+        "routeParams": [
+          {
+            "name": "providerType",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/sandbox/providers/{providerType}/online"
+      },
+      "GetRefusals": {
+        "verb": "GET",
+        "route": "refusals",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/sandbox/refusals"
+      },
+      "StartSession": {
+        "verb": "POST",
+        "route": "session",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/sandbox/session"
+      }
+    }
+  },
+  "HerzIdController.cs": {
+    "route_prefix": "api/herzid",
+    "ops": {
+      "Register": {
+        "verb": "POST",
+        "route": "register",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/herzid/register"
+      },
+      "Vouch": {
+        "verb": "POST",
+        "route": "vouch",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/herzid/vouch"
+      },
+      "Verify": {
+        "verb": "GET",
+        "route": "verify/{herzId}",
+        "routeParams": [
+          {
+            "name": "herzId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/herzid/verify/{herzId}"
+      },
+      "Profile": {
+        "verb": "GET",
+        "route": "profile",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/herzid/profile"
+      },
+      "SetClearance": {
+        "verb": "POST",
+        "route": "set-clearance",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/herzid/set-clearance"
+      },
+      "VouchChain": {
+        "verb": "GET",
+        "route": "vouch-chain/{herzId}",
+        "routeParams": [
+          {
+            "name": "herzId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/herzid/vouch-chain/{herzId}"
+      },
+      "VouchesIssued": {
+        "verb": "GET",
+        "route": "vouches-issued",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/herzid/vouches-issued"
+      },
+      "GhostCheck": {
+        "verb": "POST",
+        "route": "ghost-check/{herzId}",
+        "routeParams": [
+          {
+            "name": "herzId",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/herzid/ghost-check/{herzId}"
+      }
+    }
+  },
+  "HyperDriveSyncController.cs": {
+    "route_prefix": "api/hyperdrive/sync",
+    "ops": {
+      "Exchange": {
+        "verb": "POST",
+        "route": "exchange",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/hyperdrive/sync/exchange"
+      }
+    }
+  },
+  "OidcController.cs": {
+    "route_prefix": "",
+    "ops": {
+      "GetJwks": {
+        "verb": "GET",
+        "route": "oauth/jwks",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET //oauth/jwks"
+      },
+      "GetUserInfo": {
+        "verb": "GET",
+        "route": "oauth/userinfo",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET //oauth/userinfo"
+      },
+      "Authorize": {
+        "verb": "GET",
+        "route": "oauth/authorize",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET //oauth/authorize"
+      },
+      "Token": {
+        "verb": "POST",
+        "route": "oauth/token",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST //oauth/token"
+      },
+      "GetDiscoveryDocument": {
+        "verb": "GET",
+        "route": ".well-known/openid-configuration",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /.well-known/openid-configuration"
+      }
+    }
+  },
+  "OlandUnitController.cs": {
+    "route_prefix": "api/admin/olandunit",
+    "ops": {
+      "Create": {
+        "verb": "POST",
+        "route": "",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/admin/olandunit"
+      },
+      "Update": {
+        "verb": "PUT",
+        "route": "{id}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "PUT /api/admin/olandunit/{id}"
+      },
+      "Delete": {
+        "verb": "DELETE",
+        "route": "{id}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "DELETE /api/admin/olandunit/{id}"
+      },
+      "GetById": {
+        "verb": "GET",
+        "route": "{id}",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/admin/olandunit/{id}"
+      },
+      "GetAll": {
+        "verb": "GET",
+        "route": "GetAll",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/admin/olandunit/GetAll"
+      }
+    }
+  },
+  "GardensController.cs": {
+    "route_prefix": "api/gardens",
+    "ops": {
+      "History": {
+        "verb": "GET",
+        "route": "history",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/gardens/history"
+      },
+      "Locations": {
+        "verb": "GET",
+        "route": "locations",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/gardens/locations"
+      },
+      "Nearby": {
+        "verb": "GET",
+        "route": "nearby",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/gardens/nearby"
+      },
+      "Plant": {
+        "verb": "POST",
+        "route": "plant",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/gardens/plant"
+      },
+      "Refill": {
+        "verb": "POST",
+        "route": "refill",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/gardens/refill"
+      },
+      "Species": {
+        "verb": "GET",
+        "route": "species",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/gardens/species"
+      },
+      "Wallet": {
+        "verb": "GET",
+        "route": "wallet",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/gardens/wallet"
+      },
+      "Care": {
+        "verb": "POST",
+        "route": "{id}/care",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/gardens/{id}/care"
+      },
+      "Leave": {
+        "verb": "POST",
+        "route": "{id}/leave",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/gardens/{id}/leave"
+      },
+      "ThankYou": {
+        "verb": "POST",
+        "route": "{id}/thank-you",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/gardens/{id}/thank-you"
+      },
+      "Visit": {
+        "verb": "POST",
+        "route": "{id}/visit",
+        "routeParams": [
+          {
+            "name": "id",
+            "type": "string"
+          }
+        ],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/gardens/{id}/visit"
+      }
+    }
+  },
+  "PlacesController.cs": {
+    "route_prefix": "api/places",
+    "ops": {
+      "Nearby": {
+        "verb": "GET",
+        "route": "nearby",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/places/nearby"
+      },
+      "Observe": {
+        "verb": "POST",
+        "route": "observe",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "POST /api/places/observe"
+      },
+      "Presence": {
+        "verb": "GET",
+        "route": "presence",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/places/presence"
+      },
+      "Visits": {
+        "verb": "GET",
+        "route": "visits",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "GET /api/places/visits"
       }
     }
   }

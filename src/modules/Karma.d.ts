@@ -7,36 +7,81 @@ export declare class KarmaModule {
   /** POST api/karma/add-karma-to-avatar/{avatarId} */
   addKarmaToAvatar(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/karma/add-karma-to-avatar/{avatarId}/{providerType}/{setGlobally} */
+  addKarmaToAvatarByAvatarIdProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/karma/activity */
+  getActivityFeed(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/karma/get-karma-akashic-records-for-avatar/{avatarId} */
   getKarmaAkashicRecordsForAvatar(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/karma/get-karma-akashic-records-for-avatar/{avatarId}/{providerType}/{setGlobally} */
+  getKarmaAkashicRecordsForAvatarByAvatarIdProviderType(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/karma/get-karma-for-avatar/{avatarId} */
   getKarmaForAvatar(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/karma/get-karma-for-avatar/{avatarId}/{providerType}/{setGlobally} */
+  getKarmaForAvatarByAvatarIdProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/karma/get-karma-history/{avatarId} */
   getKarmaHistory(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/karma/get-karma-history/{avatarId}/{providerType}/{setGlobally} */
+  getKarmaHistoryByAvatarIdProviderType(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/karma/get-karma-stats/{avatarId} */
   getKarmaStats(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/karma/get-karma-stats/{avatarId}/{providerType}/{setGlobally} */
+  getKarmaStatsByAvatarIdProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/karma/get-level-thresholds */
+  getLevelThresholds(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/karma/get-negative-karma-weighting/{karmaType} */
   getNegativeKarmaWeighting(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/karma/get-negative-karma-weighting/{karmaType}/{providerType}/{setGlobally} */
+  getNegativeKarmaWeightingByKarmaTypeProviderType(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/karma/get-positive-karma-weighting/{karmaType} */
   getPositiveKarmaWeighting(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** GET api/karma/get-positive-karma-weighting/{karmaType}/{providerType}/{setGlobally} */
+  getPositiveKarmaWeightingByKarmaTypeProviderType(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/karma/weightings */
+  getWeightings(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/karma/remove-karma-from-avatar/{avatarId} */
   removeKarmaFromAvatar(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/karma/remove-karma-from-avatar/{avatarId}/{providerType}/{setGlobally} */
+  removeKarmaFromAvatarByAvatarIdProviderType(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/karma/set-negative-karma-weighting/{karmaType}/{weighting} */
   setNegativeKarmaWeighting(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/karma/set-negative-karma-weighting/{karmaType}/{weighting}/{providerType}/{setGlobally} */
+  setNegativeKarmaWeightingByKarmaTypeWeighting(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/karma/set-positive-karma-weighting/{karmaType}/{weighting} */
   setPositiveKarmaWeighting(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/karma/set-positive-karma-weighting/{karmaType}/{weighting}/{providerType}/{setGlobally} */
+  setPositiveKarmaWeightingByKarmaTypeWeighting(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/karma/vote-for-negative-karma-weighting/{karmaType}/{weighting} */
   voteForNegativeKarmaWeighting(args?: Record<string, any>): Promise<OASISResponse>;
 
+  /** POST api/karma/vote-for-negative-karma-weighting/{karmaType}/{weighting}/{providerType}/{setGlobally} */
+  voteForNegativeKarmaWeightingByKarmaTypeWeighting(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/karma/vote-for-positive-karma-weighting/{karmaType}/{weighting} */
   voteForPositiveKarmaWeighting(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/karma/vote-for-positive-karma-weighting/{karmaType}/{weighting}/{providerType}/{setGlobally} */
+  voteForPositiveKarmaWeightingByKarmaTypeWeighting(args?: Record<string, any>): Promise<OASISResponse>;
 }

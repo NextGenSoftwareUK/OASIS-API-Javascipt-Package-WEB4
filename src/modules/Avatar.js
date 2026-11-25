@@ -19,170 +19,270 @@ class AvatarModule {
     this.addItemToAvatarInventory = makeOperation(http, "api/avatar", "POST", "inventory");
     // POST api/avatar/add-karma-to-avatar/{avatarId}
     this.addKarmaToAvatar = makeOperation(http, "api/avatar", "POST", "add-karma-to-avatar/{avatarId}");
+    // POST api/avatar/add-karma-to-avatar/{avatarId}/{providerType}/{setGlobally}
+    this.addKarmaToAvatarByAvatarIdProviderType = makeOperation(http, "api/avatar", "POST", "add-karma-to-avatar/{avatarId}/{providerType}/{setGlobally}");
     // POST api/avatar/add-xp
     this.addXp = makeOperation(http, "api/avatar", "POST", "add-xp");
+    // PATCH api/avatar/profile
+    this.applyProfile = makeOperation(http, "api/avatar", "PATCH", "profile");
+    // GET api/avatar/account-closure/assessment
+    this.assess = makeOperation(http, "api/avatar", "GET", "account-closure/assessment");
     // POST api/avatar/authenticate
     this.authenticate = makeOperation(http, "api/avatar", "POST", "authenticate");
+    // POST api/avatar/authenticate/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{AutoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}
+    this.authenticateByProviderTypeSetGlobally = makeOperation(http, "api/avatar", "POST", "authenticate/{providerType}/{setGlobally}/{autoReplicationMode}/{autoFailOverMode}/{autoLoadBalanceMode}/{autoReplicationProviders}/{autoFailOverProviders}/{AutoLoadBalanceProviders}/{waitForAutoReplicationResult}/{showDetailedSettings}");
+    // POST api/avatar/authenticate-did
+    this.authenticateDid = makeOperation(http, "api/avatar", "POST", "authenticate-did");
+    // POST api/avatar/authenticate-mfa
+    this.authenticateMfa = makeOperation(http, "api/avatar", "POST", "authenticate-mfa");
+    // POST api/avatar/authenticate-token/{JWTToken}
+    this.authenticateToken = makeOperation(http, "api/avatar", "POST", "authenticate-token/{JWTToken}");
+    // POST api/avatar/authenticate-token/{JWTToken}/{providerType}/{setGlobally}
+    this.authenticateTokenWithProvider = makeOperation(http, "api/avatar", "POST", "authenticate-token/{JWTToken}/{providerType}/{setGlobally}");
     // GET api/avatar/inventory/{itemId}/has
     this.avatarHasItem = makeOperation(http, "api/avatar", "GET", "inventory/{itemId}/has");
     // GET api/avatar/inventory/has-by-name
     this.avatarHasItemByName = makeOperation(http, "api/avatar", "GET", "inventory/has-by-name");
-    // POST api/avatar/create/{model}
-    this.create = makeOperation(http, "api/avatar", "POST", "create/{model}");
+    // POST api/avatar/mfa/confirm
+    this.confirm = makeOperation(http, "api/avatar", "POST", "mfa/confirm");
     // POST api/avatar/{avatarId}/sessions
     this.createAvatarSession = makeOperation(http, "api/avatar", "POST", "{avatarId}/sessions");
     // DELETE api/avatar/{id:Guid}
     this.delete = makeOperation(http, "api/avatar", "DELETE", "{id:Guid}");
     // DELETE api/avatar/delete-by-email/{email}
     this.deleteByEmail = makeOperation(http, "api/avatar", "DELETE", "delete-by-email/{email}");
+    // DELETE api/avatar/delete-by-email/{email}/{providerType}/{setGlobally}
+    this.deleteByEmailByEmailProviderType = makeOperation(http, "api/avatar", "DELETE", "delete-by-email/{email}/{providerType}/{setGlobally}");
     // DELETE api/avatar/delete-by-username/{username}
     this.deleteByUsername = makeOperation(http, "api/avatar", "DELETE", "delete-by-username/{username}");
+    // DELETE api/avatar/delete-by-username/{username}/{providerType}/{setGlobally}
+    this.deleteByUsernameByUsernameProviderType = makeOperation(http, "api/avatar", "DELETE", "delete-by-username/{username}/{providerType}/{setGlobally}");
+    // DELETE api/avatar/{id}/{providerType}/{setGlobally}
+    this.deleteRootByIdProviderType = makeOperation(http, "api/avatar", "DELETE", "{id}/{providerType}/{setGlobally}");
+    // POST api/avatar/mfa/disable
+    this.disable = makeOperation(http, "api/avatar", "POST", "mfa/disable");
+    // POST api/avatar/mfa/enrol
+    this.enrol = makeOperation(http, "api/avatar", "POST", "mfa/enrol");
+    // GET api/avatar/mfa/events
+    this.events = makeOperation(http, "api/avatar", "GET", "mfa/events");
     // POST api/avatar/forgot-password
     this.forgotPassword = makeOperation(http, "api/avatar", "POST", "forgot-password");
+    // POST api/avatar/forgot-password/{providerType}/{setGlobally}
+    this.forgotPasswordByProviderTypeSetGlobally = makeOperation(http, "api/avatar", "POST", "forgot-password/{providerType}/{setGlobally}");
+    // POST api/avatar/generate-key-pair
+    this.generateKeyPair = makeOperation(http, "api/avatar", "POST", "generate-key-pair");
     // GET api/avatar/get-all-avatars
     this.getAll = makeOperation(http, "api/avatar", "GET", "get-all-avatars");
     // GET api/avatar/get-all-avatar-details
     this.getAllAvatarDetails = makeOperation(http, "api/avatar", "GET", "get-all-avatar-details");
+    // GET api/avatar/get-all-avatar-details/{providerType}/{setGlobally}
+    this.getAllAvatarDetailsByProviderTypeSetGlobally = makeOperation(http, "api/avatar", "GET", "get-all-avatar-details/{providerType}/{setGlobally}");
     // GET api/avatar/get-all-avatar-names/{includeUsernames}/{includeIds}
     this.getAllAvatarNames = makeOperation(http, "api/avatar", "GET", "get-all-avatar-names/{includeUsernames}/{includeIds}");
+    // GET api/avatar/get-all-avatar-names/{includeUsernames}/{includeIds}/{providerType}/{setGlobally}
+    this.getAllAvatarNamesByIncludeUsernamesIncludeIds = makeOperation(http, "api/avatar", "GET", "get-all-avatar-names/{includeUsernames}/{includeIds}/{providerType}/{setGlobally}");
     // GET api/avatar/get-all-avatar-names-grouped-by-name/{includeUsernames}/{includeIds}
     this.getAllAvatarNamesGroupedByName = makeOperation(http, "api/avatar", "GET", "get-all-avatar-names-grouped-by-name/{includeUsernames}/{includeIds}");
-    // GET api/avatar/sharing/{target}  (what your avatar or its profile details share)
-    this.getSharing = makeOperation(http, "api/avatar", "GET", "sharing/{target}");
-    // POST api/avatar/sharing/{target}  (choose what to share and with whom; target is "avatar" or "detail")
-    this.setSharing = makeOperation(http, "api/avatar", "POST", "sharing/{target}");
+    // GET api/avatar/get-all-avatar-names-grouped-by-name/{includeUsernames}/{includeIds}/{providerType}/{setGlobally}
+    this.getAllAvatarNamesGroupedByNameByIncludeUsernamesIncludeIds = makeOperation(http, "api/avatar", "GET", "get-all-avatar-names-grouped-by-name/{includeUsernames}/{includeIds}/{providerType}/{setGlobally}");
+    // GET api/avatar/get-all-avatars/{providerType}/{setGlobally}
+    this.getAllAvatarsByProviderTypeSetGlobally = makeOperation(http, "api/avatar", "GET", "get-all-avatars/{providerType}/{setGlobally}");
     // GET api/avatar/get-avatar-detail-by-id/{id:guid}
     this.getAvatarDetail = makeOperation(http, "api/avatar", "GET", "get-avatar-detail-by-id/{id:guid}");
     // GET api/avatar/get-avatar-detail-by-email/{email}
     this.getAvatarDetailByEmail = makeOperation(http, "api/avatar", "GET", "get-avatar-detail-by-email/{email}");
+    // GET api/avatar/get-avatar-detail-by-email/{email}/{providerType}/{setGlobally}
+    this.getAvatarDetailByEmailByEmailProviderType = makeOperation(http, "api/avatar", "GET", "get-avatar-detail-by-email/{email}/{providerType}/{setGlobally}");
+    // GET api/avatar/get-avatar-detail-by-id/{id}/{providerType}/{setGlobally}
+    this.getAvatarDetailByIdByIdProviderType = makeOperation(http, "api/avatar", "GET", "get-avatar-detail-by-id/{id}/{providerType}/{setGlobally}");
     // GET api/avatar/get-avatar-detail-by-username/{username}
     this.getAvatarDetailByUsername = makeOperation(http, "api/avatar", "GET", "get-avatar-detail-by-username/{username}");
+    // GET api/avatar/get-avatar-detail-by-username/{username}/{providerType}/{setGlobally}
+    this.getAvatarDetailByUsernameByUsernameProviderType = makeOperation(http, "api/avatar", "GET", "get-avatar-detail-by-username/{username}/{providerType}/{setGlobally}");
     // GET api/avatar/inventory
     this.getAvatarInventory = makeOperation(http, "api/avatar", "GET", "inventory");
+    // GET api/avatar/inventory/count
+    this.getAvatarInventoryCount = makeOperation(http, "api/avatar", "GET", "inventory/count");
     // GET api/avatar/inventory/{itemId}
     this.getAvatarInventoryItem = makeOperation(http, "api/avatar", "GET", "inventory/{itemId}");
     // GET api/avatar/get-avatar-portrait-by-email/{email}
     this.getAvatarPortraitByEmail = makeOperation(http, "api/avatar", "GET", "get-avatar-portrait-by-email/{email}");
+    // GET api/avatar/get-avatar-portrait-by-email/{email}/{providerType}/{setGlobally}
+    this.getAvatarPortraitByEmailByEmailProviderType = makeOperation(http, "api/avatar", "GET", "get-avatar-portrait-by-email/{email}/{providerType}/{setGlobally}");
     // GET api/avatar/get-avatar-portrait/{id}
     this.getAvatarPortraitById = makeOperation(http, "api/avatar", "GET", "get-avatar-portrait/{id}");
+    // GET api/avatar/get-avatar-portrait/{id}/{providerType}/{setGlobally}
+    this.getAvatarPortraitByIdProviderType = makeOperation(http, "api/avatar", "GET", "get-avatar-portrait/{id}/{providerType}/{setGlobally}");
     // GET api/avatar/get-avatar-portrait-by-username/{username}
     this.getAvatarPortraitByUsername = makeOperation(http, "api/avatar", "GET", "get-avatar-portrait-by-username/{username}");
+    // GET api/avatar/get-avatar-portrait-by-username/{username}/{providerType}/{setGlobally}
+    this.getAvatarPortraitByUsernameByUsernameProviderType = makeOperation(http, "api/avatar", "GET", "get-avatar-portrait-by-username/{username}/{providerType}/{setGlobally}");
     // GET api/avatar/{avatarId}/sessions/stats
     this.getAvatarSessionStats = makeOperation(http, "api/avatar", "GET", "{avatarId}/sessions/stats");
     // GET api/avatar/{avatarId}/sessions
     this.getAvatarSessions = makeOperation(http, "api/avatar", "GET", "{avatarId}/sessions");
     // GET api/avatar/get-by-email/{email}
     this.getByEmail = makeOperation(http, "api/avatar", "GET", "get-by-email/{email}");
+    // GET api/avatar/get-by-email/{email}/{providerType}/{setGlobally}
+    this.getByEmailByEmailProviderType = makeOperation(http, "api/avatar", "GET", "get-by-email/{email}/{providerType}/{setGlobally}");
     // GET api/avatar/get-by-id/{id}
     this.getById = makeOperation(http, "api/avatar", "GET", "get-by-id/{id}");
+    // GET api/avatar/get-by-id/{id}/{providerType}/{setGlobally}
+    this.getByIdByIdProviderType = makeOperation(http, "api/avatar", "GET", "get-by-id/{id}/{providerType}/{setGlobally}");
     // GET api/avatar/get-by-username/{username}
     this.getByUsername = makeOperation(http, "api/avatar", "GET", "get-by-username/{username}");
+    // GET api/avatar/get-by-username/{username}/{providerType}/{setGlobally}
+    this.getByUsernameByUsernameProviderType = makeOperation(http, "api/avatar", "GET", "get-by-username/{username}/{providerType}/{setGlobally}");
+    // GET api/avatar/did-challenge/{did}
+    this.getDidChallenge = makeOperation(http, "api/avatar", "GET", "did-challenge/{did}");
+    // GET api/avatar/holon-seal
+    this.getHolonSeal = makeOperation(http, "api/avatar", "GET", "holon-seal");
+    // GET api/avatar/get-level-thresholds
+    this.getLevelThresholds = makeOperation(http, "api/avatar", "GET", "get-level-thresholds");
     // GET api/avatar/get-logged-in-avatar
     this.getLoggedInAvatar = makeOperation(http, "api/avatar", "GET", "get-logged-in-avatar");
+    // GET api/avatar/get-logged-in-avatar/{providerType}/{setGlobally}
+    this.getLoggedInAvatarByProviderTypeSetGlobally = makeOperation(http, "api/avatar", "GET", "get-logged-in-avatar/{providerType}/{setGlobally}");
     // GET api/avatar/get-logged-in-avatar-with-xp
     this.getLoggedInAvatarWithXp = makeOperation(http, "api/avatar", "GET", "get-logged-in-avatar-with-xp");
+    // GET api/avatar/profile
+    this.getProfile = makeOperation(http, "api/avatar", "GET", "profile");
+    // GET api/avatar/provider-private-keys/by-id/{avatarId}/{providerType}
+    this.getProviderPrivateKeysById = makeOperation(http, "api/avatar", "GET", "provider-private-keys/by-id/{avatarId}/{providerType}");
+    // GET api/avatar/provider-private-keys/by-username/{username}/{providerType}
+    this.getProviderPrivateKeysByUsername = makeOperation(http, "api/avatar", "GET", "provider-private-keys/by-username/{username}/{providerType}");
+    // GET api/avatar/provider-public-keys/by-id/{avatarId}/{providerType}
+    this.getProviderPublicKeysById = makeOperation(http, "api/avatar", "GET", "provider-public-keys/by-id/{avatarId}/{providerType}");
+    // GET api/avatar/provider-public-keys/by-username/{username}/{providerType}
+    this.getProviderPublicKeysByUsername = makeOperation(http, "api/avatar", "GET", "provider-public-keys/by-username/{username}/{providerType}");
+    // GET api/avatar/provider-storage-key/by-id/{avatarId}/{providerType}
+    this.getProviderStorageKeyById = makeOperation(http, "api/avatar", "GET", "provider-storage-key/by-id/{avatarId}/{providerType}");
+    // GET api/avatar/provider-storage-key/by-username/{username}/{providerType}
+    this.getProviderStorageKeyByUsername = makeOperation(http, "api/avatar", "GET", "provider-storage-key/by-username/{username}/{providerType}");
+    // GET api/avatar/sharing/{target}
+    this.getSharing = makeOperation(http, "api/avatar", "GET", "sharing/{target}");
     // GET api/avatar/get-terms
     this.getTerms = makeOperation(http, "api/avatar", "GET", "get-terms");
     // GET api/avatar/get-uma-json-by-email/{email}
     this.getUmaJsonByEmail = makeOperation(http, "api/avatar", "GET", "get-uma-json-by-email/{email}");
+    // GET api/avatar/get-uma-json-by-email/{email}/{providerType}/{setGlobally}
+    this.getUmaJsonByEmailByEmailProviderType = makeOperation(http, "api/avatar", "GET", "get-uma-json-by-email/{email}/{providerType}/{setGlobally}");
     // GET api/avatar/get-uma-json-by-id/{id}
     this.getUmaJsonById = makeOperation(http, "api/avatar", "GET", "get-uma-json-by-id/{id}");
+    // GET api/avatar/get-uma-json-by-id/{id}/{providerType}/{setGlobally}
+    this.getUmaJsonByIdByIdProviderType = makeOperation(http, "api/avatar", "GET", "get-uma-json-by-id/{id}/{providerType}/{setGlobally}");
     // GET api/avatar/get-uma-json-by-username/{username}
     this.getUmaJsonByUsername = makeOperation(http, "api/avatar", "GET", "get-uma-json-by-username/{username}");
-    // POST api/avatar/{avatarId}/{eosioAccountName}
-    this.linkEOSIOAccountToAvatar = makeOperation(http, "api/avatar", "POST", "{avatarId}/{eosioAccountName}");
-    // POST api/avatar/{avatarId}/{holochainAgentID}
-    this.linkHolochainAgentIDToAvatar = makeOperation(http, "api/avatar", "POST", "{avatarId}/{holochainAgentID}");
-    // POST api/avatar/{id:Guid}/{telosAccountName}
-    this.linkTelosAccountToAvatar = makeOperation(http, "api/avatar", "POST", "{id:Guid}/{telosAccountName}");
-    // POST api/avatar/
-    this.linkTelosAccountToAvatar2 = makeOperation(http, "api/avatar", "POST", "");
+    // GET api/avatar/get-uma-json-by-username/{username}/{providerType}/{setGlobally}
+    this.getUmaJsonByUsernameByUsernameProviderType = makeOperation(http, "api/avatar", "GET", "get-uma-json-by-username/{username}/{providerType}/{setGlobally}");
+    // GET api/avatar/version-purge
+    this.getVersionPurge = makeOperation(http, "api/avatar", "GET", "version-purge");
+    // POST api/avatar/link-public-key/by-id
+    this.linkPublicKeyById = makeOperation(http, "api/avatar", "POST", "link-public-key/by-id");
+    // POST api/avatar/link-public-key/by-username
+    this.linkPublicKeyByUsername = makeOperation(http, "api/avatar", "POST", "link-public-key/by-username");
     // POST api/avatar/{avatarId}/sessions/logout-all
     this.logoutAllAvatarSessions = makeOperation(http, "api/avatar", "POST", "{avatarId}/sessions/logout-all");
     // POST api/avatar/{avatarId}/sessions/logout
     this.logoutAvatarSessions = makeOperation(http, "api/avatar", "POST", "{avatarId}/sessions/logout");
+    // POST api/avatar/refresh-token
+    this.refreshToken = makeOperation(http, "api/avatar", "POST", "refresh-token");
+    // POST api/avatar/refresh-token/{providerType}/{setGlobally}
+    this.refreshTokenByProviderTypeSetGlobally = makeOperation(http, "api/avatar", "POST", "refresh-token/{providerType}/{setGlobally}");
+    // POST api/avatar/mfa/recovery-codes
+    this.regenerateRecoveryCodes = makeOperation(http, "api/avatar", "POST", "mfa/recovery-codes");
     // POST api/avatar/register
     this.register = makeOperation(http, "api/avatar", "POST", "register");
+    // POST api/avatar/register/{providerType}/{setGlobally}
+    this.registerWithProvider = makeOperation(http, "api/avatar", "POST", "register/{providerType}/{setGlobally}");
     // DELETE api/avatar/inventory/{itemId}
     this.removeItemFromAvatarInventory = makeOperation(http, "api/avatar", "DELETE", "inventory/{itemId}");
     // POST api/avatar/remove-karma-from-avatar/{avatarId}
     this.removeKarmaFromAvatar = makeOperation(http, "api/avatar", "POST", "remove-karma-from-avatar/{avatarId}");
+    // POST api/avatar/remove-karma-from-avatar/{avatarId}/{providerType}/{setGlobally}
+    this.removeKarmaFromAvatarByAvatarIdProviderType = makeOperation(http, "api/avatar", "POST", "remove-karma-from-avatar/{avatarId}/{providerType}/{setGlobally}");
+    // POST api/avatar/mfa/reset/{avatarId}
+    this.reset = makeOperation(http, "api/avatar", "POST", "mfa/reset/{avatarId}");
     // POST api/avatar/reset-password
     this.resetPassword = makeOperation(http, "api/avatar", "POST", "reset-password");
+    // POST api/avatar/reset-password/{providerType}/{setGlobally}
+    this.resetPasswordByProviderTypeSetGlobally = makeOperation(http, "api/avatar", "POST", "reset-password/{providerType}/{setGlobally}");
     // POST api/avatar/revoke-token
     this.revokeToken = makeOperation(http, "api/avatar", "POST", "revoke-token");
+    // POST api/avatar/revoke-token/{providerType}/{setGlobally}
+    this.revokeTokenByProviderTypeSetGlobally = makeOperation(http, "api/avatar", "POST", "revoke-token/{providerType}/{setGlobally}");
     // POST api/avatar/search
     this.searchAvatar = makeOperation(http, "api/avatar", "POST", "search");
     // GET api/avatar/inventory/search
     this.searchAvatarInventory = makeOperation(http, "api/avatar", "GET", "inventory/search");
+    // POST api/avatar/search/{providerType}/{setGlobally}
+    this.searchByProviderTypeSetGlobally = makeOperation(http, "api/avatar", "POST", "search/{providerType}/{setGlobally}");
+    // GET api/avatar/search-directory
+    this.searchDirectory = makeOperation(http, "api/avatar", "GET", "search-directory");
     // POST api/avatar/inventory/send-to-avatar
     this.sendItemToAvatar = makeOperation(http, "api/avatar", "POST", "inventory/send-to-avatar");
     // POST api/avatar/inventory/send-to-clan
     this.sendItemToClan = makeOperation(http, "api/avatar", "POST", "inventory/send-to-clan");
+    // POST api/avatar/inventory/send-to-clan-atomic
+    this.sendItemToClanAtomic = makeOperation(http, "api/avatar", "POST", "inventory/send-to-clan-atomic");
+    // POST api/avatar/holon-seal
+    this.set = makeOperation(http, "api/avatar", "POST", "holon-seal");
     // POST api/avatar/set-active-quest
     this.setActiveQuest = makeOperation(http, "api/avatar", "POST", "set-active-quest");
+    // POST api/avatar/sharing/{target}
+    this.setSharing = makeOperation(http, "api/avatar", "POST", "sharing/{target}");
+    // GET api/avatar/mfa/status
+    this.status = makeOperation(http, "api/avatar", "GET", "mfa/status");
     // POST api/avatar/update-by-id/{id}
     this.update = makeOperation(http, "api/avatar", "POST", "update-by-id/{id}");
     // POST api/avatar/update-avatar-detail-by-id/{id}
     this.updateAvatarDetail = makeOperation(http, "api/avatar", "POST", "update-avatar-detail-by-id/{id}");
     // POST api/avatar/update-avatar-detail-by-email/{email}
     this.updateAvatarDetailByEmail = makeOperation(http, "api/avatar", "POST", "update-avatar-detail-by-email/{email}");
+    // POST api/avatar/update-avatar-detail-by-email/{email}/{providerType}/{setGlobally}
+    this.updateAvatarDetailByEmailByEmailProviderType = makeOperation(http, "api/avatar", "POST", "update-avatar-detail-by-email/{email}/{providerType}/{setGlobally}");
+    // POST api/avatar/update-avatar-detail-by-id/{id}/{providerType}/{setGlobally}
+    this.updateAvatarDetailByIdByIdProviderType = makeOperation(http, "api/avatar", "POST", "update-avatar-detail-by-id/{id}/{providerType}/{setGlobally}");
     // POST api/avatar/update-avatar-detail-by-username/{username}
     this.updateAvatarDetailByUsername = makeOperation(http, "api/avatar", "POST", "update-avatar-detail-by-username/{username}");
+    // POST api/avatar/update-avatar-detail-by-username/{username}/{providerType}/{setGlobally}
+    this.updateAvatarDetailByUsernameByUsernameProviderType = makeOperation(http, "api/avatar", "POST", "update-avatar-detail-by-username/{username}/{providerType}/{setGlobally}");
     // PUT api/avatar/{avatarId}/sessions/{sessionId}
     this.updateAvatarSession = makeOperation(http, "api/avatar", "PUT", "{avatarId}/sessions/{sessionId}");
     // POST api/avatar/update-by-email/{email}
     this.updateByEmail = makeOperation(http, "api/avatar", "POST", "update-by-email/{email}");
+    // POST api/avatar/update-by-email/{email}/{providerType}/{setGlobally}
+    this.updateByEmailByEmailProviderType = makeOperation(http, "api/avatar", "POST", "update-by-email/{email}/{providerType}/{setGlobally}");
+    // POST api/avatar/update-by-id/{id}/{providerType}/{setGlobally}
+    this.updateByIdByIdProviderType = makeOperation(http, "api/avatar", "POST", "update-by-id/{id}/{providerType}/{setGlobally}");
     // POST api/avatar/update-by-username/{username}
     this.updateByUsername = makeOperation(http, "api/avatar", "POST", "update-by-username/{username}");
+    // POST api/avatar/update-by-username/{username}/{providerType}/{setGlobally}
+    this.updateByUsernameByUsernameProviderType = makeOperation(http, "api/avatar", "POST", "update-by-username/{username}/{providerType}/{setGlobally}");
+    // PUT api/avatar/inventory/{itemId}
+    this.updateItemInAvatarInventory = makeOperation(http, "api/avatar", "PUT", "inventory/{itemId}");
     // POST api/avatar/upload-avatar-portrait
     this.uploadAvatarPortrait = makeOperation(http, "api/avatar", "POST", "upload-avatar-portrait");
-    // POST api/avatar/validate-reset-token
-    this.validateResetToken = makeOperation(http, "api/avatar", "POST", "validate-reset-token");
-    // GET api/avatar/verify-email
-    this.verifyEmail = makeOperation(http, "api/avatar", "GET", "verify-email");
+    // POST api/avatar/upload-avatar-portrait/{providerType}/{setGlobally}
+    this.uploadAvatarPortraitByProviderTypeSetGlobally = makeOperation(http, "api/avatar", "POST", "upload-avatar-portrait/{providerType}/{setGlobally}");
     // POST api/avatar/validate-account-token
     this.validateAccountToken = makeOperation(http, "api/avatar", "POST", "validate-account-token");
-
-    // --- AvatarAuth extended endpoints ---
-    // POST api/avatar/authenticate-token/{JWTToken}
-    this.authenticateToken = makeOperation(http, "api/avatar", "POST", "authenticate-token/{JWTToken}");
-    // POST api/avatar/authenticate-token/{JWTToken}/{providerType}/{setGlobally}
-    this.authenticateTokenWithProvider = makeOperation(http, "api/avatar", "POST", "authenticate-token/{JWTToken}/{providerType}/{setGlobally}");
-    // POST api/avatar/authenticate-did
-    this.authenticateDid = makeOperation(http, "api/avatar", "POST", "authenticate-did");
-    // GET api/avatar/did-challenge/{did}
-    this.getDidChallenge = makeOperation(http, "api/avatar", "GET", "did-challenge/{did}");
-    // POST api/avatar/refresh-token
-    this.refreshToken = makeOperation(http, "api/avatar", "POST", "refresh-token");
-    // POST api/avatar/register/{providerType}/{setGlobally}
-    this.registerWithProvider = makeOperation(http, "api/avatar", "POST", "register/{providerType}/{setGlobally}");
+    // POST api/avatar/validate-reset-token
+    this.validateResetToken = makeOperation(http, "api/avatar", "POST", "validate-reset-token");
+    // POST api/avatar/validate-reset-token/{providerType}/{setGlobally}
+    this.validateResetTokenByProviderTypeSetGlobally = makeOperation(http, "api/avatar", "POST", "validate-reset-token/{providerType}/{setGlobally}");
     // POST api/avatar/{avatarId}/verify
     this.verifyAvatar = makeOperation(http, "api/avatar", "POST", "{avatarId}/verify");
+    // GET api/avatar/verify-email
+    this.verifyEmail = makeOperation(http, "api/avatar", "GET", "verify-email");
+    // POST api/avatar/verify-email/{providerType}/{setGlobally}
+    this.verifyEmailByProviderTypeSetGlobally = makeOperation(http, "api/avatar", "POST", "verify-email/{providerType}/{setGlobally}");
+    // POST api/avatar/verify-email
+    this.verifyEmailPost = makeOperation(http, "api/avatar", "POST", "verify-email");
     // GET api/avatar/verify-email/{providerType}/{setGlobally}
     this.verifyEmailWithProvider = makeOperation(http, "api/avatar", "GET", "verify-email/{providerType}/{setGlobally}");
-    // POST api/avatar/verify-email (body form)
-    this.verifyEmailPost = makeOperation(http, "api/avatar", "POST", "verify-email");
-
-    // --- AvatarKey endpoints ---
-    // POST api/avatar/link-public-key/by-id
-    this.linkPublicKeyById = makeOperation(http, "api/avatar", "POST", "link-public-key/by-id");
-    // POST api/avatar/link-public-key/by-username
-    this.linkPublicKeyByUsername = makeOperation(http, "api/avatar", "POST", "link-public-key/by-username");
-    // POST api/avatar/generate-key-pair
-    this.generateKeyPair = makeOperation(http, "api/avatar", "POST", "generate-key-pair");
-    // GET api/avatar/provider-storage-key/by-id/{avatarId}/{providerType}
-    this.getProviderStorageKeyById = makeOperation(http, "api/avatar", "GET", "provider-storage-key/by-id/{avatarId}/{providerType}");
-    // GET api/avatar/provider-storage-key/by-username/{username}/{providerType}
-    this.getProviderStorageKeyByUsername = makeOperation(http, "api/avatar", "GET", "provider-storage-key/by-username/{username}/{providerType}");
-    // GET api/avatar/provider-public-keys/by-id/{avatarId}/{providerType}
-    this.getProviderPublicKeysById = makeOperation(http, "api/avatar", "GET", "provider-public-keys/by-id/{avatarId}/{providerType}");
-    // GET api/avatar/provider-public-keys/by-username/{username}/{providerType}
-    this.getProviderPublicKeysByUsername = makeOperation(http, "api/avatar", "GET", "provider-public-keys/by-username/{username}/{providerType}");
-    // GET api/avatar/provider-private-keys/by-id/{avatarId}/{providerType}  (admin only)
-    this.getProviderPrivateKeysById = makeOperation(http, "api/avatar", "GET", "provider-private-keys/by-id/{avatarId}/{providerType}");
-    // GET api/avatar/provider-private-keys/by-username/{username}/{providerType}  (admin only)
-    this.getProviderPrivateKeysByUsername = makeOperation(http, "api/avatar", "GET", "provider-private-keys/by-username/{username}/{providerType}");
+    // POST api/avatar/version-purge
+    this.versionPurge = makeOperation(http, "api/avatar", "POST", "version-purge");
   }
 }
 

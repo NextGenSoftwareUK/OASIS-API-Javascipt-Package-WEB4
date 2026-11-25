@@ -4,6 +4,12 @@ import type { OASISResponse } from '../core/types';
 export declare class ChatModule {
   constructor(http: unknown);
 
+  /** POST api/chat/end-chat-session/{sessionId} */
+  endChatSession(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/chat/active-sessions */
+  getActiveSessions(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** GET api/chat/history/{sessionId} */
   getChatHistory(args?: Record<string, any>): Promise<OASISResponse>;
 

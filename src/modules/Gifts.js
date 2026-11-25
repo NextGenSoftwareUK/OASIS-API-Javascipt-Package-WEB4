@@ -19,6 +19,8 @@ class GiftsModule {
     this.getGiftHistory = makeOperation(http, "api/gifts", "GET", "history");
     // GET api/gifts/stats
     this.getGiftStats = makeOperation(http, "api/gifts", "GET", "stats");
+    // GET api/gifts/my-gifts/summary
+    this.getMyGiftSummary = makeOperation(http, "api/gifts", "GET", "my-gifts/summary");
     // GET api/gifts/my-gifts
     this.getMyGifts = makeOperation(http, "api/gifts", "GET", "my-gifts");
     // POST api/gifts/open-gift/{giftId}

@@ -2,436 +2,96 @@
 
 Source controller: [`SubscriptionController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/SubscriptionController.cs)
 Route prefix: `api/subscription`
-10 operation(s).
+70 operation(s).
 
-Every method takes a single args object: any key matching a `{token}` in the route is substituted into the URL; everything else becomes the query string (GET/DELETE) or JSON body (POST/PUT). Every call resolves to the standard OASIS envelope:
+All methods are generated 1:1 from the controller's real `[Http*]` routes (see
+[Conventions](../README.md#calling-any-endpoint)). They take a single args
+object: any key matching a `{token}` in the route is substituted into the
+URL; everything else becomes the query string (GET/DELETE) or JSON body
+(POST/PUT).
 
-```ts
-{
-  isError: boolean;
-  isWarning: boolean;
-  message: string;
-  errorCode?: string;
-  result: T; // see each endpoint's Response section below
-}
-```
+## Methods
 
-## Operations
+| Method | HTTP | Route | Route params |
+| --- | --- | --- | --- |
+| `alerts` | GET | `api/subscription/usage/alerts` | – |
+| `analytics` | GET | `api/subscription/admin/analytics` | – |
+| `appAccounts` | GET | `api/subscription/admin/app-accounts` | – |
+| `appPoolUsage` | GET | `api/subscription/admin/app-accounts/{appId}/usage` | `appId` |
+| `appSeriesAdmin` | GET | `api/subscription/admin/app-accounts/{appId}/usage/series` | `appId` |
+| `appTopUsers` | GET | `api/subscription/admin/app-accounts/{appId}/top-users` | `appId` |
+| `audit` | GET | `api/subscription/admin/usage/audit` | – |
+| `authorizeDelegatedUsage` | POST | `api/subscription/usage/authorize-delegated` | – |
+| `authorizeRequest` | POST | `api/subscription/authorize-request` | – |
+| `authorizeUsage` | POST | `api/subscription/usage/authorize` | – |
+| `billing` | GET | `api/subscription/app-owner/{appId}/payg` | `appId` |
+| `cancelPendingCheckout` | POST | `api/subscription/checkout/operations/{operationId}/cancel` | `operationId` |
+| `checkHyperDriveQuota` | POST | `api/subscription/check-hyperdrive-quota` | – |
+| `correctUsage` | POST | `api/subscription/usage/admin/corrections` | – |
+| `createAppAccount` | POST | `api/subscription/admin/app-accounts` | – |
+| `createBillingPortal` | POST | `api/subscription/billing/portal` | – |
+| `createCheckoutSession` | POST | `api/subscription/checkout/session` | – |
+| `createUsageGrant` | POST | `api/subscription/usage/grants` | – |
+| `events` | GET | `api/subscription/admin/usage/events` | – |
+| `getAuthoritativeUsage` | GET | `api/subscription/usage/current` | – |
+| `getCheckoutSessionStatus` | GET | `api/subscription/checkout/session/{sessionId}` | `sessionId` |
+| `getHyperDriveUsage` | GET | `api/subscription/hyperdrive-usage` | – |
+| `getMyOrders` | GET | `api/subscription/orders/me` | – |
+| `getMySubscriptions` | GET | `api/subscription/subscriptions/me` | – |
+| `getOverageStatements` | GET | `api/subscription/overages/statements` | – |
+| `getOverageStatementsAdmin` | GET | `api/subscription/overages/admin/statements` | – |
+| `getPaidOveragePrices` | GET | `api/subscription/overages/prices` | – |
+| `getPendingCheckouts` | GET | `api/subscription/checkout/pending` | – |
+| `getPlans` | GET | `api/subscription/plans` | – |
+| `getUsage` | GET | `api/subscription/usage` | – |
+| `getUsageAudit` | GET | `api/subscription/usage/audit` | – |
+| `getUsageEvents` | GET | `api/subscription/usage/events` | – |
+| `getUsageMigrationInventory` | GET | `api/subscription/usage/admin/migration/inventory` | – |
+| `getUsageNotifications` | GET | `api/subscription/usage/notifications` | – |
+| `grantPlan` | POST | `api/subscription/admin/plan-grant` | – |
+| `importUsageOpeningBalance` | POST | `api/subscription/usage/admin/migration/opening-balance` | – |
+| `invoices` | GET | `api/subscription/admin/invoices` | – |
+| `listUsageGrants` | GET | `api/subscription/usage/grants` | – |
+| `myApps` | GET | `api/subscription/app-owner/apps` | – |
+| `myEstimate` | GET | `api/subscription/usage/estimate` | – |
+| `mySeries` | GET | `api/subscription/usage/series` | – |
+| `notifications` | GET | `api/subscription/app-owner/{appId}/notifications` | `appId` |
+| `outboxes` | GET | `api/subscription/admin/outboxes` | – |
+| `payNow` | POST | `api/subscription/app-owner/{appId}/payg/pay-now` | `appId` |
+| `payOveragesNow` | POST | `api/subscription/overages/pay-now` | – |
+| `providerReceipt` | POST | `api/subscription/usage/admin/reconciliation/provider-receipts` | – |
+| `reconcileCheckout` | POST | `api/subscription/checkout/operations/{operationId}/reconcile` | `operationId` |
+| `reports` | GET | `api/subscription/usage/admin/reconciliation/reports` | – |
+| `requeue` | POST | `api/subscription/admin/outboxes/requeue` | – |
+| `revokeUsageGrant` | POST | `api/subscription/usage/grants/{grantId}/revoke` | `grantId` |
+| `rotateAppAccountKey` | POST | `api/subscription/admin/app-accounts/{appId}/rotate-key` | `appId` |
+| `run` | POST | `api/subscription/usage/admin/reconciliation/run` | – |
+| `save` | POST | `api/subscription/usage/notifications` | – |
+| `saveBilling` | POST | `api/subscription/app-owner/{appId}/payg` | `appId` |
+| `saveNotifications` | POST | `api/subscription/app-owner/{appId}/notifications` | `appId` |
+| `saveSettings` | POST | `api/subscription/app-owner/{appId}/settings` | `appId` |
+| `sendWarningEmails` | POST | `api/subscription/usage/alerts/email` | – |
+| `setAppOwners` | POST | `api/subscription/admin/app-accounts/{appId}/owners` | `appId` |
+| `settings` | GET | `api/subscription/app-owner/{appId}/settings` | `appId` |
+| `settleNativeUsage` | POST | `api/subscription/usage/settle-native-v1` | – |
+| `settleUsage` | POST | `api/subscription/usage/settle` | – |
+| `startUsage` | POST | `api/subscription/usage/start` | – |
+| `stripeInvoice` | POST | `api/subscription/usage/admin/reconciliation/stripe-invoices` | – |
+| `stripeWebhook` | POST | `api/subscription/webhooks/stripe` | – |
+| `subscriptions` | GET | `api/subscription/admin/subscriptions` | – |
+| `togglePayAsYouGo` | POST | `api/subscription/toggle-pay-as-you-go` | – |
+| `updateAppAccount` | POST | `api/subscription/admin/app-accounts/{appId}` | `appId` |
+| `updateHyperDriveConfig` | POST | `api/subscription/update-hyperdrive-config` | – |
+| `usage` | GET | `api/subscription/app-owner/{appId}/usage` | `appId` |
+| `userSeriesAdmin` | GET | `api/subscription/admin/users/{userId}/usage/series` | `userId` |
 
-### `checkHyperDriveQuota`
-
-Checks if user can perform HyperDrive operation based on quota
-
-**POST** `api/subscription/check-hyperdrive-quota`
-
-**Request**
-
-Body type: `QuotaCheckRequest`
-
-| Field | Type |
-| --- | --- |
-| `OperationType` | `string` |
-
-**Response**
-
-Standard `OASISResult` envelope (see top of this page) with:
-
-`result` type: `QuotaCheckResult`
-
-| Field | Type |
-| --- | --- |
-| `CanProceed` | `bool` |
-| `CurrentUsage` | `int` |
-| `Limit` | `int` |
-| `Remaining` | `int` |
-| `WouldExceedQuota` | `bool` |
-| `RequiresPayAsYouGo` | `bool` |
-| `EstimatedCost` | `decimal` |
-
-**Example**
+## Example
 
 ```js
-const { isError, message, result } = await oasis.subscription.checkHyperDriveQuota({
-    operationType: "example string"
-  });
+const oasis = new OASISClient({ baseUrl: '...' });
+oasis.setToken(jwtToken); // or: await oasis.auth.login({ username, password })
+
+const { isError, message, result } = await oasis.subscription.alerts({});
 if (isError) throw new Error(message);
 console.log(result);
 ```
-
-Example response:
-
-```json
-{
-  "isError": false,
-  "message": "",
-  "result": { "CanProceed": true, "CurrentUsage": 1, "Limit": 1, "Remaining": 1, "WouldExceedQuota": true, "RequiresPayAsYouGo": true, "EstimatedCost": 1.0 }
-}
-```
-
----
-
-### `createCheckoutSession`
-
-**POST** `api/subscription/checkout/session`
-
-**Request**
-
-Body type: `CreateCheckoutSessionRequest`
-
-| Field | Type |
-| --- | --- |
-| `PlanId` | `string` |
-| `SuccessUrl` | `string` |
-| `CancelUrl` | `string` |
-| `CouponCode` | `string` |
-| `CustomerEmail` | `string` |
-| `AvatarId` | `string` |
-
-**Response**
-
-Standard `OASISResult` envelope (see top of this page) with:
-
-`result` type: `CreateCheckoutSessionResponse`
-
-| Field | Type |
-| --- | --- |
-| `IsError` | `bool` |
-| `Message` | `string` |
-| `SessionId` | `string` |
-| `SessionUrl` | `string` |
-
-**Example**
-
-```js
-const { isError, message, result } = await oasis.subscription.createCheckoutSession({
-    planId: "example string",
-    successUrl: "example string",
-    cancelUrl: "example string",
-    couponCode: "example string",
-    customerEmail: "example string",
-    avatarId: "example string"
-  });
-if (isError) throw new Error(message);
-console.log(result);
-```
-
-Example response:
-
-```json
-{
-  "isError": false,
-  "message": "",
-  "result": { "IsError": true, "Message": "example string", "SessionId": "example string", "SessionUrl": "example string" }
-}
-```
-
----
-
-### `getHyperDriveUsage`
-
-Gets HyperDrive usage statistics for current subscription
-
-**GET** `api/subscription/hyperdrive-usage`
-
-**Request**
-
-No request body.
-
-**Response**
-
-Standard `OASISResult` envelope (see top of this page) with:
-
-`result` type: `HyperDriveUsageDto`
-
-| Field | Type |
-| --- | --- |
-| `PlanType` | `string` |
-| `PayAsYouGoEnabled` | `bool` |
-| `CurrentUsage` | `Dictionary<string, int>` |
-| `Limits` | `Dictionary<string, int>` |
-| `Costs` | `Dictionary<string, decimal>` |
-
-**Example**
-
-```js
-const { isError, message, result } = await oasis.subscription.getHyperDriveUsage({});
-if (isError) throw new Error(message);
-console.log(result);
-```
-
-Example response:
-
-```json
-{
-  "isError": false,
-  "message": "",
-  "result": { "PlanType": "example string", "PayAsYouGoEnabled": true, "CurrentUsage": { "<string>": 1 }, "Limits": { "<string>": 1 }, "Costs": { "<string>": 1.0 } }
-}
-```
-
----
-
-### `getMyOrders`
-
-**GET** `api/subscription/orders/me`
-
-**Request**
-
-No request body.
-
-**Response**
-
-Standard `OASISResult` envelope (see top of this page) with:
-
-`result` type: `object`
-
-**Example**
-
-```js
-const { isError, message, result } = await oasis.subscription.getMyOrders({});
-if (isError) throw new Error(message);
-console.log(result);
-```
-
-Example response:
-
-```json
-{
-  "isError": false,
-  "message": "",
-  "result": {}
-}
-```
-
----
-
-### `getMySubscriptions`
-
-**GET** `api/subscription/subscriptions/me`
-
-**Request**
-
-No request body.
-
-**Response**
-
-Standard `OASISResult` envelope (see top of this page) with:
-
-`result` type: `object`
-
-**Example**
-
-```js
-const { isError, message, result } = await oasis.subscription.getMySubscriptions({});
-if (isError) throw new Error(message);
-console.log(result);
-```
-
-Example response:
-
-```json
-{
-  "isError": false,
-  "message": "",
-  "result": {}
-}
-```
-
----
-
-### `getPlans`
-
-**GET** `api/subscription/plans`
-
-**Request**
-
-No request body.
-
-**Response**
-
-Standard `OASISResult` envelope (see top of this page) with:
-
-`result` type: `PlanDto` (array)
-
-| Field | Type |
-| --- | --- |
-| `Id` | `string` |
-| `Name` | `string` |
-| `PriceMonthly` | `decimal` |
-| `Currency` | `string` |
-| `Features` | `string[]` |
-| `IsContactSales` | `bool` |
-| `MaxRequestsPerMonth` | `int` |
-| `MaxStorageGB` | `int` |
-| `SupportLevel` | `string` |
-
-**Example**
-
-```js
-const { isError, message, result } = await oasis.subscription.getPlans({});
-if (isError) throw new Error(message);
-console.log(result);
-```
-
-Example response:
-
-```json
-{
-  "isError": false,
-  "message": "",
-  "result": [{ "Id": "example string", "Name": "example string", "PriceMonthly": 1.0, "Currency": "example string", "Features": /* <string[]> */, "IsContactSales": true, "MaxRequestsPerMonth": 1, "MaxStorageGB": 1, "SupportLevel": "example string" }]
-}
-```
-
----
-
-### `getUsage`
-
-**GET** `api/subscription/usage`
-
-**Request**
-
-No request body.
-
-**Response**
-
-Standard `OASISResult` envelope (see top of this page) with:
-
-`result` type: `IActionResult` (not part of the request/response payload).
-
-**Example**
-
-```js
-const { isError, message, result } = await oasis.subscription.getUsage({});
-if (isError) throw new Error(message);
-console.log(result);
-```
-
-Example response:
-
-```json
-{
-  "isError": false,
-  "message": "",
-  "result": null
-}
-```
-
----
-
-### `stripeWebhook`
-
-**POST** `api/subscription/webhooks/stripe`
-
-**Request**
-
-No request body.
-
-**Response**
-
-Standard `OASISResult` envelope (see top of this page) with:
-
-`result` type: `IActionResult` (not part of the request/response payload).
-
-**Example**
-
-```js
-const { isError, message, result } = await oasis.subscription.stripeWebhook({});
-if (isError) throw new Error(message);
-console.log(result);
-```
-
-Example response:
-
-```json
-{
-  "isError": false,
-  "message": "",
-  "result": null
-}
-```
-
----
-
-### `togglePayAsYouGo`
-
-**POST** `api/subscription/toggle-pay-as-you-go`
-
-**Request**
-
-Body type: `TogglePayAsYouGoRequest`
-
-| Field | Type |
-| --- | --- |
-| `Enabled` | `bool` |
-
-**Response**
-
-Standard `OASISResult` envelope (see top of this page) with:
-
-`result` type: `IActionResult` (not part of the request/response payload).
-
-**Example**
-
-```js
-const { isError, message, result } = await oasis.subscription.togglePayAsYouGo({
-    enabled: true
-  });
-if (isError) throw new Error(message);
-console.log(result);
-```
-
-Example response:
-
-```json
-{
-  "isError": false,
-  "message": "",
-  "result": null
-}
-```
-
----
-
-### `updateHyperDriveConfig`
-
-Updates HyperDrive configuration based on subscription plan
-
-**POST** `api/subscription/update-hyperdrive-config`
-
-**Request**
-
-Body type: `UpdateHyperDriveConfigRequest`
-
-| Field | Type |
-| --- | --- |
-| `PlanType` | `string` |
-| `PayAsYouGoEnabled` | `bool` |
-
-**Response**
-
-Standard `OASISResult` envelope (see top of this page) with:
-
-`result` type: `bool`
-
-**Example**
-
-```js
-const { isError, message, result } = await oasis.subscription.updateHyperDriveConfig({
-    planType: "example string",
-    payAsYouGoEnabled: true
-  });
-if (isError) throw new Error(message);
-console.log(result);
-```
-
-Example response:
-
-```json
-{
-  "isError": false,
-  "message": "",
-  "result": true
-}
-```
-

@@ -15,26 +15,146 @@ class SubscriptionModule {
   constructor(http) {
     this._http = http;
 
+    // GET api/subscription/usage/alerts
+    this.alerts = makeOperation(http, "api/subscription", "GET", "usage/alerts");
+    // GET api/subscription/admin/analytics
+    this.analytics = makeOperation(http, "api/subscription", "GET", "admin/analytics");
+    // GET api/subscription/admin/app-accounts
+    this.appAccounts = makeOperation(http, "api/subscription", "GET", "admin/app-accounts");
+    // GET api/subscription/admin/app-accounts/{appId}/usage
+    this.appPoolUsage = makeOperation(http, "api/subscription", "GET", "admin/app-accounts/{appId}/usage");
+    // GET api/subscription/admin/app-accounts/{appId}/usage/series
+    this.appSeriesAdmin = makeOperation(http, "api/subscription", "GET", "admin/app-accounts/{appId}/usage/series");
+    // GET api/subscription/admin/app-accounts/{appId}/top-users
+    this.appTopUsers = makeOperation(http, "api/subscription", "GET", "admin/app-accounts/{appId}/top-users");
+    // GET api/subscription/admin/usage/audit
+    this.audit = makeOperation(http, "api/subscription", "GET", "admin/usage/audit");
+    // POST api/subscription/usage/authorize-delegated
+    this.authorizeDelegatedUsage = makeOperation(http, "api/subscription", "POST", "usage/authorize-delegated");
+    // POST api/subscription/authorize-request
+    this.authorizeRequest = makeOperation(http, "api/subscription", "POST", "authorize-request");
+    // POST api/subscription/usage/authorize
+    this.authorizeUsage = makeOperation(http, "api/subscription", "POST", "usage/authorize");
+    // GET api/subscription/app-owner/{appId}/payg
+    this.billing = makeOperation(http, "api/subscription", "GET", "app-owner/{appId}/payg");
+    // POST api/subscription/checkout/operations/{operationId}/cancel
+    this.cancelPendingCheckout = makeOperation(http, "api/subscription", "POST", "checkout/operations/{operationId}/cancel");
     // POST api/subscription/check-hyperdrive-quota
     this.checkHyperDriveQuota = makeOperation(http, "api/subscription", "POST", "check-hyperdrive-quota");
+    // POST api/subscription/usage/admin/corrections
+    this.correctUsage = makeOperation(http, "api/subscription", "POST", "usage/admin/corrections");
+    // POST api/subscription/admin/app-accounts
+    this.createAppAccount = makeOperation(http, "api/subscription", "POST", "admin/app-accounts");
+    // POST api/subscription/billing/portal
+    this.createBillingPortal = makeOperation(http, "api/subscription", "POST", "billing/portal");
     // POST api/subscription/checkout/session
     this.createCheckoutSession = makeOperation(http, "api/subscription", "POST", "checkout/session");
+    // POST api/subscription/usage/grants
+    this.createUsageGrant = makeOperation(http, "api/subscription", "POST", "usage/grants");
+    // GET api/subscription/admin/usage/events
+    this.events = makeOperation(http, "api/subscription", "GET", "admin/usage/events");
+    // GET api/subscription/usage/current
+    this.getAuthoritativeUsage = makeOperation(http, "api/subscription", "GET", "usage/current");
+    // GET api/subscription/checkout/session/{sessionId}
+    this.getCheckoutSessionStatus = makeOperation(http, "api/subscription", "GET", "checkout/session/{sessionId}");
     // GET api/subscription/hyperdrive-usage
     this.getHyperDriveUsage = makeOperation(http, "api/subscription", "GET", "hyperdrive-usage");
     // GET api/subscription/orders/me
     this.getMyOrders = makeOperation(http, "api/subscription", "GET", "orders/me");
     // GET api/subscription/subscriptions/me
     this.getMySubscriptions = makeOperation(http, "api/subscription", "GET", "subscriptions/me");
+    // GET api/subscription/overages/statements
+    this.getOverageStatements = makeOperation(http, "api/subscription", "GET", "overages/statements");
+    // GET api/subscription/overages/admin/statements
+    this.getOverageStatementsAdmin = makeOperation(http, "api/subscription", "GET", "overages/admin/statements");
+    // GET api/subscription/overages/prices
+    this.getPaidOveragePrices = makeOperation(http, "api/subscription", "GET", "overages/prices");
+    // GET api/subscription/checkout/pending
+    this.getPendingCheckouts = makeOperation(http, "api/subscription", "GET", "checkout/pending");
     // GET api/subscription/plans
     this.getPlans = makeOperation(http, "api/subscription", "GET", "plans");
     // GET api/subscription/usage
     this.getUsage = makeOperation(http, "api/subscription", "GET", "usage");
+    // GET api/subscription/usage/audit
+    this.getUsageAudit = makeOperation(http, "api/subscription", "GET", "usage/audit");
+    // GET api/subscription/usage/events
+    this.getUsageEvents = makeOperation(http, "api/subscription", "GET", "usage/events");
+    // GET api/subscription/usage/admin/migration/inventory
+    this.getUsageMigrationInventory = makeOperation(http, "api/subscription", "GET", "usage/admin/migration/inventory");
+    // GET api/subscription/usage/notifications
+    this.getUsageNotifications = makeOperation(http, "api/subscription", "GET", "usage/notifications");
+    // POST api/subscription/admin/plan-grant
+    this.grantPlan = makeOperation(http, "api/subscription", "POST", "admin/plan-grant");
+    // POST api/subscription/usage/admin/migration/opening-balance
+    this.importUsageOpeningBalance = makeOperation(http, "api/subscription", "POST", "usage/admin/migration/opening-balance");
+    // GET api/subscription/admin/invoices
+    this.invoices = makeOperation(http, "api/subscription", "GET", "admin/invoices");
+    // GET api/subscription/usage/grants
+    this.listUsageGrants = makeOperation(http, "api/subscription", "GET", "usage/grants");
+    // GET api/subscription/app-owner/apps
+    this.myApps = makeOperation(http, "api/subscription", "GET", "app-owner/apps");
+    // GET api/subscription/usage/estimate
+    this.myEstimate = makeOperation(http, "api/subscription", "GET", "usage/estimate");
+    // GET api/subscription/usage/series
+    this.mySeries = makeOperation(http, "api/subscription", "GET", "usage/series");
+    // GET api/subscription/app-owner/{appId}/notifications
+    this.notifications = makeOperation(http, "api/subscription", "GET", "app-owner/{appId}/notifications");
+    // GET api/subscription/admin/outboxes
+    this.outboxes = makeOperation(http, "api/subscription", "GET", "admin/outboxes");
+    // POST api/subscription/app-owner/{appId}/payg/pay-now
+    this.payNow = makeOperation(http, "api/subscription", "POST", "app-owner/{appId}/payg/pay-now");
+    // POST api/subscription/overages/pay-now
+    this.payOveragesNow = makeOperation(http, "api/subscription", "POST", "overages/pay-now");
+    // POST api/subscription/usage/admin/reconciliation/provider-receipts
+    this.providerReceipt = makeOperation(http, "api/subscription", "POST", "usage/admin/reconciliation/provider-receipts");
+    // POST api/subscription/checkout/operations/{operationId}/reconcile
+    this.reconcileCheckout = makeOperation(http, "api/subscription", "POST", "checkout/operations/{operationId}/reconcile");
+    // GET api/subscription/usage/admin/reconciliation/reports
+    this.reports = makeOperation(http, "api/subscription", "GET", "usage/admin/reconciliation/reports");
+    // POST api/subscription/admin/outboxes/requeue
+    this.requeue = makeOperation(http, "api/subscription", "POST", "admin/outboxes/requeue");
+    // POST api/subscription/usage/grants/{grantId}/revoke
+    this.revokeUsageGrant = makeOperation(http, "api/subscription", "POST", "usage/grants/{grantId}/revoke");
+    // POST api/subscription/admin/app-accounts/{appId}/rotate-key
+    this.rotateAppAccountKey = makeOperation(http, "api/subscription", "POST", "admin/app-accounts/{appId}/rotate-key");
+    // POST api/subscription/usage/admin/reconciliation/run
+    this.run = makeOperation(http, "api/subscription", "POST", "usage/admin/reconciliation/run");
+    // POST api/subscription/usage/notifications
+    this.save = makeOperation(http, "api/subscription", "POST", "usage/notifications");
+    // POST api/subscription/app-owner/{appId}/payg
+    this.saveBilling = makeOperation(http, "api/subscription", "POST", "app-owner/{appId}/payg");
+    // POST api/subscription/app-owner/{appId}/notifications
+    this.saveNotifications = makeOperation(http, "api/subscription", "POST", "app-owner/{appId}/notifications");
+    // POST api/subscription/app-owner/{appId}/settings
+    this.saveSettings = makeOperation(http, "api/subscription", "POST", "app-owner/{appId}/settings");
+    // POST api/subscription/usage/alerts/email
+    this.sendWarningEmails = makeOperation(http, "api/subscription", "POST", "usage/alerts/email");
+    // POST api/subscription/admin/app-accounts/{appId}/owners
+    this.setAppOwners = makeOperation(http, "api/subscription", "POST", "admin/app-accounts/{appId}/owners");
+    // GET api/subscription/app-owner/{appId}/settings
+    this.settings = makeOperation(http, "api/subscription", "GET", "app-owner/{appId}/settings");
+    // POST api/subscription/usage/settle-native-v1
+    this.settleNativeUsage = makeOperation(http, "api/subscription", "POST", "usage/settle-native-v1");
+    // POST api/subscription/usage/settle
+    this.settleUsage = makeOperation(http, "api/subscription", "POST", "usage/settle");
+    // POST api/subscription/usage/start
+    this.startUsage = makeOperation(http, "api/subscription", "POST", "usage/start");
+    // POST api/subscription/usage/admin/reconciliation/stripe-invoices
+    this.stripeInvoice = makeOperation(http, "api/subscription", "POST", "usage/admin/reconciliation/stripe-invoices");
     // POST api/subscription/webhooks/stripe
     this.stripeWebhook = makeOperation(http, "api/subscription", "POST", "webhooks/stripe");
+    // GET api/subscription/admin/subscriptions
+    this.subscriptions = makeOperation(http, "api/subscription", "GET", "admin/subscriptions");
     // POST api/subscription/toggle-pay-as-you-go
     this.togglePayAsYouGo = makeOperation(http, "api/subscription", "POST", "toggle-pay-as-you-go");
+    // POST api/subscription/admin/app-accounts/{appId}
+    this.updateAppAccount = makeOperation(http, "api/subscription", "POST", "admin/app-accounts/{appId}");
     // POST api/subscription/update-hyperdrive-config
     this.updateHyperDriveConfig = makeOperation(http, "api/subscription", "POST", "update-hyperdrive-config");
+    // GET api/subscription/app-owner/{appId}/usage
+    this.usage = makeOperation(http, "api/subscription", "GET", "app-owner/{appId}/usage");
+    // GET api/subscription/admin/users/{userId}/usage/series
+    this.userSeriesAdmin = makeOperation(http, "api/subscription", "GET", "admin/users/{userId}/usage/series");
   }
 }
 

@@ -25,8 +25,14 @@ export declare class ONETModule {
   /** GET api/v1/onet/network/topology */
   getNetworkTopology(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** GET api/v1/onet/oasisdna */
-  getOASISDNA(args?: Record<string, any>): Promise<OASISResponse>;
+  /** GET api/v1/onet/config */
+  getONETConfig(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** GET api/v1/onet/peers */
+  getPeers(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/v1/onet/nodes/register */
+  registerNode(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** POST api/v1/onet/network/start */
   startNetwork(args?: Record<string, any>): Promise<OASISResponse>;
@@ -34,6 +40,6 @@ export declare class ONETModule {
   /** POST api/v1/onet/network/stop */
   stopNetwork(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** PUT api/v1/onet/oasisdna */
-  updateOASISDNA(args?: Record<string, any>): Promise<OASISResponse>;
+  /** PUT api/v1/onet/config */
+  updateONETConfig(args?: Record<string, any>): Promise<OASISResponse>;
 }

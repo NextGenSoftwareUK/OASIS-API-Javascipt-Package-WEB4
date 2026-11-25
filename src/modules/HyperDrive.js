@@ -15,6 +15,8 @@ class HyperDriveModule {
   constructor(http) {
     this._http = http;
 
+    // POST api/hyperDrive/sync/onet-peer-binding
+    this.bindOnetPeer = makeOperation(http, "api/hyperDrive", "POST", "sync/onet-peer-binding");
     // GET api/hyperDrive/quota/status
     this.checkQuotaStatus = makeOperation(http, "api/hyperDrive", "GET", "quota/status");
     // POST api/hyperDrive/failover/triggers
@@ -111,6 +113,10 @@ class HyperDriveModule {
     this.getUsageAlerts = makeOperation(http, "api/hyperDrive", "GET", "subscription/usage-alerts");
     // POST api/hyperDrive/failover/preventive
     this.initiatePreventiveFailover = makeOperation(http, "api/hyperDrive", "POST", "failover/preventive");
+    // POST api/hyperDrive/sync/offline-session-grant
+    this.issueOfflineSessionGrant = makeOperation(http, "api/hyperDrive", "POST", "sync/offline-session-grant");
+    // GET api/hyperDrive/sync/deliveries
+    this.readDeliveries = makeOperation(http, "api/hyperDrive", "GET", "sync/deliveries");
     // POST api/hyperDrive/analytics/record
     this.recordAnalyticsData = makeOperation(http, "api/hyperDrive", "POST", "analytics/record");
     // POST api/hyperDrive/record-connection

@@ -10,10 +10,6 @@ const { makeOperation } = require('../core/routeHelper');
  * Every method takes a single args object: path-template tokens (e.g. {id})
  * are consumed from it automatically; any remaining keys are sent as the
  * query string (GET/DELETE) or JSON body (POST/PUT).
- *
- * Feature-gated: all endpoints return 404 when Biometric.Enabled = false in OASISDNA.
- * Voice endpoints additionally require Biometric.VoiceEnabled = true.
- * All endpoints require OASIS JWT authentication.
  */
 class BiometricModule {
   constructor(http) {
@@ -21,13 +17,13 @@ class BiometricModule {
 
     // GET api/biometric/status
     this.status = makeOperation(http, "api/biometric", "GET", "status");
-    // POST api/biometric/voice/enroll  (multipart/form-data — audio file)
-    this.voiceEnroll = makeOperation(http, "api/biometric", "POST", "voice/enroll");
-    // POST api/biometric/voice/verify  (multipart/form-data — audio file)
-    this.voiceVerify = makeOperation(http, "api/biometric", "POST", "voice/verify");
     // DELETE api/biometric/voice
     this.voiceDelete = makeOperation(http, "api/biometric", "DELETE", "voice");
-    // POST api/biometric/voice/verify/{avatarId}  (admin: verify another avatar)
+    // POST api/biometric/voice/enroll
+    this.voiceEnroll = makeOperation(http, "api/biometric", "POST", "voice/enroll");
+    // POST api/biometric/voice/verify
+    this.voiceVerify = makeOperation(http, "api/biometric", "POST", "voice/verify");
+    // POST api/biometric/voice/verify/{avatarId}
     this.voiceVerifyByAvatarId = makeOperation(http, "api/biometric", "POST", "voice/verify/{avatarId}");
   }
 }
