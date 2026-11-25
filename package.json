@@ -35,9 +35,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NextGenSoftwareUK/OASIS-API-Javascipt-Package.git"
+    "url": "https://github.com/NextGenSoftwareUK/OASIS-API-Javascipt-Package-WEB4.git"
   },
-  "homepage": "https://github.com/NextGenSoftwareUK/OASIS#readme",
+  "homepage": "https://github.com/NextGenSoftwareUK/OASIS-API-Javascipt-Package-WEB4#readme",
   "author": "NextGen Software Ltd",
   "license": "MIT",
   "keywords": [
