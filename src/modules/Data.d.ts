@@ -4,6 +4,9 @@ import type { OASISResponse } from '../core/types';
 export declare class DataModule {
   constructor(http: unknown);
 
+  /** POST api/data/query-cql/ask */
+  ask(args?: Record<string, any>): Promise<OASISResponse>;
+
   /** POST api/data/complete-chunked-file */
   completeChunkedFile(args?: Record<string, any>): Promise<OASISResponse>;
 
@@ -270,6 +273,9 @@ export declare class DataModule {
 
   /** POST api/data/holon-purge-hold/{id} */
   setHolonPurgeHold(args?: Record<string, any>): Promise<OASISResponse>;
+
+  /** POST api/data/query-cql/sql */
+  sql(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** GET api/data/holon-seal/verify/{id} */
   verifyHolonSeal(args?: Record<string, any>): Promise<OASISResponse>;

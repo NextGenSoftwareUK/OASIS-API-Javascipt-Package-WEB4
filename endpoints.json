@@ -4107,6 +4107,24 @@
         "responseType": null,
         "summary": "POST /api/data/query-cql"
       },
+      "Sql": {
+        "verb": "POST",
+        "route": "query-cql/sql",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "Run a SQL-like CQL statement: { query, parameters? }."
+      },
+      "Ask": {
+        "verb": "POST",
+        "route": "query-cql/ask",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "Draft CQL from a plain-language question and run it: { question, execute? }."
+      },
       "Composition": {
         "verb": "POST",
         "route": "query-cql/composition",

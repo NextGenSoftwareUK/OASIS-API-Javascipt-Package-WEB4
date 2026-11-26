@@ -15,6 +15,8 @@ class DataModule {
   constructor(http) {
     this._http = http;
 
+    // POST api/data/query-cql/ask
+    this.ask = makeOperation(http, "api/data", "POST", "query-cql/ask");
     // POST api/data/complete-chunked-file
     this.completeChunkedFile = makeOperation(http, "api/data", "POST", "complete-chunked-file");
     // POST api/data/query-cql/composition
@@ -193,6 +195,8 @@ class DataModule {
     this.set = makeOperation(http, "api/data", "POST", "query-cql/set");
     // POST api/data/holon-purge-hold/{id}
     this.setHolonPurgeHold = makeOperation(http, "api/data", "POST", "holon-purge-hold/{id}");
+    // POST api/data/query-cql/sql
+    this.sql = makeOperation(http, "api/data", "POST", "query-cql/sql");
     // GET api/data/holon-seal/verify/{id}
     this.verifyHolonSeal = makeOperation(http, "api/data", "GET", "holon-seal/verify/{id}");
   }
