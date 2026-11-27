@@ -226,7 +226,7 @@ export declare class DataModule {
   /** POST api/data/query-cql */
   query(args?: Record<string, any>): Promise<OASISResponse>;
 
-  /** POST api/data/~ */
+  /** POST api/data/recover-conditional-operation */
   recoverConditionalOperation(args?: Record<string, any>): Promise<OASISResponse>;
 
   /** DELETE api/data/holon-purge-hold/{id} */

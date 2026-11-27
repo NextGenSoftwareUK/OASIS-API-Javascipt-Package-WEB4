@@ -164,7 +164,7 @@ class DataModule {
     // POST api/data/query-cql
     this.query = makeOperation(http, "api/data", "POST", "query-cql");
     // POST api/data/~
-    this.recoverConditionalOperation = makeOperation(http, "api/data", "POST", "~");
+    this.recoverConditionalOperation = makeOperation(http, "api/data", "POST", "recover-conditional-operation");
     // DELETE api/data/holon-purge-hold/{id}
     this.releaseHolonPurgeHold = makeOperation(http, "api/data", "DELETE", "holon-purge-hold/{id}");
     // POST api/data/save-data

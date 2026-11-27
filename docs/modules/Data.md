@@ -87,7 +87,7 @@ URL; everything else becomes the query string (GET/DELETE) or JSON body
 | `purgeHolon` | DELETE | `api/data/purge-holon/{id}` | `id` |
 | `purgeHolons` | POST | `api/data/purge-holons` | – |
 | `query` | POST | `api/data/query-cql` | – |
-| `recoverConditionalOperation` | POST | `api/data/~` | – |
+| `recoverConditionalOperation` | POST | `api/data/recover-conditional-operation` | – |
 | `releaseHolonPurgeHold` | DELETE | `api/data/holon-purge-hold/{id}` | `id` |
 | `saveData` | POST | `api/data/save-data` | – |
 | `saveFile` | POST | `api/data/save-file` | – |
