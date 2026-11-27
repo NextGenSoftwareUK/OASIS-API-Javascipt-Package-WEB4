@@ -13857,5 +13857,20 @@
         "summary": "GET /api/places/visits"
       }
     }
+  },
+
+  "CqlSidecarsController.cs": {
+    "route_prefix": "api/admin/cql/sidecars",
+    "ops": {
+      "GetStatus": {
+        "verb": "GET",
+        "route": "",
+        "routeParams": [],
+        "queryParams": [],
+        "requestType": null,
+        "responseType": null,
+        "summary": "Wizard only: state, active requests, last use, uptime and memory of each on-demand CQL sandbox sidecar."
+      }
+    }
   }
 }

@@ -7,6 +7,7 @@ import type { BiometricModule } from './src/modules/Biometric';
 import type { BridgeModule } from './src/modules/Bridge';
 import type { ChatModule } from './src/modules/Chat';
 import type { ClanModule } from './src/modules/Clan';
+import type { CqlSidecarsModule } from './src/modules/CqlSidecars';
 import type { DataModule } from './src/modules/Data';
 import type { EOSIOModule } from './src/modules/EOSIO';
 import type { EggsModule } from './src/modules/Eggs';
@@ -83,6 +84,7 @@ export declare class OASISClient {
   readonly bridge: BridgeModule;
   readonly chat: ChatModule;
   readonly clan: ClanModule;
+  readonly cqlSidecars: CqlSidecarsModule;
   readonly data: DataModule;
   readonly eOSIO: EOSIOModule;
   readonly eggs: EggsModule;

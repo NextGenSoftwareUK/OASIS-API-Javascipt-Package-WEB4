@@ -43,6 +43,7 @@ const { OidcModule } = require('./Oidc');
 const { OlandUnitModule } = require('./OlandUnit');
 const { GardensModule } = require('./Gardens');
 const { PlacesModule } = require('./Places');
+const { CqlSidecarsModule } = require('./CqlSidecars');
 
 /**
  * Attaches every generated module to the client under its lowerCamel controller
@@ -93,6 +94,7 @@ function attachGeneratedModules(client, http) {
   client.olandUnit = client.olandUnit || new OlandUnitModule(http);
   client.gardens = client.gardens || new GardensModule(http);
   client.places = client.places || new PlacesModule(http);
+  client.cqlSidecars = client.cqlSidecars || new CqlSidecarsModule(http);
   return client;
 }
 
