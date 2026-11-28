@@ -4,6 +4,7 @@ const { HttpClient, DEFAULT_BASE_URL } = require('./core/httpClient');
 const { TokenStore } = require('./core/tokenStore');
 const { attachGeneratedModules } = require('./modules/index');
 const { AuthModule } = require('./modules/Auth');
+const { ProfileModule } = require('./modules/Profile');
 
 /**
  * Main SDK entry point. Works in Node 18+ and any modern browser.
@@ -30,6 +31,7 @@ class OASISClient {
 
     // Hand-written ergonomic wrapper, built on top of the generated avatar module.
     this.auth = new AuthModule(this.http, this.tokenStore, this.avatar);
+    this.profile = new ProfileModule(this.http);
   }
 
   setBaseUrl(baseUrl) {
