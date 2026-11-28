@@ -279,6 +279,10 @@ const agentIds = await oasis.holochain.getHolochainAgentIdsForAvatar({ avatarId 
 const balance = await oasis.holochain.getHoloFuelBalanceForAvatar({ avatarId });
 ```
 
+## Shared places and map routes
+
+See [cross-app places and recorded routes](docs/place-visits.md) for generated Places/Map methods, app attribution, real coordinates and rollout limits.
+
 ## Module reference
 
 32 modules, 483 operations in total. Full per-method tables live in
