@@ -376,3 +376,6 @@ const client = new OASISClient({
   fetchImpl: window.fetch.bind(window)
 });
 ```
+
+
+Generated scalar body parameters and mixed query/body calls are documented in [body binding](docs/body-binding.md). Source-only qualification is distinct from npm publication and hosted acceptance.

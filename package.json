@@ -30,7 +30,7 @@
     "generate": "node scripts/generate-modules.js",
     "docs": "node scripts/generate-docs.js",
     "types": "node scripts/generate-types.js",
-    "test": "node --test test/smoke.test.js",
+    "test": "node --test test/smoke.test.js test/body-binding.test.js",
     "publish-all": "node scripts/publish-all.mjs"
   },
   "repository": {
