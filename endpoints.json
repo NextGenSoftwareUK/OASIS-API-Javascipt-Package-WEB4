@@ -7710,29 +7710,8 @@
         "verb": "POST",
         "route": "search",
         "routeParams": [],
-        "queryParams": [
-          {
-            "name": "query",
-            "type": "string",
-            "optional": false
-          },
-          {
-            "name": "latitude",
-            "type": "double?",
-            "optional": true
-          },
-          {
-            "name": "longitude",
-            "type": "double?",
-            "optional": true
-          },
-          {
-            "name": "radiusKm",
-            "type": "double?",
-            "optional": true
-          }
-        ],
-        "requestType": "LocationType?",
+        "queryParams": [],
+        "requestType": "MapSearchBody",
         "responseType": {
           "wrapper": "OASISResult",
           "inner": "List<MapLocation>"
@@ -12725,20 +12704,13 @@
         "verb": "POST",
         "route": "transfer",
         "routeParams": [],
-        "queryParams": [
-          {
-            "name": "request",
-            "type": "object",
-            "optional": false
-          }
-        ],
-        "requestType": null,
+        "queryParams": [],
+        "requestType": "SendWeb4TokenRequest",
         "responseType": {
           "wrapper": "OASISResult",
-          "inner": "object"
+          "inner": "ISendWeb4TokenResponse"
         },
-        "summary": "Transfer tokens between wallets.",
-        "bodyParam": "request"
+        "summary": "Transfer tokens between wallets."
       },
       "GetWalletAnalyticsAsync": {
         "verb": "GET",
@@ -13858,7 +13830,6 @@
       }
     }
   },
-
   "CqlSidecarsController.cs": {
     "route_prefix": "api/admin/cql/sidecars",
     "ops": {

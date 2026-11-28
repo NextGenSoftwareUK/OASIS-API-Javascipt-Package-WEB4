@@ -7,9 +7,9 @@ const { makeOperation } = require('../core/routeHelper');
 
 /**
  * Generated wrapper for api/oLand (source: ONODE WebAPI OLandController.cs).
- * Every method takes a single args object: path-template tokens (e.g. {id})
- * are consumed from it automatically; any remaining keys are sent as the
- * query string (GET/DELETE) or JSON body (POST/PUT).
+ * Every method takes a single args object: path-template tokens go in the URL.
+ * GET uses query fields; other verbs use the remaining JSON body. A declared
+ * body parameter sends that argument value as JSON and other fields as query.
  */
 class OLandModule {
   constructor(http) {

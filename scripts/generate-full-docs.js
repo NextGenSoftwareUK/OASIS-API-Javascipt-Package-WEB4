@@ -105,16 +105,18 @@ for (const [filename, info] of Object.entries(endpoints)) {
     const jsName = toCamel(opName);
     const fullRoute = op.route ? `${info.route_prefix}/${op.route}` : info.route_prefix;
 
-    const queryParams = op.queryParams.filter((p) => !isNoise(p.type));
+    const bodyParameter = op.bodyParam ? op.queryParams.find((p) => p.name === op.bodyParam) : null;
+    if (op.bodyParam && !bodyParameter) throw new Error('Missing declared body parameter metadata for ' + opName);
+    const queryParams = op.queryParams.filter((p) => p.name !== op.bodyParam && !isNoise(p.type));
 
     let requestSection;
-    if (op.requestType && !isNoise(op.requestType)) {
+    if (bodyParameter) {
+      requestSection = 'JSON body value from args.' + bodyParameter.name + ': ' + describeType(bodyParameter.type, unresolvedTypes);
+      if (queryParams.length) requestSection += '\n\nQuery parameters:\n\n' + fieldRows(queryParams.map((p) => ({name:p.name,type:p.type + (p.optional ? ' (optional)' : '')})));
+    } else if (op.requestType && !isNoise(op.requestType)) {
       requestSection = `Body ${describeType(op.requestType, unresolvedTypes)}`;
     } else if (queryParams.length) {
-      requestSection =
-        (op.verb === 'GET' || op.verb === 'DELETE' ? 'Query parameters' : 'Body fields') +
-        ':\n\n' +
-        fieldRows(queryParams.map((p) => ({ name: p.name, type: p.type + (p.optional ? ' (optional)' : '') })));
+      requestSection = (op.verb === 'GET' || op.verb === 'DELETE' ? 'Query parameters' : 'Body fields') + ':\n\n' + fieldRows(queryParams.map((p) => ({name:p.name,type:p.type + (p.optional ? ' (optional)' : '')})));
     } else {
       requestSection = 'No request body.';
     }
@@ -166,19 +168,19 @@ Example response:
 
   const content = `# ${moduleName} — \`${clientVar}.${clientProp}\`
 
-Source controller: [\`${filename}\`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/${githubControllerBasePath}/${filename})
+Source controller: [\`${filename}\`](https://github.com/NextGenSoftwareUK/OASIS/blob/Development/${githubControllerBasePath}/${filename})
 Route prefix: \`${info.route_prefix}\`
 ${opNames.length} operation(s).
 
-Every method takes a single args object: any key matching a \`{token}\` in the route is substituted into the URL; everything else becomes the query string (GET/DELETE) or JSON body (POST/PUT). Every call resolves to the standard OASIS envelope:
+Every method takes a single args object. Route tokens go in the URL. GET uses query fields; other verbs use a JSON body. A declared body parameter sends that argument value as JSON and other fields as query. The normalized SDK envelope is below; warning, error-code and save flags stay in raw.
 
 \`\`\`ts
 {
   isError: boolean;
-  isWarning: boolean;
-  message: string;
-  errorCode?: string;
-  result: T; // see each endpoint's Response section below
+  message: string | null;
+  result?: T; // see each endpoint's Response section below
+  raw?: unknown; // full server envelope, including warning/error/save flags
+  statusCode?: number;
 }
 \`\`\`
 

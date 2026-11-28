@@ -29,3 +29,10 @@ Recorded route methods are map.create(writeIntent), map.list({offset,limit}), ma
 GeoNFTs, WEB5 hotspots and quests remain authoritative domain records; clients layer them on the map rather than duplicating them in the place-visit ledger. Legacy renderer operations need their configured runtime and are separate from browser MapLibre camera controls.
 
 [Canonical routes and detailed request contract](https://github.com/NextGenSoftwareUK/OASIS/blob/Development/Docs/Devs/API%20Documentation/WEB4%20OASIS%20API/Map-API.md). Native GPX evidence is retained. The new cross-app visit check remains unaccepted after a real catalogue timeout; Unity/device and hosted acceptance remain open.
+
+
+## JSON map search and manual visit purposes
+
+Development POST api/map/search accepts MapSearchBody JSON with optional query, type, latitude, longitude and radiusKm; it is not a query-string POST. The SDK sends the argument object as that body. Native46151924276qualified SDK REST, actual gRPC SDK and GraphQL search3/3.
+
+map.visitLocation({locationId,purpose:"Walking"}) sends the JSON string value, not a purpose object; native46153459167qualified the actual delivered SDK saved acknowledgement and private persisted purpose1/1. Server save/warning flags remain in response.raw. These are source/native isolated qualifications; hosted rollout and physical-place karma are separate.

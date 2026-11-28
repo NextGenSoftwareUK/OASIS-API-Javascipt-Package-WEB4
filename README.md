@@ -379,3 +379,6 @@ const client = new OASISClient({
 
 
 Generated scalar body parameters and mixed query/body calls are documented in [body binding](docs/body-binding.md). Source-only qualification is distinct from npm publication and hosted acceptance.
+
+
+The current generator preserves every generated method in the reference, including six declared JSON-value body bindings. Wallet transfer takes the typed SendWeb4TokenRequest fields directly as its argument object. Map.search uses the actual MapSearchBody metadata. Documentation/serialization checks do not certify funded transfers or every generated operation on native backends.

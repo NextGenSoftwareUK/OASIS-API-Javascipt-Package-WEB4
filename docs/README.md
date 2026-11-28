@@ -6,7 +6,7 @@ after running `node scripts/generate-modules.js` against an updated
 
 - [Getting Started](./getting-started.md)
 - [Auth & Sessions](./auth.md)
-- [Module Reference](#module-reference) (42 modules, 849 operations)
+- [Module Reference](#module-reference) (43 modules, 852 operations)
 
 ## Module Reference
 
@@ -18,7 +18,8 @@ after running `node scripts/generate-modules.js` against an updated
 | [`oasis.bridge`](modules/Bridge.md) | `api/v1/bridge` | 7 |
 | [`oasis.chat`](modules/Chat.md) | `api/chat` | 5 |
 | [`oasis.clan`](modules/Clan.md) | `api/clan` | 10 |
-| [`oasis.data`](modules/Data.md) | `api/data` | 90 |
+| [`oasis.cqlSidecars`](modules/CqlSidecars.md) | `api/admin/cql/sidecars` | 1 |
+| [`oasis.data`](modules/Data.md) | `api/data` | 92 |
 | [`oasis.eOSIO`](modules/EOSIO.md) | `api/eosio` | 9 |
 | [`oasis.eggs`](modules/Eggs.md) | `api/eggs` | 6 |
 | [`oasis.files`](modules/Files.md) | `api/files` | 7 |

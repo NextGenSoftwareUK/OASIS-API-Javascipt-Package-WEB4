@@ -7,9 +7,9 @@ const { makeOperation } = require('../core/routeHelper');
 
 /**
  * Generated wrapper for api/wallet (source: ONODE WebAPI WalletController.cs).
- * Every method takes a single args object: path-template tokens (e.g. {id})
- * are consumed from it automatically; any remaining keys are sent as the
- * query string (GET/DELETE) or JSON body (POST/PUT).
+ * Every method takes a single args object: path-template tokens go in the URL.
+ * GET uses query fields; other verbs use the remaining JSON body. A declared
+ * body parameter sends that argument value as JSON and other fields as query.
  */
 class WalletModule {
   constructor(http) {
@@ -88,7 +88,7 @@ class WalletModule {
     // POST api/wallet/avatar/username/{username}/default-wallet/{walletId}
     this.setAvatarDefaultWalletByUsernameAsync = makeOperation(http, "api/wallet", "POST", "avatar/username/{username}/default-wallet/{walletId}");
     // POST api/wallet/transfer
-    this.transferBetweenWalletsAsync = makeOperation(http, "api/wallet", "POST", "transfer", "request");
+    this.transferBetweenWalletsAsync = makeOperation(http, "api/wallet", "POST", "transfer");
     // POST api/wallet/unlock-token
     this.unlockToken = makeOperation(http, "api/wallet", "POST", "unlock-token");
     // PUT api/wallet/avatar/email/{email}/wallet/{walletId}

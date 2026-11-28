@@ -11,7 +11,7 @@ const cases = [
  ['Map','visitLocation',{locationId:'6bf56398-6aa1-4f22-b01b-42cf941b8d38',purpose:'Walking'},'/api/map/visit/6bf56398-6aa1-4f22-b01b-42cf941b8d38','Walking',{}],
  ['Messaging','sendMessageToAvatar',{toAvatarId:'6bf56398-6aa1-4f22-b01b-42cf941b8d38',content:'hello',messageType:'Direct'},'/api/messaging/send-message-to-avatar/6bf56398-6aa1-4f22-b01b-42cf941b8d38','hello',{messageType:'Direct'}],
  ['Video','joinVideoCall',{callId:'owned-call',connectionDetails:'owned-details'},'/api/video/join-call/owned-call','owned-details',{}],
- ['Wallet','transferBetweenWalletsAsync',{request:{amount:0,reference:'wire-only-no-funds'}},'/api/wallet/transfer',{amount:0,reference:'wire-only-no-funds'},{}],
+ ['Wallet','transferBetweenWalletsAsync',{fromAvatarId:'6bf56398-6aa1-4f22-b01b-42cf941b8d38',toAvatarId:'08006b54-282f-4bbc-8db5-7272ee521c54',amount:0,waitTillTokenSent:false},'/api/wallet/transfer',{fromAvatarId:'6bf56398-6aa1-4f22-b01b-42cf941b8d38',toAvatarId:'08006b54-282f-4bbc-8db5-7272ee521c54',amount:0,waitTillTokenSent:false},{}],
  ['Map','visitLocation',{locationId:'6bf56398-6aa1-4f22-b01b-42cf941b8d38'},'/api/map/visit/6bf56398-6aa1-4f22-b01b-42cf941b8d38',undefined,{}]
 ];
 

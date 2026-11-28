@@ -70,6 +70,8 @@ function stripNamespace(type) {
 }
 
 function extractReturnType(taskGeneric) {
+  const awaitable = taskGeneric.trim().match(/^(?:Task|ValueTask)<([\s\S]+)>$/);
+  if (awaitable) taskGeneric = awaitable[1];
   // taskGeneric is e.g. "OASISResult<IWeb4NFT>" or "OASISHttpResponseMessage<IAvatar>"
   const m = taskGeneric.match(/^(\w+)<([\s\S]+)>$/);
   if (!m) return { wrapper: null, inner: stripNamespace(taskGeneric.trim()) };
@@ -101,8 +103,8 @@ function parseController(filePath) {
   let pendingProduces200 = null;
   const ops = {};
 
-  const methodSig = /public\s+(?:virtual\s+|override\s+)?(?:async\s+Task<([\s\S]+?)>|(\w+<[\s\S]+?>)|(IActionResult|ActionResult))\s+(\w+)\s*\(([^)]*)\)\s*$/;
-  const methodStart = /public\s+(?:virtual\s+|override\s+)?(?:async\s+Task<|\w+(?:Result|ResponseMessage)<|(?:IActionResult|ActionResult)\s)/;
+  const methodSig = /public\s+(?:virtual\s+|override\s+)?(?:async\s+Task<([\s\S]+?)>|(\w+<[\s\S]+?>)|(IActionResult|ActionResult))\s+(\w+)\s*\(([^)]*)\)\s*(?:=>.*)?$/;
+  const methodStart = /public\s+(?:virtual\s+|override\s+)?(?:(?:async\s+)?(?:Task|ValueTask)<|\w+(?:Result|ResponseMessage)<|(?:IActionResult|ActionResult)\s)/;
   const producesRegex = /\[ProducesResponseType\(typeof\(([\s\S]+?)\),\s*StatusCodes\.Status200OK\)\]/;
 
   for (let i = 0; i < lines.length; i++) {

@@ -1,19 +1,22 @@
 # Data — `oasis.data`
 
-Source controller: [`DataController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/DataController.cs)
+Source controller: [`DataController.cs`](https://github.com/NextGenSoftwareUK/OASIS/blob/Development/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/DataController.cs)
 Route prefix: `api/data`
-90 operation(s).
+92 operation(s).
 
 All methods are generated 1:1 from the controller's real `[Http*]` routes (see
 [Conventions](../README.md#calling-any-endpoint)). They take a single args
 object: any key matching a `{token}` in the route is substituted into the
-URL; everything else becomes the query string (GET/DELETE) or JSON body
-(POST/PUT).
+URL. GET sends remaining fields as query parameters; other methods send a JSON body.
+For a declared body parameter, that named argument becomes the JSON body value and
+other fields become query parameters. See [body binding](../body-binding.md).
+
 
 ## Methods
 
 | Method | HTTP | Route | Route params |
 | --- | --- | --- | --- |
+| `ask` | POST | `api/data/query-cql/ask` | – |
 | `completeChunkedFile` | POST | `api/data/complete-chunked-file` | – |
 | `composition` | POST | `api/data/query-cql/composition` | – |
 | `copyHolon` | POST | `api/data/copy-holon` | – |
@@ -103,6 +106,7 @@ URL; everything else becomes the query string (GET/DELETE) or JSON body
 | `searchHolons` | POST | `api/data/search-holons` | – |
 | `set` | POST | `api/data/query-cql/set` | – |
 | `setHolonPurgeHold` | POST | `api/data/holon-purge-hold/{id}` | `id` |
+| `sql` | POST | `api/data/query-cql/sql` | – |
 | `verifyHolonSeal` | GET | `api/data/holon-seal/verify/{id}` | `id` |
 
 ## Example
@@ -111,7 +115,7 @@ URL; everything else becomes the query string (GET/DELETE) or JSON body
 const oasis = new OASISClient({ baseUrl: '...' });
 oasis.setToken(jwtToken); // or: await oasis.auth.login({ username, password })
 
-const { isError, message, result } = await oasis.data.completeChunkedFile({
+const { isError, message, result } = await oasis.data.ask({
     /* ...other fields per the request body */
   });
 if (isError) throw new Error(message);

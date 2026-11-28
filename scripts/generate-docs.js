@@ -43,14 +43,17 @@ function parseModuleFile(filePath) {
   const classMatch = src.match(/class (\w+) \{/);
   const routePrefixMatch = src.match(/Generated wrapper for (\S+)/);
   const sourceFileMatch = src.match(/source: ONODE WebAPI (\S+)\)/);
-  const opPattern = /this\.(\w+) = makeOperation\(http, "([^"]*)", "([A-Z]+)", "([^"]*)"\);/g;
+  const opPattern = /this\.(\w+) = makeOperation\(http, "([^"]*)", "([A-Z]+)", "([^"]*)"(?:, "([^"]*)")?\);/g;
 
   const ops = [];
   let m;
   while ((m = opPattern.exec(src))) {
-    const [, jsName, prefix, verb, route] = m;
-    ops.push({ jsName, prefix, verb, route });
+    const [, jsName, prefix, verb, route, bodyParam] = m;
+    ops.push({ jsName, prefix, verb, route, bodyParam });
   }
+
+  const declaredOps = [...src.matchAll(/this\.\w+\s*=\s*makeOperation\(/g)].length;
+  if (ops.length !== declaredOps) throw new Error('Documentation parser must cover every generated operation in ' + filePath);
 
   return {
     className: classMatch ? classMatch[1] : null,
@@ -87,18 +90,23 @@ for (const file of files) {
   const exampleTokens = routeTokens(exampleOp.route);
   const exampleArgs = exampleArgsFor(exampleTokens, exampleOp.verb);
 
+  const bodyBindings = ops.filter((op) => op.bodyParam).map((op) => '- ' + op.jsName + ': args.' + op.bodyParam + ' is the JSON body value; other non-route fields are query parameters.').join('\n');
+  const bindingSection = bodyBindings ? '## Explicit JSON body parameters\n\n' + bodyBindings + '\n' : '';
+
   const content = `# ${moduleName} — \`oasis.${clientProp}\`
 
-Source controller: [\`${sourceFile}\`](https://github.com/NextGenSoftwareUK/OASIS/blob/main/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/${sourceFile})
+Source controller: [\`${sourceFile}\`](https://github.com/NextGenSoftwareUK/OASIS/blob/Development/ONODE/NextGenSoftware.OASIS.API.ONODE.WebAPI/Controllers/${sourceFile})
 Route prefix: \`${routePrefix}\`
 ${ops.length} operation(s).
 
 All methods are generated 1:1 from the controller's real \`[Http*]\` routes (see
 [Conventions](../README.md#calling-any-endpoint)). They take a single args
 object: any key matching a \`{token}\` in the route is substituted into the
-URL; everything else becomes the query string (GET/DELETE) or JSON body
-(POST/PUT).
+URL. GET sends remaining fields as query parameters; other methods send a JSON body.
+For a declared body parameter, that named argument becomes the JSON body value and
+other fields become query parameters. See [body binding](../body-binding.md).
 
+${bindingSection}
 ## Methods
 
 | Method | HTTP | Route | Route params |
