@@ -136,7 +136,7 @@ class HyperDriveModule {
     // PUT api/hyperDrive/costs/limits
     this.setCostLimits = makeOperation(http, "api/hyperDrive", "PUT", "costs/limits");
     // PUT api/hyperDrive/mode
-    this.setHyperDriveMode = makeOperation(http, "api/hyperDrive", "PUT", "mode");
+    this.setHyperDriveMode = makeOperation(http, "api/hyperDrive", "PUT", "mode", "mode");
     // PUT api/hyperDrive/config
     this.updateConfiguration = makeOperation(http, "api/hyperDrive", "PUT", "config");
     // PUT api/hyperDrive/cost/{providerType}

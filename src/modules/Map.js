@@ -60,7 +60,7 @@ class MapModule {
     // PUT api/map/routes/{id}/access
     this.updateAccess = makeOperation(http, "api/map", "PUT", "routes/{id}/access");
     // POST api/map/visit/{locationId}
-    this.visitLocation = makeOperation(http, "api/map", "POST", "visit/{locationId}");
+    this.visitLocation = makeOperation(http, "api/map", "POST", "visit/{locationId}", "purpose");
     // POST api/map/ZoomMapIn/{value}
     this.zoomMapIn = makeOperation(http, "api/map", "POST", "ZoomMapIn/{value}");
     // POST api/map/ZoomMapOut/{value}

@@ -163,7 +163,7 @@ class DataModule {
     this.purgeHolons = makeOperation(http, "api/data", "POST", "purge-holons");
     // POST api/data/query-cql
     this.query = makeOperation(http, "api/data", "POST", "query-cql");
-    // POST api/data/~
+    // POST api/data/recover-conditional-operation
     this.recoverConditionalOperation = makeOperation(http, "api/data", "POST", "recover-conditional-operation");
     // DELETE api/data/holon-purge-hold/{id}
     this.releaseHolonPurgeHold = makeOperation(http, "api/data", "DELETE", "holon-purge-hold/{id}");

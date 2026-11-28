@@ -22,7 +22,7 @@ class ChatModule {
     // GET api/chat/history/{sessionId}
     this.getChatHistory = makeOperation(http, "api/chat", "GET", "history/{sessionId}");
     // POST api/chat/send-message/{sessionId}
-    this.sendMessage = makeOperation(http, "api/chat", "POST", "send-message/{sessionId}");
+    this.sendMessage = makeOperation(http, "api/chat", "POST", "send-message/{sessionId}", "message");
     // POST api/chat/start-new-chat-session
     this.startNewChatSession = makeOperation(http, "api/chat", "POST", "start-new-chat-session");
   }

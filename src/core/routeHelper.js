@@ -33,8 +33,9 @@ function resolveRoute(routeTemplate, args = {}) {
  * @param {string} routePrefix e.g. "api/avatar"
  * @param {string} verb GET | POST | PUT | DELETE
  * @param {string} route route template relative to routePrefix, e.g. "get-by-id/{id}"
+ * @param {string} [bodyParam] declared controller body parameter; remaining args become query fields
  */
-function makeOperation(http, routePrefix, verb, route) {
+function makeOperation(http, routePrefix, verb, route, bodyParam) {
   return async function operation(args = {}) {
     const { path, rest } = resolveRoute(route, args);
     const fullPath = path ? `${routePrefix}/${path}` : routePrefix;
@@ -42,6 +43,12 @@ function makeOperation(http, routePrefix, verb, route) {
 
     if (verb === 'GET') {
       return http.get(fullPath, { query: hasBody ? rest : undefined });
+    }
+    if (bodyParam) {
+      const body = rest[bodyParam];
+      const query = { ...rest };
+      delete query[bodyParam];
+      return http.request(verb, fullPath, { body, query: Object.keys(query).length ? query : undefined });
     }
     return http.request(verb, fullPath, { body: hasBody ? rest : undefined });
   };

@@ -48,7 +48,7 @@ class MessagingModule {
     // POST api/messaging/send
     this.send = makeOperation(http, "api/messaging", "POST", "send");
     // POST api/messaging/send-message-to-avatar/{toAvatarId}
-    this.sendMessageToAvatar = makeOperation(http, "api/messaging", "POST", "send-message-to-avatar/{toAvatarId}");
+    this.sendMessageToAvatar = makeOperation(http, "api/messaging", "POST", "send-message-to-avatar/{toAvatarId}", "content");
     // GET api/messaging/sync
     this.sync = makeOperation(http, "api/messaging", "GET", "sync");
   }

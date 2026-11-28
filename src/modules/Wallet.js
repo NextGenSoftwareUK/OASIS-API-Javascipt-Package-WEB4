@@ -88,7 +88,7 @@ class WalletModule {
     // POST api/wallet/avatar/username/{username}/default-wallet/{walletId}
     this.setAvatarDefaultWalletByUsernameAsync = makeOperation(http, "api/wallet", "POST", "avatar/username/{username}/default-wallet/{walletId}");
     // POST api/wallet/transfer
-    this.transferBetweenWalletsAsync = makeOperation(http, "api/wallet", "POST", "transfer");
+    this.transferBetweenWalletsAsync = makeOperation(http, "api/wallet", "POST", "transfer", "request");
     // POST api/wallet/unlock-token
     this.unlockToken = makeOperation(http, "api/wallet", "POST", "unlock-token");
     // PUT api/wallet/avatar/email/{email}/wallet/{walletId}

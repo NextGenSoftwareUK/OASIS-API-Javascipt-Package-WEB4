@@ -39,7 +39,7 @@ for (const [filename, info] of Object.entries(endpoints)) {
     const routeLiteral = JSON.stringify(op.route || '');
     return `    // ${op.verb} ${routePrefix}/${op.route}\n    this.${jsName} = makeOperation(http, ${JSON.stringify(
       routePrefix
-    )}, ${JSON.stringify(op.verb.toUpperCase())}, ${routeLiteral});`;
+    )}, ${JSON.stringify(op.verb.toUpperCase())}, ${routeLiteral}${op.bodyParam ? `, ${JSON.stringify(op.bodyParam)}` : ''});`;
   });
 
   const source = `'use strict';

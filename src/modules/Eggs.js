@@ -16,7 +16,7 @@ class EggsModule {
     this._http = http;
 
     // POST api/eggs/discover
-    this.discoverEgg = makeOperation(http, "api/eggs", "POST", "discover");
+    this.discoverEgg = makeOperation(http, "api/eggs", "POST", "discover", "eggType");
     // GET api/eggs/get-all-eggs
     this.getAllEggs = makeOperation(http, "api/eggs", "GET", "get-all-eggs");
     // GET api/eggs/get-current-egg-quest-leader-board
